@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Tạo bảng đơn giản 2</title>
+    <style>
+        :root {
+            --white-color: #fff;
+            --blue-color: blue;
+            --black-color: #000;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            line-height: 1.6rem;
+            font-family: 'Open Sans', sans-serif;
+            /* box-sizing: border-box; */
+        }
+
+        table {
+            width: 80%;
+            border: var(--text-color) solid 1px;
+            border-collapse: collapse;
+           
+        }
+
+        caption {
+            font-size: 2.5rem;
+            font-weight: bolder;
+            width: max-content;
+            text-align: center;
+            margin: 2rem;
+        }
+
+        thead {
+            background-color: rgb(238, 255, 0);
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        thead th:nth-child(1) {
+            width: 14%;
+        }
+        thead th:nth-child(2) {
+            width: 13%;
+        }
+
+        thead th:nth-child(3) {
+            width: 13%;
+        }
+
+        thead th:nth-child(4) {
+            width: 13%;
+        }
+        thead th:nth-child(5) {
+            width: 13%;
+        }
+
+        thead th:nth-child(6) {
+            width: 13%;
+        }
+        
+        td {
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <table style="border: unset; width: 75%; color: var(--blue-color);" class="center">
+        <caption class="center">THỜI KHOÁ BIỂU</caption>
+        <tr>
+            <td>Lớp: T0908I</td>
+            <td style="text-align: right;">Thời gian học: 13h30 - 17h30</td>
+        </tr>
+        <tr>
+            <td>Giáo viên: KhoaNV</td>
+            <td style="text-align: right;">Ngày học: Thứ 3, 5, 7</td>
+        </tr>
+        <tr>
+            <td>Phòng học: Class3/Lab3</td>
+        </tr>
+    </table>
+    <table border="1px" class="center">
+        <thead>
+            <tr>
+                <th colspan="3" style="background-color: var(--white-color);"></th>
+                <th>Thứ 3</th>
+                <th>Thứ 5</th>
+                <th>Thứ 7</th>
+            </tr>
+            <tr style="background-color: darkorange;">
+                <th>Tuần</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th colspan="3">Môn học</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: center;">01</td>
+                <td>01/09/2009</td>
+                <td>05/09/2009</td>
+                <td>CF - T1, L1</td>
+                <td>CF - T2, L2</td>
+                <td>CF - T3, L3</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">02</td>
+                <td>08/09/2009</td>
+                <td>12/09/2009</td>
+                <td>CF - T4, L4</td>
+                <td>CF - Written Test</td>
+                <td>C - T1, L1</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">03</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

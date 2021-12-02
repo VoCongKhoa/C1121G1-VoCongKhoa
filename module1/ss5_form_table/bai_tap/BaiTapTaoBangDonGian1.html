@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Tạo bảng đơn giản 1</title>
+    <style>
+        :root {
+            --blue-color: rgb(0, 0, 255);
+            --black-color: #000;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            font-family: "Open Sans",sans-serif;
+            line-height: 2rem;
+            /* box-sizing: border-box; */
+        }
+
+        table {
+            width: min-content;
+            border: var(--text-color) solid 1px;
+            border-collapse: collapse;
+           
+        }
+
+        caption {
+            font-size: 2.5rem;
+            font-weight: bolder;
+            width: max-content;
+            text-align: center;
+            margin: 2rem;
+        }
+
+        thead {
+            background-color: rgb(238, 255, 0);
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        thead th:nth-child(1) {
+            width: 33%;
+        }
+        thead th:nth-child(2) {
+            width: 34%;
+        }
+
+        thead th:nth-child(3) {
+            width: 33%;
+        }
+        
+        td {
+            padding-left: 2px;
+        }
+        
+    </style>
+</head>
+<body>
+    <table border="1px" class="center">
+        <caption class="center">Thời khoá biểu lớp T0908I</caption>
+        <thead>
+            <tr>
+                <th>Thứ 3</th>
+                <th>Thứ 5</th>
+                <th>Thứ 7</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CF - T1, L1</td>
+                <td>CF - T2, L2</td>
+                <td>CF - T3, L3</td>
+            </tr>
+            <tr>
+                <td>CF - T4, L4</td>
+                <td>CF - Written Test</td>
+                <td>C - T1, L1</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
