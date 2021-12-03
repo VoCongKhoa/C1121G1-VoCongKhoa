@@ -5,30 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Bài tập] Form Đăng ký học viên</title>
+    <style>
+        .blue {
+            color: blue;
+        }
+        
+        .left {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <div style="background-color:yellow;">
-        <h1 style="background-color: aqua; margin: 5px 5px 5px 5px;">ĐĂNG KÝ HỌC VIÊN</h1>
-        <label for="hovaten">Họ và tên</label>
-        <input type="text" name="name" id="hovaten"><br>
-        <label for="ngaysinh">Ngày sinh</label>
-        <input type="text" name="dateofbirth" id="ngaysinh"><br>
-        <label for="gioitinh">Giới tính</label>
-        <input type="radio" name="gender">Nam
-        <input type="radio" name="gender">Nữ<br>
-        <label for="">Địa chỉ</label>
-        <textarea name="address" cols="30" rows="10"></textarea><br>
-        <label for="">Lớp</label>
-        <select name="" id="">
+        <h1 style="background-color: aqua; margin: 5px 5px 5px 5px; color: blue;">ĐĂNG KÝ HỌC VIÊN</h1>
+        <label for="hovaten" style="padding-right: 40px; color: blue;">Họ và tên</label>
+        <input type="text" name="name" id="hovaten" style="margin-bottom: 10px;"><br>
+        <label for="ngaysinh" style="padding-right: 36.5px; color: blue;">Ngày sinh</label>
+        <input type="text" name="dateofbirth" id="ngaysinh" style="margin-bottom: 10px; width: 80px"><br>
+        <label for="gioitinh" style="color: blue;">Giới tính</label>
+        <input type="radio" name="gender" style="margin-bottom: 10px; margin-left: 50px;">Nam
+        <input type="radio" name="gender" style="margin-bottom: 10px;">Nữ<br>
+        <p style="float: left; margin-top: 10px; color: blue;">Địa chỉ</p>
+        <textarea name="address" cols="25" rows="3" id="diachi" style="margin: 10px 0px 10px 58px"></textarea><br>
+        <label for="" style="margin-right: 74px; color: blue;">Lớp</label>
+        <select name="" id="" style="margin-bottom: 10px; width: 100px; text-align: center;">
             <option value="">-Chọn lớp-</option>
             <option value="">Lớp 1</option>
             <option value="">Lớp 2</option>
             <option value="">Lớp 3</option>
         </select><br>
-        <label for="mail">Email</label>
-        <input type="text" name="email" id="mail"><br>
-        <label for="sdt">Điện thoại</label>
-        <input type="text" name="phone" id="sdt"><br>
+        <label for="mail" style="margin-right: 62px; color: blue;">Email</label>
+        <input type="text" name="email" id="mail" style="margin-bottom: 10px;"><br>
+        <label for="sdt" style="margin-right: 33px; color: blue;">Điện thoại</label>
+        <input type="text" name="phone" id="sdt" style="margin-bottom: 10px;"><br>
     </div>
 </body>
 </html>
