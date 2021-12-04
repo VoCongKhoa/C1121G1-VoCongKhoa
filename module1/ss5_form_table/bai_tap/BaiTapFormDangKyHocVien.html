@@ -6,6 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[Bài tập] Form Đăng ký học viên</title>
     <style>
+        .background {
+            background-color:yellow;
+            width: 50%;
+            height: 500px;
+            font-size: x-large;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+        h1 {
+            background-color: aqua;
+            width: 90%;
+            height: 65px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 8px;
+            text-align: center;
+            margin-block-start: 0px;
+        }
+        #hovaten{
+            width: 50%; 
+            margin-bottom: 10px;
+        }
+        #ngaysinh {
+            width: 30%;
+            margin-bottom: 10px;
+        }
+        #nam {
+            margin-bottom: 10px;
+            margin-left: 50px;
+        }
+        #diachi {
+            margin: 10px 0px 10px 70px
+        }
+        #lop {
+            margin-bottom: 10px;
+            margin-left: 95px;
+            width: 20%;
+            text-align: center;
+        }
+        #mail {
+            width: 30%;
+            margin-bottom: 10px;
+            margin-left: 15px;
+        }
+        #sdt {
+            width: 30%;
+        }
         .blue {
             color: blue;
         }
@@ -16,28 +63,38 @@
     </style>
 </head>
 <body>
-    <div style="background-color:yellow;">
-        <h1 style="background-color: aqua; margin: 5px 5px 5px 5px; color: blue;">ĐĂNG KÝ HỌC VIÊN</h1>
-        <label for="hovaten" style="padding-right: 40px; color: blue;">Họ và tên</label>
-        <input type="text" name="name" id="hovaten" style="margin-bottom: 10px;"><br>
-        <label for="ngaysinh" style="padding-right: 36.5px; color: blue;">Ngày sinh</label>
-        <input type="text" name="dateofbirth" id="ngaysinh" style="margin-bottom: 10px; width: 80px"><br>
-        <label for="gioitinh" style="color: blue;">Giới tính</label>
-        <input type="radio" name="gender" style="margin-bottom: 10px; margin-left: 50px;">Nam
-        <input type="radio" name="gender" style="margin-bottom: 10px;">Nữ<br>
-        <p style="float: left; margin-top: 10px; color: blue;">Địa chỉ</p>
-        <textarea name="address" cols="25" rows="3" id="diachi" style="margin: 10px 0px 10px 58px"></textarea><br>
-        <label for="" style="margin-right: 74px; color: blue;">Lớp</label>
-        <select name="" id="" style="margin-bottom: 10px; width: 100px; text-align: center;">
+    <div class ="background">
+
+        <h1 class ="blue">ĐĂNG KÝ HỌC VIÊN</h1>
+
+        <label for="hovaten" class = "blue" style="padding-right: 40px;">Họ và tên</label>
+        <input type="text" id="hovaten"><br>
+
+        <label class = "blue" for="ngaysinh" style="padding-right: 36.5px;">Ngày sinh</label>
+        <input type="text" id="ngaysinh"><br>
+
+        <label class = "blue">Giới tính</label>
+        <input type="radio" name="gender" id="nam">Nam
+        <input type="radio" name="gender" id="nu">Nữ<br>
+
+        <p class = "blue" style="float: left; margin-top: 10px;">Địa chỉ</p>
+        <textarea cols="50" rows="5" id="diachi" ></textarea><br>
+
+        <label class = "blue" for="lop">Lớp</label>
+
+        <select name="" id="lop">
             <option value="">-Chọn lớp-</option>
             <option value="">Lớp 1</option>
             <option value="">Lớp 2</option>
             <option value="">Lớp 3</option>
         </select><br>
-        <label for="mail" style="margin-right: 62px; color: blue;">Email</label>
-        <input type="text" name="email" id="mail" style="margin-bottom: 10px;"><br>
-        <label for="sdt" style="margin-right: 33px; color: blue;">Điện thoại</label>
-        <input type="text" name="phone" id="sdt" style="margin-bottom: 10px;"><br>
+
+        <label class = "blue" for="mail" style="margin-right: 62px;">Email</label>
+        <input type="text" name="email" id="mail"><br>
+
+        <label class = "blue" for="sdt" style="margin-right: 33px;">Điện thoại</label>
+        <input type="text" name="phone" id="sdt"><br>
+
     </div>
 </body>
 </html>

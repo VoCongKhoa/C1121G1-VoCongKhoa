@@ -18,7 +18,7 @@
         }
 
         html{
-            font-size: 62.5%;
+            font-size: x-large;
             line-height: 2rem;
         }
         
@@ -32,7 +32,7 @@
             background-color: red;
             color: var(--white-color);
             text-align: center;
-            padding: 3px 0px;
+            padding: 10px 0px;
             margin-top: 5px;
             margin-left: 5px;
             margin-right: 5px;
@@ -41,42 +41,65 @@
             margin-left: auto;
             margin-right: auto;
         }
+        #hovaten {
+            width: 40%;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0.5px 0.5px inset;
+        }
+        #mail {
+            width: 40%;
+            margin-left: 55px;
+            box-shadow: 0.5px 0.5px inset;
+        }
+        table {
+            width: 60%;
+            margin-left: 95px;
+        }
+        td:nth-child(1) {
+            width: 25%;
+            color: blue;
+        }
     </style>
 </head>
 <body>
     <div class="background">
         <div class="center">
             <h1 class="header">SỞ THÍCH CỦA BẠN</h1>
-            <div style="text-align: center;">
-                <label for="hovaten" style="padding: 0px 8px 0px 2px; text-align: left; color: blue;">Họ và tên</label>
-                <input type="text" name="name" id="hovaten" style="margin-bottom: 10px; box-shadow: 0.5px 0.5px inset;"><br>
-                <label for="mail" style="padding: 0px 8px 0px 17px; text-align: left; color: blue;">Email</label>
-                <input type="text" name="email" id="mail"style="box-shadow: 0.5px 0.5px inset;"><br>
-            </div>
-            <div style="padding-left: 150px; margin-top: 10px;">
-                <table>
-                    <tr>
-                        <td style="padding-right: 10px; color: blue;">Sở thích</td>    
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Thể thao</label></td>
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Âm nhạc</label></td>
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Đọc sách</label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Lướt web</label></td>
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Chơi game</label></td>
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Điện ảnh</label></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="checkbox" name="sothich"><label style="color: red;">Du lịch</label></td>
-                    </tr>
-                </table>
-            </div>
-            <div style="text-align: center; padding-bottom: 10px;">
-                <button type="submit" style="box-shadow:1px 1px grey;">Gởi thông tin</button>
-                <button type="reset" style="box-shadow:1px 1px grey;">Nhập lại</button>
-            </div>
+            <form action="" method="post">
+                <div style="text-align: center;">
+                    
+                    <label for="hovaten" style="color: blue;">Họ và tên</label>
+                    <input type="text" name="name" id="hovaten"><br>
+
+                    <label for="mail" style="color: blue;">Email</label>
+                    <input type="text" name="email" id="mail"><br>
+                </div>
+                <div style="padding-left: 150px; margin-top: 10px;">
+                    <table>
+                        <tr>
+                            <td style="">Sở thích</td>    
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Thể thao</label></td>
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Âm nhạc</label></td>
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Đọc sách</label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Lướt web</label></td>
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Chơi game</label></td>
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Điện ảnh</label></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="checkbox" name="sothich"><label style="color: red;">Du lịch</label></td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="text-align: center; padding-bottom: 10px;">
+                    <button type="submit" style="box-shadow:1px 1px grey; width: 15%; height: 30px; font-size: 20px;">Gởi thông tin</button>
+                    <button type="reset" style="margin-left: 20px;box-shadow:1px 1px grey; width: 15%; height: 30px; font-size: 20px;">Nhập lại</button>
+                </div>
+            </form>
         </div>
 </body>
 </html>
