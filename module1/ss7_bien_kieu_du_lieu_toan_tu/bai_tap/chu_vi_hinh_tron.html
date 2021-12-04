@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TÍNH CHU VI HÌNH TRÒN</h1>
+    <label for="">Nhập bán kính hình tròn</label>
+    <input type="number"id="radius">
+    <button onclick="tinhChuVi()">Chu vi hình tròn</button>
+    <input type="number"id="result">
+</body>
+<script>
+    function tinhChuVi(params) {
+        let r = document.getElementById("radius").value
+        let cv = 2*r*Math.PI
+        document.getElementById("result").value = cv
+    }
+</script>
+</html>

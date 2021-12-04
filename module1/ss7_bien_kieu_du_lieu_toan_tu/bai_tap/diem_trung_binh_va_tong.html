@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình Toán. Lý, Hoá</title>
+    <style>
+        .box {
+            width: 30%;
+            height: 200px;
+            background-color: rgb(69, 208, 250);
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">BẢNG ĐIỂM</h1><br>
+    <div class="box">
+        <label>Nhập điểm Vật lý</label>
+        <input type="text" id="physic" style="margin-bottom: 10px;margin-left: 50px;"><br>
+
+        <label>Nhập điểm Hoá</label>
+        <input type="text" id="chemist" style="margin-bottom: 10px;margin-left: 60px;"><br>
+
+        <label>Nhập điểm Sinh</label>
+        <input type="text" id="bio" style="margin-bottom: 10px;margin-left: 56px;"><br>
+
+        <button onclick="tongDiem()">Tổng điểm</button>
+        <input type="text" id="sum" style="margin-bottom: 10px;margin-left: 80px;"><br>
+
+        <button onclick="diemTrungBinh()">Điểm trung bình</button>
+        <input type="text" id="average" style="margin-left: 50px;">
+    </div>
+</body>
+<script >
+    
+    function tongDiem(params) {
+        let ly = document.getElementById("physic").value
+            ly = parseInt(ly)
+        let hoa = document.getElementById("chemist").value
+            hoa = parseInt(hoa)
+        let sinh = document.getElementById("bio").value
+            sinh = parseInt(sinh)
+        let summary = (ly + hoa + sinh)
+        document.getElementById("sum").value = summary
+        
+    }
+    function diemTrungBinh(params) {
+        let ly = document.getElementById("physic").value
+            ly = parseInt(ly)
+        let hoa = document.getElementById("chemist").value
+            hoa = parseInt(hoa)
+        let sinh = document.getElementById("bio").value
+            sinh = parseInt(sinh)
+        let summary = (ly + hoa + sinh)
+        document.getElementById("average").value = summary/3
+    }
+
+</script>
+</body>
+</html>

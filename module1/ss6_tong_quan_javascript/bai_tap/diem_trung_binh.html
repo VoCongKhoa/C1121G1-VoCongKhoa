@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm trung bình Toán. Lý, Hoá</title>
+</head>
+<body>
+   <label>Nhập điểm Toán</label>
+   <input type="text" id="math">
+
+   <label>Nhập điểm Lý</label>
+   <input type="text" id="physics">
+
+   <label>Nhập điểm Hoá</label>
+   <input type="text" id="chemistry">
+
+   <button onclick="tong()">Điểm trung bình</button>
+   <input type="text" id="sum">
+</body>
+<script >
+    
+    function tong(params) {
+        let m = document.getElementById("math").value
+            m = parseInt(m)
+        let p = document.getElementById("physics").value
+            p = parseInt(p)
+        let c = document.getElementById("chemistry").value
+            c = parseInt(c)
+        let a = (m + p + c)/3
+        document.getElementById("sum").value = a
+        alert(a)
+    }
+
+</script>
+</body>
+</html>

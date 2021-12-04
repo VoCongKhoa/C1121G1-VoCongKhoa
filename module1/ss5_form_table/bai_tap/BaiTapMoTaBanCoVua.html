@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* :root {
+        --white-color: #fff;
+        --black-color: #000;
+        --text-color: #333;
+        }
+
+        * {
+            box-sizing: inherit;
+        }
+
+        html {
+            font-size: 62.5%;
+            line-height: 1.6rem;
+            font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+        } */
+
+        table {
+            /* width: 100%; */
+            border-collapse: collapse;
+            margin:10px 0px 0px 10px;
+        }
+
+        /* tr:nth-child(even) {
+            background-color: var(--black-color);
+        } */
+
+        /* td:nth-child(even) {
+            background-color: var(--white-color);
+        }
+        td:nth-child(odd) {
+            background-color: var(--black-color);
+        } */
+
+        tr:nth-of-type(odd) td:nth-of-type(odd), tr:nth-of-type(even) td:nth-of-type(even){
+            background-color: black;
+        }
+
+        tr:nth-of-type(odd) td:nth-of-type(even), tr:nth-of-type(even) td:nth-of-type(odd){
+            background-color: white;
+        }
+        td {
+            width: 60px;
+            height: 60px;
+        }
+        /* td, th {
+        padding: 20px;
+        border: 1px solid black;
+        } */
+
+        .background {
+            background-color: orange; 
+            width: 600px; 
+            height: 600px; 
+        }
+
+        th {
+            background-color: orange;
+            width: 60px;
+            height: 60px;
+            /* vertical-align: bottom; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <table>
+            <tr>
+                <th></th>
+                <th style="vertical-align: bottom">1</th>
+                <th style="vertical-align: bottom">2</th>
+                <th style="vertical-align: bottom">3</th>
+                <th style="vertical-align: bottom">4</th>
+                <th style="vertical-align: bottom">5</th>
+                <th style="vertical-align: bottom">6</th>
+                <th style="vertical-align: bottom">7</th>
+                <th style="vertical-align: bottom">8</th>
+            </tr>
+            <tr>
+                <th style="text-align: right;">A</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">B</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">C</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">D</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">E</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">F</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">G</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th style="text-align: right;">H</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
