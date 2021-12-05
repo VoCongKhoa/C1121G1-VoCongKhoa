@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Enter a year</p>
+    <input type="number" name="" id="year">
+    <button onclick="checkYear()">Check</button>
+    <p id="result"></p>
+    <form action="">
+        <button onreset="">Reset</button>
+    </form>
+</body>
+<script>
+    function checkYear(params) {
+        let y = document.getElementById("year").value
+            y = parseInt(y)
+            // document.getElementById("result").innerHTML = "Năm " + y + " là năm nhuận."
+            // console.log(y)
+
+        if (y%4 == 0 & y%100 !==0) {
+            document.getElementById("result").innerHTML = "Năm " + y + " là năm nhuận." 
+        } else if (y%100 == 0 & y%400 !==0) {
+            document.getElementById("result").innerHTML = "Năm " + y + " là năm nhuận."
+        } else if (y%100 == 0 & y%400 ==0) {
+            document.getElementById("result").innerHTML = "Năm " + y + " là năm nhuận."
+        } else {
+            document.getElementById("result").innerHTML = "Năm " + y + " là năm không nhuận."
+        } 
+    } 
+</script>
+</html>

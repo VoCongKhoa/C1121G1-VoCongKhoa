@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Thanh toán hóa đơn</h1>
+    <label>Nhập tổng bill</label>
+    <input type=number id="money"/>
+    <br>
+    <label>Nhập số người</label>
+    <input type="number" id="people"/>
+    <br>
+    <button onclick="tinhTien()">Tính toán</button>
+    <p>
+    <h1>Số tiền từng ngời phải trả: </h1>
+    <h2 id="display"></h2>
+    </p>
+
+
+</body>
+<script>
+
+    alert("Hello!");
+    function tinhTien() {
+        let bill = document.getElementById('money').value;
+        bill = parseInt(bill)
+        let amount = document.getElementById('people').value;
+        amount = parseInt(amount)
+        let pay = bill / amount;
+        pay= parseFloat(pay).toFixed(4)
+        document.getElementById('display').innerHTML = pay;
+    }
+</script>
+</body>
+</html>

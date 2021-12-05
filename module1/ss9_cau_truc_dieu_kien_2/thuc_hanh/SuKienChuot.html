@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://www.savifoot.com/849-large_default/energy-ball.jpg" alt="Error" id="myImg"><br><br>
+    <button onclick="moveRight()">Di chuyển sang phải</button>
+
+</body>
+<script>
+    let imgObj = null;
+    function init(params) {
+        imgObj = document.getElementById("myImg");
+        // imgObj.style.alignItems = "center"
+        imgObj.style.width = "400px";
+        imgObj.style.height = "400px";
+        imgObj.style.marginLeft = "0px";
+        // imgObj.style.position = "relative";
+        // imgObj.style.left = "0px"
+    }
+    window.onload = init;
+    function moveRight(params) {
+        imgObj = document.getElementById("myImg");
+        imgObj.style.marginLeft = parseInt(imgObj.style.marginLeft) + 20 + "px";
+    }
+</script>
+</html>

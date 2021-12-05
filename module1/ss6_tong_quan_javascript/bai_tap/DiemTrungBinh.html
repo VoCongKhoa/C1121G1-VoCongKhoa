@@ -16,21 +16,21 @@
    <label>Nhập điểm Hoá</label>
    <input type="text" id="chemistry">
 
-   <button onclick="tong()">Điểm trung bình</button>
+   <button onclick="diemTrungBinh()">Điểm trung bình</button>
    <input type="text" id="sum">
 </body>
 <script >
     
-    function tong(params) {
-        let m = document.getElementById("math").value
-            m = parseInt(m)
-        let p = document.getElementById("physics").value
-            p = parseInt(p)
-        let c = document.getElementById("chemistry").value
-            c = parseInt(c)
-        let a = (m + p + c)/3
-        document.getElementById("sum").value = a
-        alert(a)
+    function diemTrungBinh() {
+        let math = document.getElementById("math").value
+        math = parseInt(math)
+        let physics = document.getElementById("physics").value
+        physics = parseInt(physics)
+        let chemistry = document.getElementById("chemistry").value
+        chemistry = parseInt(chemistry)
+        let ave = (math + physics + chemistry)/3
+        document.getElementById("sum").value = ave
+        alert(ave)
     }
 
 </script>

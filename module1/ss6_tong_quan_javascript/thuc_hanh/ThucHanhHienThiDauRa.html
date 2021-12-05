@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button type="button" onclick="showMessageAlert();">Click Me!</button>
+    <script>
+        function showMessageAlert(){
+            alert('Xin chào! Đây là hiển thị bằng hàm alert()');
+        }
+    </script>
+
+    <div id="messageDiv"></div>
+    <button type="button" onclick="showMessageDiv();">Click Me!</button>
+    <script>
+        function showMessageDiv(){
+            document.getElementById('messageDiv').innerHTML = 'Xin chào! Đây là hiển thị bằng thẻ <div>';
+        }
+    </script>
+
+    <button type="button" onclick="showMessageDocumentWrite();">Click Me!</button>
+    <script>
+        function showMessageDocumentWrite(){
+            document.write('Xin chào! Đây là hiển thị bằng hàm document.write()');
+        }
+    </script>
+
+    <button type="button" onclick="showMessageConsoleLog();">Click Me!</button>
+    <script>
+        function showMessageConsoleLog(){
+            console.log('Xin chào! Đây là hiển thị bằng hàm console.log()');
+        }
+    </script>
+</body>
+</html>
