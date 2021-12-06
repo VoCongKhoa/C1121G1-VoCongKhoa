@@ -11,51 +11,30 @@
     <input type="number" id="num1">
     <input type="number" id="num2"><br><br>
 
-    <button onclick="add()">Addition(+)</button>
-    <button onclick="sub()">Subtraction(-)</button>
-    <button onclick="mul()">Multiplication(x)</button>
-    <button onclick="div()">Division(/)</button>
+    <button onclick="calculator('addition')">Addition(+)</button>
+    <button onclick="calculator('subtract')">Subtraction(-)</button>
+    <button onclick="calculator('multiple')">Multiplication(x)</button>
+    <button onclick="calculator('divide')">Division(/)</button>
     <p id="result"></p>
 </body>
 <script>
-    // let a = document.getElementById("num1").value
-    //     a = parseInt(a)
-    // let b = document.getElementById("num2").value
-    //     b = parseInt(b)
-    //     console.log(a)
-    //     console.log(b)
-    function add(params) {
-        let a = document.getElementById("num1").value
-            a = parseInt(a)
-        let b = document.getElementById("num2").value
-            b = parseInt(b)
-        let r = a + b
-        document.getElementById("result").innerHTML = "Result Addition" + r
+    function calculator(params) {
+        let firstNum = parseInt(document.getElementById("num1").value);
+        let secondNum = parseInt(document.getElementById("num2").value);
+        switch (params) {
+            case "addition":
+                document.getElementById("result").innerHTML = "Result Addition" + (firstNum + secondNum)
+                break;
+            case "subtract":
+                document.getElementById("result").innerHTML = "Result Addition" + (firstNum - secondNum)
+                break;
+            case "multiple":
+                document.getElementById("result").innerHTML = "Result Addition" + (firstNum * secondNum)
+                break;
+            case "divide":
+                document.getElementById("result").innerHTML = "Result Addition" + (firstNum / secondNum)
+                break;
+        }
     }
-    function sub(params) {
-        let a = document.getElementById("num1").value
-            a = parseInt(a)
-        let b = document.getElementById("num2").value
-            b = parseInt(b)
-        let r = a - b
-        document.getElementById("result").innerHTML = "Result Subtraction" + r
-    }
-    function mul(params) {
-        let a = document.getElementById("num1").value
-            a = parseInt(a)
-        let b = document.getElementById("num2").value
-            b = parseInt(b)
-        let r = a * b
-        document.getElementById("result").innerHTML = "Result Multiplication" + r
-    }
-    function div(params) {
-        let a = document.getElementById("num1").value
-            a = parseInt(a)
-        let b = document.getElementById("num2").value
-            b = parseInt(b)
-        let r = a / b
-        document.getElementById("result").innerHTML = "Result Division" + r
-    }
-
 </script>
 </html>

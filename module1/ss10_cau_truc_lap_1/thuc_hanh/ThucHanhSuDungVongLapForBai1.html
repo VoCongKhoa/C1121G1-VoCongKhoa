@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The number is N</title>
+</head>
+<body>
+    <h2>JavaScript Loops</h2>
+    <p id="demo"></p>
+</body>
+<script>
+    let text = "";
+    let i;
+    for (index = 0; index < 6; index++) {
+        text += "The number is " + index + "<br>";
+    }
+    document.getElementById("demo").innerHTML = text;
+    // Cách khác
+    // for (let index = 0; index < 6; index++) {
+    //     document.write("The number is " + index + "<br>");
+    // }
+</script>
+</html>

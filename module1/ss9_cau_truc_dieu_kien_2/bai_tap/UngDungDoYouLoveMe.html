@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng Do you love me</title>
+</head>
+<body>
+    <h1>Do you love me</h1>
+    <button id="yes">YES</button>
+    <button id="no" style="position: relative; left: 0px; top: 0px; right: 0px; bottom: 0px">NO</button>
+</body>
+<script>
+    // console.log(random1);
+    // console.log(random2);
+    document.getElementById("yes").onclick = function() {
+        alert("<3");
+    }
+    // Function này làm button NO di chuyển bị bay khỏi tầm nhìn
+    // noBtn.onmouseover = function() {
+    //     let random1 = Math.floor(Math.random()*100 + 5);
+    //     let random2 = Math.floor(Math.random()*100 + 5);
+    //     let random3 = Math.floor(Math.random()*100 + 5);
+    //     let random4 = Math.floor(Math.random()*100 + 5);
+    //     noBtn.style.left = parseInt(noBtn.style.left) + random1 +"px";
+    //     noBtn.style.bottom = parseInt(noBtn.style.bottom) + random2 +"px";
+    //     noBtn.style.top = parseInt(noBtn.style.top) + random2 +"px";
+    //     noBtn.style.right = parseInt(noBtn.style.right) + random2 +"px";
+    // }
+    
+    document.getElementById("no").onmouseover = function() {
+        let maxHeight = window.innerHeight;
+        let maxWidth = window.innerWidth;
+        let random1 = Math.round(Math.random());
+        let random2 = Math.round(Math.random());
+        let noBtn = document.getElementById("no");
+        console.log(typeof maxWidth);
+        noBtn.style.left = maxWidth*random1 +"px";
+        noBtn.style.top = maxHeight*random2 +"px";
+    }
+</script>
+</html>
