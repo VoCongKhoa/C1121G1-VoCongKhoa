@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính cước điện thoại</title>
+</head>
+<body>
+    <h1>Nhập số điện thoại của bạn: </h1>
+    <input type="text" name="" id="phoneNumber">
+    <h2>Nhập phút đã gọi:</h2>
+    <input type="text" name="" id="minutes"> phút <br><br>
+    <button onclick="tinhTien()">Tính tiền cước</button>
+    <h3>Kết quả: </h3>
+    <h4 id="result"></h4>
+</body>
+<script>
+    // Phí thuê bao bắt buộc là 25 nghìn.
+    // 600 đồng cho mỗi gọi của 50 phút đầu tiên.
+    // 400 đồng cho mỗi phút gọi của 150 phút tiếp theo.
+    // 200 đồng cho bất kỳ mỗi phút nào sau 200 phút đầu tiên.
+    function tinhTien() {
+        let soDienThoai = document.getElementById("phoneNumber").value;
+        let soPhut = parseInt(document.getElementById("minutes").value);
+        let ketQua = document.getElementById("result");
+        let tienCuoc = 25000;
+        // let tienHoaHong = 
+        // console.log(tenHocSinh);
+        if (soPhut < 50) {
+            tienCuoc += 600*soPhut;
+            ketQua.innerHTML = `Tiền cước điện thoại của số điện thoại ${soDienThoai} là ${tienCuoc} VND`;
+        } else if (soPhut <200) {
+            tienCuoc = tienCuoc + 50*600 + (soPhut-50)*400;
+            ketQua.innerHTML = `Tiền cước điện thoại của số điện thoại ${soDienThoai} là ${tienCuoc} VND`;
+        } else {
+            tienCuoc = tienCuoc + 50*600 + 150*400 + (soPhut-200)*200;
+            ketQua.innerHTML = `Tiền cước điện thoại của số điện thoại ${soDienThoai} là ${tienCuoc} VND`;
+        } 
+        
+    }
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Nhập cân nặng</p>
+    <input type="text" name="weight" id="cannang">
+    <p>Nhập chiều cao</p>
+    <input type="text" name="height" id="chieucao"><br><br>
+    <button onclick="tinhBMI()">Tính BMI: </button>
+    <input type="text" name="result" id="ketqua">
+    <h1 id="grade"></h1>
+</body>
+<script>
+    // let canNang = document.getElementById("cannang").value
+    // let chieuCao = document.getElementById("chieucao").value
+    // console.log(chieuCao*chieuCao)
+    function tinhBMI() {
+        let canNang = parseFloat(document.getElementById("cannang").value)
+        let chieuCao = parseFloat(document.getElementById("chieucao").value)
+        let bmi = canNang / (Math.pow(chieuCao,2))
+        document.getElementById("ketqua").value = bmi.toFixed(2)
+        if (bmi < 18.5) {
+            document.getElementById("grade").innerHTML = "Underweight"
+        } else if (bmi < 25) {
+            document.getElementById("grade").innerHTML = "Normal"
+        } else if (bmi < 30) {
+            document.getElementById("grade").innerHTML = "Overweight"
+        } else {
+            document.getElementById("grade").innerHTML = "Obese"
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính diện tích hình vuông khi biết chiều dài cạnh a</title>
+</head>
+<body>
+    <label for="numbera">Nhập a:</label><br>
+    <input type="text" id="numbera"><br><br>
+    <button onclick="tinhDienTich()">Tính diện tích</button>
+    <p>Kết quả:</p>
+    <p id="result"></p>
+</body>
+<script>
+    function tinhDienTich() {
+        let a = parseFloat(document.getElementById("numbera").value);
+        if (a <= 0) {
+            document.getElementById("result").innerHTML = `Chiều dài cạnh của hình vuông không đúng`;
+        } else {
+            document.getElementById("result").innerHTML = `Hình vuông có chiều dài cạnh là ${a} có diện tích là: ${Math.pow(a,2)}`;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải phương trình bậc 1</title>
+</head>
+<body>
+    <label for="numbera">Nhập a:</label><br>
+    <input type="text" id="numbera"><br>
+    <label for="numberb">Nhập b:</label><br>
+    <input type="text" id="numberb"><br>
+    <button onclick="timNghiemBac1()">Tìm nghiệm</button>
+    <p>Kết quả:</p>
+    <p id="result"></p>
+</body>
+<script>
+    function timNghiemBac1() {
+        let a = parseFloat(document.getElementById("numbera").value);
+        let b = parseFloat(document.getElementById("numberb").value);
+        if (a === 0) {
+            document.getElementById("result").innerHTML = `Phương trình trên vô nghiệm`;
+        } else {
+            document.getElementById("result").innerHTML = `Phương trình trên có 1 nghiệm duy nhất là: ${(-b/a).toFixed(4)}`;
+        }
+    }
+</script>
+</html>

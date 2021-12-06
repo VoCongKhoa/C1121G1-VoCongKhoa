@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển từ mét sang feet</title>
+</head>
+<body>
+    <label for="numberC">Nhập độ C:</label><br>
+    <input type="text" id="numberC">°C<br><br>
+    <button onclick="chuyenDoi()">Convert</button>
+    <p>Kết quả:</p>
+    <p id="result"></p>
+</body>
+<script>
+    function chuyenDoi() {
+        let c = parseFloat(document.getElementById("numberC").value);
+        if (c < 0) {
+            document.getElementById("result").innerHTML = `Số độ C không đúng`;
+        } else {
+            document.getElementById("result").innerHTML = `${c}°C bằng ${(c*9/5+32).toFixed(4)}°F`;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xếp hạng học lực học sinh</title>
+</head>
+<body>
+    <h1>Nhập tên học sinh: </h1>
+    <input type="text" name="" id="name">
+    <h2>Nhập điểm kiểm tra</h2>
+    <input type="text" name="" id="diemKiemTra">
+    <h2>Nhập diểm thi giữa kỳ</h2>
+    <input type="text" name="" id="diemGiuaKy">
+    <h2>Nhập điểm cuối kỳ</h2>
+    <input type="text" name="" id="diemCuoiKy">
+    <button onclick="xepHang()">Kiểm tra</button>
+    <h3>Kết quả: </h3>
+    <h4 id="result"></h4>
+</body>
+<script>
+    function xepHang() {
+        let tenHocSinh = document.getElementById("name").value;
+        let kiemTra = parseInt(document.getElementById("diemKiemTra").value);
+        let giuaKy = parseInt(document.getElementById("diemGiuaKy").value);
+        let cuoiKy = parseInt(document.getElementById("diemCuoiKy").value);
+        let diemTrungBinh = (kiemTra + giuaKy*2 + cuoiKy*3) / 6;
+        // console.log(tenHocSinh);
+        if (diemTrungBinh >= 9) {
+            document.getElementById("result").innerHTML = `Học sinh ${tenHocSinh} được xếp hạng Xuất Sắc`;
+        } else if (diemTrungBinh >= 8) {
+            document.getElementById("result").innerHTML = `Học sinh ${tenHocSinh} được xếp hạng Giỏi`;
+        } else if (diemTrungBinh >= 6) {
+            document.getElementById("result").innerHTML = `Học sinh ${tenHocSinh} được xếp hạng Khá`;
+        } else if (diemTrungBinh >= 4) {
+            document.getElementById("result").innerHTML = `Học sinh ${tenHocSinh} được xếp hạng Trung Bình`;
+        } else {
+            document.getElementById("result").innerHTML = `Học sinh ${tenHocSinh} được xếp hạng Yếu`;
+        }
+    }
+</script>
+</html>

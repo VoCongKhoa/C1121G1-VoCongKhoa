@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng hoa hồng của đại lý</title>
+</head>
+<body>
+    <h1>Nhập tên của Đại lý: </h1>
+    <input type="text" name="" id="name">
+    <h2>Nhập doanh số bán hàng</h2>
+    <input type="text" name="" id="doanhSo"> $ <br><br>
+    <button onclick="tinhHoaHong()">Tính tiền hoa hồng</button>
+    <h3>Kết quả: </h3>
+    <h4 id="result"></h4>
+</body>
+<script>
+    // Nếu doanh số đạt 50000$ thì hoa hồng 5%
+    // Nếu doanh số đạt 40000$ thì hoa hồng 4%
+    // Nếu doanh số đạt 25000$ thì hoa hồng 2,5%
+    // Nếu doanh số đạt 15000$ thì hoa hồng 1,5%
+    // Nếu doanh số đạt 10000$ thì hoa hồng 1%
+    // Nếu doanh số đạt ít hơn 10000$ thì hoa hồng 0%
+    function tinhHoaHong() {
+        let tenDaiLy = document.getElementById("name").value;
+        let money = parseInt(document.getElementById("doanhSo").value);
+        let ketQua = document.getElementById("result");
+        // let tienHoaHong = 
+        // console.log(tenHocSinh);
+        if (money >= 50000) {
+            let hoaHong = money * 0.05;
+            ketQua.innerHTML = `Đại lý ${tenDaiLy} được nhận ${hoaHong}$ tiền hoa hồng`;
+        } else if (money >= 40000) {
+            let hoaHong = money * 0.04;
+            ketQua.innerHTML = `Đại lý ${tenDaiLy} được nhận ${hoaHong}$ tiền hoa hồng`;
+        } else if (money >= 25000) {
+            let hoaHong = money * 0.025;
+            ketQua.innerHTML = `Đại lý ${tenDaiLy} được nhận ${hoaHong}$ tiền hoa hồng`;
+        } else if (money >= 15000) {
+            let hoaHong = money * 0.015;
+            ketQua.innerHTML = `Đại lý ${tenDaiLy} được nhận ${hoaHong}$ tiền hoa hồng`;
+        } else if (money >= 10000) {
+            let hoaHong = money * 0.01;
+            ketQua.innerHTML = `Đại lý ${tenDaiLy} được nhận ${hoaHong}$ tiền hoa hồng`;
+        } else {
+            ketQua.innerHTML = `Đại lý ${tenDaiLy} chưa đạt được chỉ tiêu để nhận được tiền hoa hồng`;
+        }{
+        }
+    }
+</script>
+</html>

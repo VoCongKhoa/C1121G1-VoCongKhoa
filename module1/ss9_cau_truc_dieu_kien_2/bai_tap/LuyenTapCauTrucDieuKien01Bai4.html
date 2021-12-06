@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm số lớn nhất trong 3 số nguyên</title>
+</head>
+<body>
+    <h1>Nhập số 1</h1>
+    <input type="text" name="" id="number1">
+    <h1>Nhập số 2</h1>
+    <input type="text" name="" id="number2">
+    <h1>Nhập số 3</h1>
+    <input type="text" name="" id="number3">
+    <button onclick="findMax()">Kiểm tra</button>
+    <h2>Kết quả: </h2>
+    <h3 id="result"></h3>
+</body>
+<script>
+    
+    function findMax() {
+        let a = parseInt(document.getElementById("number1").value);
+        let b = parseInt(document.getElementById("number2").value);
+        let c = parseInt(document.getElementById("number3").value);
+        if (a > b) {
+            if (a > c) {
+                document.getElementById("result").innerHTML = a + " là số lớn nhất";
+            } else {
+                document.getElementById("result").innerHTML = c + " là số lớn nhất";
+            }
+        } else if (b > c) {
+            document.getElementById("result").innerHTML = b + " là số lớn nhất";
+        } else {
+            document.getElementById("result").innerHTML = c + " là số lớn nhất";
+        }
+
+    }
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính thuế thu nhập cá nhân</title>
+</head>
+<body>
+    <h1>Nhập tên</h1>
+    <input type="text" name="" id="name">
+    <h1>Thu nhập theo tháng</h1>
+    <input type="text" name="" id="income">VND<br><br>
+    <button onclick="tinhThueThuNhap()">Tính thuế</button>
+    <p id="result"></p>
+</body>
+<script>
+    // Bậc 1: 4 triệu đồng/tháng 0%;
+    // Bậc 2: Trên 4 - 6 triệu đồng/tháng: 5%;
+    // Bậc 3: Trên 6 - 9 triệu đồng: 10%;
+    // Bậc 4: Trên 9 - 14 triệu đồng/tháng: 15%;
+    // Bậc 5: trên 14 - 24 triệu đồng/tháng: 20%;
+    // Bậc 6: Trên 24 - 44 triệu đồng/tháng: 25%;
+    // Bậc 7: Trên 44 - 84 triệu đồng/tháng: 30%;
+    // Bậc 8: Trên 84 triệu đồng: 35%.
+    function tinhThueThuNhap() {
+        function getRndInteger(min, max) {
+            document.getElementById("income").value = Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+        getRndInteger(1000000, 500000000);
+        let ten = document.getElementById("name").value;
+        let thuNhap = parseInt(document.getElementById("income").value);
+        let ketQua = document.getElementById("result");
+        if (thuNhap > 84000000) {
+            let thue = thuNhap * 0.35;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else if (thuNhap > 44000000) {
+            let thue = thuNhap * 0.30;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else if (thuNhap > 24000000) {
+            let thue = thuNhap * 0.25;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else if (thuNhap > 14000000) {
+            let thue = thuNhap * 0.2;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else if (thuNhap > 9000000) {
+            let thue = thuNhap * 0.15;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else if (thuNhap > 6000000) {
+            let thue = thuNhap * 0.1;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else if (thuNhap > 4000000) {
+            let thue = thuNhap * 0.05;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${thue}VND tiền thuế thu nhập cá nhân.`;
+        } else {
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} không cần nộp tiền thuế thu nhập cá nhân.`;
+        } 
+    }
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Nhập tháng</h1>
+    <input type="text" name="" id="month">
+    <button onclick="tinhSoNgay()">Tính số ngày</button>
+    <p id="printResult"></p>
+</body>
+<script>
+    function tinhSoNgay() {
+        let thang = parseInt(document.getElementById("month").value);
+        let ketqua = document.getElementById("printResult");
+        const d = new Date();
+        let year = d.getFullYear();
+        switch (thang) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                ketqua.innerHTML = `Tháng ${thang} có 31 ngày`
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                ketqua.innerHTML = `Tháng ${thang} có 30 ngày`
+                break;
+    // Kiểm tra năm hiện tại là năm nhuận hay không, rồi cho kết quả tháng 2 có 28 hoặc 29
+            case 2:
+                (year%4 == 0) ? 
+                    ((year%100 == 0) ? 
+                        ((year%400 == 0) ? 
+                            ketqua.innerHTML = `Tháng ${thang} có 29 ngày` : ketqua.innerHTML = `Tháng ${thang} có 28 ngày`) : ketqua.innerHTML = `Tháng ${thang} có 29 ngày`) : ketqua.innerHTML = `Tháng ${thang} có 28 ngày`;
+                break;
+            default: ketqua.innerHTML = `Bạn nhập sai. Vui lòng nhập lại tháng!`
+                break;
+        }
+    }
+</script>
+</html>

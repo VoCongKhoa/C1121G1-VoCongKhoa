@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển từ mét sang feet</title>
+</head>
+<body>
+    <label for="numbera">Nhập số mét:</label><br>
+    <input type="text" id="numberm"> m<br><br>
+    <button onclick="chuyenDoi()">Convert</button>
+    <p>Kết quả:</p>
+    <p id="result"></p>
+</body>
+<script>
+    function chuyenDoi() {
+        let m = parseFloat(document.getElementById("numberm").value);
+        if (m < 0) {
+            document.getElementById("result").innerHTML = `Số mét không đúng`;
+        } else {
+            document.getElementById("result").innerHTML = `${m}m bằng ${m*3.2808.toFixed(4)}feet`;
+        }
+    }
+</script>
+</html>

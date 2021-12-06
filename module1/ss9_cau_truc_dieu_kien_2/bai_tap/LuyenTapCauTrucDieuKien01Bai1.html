@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra chia hết</title>
+</head>
+<body>
+    <label for="numbera">Nhập a:</label><br>
+    <input type="text" id="numbera"><br>
+    <label for="numberb">Nhập b:</label><br>
+    <input type="text" id="numberb">
+    <button onclick="chiaDu()">Kiểm tra</button>
+    <p>Kết quả:</p>
+    <p id="result"></p>
+</body>
+<script>
+    function chiaDu(prams) {
+        let a = parseInt(document.getElementById("numbera").value)
+        let b = parseInt(document.getElementById("numberb").value)
+        if (a%b == 0) {
+            document.getElementById("result").innerHTML = `${a} chia hết cho ${b}`;
+        } else {
+            document.getElementById("result").innerHTML = `${a} không chia hết cho ${b}`;
+        }
+    }
+</script>
+</html>

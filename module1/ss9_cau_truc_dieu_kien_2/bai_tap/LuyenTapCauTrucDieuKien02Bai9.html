@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra 3 số có phải là cạnh tam giác không</title>
+</head>
+<body>
+    <label for="numbera">Nhập a:</label><br>
+    <input type="text" id="numbera"><br>
+    <label for="numberb">Nhập b:</label><br>
+    <input type="text" id="numberb"><br>
+    <label for="numberc">Nhập c:</label><br>
+    <input type="text" id="numberc">
+    <button onclick="kiemTra()">Tìm nghiệm</button>
+    <p>Kết quả:</p>
+    <p id="result"></p>
+</body>
+<script>
+    // Điều kiện để a,b,c là cạnh của một tam giác là:
+    // a,b,c > 0
+    // a + b > c
+    // b + c > a
+    // a + c > b
+    function kiemTra(params) {
+        let a = parseFloat(document.getElementById("numbera").value);
+        let b = parseFloat(document.getElementById("numberb").value);
+        let c = parseFloat(document.getElementById("numberc").value);
+        if (a > 0 && b > 0 && c > 0 && a + b > c && b + c > a && a + c > b) {
+            document.getElementById("result").innerHTML = `Đây là ba cạnh của một tam giác`;
+        } else {
+            document.getElementById("result").innerHTML = `Đây không phải là ba cạnh của một tam giác`;
+        }
+    }
+</script>
+</html>

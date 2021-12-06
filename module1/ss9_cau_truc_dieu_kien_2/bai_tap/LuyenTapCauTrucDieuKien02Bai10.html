@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tiền điện</title>
+</head>
+<body>
+    <h1>Nhập tên chủ hộ</h1>
+    <input type="text" name="" id="name">
+    <h1>Số kWh sử dụng tháng này</h1>
+    <input type="text" name="" id="consume">kWh<br><br>
+    <button onclick="tinhTienDien()">Tính tiền điện</button>
+    <p id="result"></p>
+</body>
+<script>
+    // TT	    Số kWh sử dụng	    Giá bán điện (đồng/kWh)
+    // Bậc 1	Cho kWh từ 0 - 50	        1.678
+    // Bậc 2	Cho kWh từ 51 - 100	        1.734
+    // Bậc 3	Cho kWh từ 101 - 200	    2.014
+    // Bậc 4	Cho kWh từ 201 - 300	    2.536
+    // Bậc 5	Cho kWh từ 301 - 400	    2.834
+    // Bậc 6	Cho kWh từ 401 trở lên	    2.927
+    function tinhTienDien() {
+        function getRndInteger(min, max) {
+            document.getElementById("consume").value = Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+        getRndInteger(0, 5000);
+        let ten = document.getElementById("name").value;
+        let tieuThuDien = parseInt(document.getElementById("consume").value);
+        let ketQua = document.getElementById("result");
+        if (tieuThuDien >= 401) {
+            let tienDien = tieuThuDien * 2.927;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${tienDien}VND tiền điện tháng này.`;
+        } else if (tieuThuDien >= 301) {
+            let tienDien = tieuThuDien * 2.834;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${tienDien}VND tiền điện tháng này.`;
+        } else if (tieuThuDien > 201) {
+            let tienDien = tieuThuDien * 2.536;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${tienDien}VND tiền điện tháng này.`;
+        } else if (tieuThuDien > 101) {
+            let tienDien = tieuThuDien * 2.014;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${tienDien}VND tiền điện tháng này.`;
+        } else if (tieuThuDien > 51) {
+            let tienDien = tieuThuDien * 1.734;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} phải nộp ${tienDien}VND tiền điện tháng này.`;
+        } else {
+            let tienDien = tieuThuDien * 1.678;
+            ketQua.innerHTML = `Ông(Bà) tên ${ten} không cần nộp tiền điện tháng này.`;
+        } 
+    }
+</script>
+</html>
