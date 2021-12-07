@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sự kiện bàn phím</title>
+</head>
+<body onload="loadWindow()">
+    <img id="img" src="https://www.pinpng.com/pngs/m/72-726564_one-piece-zoro-run-png-download-one-piece.png" alt="error" style="position: relative; width: 200px; height: 300px; left: 0px; top: 0px;" >
+
+    <!-- <h4>Bạn hãy zoom trình duyệt</h4>
+        <div id="result"></div>
+        <script language="javascript">
+          window.addEventListener("resize", function(){
+            document.getElementById("result").innerHTML = "Bạn vừa zoom Browser";
+          });
+        </script> -->
+</body>
+<script>
+    var img = document.getElementById("img");
+    // function zoom(params) {
+    //     img.style.position = "relative";
+    //     img.style.left = "0px";
+    //     img.style.width = "200px"; 
+    // }
+    // window.onload = zoom;
+    // img.addEventListener("click", function () {
+    //     alert("Bạn vừa click vào ảnh");
+    // })
+    function loadWindow() {
+        window.addEventListener("keydown", function arrowMove(params) {
+            // img.style.left = parseInt(img.style.left) + 100 + "px"
+            // alert("Bạn vừa nhấn bàn phím"); 
+            // params.keyCode = 37;
+            // img.style.right = + 100 + "px";
+            // if (params.keyCode === 37) {
+            //     img.style.right = img.style.right + 100 + "px"; // leftArrow
+            //     // img.style.right = parseInt(img.style.right) + 100 + "px"; // leftArrow
+            // } else if (params.keyCode === 38) {
+            //     img.style.bottom = img.style.bottom + 100 + "px"; // upArrow
+            //     // img.style.bottom = parseInt(img.style.bottom) + 100 + "px"; // upArrow
+            // } else if (params.keyCode === 39) {
+            //     img.style.left = img.style.left + 100 + "px"; // rightArrow
+            //     // img.style.left = parseInt(img.style.left) + 100 + "px"; // rightArrow
+            // } else if (params.keyCode === 40) {
+            //     img.style.top = img.style.top + 100 + "px"; // downArrow
+            //     // img.style.top = parseInt(img.style.top) + 100 + "px"; // downArrow
+            // } 
+
+                    switch (params.keyCode) {
+                case 37: //left
+                    img.style.right = parseInt(img.style.left) - 10 + "px";
+                    break;
+                case 38: //up
+                    img.style.bottom = parseInt(img.style.top) - 10 + "px";
+                    break;
+                case 39: //right
+                    img.style.left = parseInt(img.style.left) + 10 + "px";
+                    break;
+                case 40: //down
+                    img.style.top = parseInt(img.style.top) + 10 + "px";
+                    break;
+                }
+        })
+    }
+</script>
+</html>

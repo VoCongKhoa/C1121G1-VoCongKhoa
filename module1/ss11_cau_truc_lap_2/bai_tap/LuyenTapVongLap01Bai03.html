@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 số đầu tiên trong dãy Fibonanci</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let i = 0;
+    function fibonanci(n) {
+        if (n < 2) {
+            return 1;
+        } else {
+           return fibonanci(n-1) + fibonanci(n-2);
+        }
+    }
+    while (i <= 19) {
+        document.write(fibonanci(i) + "<br>");
+        i++;
+    }
+</script>
+</html>

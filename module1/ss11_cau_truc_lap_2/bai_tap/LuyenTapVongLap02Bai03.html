@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>Nhập chiều dài cạnh của tam giác vuông</h1>
+    <input type="text" name="" id="length"><br><br>
+    <button onclick="drawTriangle1()">Vẽ hình tam giác thứ nhất:</button><br>
+    <p id="result1"></p> -->
+</body>
+<script>
+    // let chieuDai = document.getElementById("length").value;
+    // let n = parseInt(chieuDai);
+    // function drawTriangle1() {
+        
+    // }
+
+        let n = 5;
+    for (let i = 1; i < n; i++) {
+        for (let j = 0; j < i; j++) {
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+    document.write("<br>")
+
+    for (let i = 1; i < n; i++) {
+        for (let j = i; j < n; j++) {
+        document.write("*");
+        }
+        document.write(" <br>");
+    }
+    document.write("<br>")
+
+    for (let i = 0; i < n; i++) {
+        for (let k = i; k < n; k++) {
+            document.write("&nbsp;&nbsp;");
+        }
+        for (let j = i; j > 0; j--) {
+        document.write("*");
+        }
+        document.write("<br>");
+    }
+    document.write("<br>")
+    
+    for (let i = 1; i < n; i++) {
+            for (let k = 0; k < i; k++) {
+                    document.write("&nbsp;&nbsp;");
+                }
+            for (let j = i; j < n; j++) {
+                document.write("*");
+            }
+        document.write("<br>");
+    }
+
+    // Test
+    // for (let i = 1; i < n; i++) {
+    //     for (let j = n-i; j > 0; j--) {
+    //     document.write("#");
+    //     }
+    //     for (let k = 0; k < i; k++) {
+    //         document.write("*");
+    //     }
+    //     document.write("<br>");
+    // }
+    
+</script>
+</html>
