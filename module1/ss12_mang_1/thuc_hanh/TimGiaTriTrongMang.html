@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm giá trị trong mảng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let number = parseInt(prompt("Nhập số bất kỳ:"));
+    let myArray = [];
+    let random = Math.round(Math.random() * 50 + 1);
+    for (let i = 0; i < 10; i++) {
+        myArray[i] = random;
+        random = Math.round(Math.random() * 50 + 1);
+    }
+    console.log(myArray);
+    findElement();
+
+    function findElement() {
+        let count = 3;
+        for (let j = 0; j < myArray.length || count ===0; j++) {
+            if (number == myArray[j]) {
+                alert(`Giá trị của mảng tại vị trí ${j} trùng với số bạn vừa nhập!!`)
+            } else {
+                count--;
+                number = parseInt(prompt(`Số bạn nhập vào không trùng với bất kỳ số nào của mảng!! Bạn hãy thử lại`));
+            }
+        }
+        // for (let i = 0; i < count; i++) {
+        // }
+    }
+
+
+</script>
+</html>

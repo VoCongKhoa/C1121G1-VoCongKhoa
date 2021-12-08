@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập 1 số từ hộp thoại</title>
+</head>
+<body>
+    <!-- <h1>Nhập 1 số bất kỳ:</h1><br>
+    <form onreset="myFunction()">
+        <input type="text" id="myInput">
+        <input type="reset" value="Nhập số"><br><br>
+    </form>
+    <p id="inform"></p>
+    <p id="result"></p> -->
+</body>
+<script>
+    let sum = 0;
+    let number;
+    while (number != (-1)) {
+            number = parseInt(prompt("Nhập số bất kỳ:"));
+            alert(`Bạn đã nhập vào số ${number}.`);
+            sum = sum + number;
+            alert(`Tổng hiện tại là ${sum}`);
+        }
+            // number = parseInt(document.getElementById("myInput").value);
+            // document.getElementById("inform").innerHTML = `Bạn đã nhập vào số ${number}.`;
+            // document.getElementById("result").innerHTML = `Tổng hiện tại là ${sum}`;
+
+    // function myFunction() {
+    //     while (number != (-1)) {
+    //         number = parseInt(document.getElementById("myInput").value);
+    //         document.getElementById("inform").innerHTML = `Bạn đã nhập vào số ${number}.`;
+    //         sum = sum + number;
+    //         document.getElementById("result").innerHTML = `Tổng hiện tại là ${sum}`;
+    //     }
+    // }
+    // document.write(sum);
+    // document.write(num);
+    // document.getElementById("number").reset();
+    // function btn() {
+    // }
+</script>
+</html>

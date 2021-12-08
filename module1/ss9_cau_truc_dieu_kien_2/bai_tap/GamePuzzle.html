@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Puzzle</title>
+</head>
+<body>
+<img id="firstImg" onclick="changePic(1)" src="../img/funny-cat1_part2.jpg" height="160" width="800"/><br>
+<img id="secondImg" onclick="changePic(2)" src="../img/monkey_part3.jpg" height="160" width="800"/><br>
+<img id="thirdImg" onclick="changePic(3)" src="../img/panda_swap_part4.jpg" height="160" width="800"/>
+</body>
+<script>
+    let imgObj1 = document.getElementById("firstImg");
+    let imgObj2 = document.getElementById("secondImg");
+    let imgObj3 = document.getElementById("thirdImg");
+
+    function changePic(order) {
+        // imgObj.getAttribute("src")
+        switch (order) {
+            case 1 :
+                if (imgObj1.getAttribute("src") === "../img/funny-cat1_part2.jpg") {
+                    imgObj1.src = "../img/monkey_part2.jpg";
+                } else if (imgObj1.getAttribute("src") === "../img/monkey_part2.jpg") {
+                    imgObj1.src = "../img/panda_swap_part2.jpg";
+                } else if (imgObj1.getAttribute("src") === "../img/panda_swap_part2.jpg") {
+                    imgObj1.src = "../img/funny-cat1_part2.jpg";
+                }
+                break;
+            case 2 :
+                if (imgObj2.getAttribute("src") === "../img/funny-cat1_part3.jpg") {
+                    imgObj2.src = "../img/monkey_part3.jpg";
+                } else if (imgObj2.getAttribute("src") === "../img/monkey_part3.jpg") {
+                    imgObj2.src = "../img/panda_swap_part3.jpg";
+                } else if (imgObj2.getAttribute("src") === "../img/panda_swap_part3.jpg") {
+                    imgObj2.src = "../img/funny-cat1_part3.jpg";
+                }
+                break;
+            case 3 :
+                if (imgObj3.getAttribute("src") === "../img/funny-cat1_part4.jpg") {
+                    imgObj3.src = "../img/monkey_part4.jpg";
+                } else if (imgObj3.getAttribute("src") === "../img/monkey_part4.jpg") {
+                    imgObj3.src = "../img/panda_swap_part4.jpg";
+                } else if (imgObj3.getAttribute("src") === "../img/panda_swap_part4.jpg") {
+                    imgObj3.src = "../img/funny-cat1_part4.jpg";
+                }
+                break;
+        }
+        changColor();
+    }
+
+    function changColor() {
+        if (imgObj1.getAttribute("src") === "../img/funny-cat1_part2.jpg"
+            && imgObj2.getAttribute("src") === "../img/funny-cat1_part3.jpg"
+            && imgObj3.getAttribute("src") === "../img/funny-cat1_part4.jpg") {
+            imgObj1.style.border = "solid 2px red";
+            imgObj2.style.border = "solid 2px red";
+            imgObj3.style.border = "solid 2px red";
+        } else if (imgObj1.getAttribute("src") === "../img/monkey_part2.jpg"
+            && imgObj2.getAttribute("src") === "../img/monkey_part3.jpg"
+            && imgObj3.getAttribute("src") === "../img/monkey_part4.jpg") {
+            imgObj1.style.border = "solid 2px red";
+            imgObj2.style.border = "solid 2px red";
+            imgObj3.style.border = "solid 2px red";
+        } else if (imgObj1.getAttribute("src") === "../img/panda_swap_part2.jpg"
+            && imgObj2.getAttribute("src") === "../img/panda_swap_part3.jpg"
+            && imgObj3.getAttribute("src") === "../img/panda_swap_part4.jpg") {
+            imgObj1.style.border = "solid 2px red";
+            imgObj2.style.border = "solid 2px red";
+            imgObj3.style.border = "solid 2px red";
+        } else {
+            imgObj1.style.border = "";
+            imgObj2.style.border = "";
+            imgObj3.style.border = "";
+        }
+    }
+</script>
+</html>

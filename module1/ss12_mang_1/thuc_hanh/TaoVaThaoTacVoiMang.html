@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo và thao tác với mảng</title>
+</head>
+<body>
+<h1>Sample screen:</h1>
+<input id="show">
+<button onclick="array('add')">Add</button>
+<button onclick="array('display')">Display</button>
+<br><br>
+<p id="result"></p>
+
+</body>
+<script>
+    let temp = document.getElementById("show");
+    let myArray = [];
+    let count = -1;
+
+    function array(params) {
+        switch (params) {
+            case "add":
+                myArray.push(parseInt(temp.value));
+                count++;
+                temp.value = "";
+                break;
+            case "display":
+                let j ="";
+                for (let i = 0; i <= count; i++) {
+                    j += `Element ${i} = ${myArray[count]}<br>`;
+                }
+                document.getElementById("result").innerHTML = j;
+                break;
+            // document.write(`<p>Element ${count} = ${myArray[count]}</p>`);
+        }
+    }
+</script>
+</html>

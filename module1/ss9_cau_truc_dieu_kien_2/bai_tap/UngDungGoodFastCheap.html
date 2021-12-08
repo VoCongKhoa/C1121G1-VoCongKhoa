@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Good - Fast - Cheap</title>
+</head>
+<body>
+<label>GOOD</label>
+<input type="range" min="0" max="1" id="good" onclick="change(1)" value="0"><br>
+<label>FAST</label>
+<input type="range" min="0" max="1" id="fast" onclick="change(2)" value="0"><br>
+<label>CHEAP</label>
+<input type="range" min="0" max="1" id="cheap" onclick="change(3)" value="0"><br>
+</body>
+<script>
+    goodObj = document.getElementById("good");
+    fastObj = document.getElementById("fast");
+    cheapObj = document.getElementById("cheap");
+
+    function change(number) {
+        switch (number) {
+            case 1: //good
+                if (fastObj.value == 1) {
+                    cheapObj.value = 0;
+                }
+                break;
+            case 2: //fast
+                if (cheapObj.value == 1) {
+                    goodObj.value = 0;
+                }
+                break;
+            case 3: //cheap
+                if (goodObj.value == 1) {
+                    fastObj.value = 0;
+                }
+                break;
+        }
+
+    }
+</script>
+</html>

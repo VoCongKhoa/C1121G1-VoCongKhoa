@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <input type="text" name="" id="showWindow"><br>
+            <table>
+                <tr>
+                    <td><button value="1" onclick="calculator(this.value)">1</button></td>
+                    <td><button value="2" onclick="calculator(this.value)">2</button></td>
+                    <td><button value="3" onclick="calculator(this.value)">3</button></td>
+                    <td><button value="+" onclick="calculator(this.value)">+</button></td>
+                </tr>
+                <tr>
+                    <td><button value="4" onclick="calculator(this.value)">4</button></td>
+                    <td><button value="5" onclick="calculator(this.value)">5</button></td>
+                    <td><button value="6" onclick="calculator(this.value)">6</button></td>
+                    <td><button value="-" onclick="calculator(this.value)">-</button></td>
+                </tr>
+                <tr>
+                    <td><button value="7" onclick="calculator(this.value)">7</button></td>
+                    <td><button value="8" onclick="calculator(this.value)">8</button></td>
+                    <td><button value="9" onclick="calculator(this.value)">9</button></td>
+                    <td><button value="*" onclick="calculator(this.value)">X</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="reset()">C</button></td>
+                    <td><button value="0" onclick="calculator(this.value)">0</button></td>
+                    <td><button onclick="equal()">=</button></td>
+                    <td><button value="/" onclick="calculator(this.value)">/</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    // let numZero = parseInt(document.getElementById("zero").value)
+    // let numOne = parseInt(document.getElementById("one").value)
+    // let numTwo = parseInt(document.getElementById("two").value)
+    // let numThree = parseInt(document.getElementById("three").value)
+    // let numFour = parseInt(document.getElementById("four").value)
+    // let numFive = parseInt(document.getElementById("five").value)
+    // let numSix = parseInt(document.getElementById("six").value)
+    // let numSeven = parseInt(document.getElementById("seven").value)
+    // let numEight = parseInt(document.getElementById("eight").value)
+    // let numNine = parseInt(document.getElementById("nine").value)
+
+    function calculator(params) {
+        document.getElementById("showWindow").value += params;        
+    }
+    function reset() {
+        document.getElementById("showWindow").value ="";
+    }
+    function equal(params) {
+        let rs = eval(document.getElementById("showWindow").value)
+        document.getElementById("showWindow").value = rs;
+    }
+</script>
+</html>

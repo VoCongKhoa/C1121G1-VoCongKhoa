@@ -8,28 +8,25 @@
 </head>
 <body onload="loadWindow()">
     <img id="img" src="https://www.pinpng.com/pngs/m/72-726564_one-piece-zoro-run-png-download-one-piece.png" alt="error" style="position: relative; width: 200px; height: 300px; left: 0px; top: 0px;" >
-
-    <!-- <h4>Bạn hãy zoom trình duyệt</h4>
-        <div id="result"></div>
-        <script language="javascript">
-          window.addEventListener("resize", function(){
-            document.getElementById("result").innerHTML = "Bạn vừa zoom Browser";
-          });
-        </script> -->
 </body>
 <script>
     var img = document.getElementById("img");
-    // function zoom(params) {
-    //     img.style.position = "relative";
-    //     img.style.left = "0px";
-    //     img.style.width = "200px"; 
-    // }
-    // window.onload = zoom;
-    // img.addEventListener("click", function () {
-    //     alert("Bạn vừa click vào ảnh");
-    // })
     function loadWindow() {
         window.addEventListener("keydown", function arrowMove(params) {
+            switch (params.keyCode) {
+        case 37: //left
+            img.style.right = parseInt(img.style.left) - 10 + "px";
+            break;
+        case 38: //up
+            img.style.bottom = parseInt(img.style.top) - 10 + "px";
+            break;
+        case 39: //right
+            img.style.left = parseInt(img.style.left) + 10 + "px";
+            break;
+        case 40: //down
+            img.style.top = parseInt(img.style.top) + 10 + "px";
+            break;
+        }
             // img.style.left = parseInt(img.style.left) + 100 + "px"
             // alert("Bạn vừa nhấn bàn phím"); 
             // params.keyCode = 37;
@@ -48,20 +45,6 @@
             //     // img.style.top = parseInt(img.style.top) + 100 + "px"; // downArrow
             // } 
 
-                    switch (params.keyCode) {
-                case 37: //left
-                    img.style.right = parseInt(img.style.left) - 10 + "px";
-                    break;
-                case 38: //up
-                    img.style.bottom = parseInt(img.style.top) - 10 + "px";
-                    break;
-                case 39: //right
-                    img.style.left = parseInt(img.style.left) + 10 + "px";
-                    break;
-                case 40: //down
-                    img.style.top = parseInt(img.style.top) + 10 + "px";
-                    break;
-                }
         })
     }
 </script>

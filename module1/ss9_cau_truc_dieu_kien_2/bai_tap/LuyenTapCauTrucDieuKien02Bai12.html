@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi kép ngân hàng</title>
+</head>
+<body>
+
+</body>
+    <!--STT	Ngân hàng	    1 tháng	    6 tháng	    9 tháng	    12 tháng-->
+    <!--1	Vietcombank     3,5	        4	        4,5	        6-->
+
+    <!--FV = PV x (1 + i)^n-->
+
+    <!--Trong công thức lãi kép:-->
+
+    <!--FV: giá trị của tương lai ở năm thứ n-->
+
+    <!--PV: giá trị của số vốn tại thời điểm hiện tại-->
+
+    <!--n: số năm-->
+
+    <!--i : là lãi suất-->
+
+<script>
+   let soTienGui = parseInt(prompt("Số tiền muốn gửi: "));
+   let kyHan = parseInt(prompt("Thời gian vay (tháng):"));
+   // let laiSuat = parseInt(prompt("Lãi suất:"));
+   let tienThucNhan = 0;
+   if (kyHan >= 1) {
+       tienThucNhan = soTienGui*Math.pow(((0.035/100)+1),kyHan);
+   } else if (kyHan >= 6) {
+       tienThucNhan = soTienGui*Math.pow(((0.04/100)+1),kyHan);
+   } else if (kyHan >= 9) {
+       tienThucNhan = soTienGui*Math.pow(((0.045/100)+1),kyHan);
+   } else if (kyHan >= 12) {
+       tienThucNhan = soTienGui*Math.pow(((0.06/100)+1),kyHan);
+   }
+   document.write(`Số tiền thực nhận khi bạn gởi ${soTienGui}VND trong kỳ hạn ${kyHan} tháng là: ${tienThucNhan}`)
+   // Vòng lặp for
+   // for (let i=0; i < kyHan; i++) {
+   //     tienThucNhan = soTienGui*Math.pow(((laiSuat/100)+1),kyHan);
+   // }
+   // alert(tienThucNhan);
+</script>
+</html>
