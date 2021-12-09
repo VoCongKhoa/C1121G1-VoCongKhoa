@@ -7,22 +7,35 @@
     <title>Tính giai thừa</title>
 </head>
 <body>
-    <h1>Nhập số nguyên dương:</h1>
-    <input type="number" id="number">
-    <button onclick="check()">Kết quả</button>
-    <input type="text" name="" id="result">
+<h1>Nhập số nguyên dương:</h1>
+<input type="number" id="num"><br><br>
+<button onclick="checkFactorial()">Kết quả</button>
+<input type="text" name="" id="result"><br><br>
+<button onclick="reset()">Reset</button>
+
 </body>
 <script>
     //Không dùng đệ quy
-    // function factorial(number) {
-    //     let fac = 4;
-    //     for (let i = 1; i < number-1; i++) {
-    //         fac = fac * (fac - i);
-    //         // alert(fac);
-    //     }
-    // }
-    // alert(factorial(3));
-    // document.write(factorial(4));
+    function checkFactorial() {
+        let number = parseInt(document.getElementById("num").value);
+        document.getElementById("result").value = factorial(number);
+    }
+
+    function factorial(parameter) {
+        let facNumber;
+        facNumber = parameter;
+        for (let i = 1; i < parameter; i++) {
+            // alert("before" + facNumber);
+            facNumber = facNumber * (parameter - i);
+            // alert("after" + facNumber);
+        }
+        return facNumber;
+    }
+
+    function reset() {
+        document.getElementById("num").value = "";
+        document.getElementById("result").value = "";
+    }
 
 
 

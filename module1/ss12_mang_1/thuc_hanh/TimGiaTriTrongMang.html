@@ -9,46 +9,77 @@
 </body>
 <script>
     let number;
-    let myArray = [];
+    let myArray = [1,23,156,5,23,561,52,123];
     let random = Math.round(Math.random() * 50 + 1); //Random 1 số từ 1 đến 50
 
-    for (let i = 0; i < 10; i++) {
-        myArray[i] = random;
-        random = Math.round(Math.random() * 50 + 1);
-    }
-    console.log(myArray);
-    let indexSearch = -1;
     //Tạo 1 mảng gồm 10 số random
+    // for (let i = 0; i < 10; i++) {
+    //     myArray[i] = random;
+    //     random = Math.round(Math.random() * 50 + 1);
+    // }
+    console.log(myArray);
+    // Nhập giá trị vào
+    // Duyệt mảng có trùng hay không
+    // In ra thành công nếu trùng
+    // Nhập quá bốn lần, out
+
+    // Tự làm
+    let soBatKy = parseInt(prompt("Nhập số bất kỳ"));
     let count = 0;
-    do {
-        count++;
-        number = parseInt(prompt("Nhập số bất kỳ:"));
-        indexSearch = findElement(number, myArray);
-        if (indexSearch !== -1) {
-            alert('Giá trị của mảng tại vị trí' + indexSearch + ' trùng với số bạn vừa nhập!!');
+    let brk = 0;
+    while (count<3) {
+        for (let i = 0; i < myArray.length; i++) {
+            if (soBatKy === myArray[i]) {
+                console.log(myArray[i]);
+                brk = 1;
+                break;
+            }
         }
-        if (count === 3 && indexSearch === -1) {
-            alert(`Bạn đã nhập quá số lần quy định!!`);
+        if (brk === 1) {
             break;
         }
-    } while (indexSearch == -1)
-
-    // let count = 3;
-    function findElement(number, array) {
-        // let index = -1;
-        for (let j = 0; j < array.length; j++) {
-            if (number === array[j]) {
-                return j;
-            }
-            return -1;
-
-        }
-
-
-        // for (const argument of arguments) {
-        //
-        // }
+        count++;
+        soBatKy = parseInt(prompt("Nhập số bất kỳ"));
     }
+    if (count <= 3 && brk === 1) {
+        alert("Bạn win")
+    } else {
+        alert("Bạn thua")
+    }
+
+
+
+
+
+
+
+
+
+    // Thầy làm
+    // let indexSearch = 10000; // Nếu không gán giá trị cho indexSearch thì sẽ sai????
+    // let count = 0;
+    // do {
+    //     count++;
+    //     number = parseInt(prompt("Nhập số bất kỳ:"));
+    //     indexSearch = findElement(number, myArray);
+    //     if (indexSearch !== 10000) {
+    //         alert('Giá trị của mảng tại vị trí' + indexSearch + ' trùng với số bạn vừa nhập!!');
+    //     }
+    //     if (count === 3 && indexSearch === 10000) {
+    //         alert(`Bạn đã nhập quá số lần quy định!!`);
+    //         break;
+    //     }
+    // } while (indexSearch == 10000)
+    //
+    // function findElement(number, array) {
+    //     // let index = -1;
+    //     for (let j = 0; j < array.length; j++) {
+    //         if (number === array[j]) {
+    //             return j;
+    //         }
+    //         return 10000;
+    //     }
+    // }
 
 </script>
 </html>

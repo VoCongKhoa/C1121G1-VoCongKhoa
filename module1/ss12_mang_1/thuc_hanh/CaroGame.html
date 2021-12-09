@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Caro</title>
+</head>
+<body>
+<!--<table border="2px" style="border-collapse: collapse; height: 400px; width: 400px; font-size: xx-large">-->
+<!--    <tr>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--        <td>0</td>-->
+<!--    </tr>-->
+<!--</table>-->
+
+</body>
+<script>
+    let myTable = '<table border="2px" ' +
+        'style="border-collapse: collapse; height: 400px; width: 400px; font-size: xx-large">'
+    for (let i = 0; i < 5; i++) {
+        myTable += `<tr>`;
+        for (let j = 0; j < 5; j++) {
+            myTable += `<td> 0 </td>`;
+        }
+        // document.write("<br>");
+        myTable += `</tr>`;
+    }
+    myTable += "</table>";
+    document.write(myTable);
+
+</script>
+</html>
