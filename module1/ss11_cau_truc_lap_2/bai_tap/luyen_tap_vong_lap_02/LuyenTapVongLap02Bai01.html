@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In dãy Fibonanci (đến số thứ n =random)</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //Không dùng đệ quy, in ra dãy số Fibonanci đến số thứ 2*n.
+    let secondFib = 0;
+    let firstFib = 1;
+    let random = Math.round(Math.random()*10);
+    function fibonanci(n) {
+        for (let i = 0; i < n; i++) {
+            firstFib = firstFib + secondFib;
+            secondFib = secondFib + firstFib;
+            document.write(firstFib + "<br>")
+            document.write(secondFib + "<br>")
+        }
+    }
+    fibonanci(random);
+
+
+
+
+    // // In dãy Fibonanci (đến số thứ n =random) dùng đệ quy:
+    // let random = Math.round(Math.random()*20); //In ra dãy Fibonanci đến số thứ n = Random
+    // //Hàm cho ra số fibonanci thứ n
+    // function fib(n) {
+    //     if (n < 2) {
+    //         return 1;
+    //     } else {
+    //         return fib(n-1) + fib(n-2);
+    //     }
+    // }
+    // document.write("Giá trị n =" + random + "<br>");
+    // for (let i = 0; i < random; i++) {
+    //     document.write(fib(i) + "<br>");
+    // }
+</script>
+</html>

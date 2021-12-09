@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game "Hãy thử đoán xem!"</title>
+    <style>
+        button {
+            font-family: "Open Sans", sans-serif;
+            font-size: xx-large;
+            height: 100px;
+            width: 20%;
+            position: relative;
+            left: 40%;
+            right: auto;
+            /*align-items: center;*/
+            /*margin-left: auto;*/
+            /*margin-right: auto;*/
+        }
+    </style>
+</head>
+<body>
+<h1>Người chơi hãy nhập 1 khoảng số bất kỳ, sau đó đoán thử xem số mình dự đoán có đúng với kết quả máy tính
+random!!!</h1><br><br>
+<button onclick="playGame()">PLAY</button>
+</body>
+<script>
+    let firstNumber = 0;
+    let secondNumber = 0;
+
+    function playGame() {
+        firstNumber = parseInt(prompt("Bạn hãy nhập số đầu tiên:"));
+        secondNumber = parseInt(prompt("Bạn hãy nhập số cuối cùng:"));
+
+        //tạo ra số random bất kỳ trong khoản firstNumber đến secondNumber
+        let randomNumber = Math.round(Math.random() * (secondNumber - firstNumber) + firstNumber);
+
+        let guessNumber = parseInt(prompt("Nhập số bạn muốn trong khoảng bạn đã chọn:"));
+        let count = 0;
+
+        //Kiểm tra giá trị random và giá trị nhập vào
+        console.log(randomNumber);
+        console.log(guessNumber);
+
+        while (randomNumber !== guessNumber) {
+            if (guessNumber < randomNumber) {
+                guessNumber = parseInt(prompt("Số bạn chọn nhỏ hơn số ngẫu nhiên của hệ thống. " +
+                    "Hãy nhập lại số bạn muốn trong khoảng bạn đã chọn:"));
+            } else {
+                guessNumber = parseInt(prompt("Số bạn chọn lớn hơn số ngẫu nhiên của hệ thống. " +
+                    "Hãy nhập lại số bạn muốn trong khoảng bạn đã chọn:"));
+            }
+            count++;    //Kiểm tra nếu nhập quá 3 lần thì out vòng lặp
+            if (count >= 3) {
+                break;
+            }
+        }
+
+        //Kiểm tra nếu nhỏ hơn 3 lần thì bingo, còn lớn hơn hoặc 3 lần thi thông báo quá số lần nhập
+        if (count < 3) {
+            alert("Bingo!!Chúc mừng bạn đã dự đoán đúng số!!!");
+        } else {
+            alert("Bạn đã nhập quá số lần quy định!!!");
+        }
+
+    }
+</script>
+</html>

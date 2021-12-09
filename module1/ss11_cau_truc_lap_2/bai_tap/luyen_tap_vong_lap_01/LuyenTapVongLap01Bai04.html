@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Số đầu tiên trong dãy số FIBONANCI chia hết cho 5</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //Không dùng đệ qui
+    let firstFib = 1;
+    let secondFib = 0;
+    let check1 = 0;
+    let check2 = 0;
+    do {
+        firstFib += secondFib;
+        secondFib += firstFib;
+        check1 = firstFib%5;
+        check2 = secondFib%5;
+
+    } while (check1!==0 && check2!==0);
+
+    if (firstFib%5 === 0){
+        document.write(firstFib);
+    } else {
+        document.write(secondFib);
+    }
+
+
+
+    // //Dùng đệ qui
+    // function fib(n) {
+    //     if (n < 2) {
+    //         return 1;
+    //     } else {
+    //         return fib(n-1) + fib(n-2);
+    //     }
+    // }
+    // let i = 0;
+    // while (fib(i)%5 !==0) {
+    //     i = i + 1;
+    //     console.log(fib(i));
+    // }
+    // document.write(fib(i));
+</script>
+</html>

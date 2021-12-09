@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng của 20 số đầu tiên trong dãy fibonacci.</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //Không dùng đề qui
+    let firstFib = 1;
+    let secondFib = 0;
+    let sum = 0;
+    for (let j = 0; j < 10; j++) {
+        firstFib +=secondFib;
+        secondFib +=firstFib;
+        sum += firstFib + secondFib;
+        console.log(firstFib);
+        console.log(secondFib);
+        // console.log(sum);
+    }
+    document.write(sum);
+
+
+    // //Dùng đệ qui
+    // let i = 0;
+    // let sum = 0;
+    // function fib(n) {
+    //     if (n < 2) {
+    //         return 1;
+    //     } else {
+    //         return fib(n-1) + fib(n-2);
+    //     }
+    // }
+    // while (i <= 19) {
+    //     sum = sum + fib(i);
+    //     console.log(fib(i))
+    //     i++
+    // }
+    // document.write(sum);
+</script>
+</html>
