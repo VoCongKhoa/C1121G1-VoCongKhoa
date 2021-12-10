@@ -10,22 +10,27 @@
 <script>
     let number = 1;
     let countNumber = 0;
+
     function timSoNguyenTo(soBatKy, soUocSo) {
         // alert(soBatKy);
-        soUocSo = 1;
-        for (let i = 2; i <= soBatKy; i++) {
-            if (soBatKy % i === 0) {
-                soUocSo++;
+        if (soBatKy < 2) {
+            return false;
+        } else {
+            soUocSo = 1;
+            for (let i = 2; i <= soBatKy; i++) {
+                if (soBatKy % i === 0) {
+                    soUocSo++;
+                }
+            }
+            // alert(soUocSo);
+            if (soUocSo === 2) {
+                return true;
+            } else {
+                return false;
             }
         }
-        // alert(soUocSo);
-        if (soUocSo === 2) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
+
     let result = "20 sô nguyên tố đầu tiên là : ";
     do {
         number++;
@@ -33,7 +38,8 @@
         if (timSoNguyenTo(number) == true) {
             countNumber++;
             result = result + `${number}, `;
-        };
+        }
+        ;
     } while (countNumber < 20);
     document.write(result);
 </script>

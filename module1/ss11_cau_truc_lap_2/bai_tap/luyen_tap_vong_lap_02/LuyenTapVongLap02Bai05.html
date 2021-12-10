@@ -27,6 +27,7 @@
     let tienThucNhan = 0;
     for (let i=0; i < kyHan; i++) {
         tienThucNhan = soTienGui*Math.pow(((laiSuat/100)+1),i);
+        // tienThucNhan += tienThucNhan*laiSuat/100; //Cách của thầy
         document.write(`Số tiền thực nhận năm ${i} là: ${tienThucNhan}<br>`);
     }
 

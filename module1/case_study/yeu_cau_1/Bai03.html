@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ tam giác cân đặc có chiều cao h.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let h = 5;
+    for (let i = 1; i < h+1; i++) {
+        for (let j = i; j < h+1; j++) {
+            document.write("&nbsp;&nbsp;");
+        }
+        for (let k = 0; k < (2*i-1); k++) {
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+</script>
+</html>

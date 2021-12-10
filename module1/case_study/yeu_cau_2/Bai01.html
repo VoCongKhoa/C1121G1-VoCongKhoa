@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập lương nhân viên, tính thuế thu nhập và lương ròng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let nhapLuong = parseInt(prompt("Nhập lương nhân viên:"));
+    let thueThuNhap;
+    if (nhapLuong >= 15000000) {
+        thueThuNhap = nhapLuong * 0.2;
+        alert(thueThuNhap);
+    } else if (nhapLuong >= 7000000) {
+        thueThuNhap = nhapLuong * 0.10;
+        alert(thueThuNhap);
+    } else {
+        thueThuNhap = nhapLuong * 0.05;
+        alert(thueThuNhap);
+    }
+</script>
+</html>

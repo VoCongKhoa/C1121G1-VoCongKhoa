@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Có bao nhiêu số nguyên trong mảng lớn hơn hoặc bằng 10.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let myArray = [123, 15, 456, 123, 5, 46, 546, 8, 94, 56];
+    let tempArray = [];
+    let length = myArray.length;
+    let count = 0;
+    let index = 0;
+
+    for (let i = 0; i < length; i++) {
+        if (myArray[i] >= 10) {
+            count++;
+            index = i;
+            tempArray += myArray[i] + ",";
+        }
+    }
+
+    document.write(`Có ${count} số nguyên lớn hơn 10 là : ${tempArray.toString()}`);
+
+
+</script>
+</html>

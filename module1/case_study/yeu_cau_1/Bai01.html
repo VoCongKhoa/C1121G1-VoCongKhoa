@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ hình chữ nhật rỗng chiều dài n và chiều rộng m</title>
+</head>
+<body>
+
+</body>
+<script>
+    let m = 5;
+    let n = 20;
+
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (i === 0 || i === m-1 || j===0 || j===n-1) {
+                document.write("*");
+            } else {
+                document.write("&nbsp;&nbsp;");
+            }
+        }
+        document.write("<br>");
+    }
+</script>
+</html>
