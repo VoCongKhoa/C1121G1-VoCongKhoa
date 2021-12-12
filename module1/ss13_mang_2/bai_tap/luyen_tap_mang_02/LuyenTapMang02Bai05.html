@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra xem hai chuỗi có giống nhau hay không.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let str1 = prompt("Nhập chuỗi 1:");
+    let str2 = prompt("Nhập chuỗi 2:");
+    // let str1 = "  Vo   Cong   Khoa  v   c    k";
+    // let str2 = "VoCongKhoavck";
+    //Cách 1:
+    let output1 = str1.trim().split(" ").join("").split("").sort().join().toUpperCase();
+    let output2 = str2.trim().split(" ").join("").split("").sort().join().toUpperCase();
+    console.log(output1);
+    console.log(output2);
+
+    //Cách 2:
+    // let output1 = str1.replace( /\s/g, '').toUpperCase();
+    // let output2 = str2.replace( /\s/g, '').toUpperCase();
+    // console.log( str1.replace( /\s/g, '').toUpperCase());
+    // console.log( str2.replace( /\s/g, '').toUpperCase());
+
+    if (output1 == output2) {
+        alert("2 chuỗi giống nhau");
+    } else {
+        alert("2 chuỗi khác nhau")
+    }
+
+
+
+
+</script>
+</html>

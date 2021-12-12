@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>"V is in the array" or "V is not in the array".</title>
+</head>
+<body>
+
+</body>
+<script>
+    let length = prompt("Nhập chiều dài mảng:");
+    let myArray = [];
+    let count = 0;
+    do {
+        let number = prompt("Nhập số nguyên trong mảng:");
+        myArray.push(number);
+    } while (myArray.length < length);
+    console.log(myArray);
+    let number = prompt("Nhập số nguyên bất kỳ:");
+    if (myArray.indexOf(number) !== -1) {
+        document.write("V is in the array");
+    } else {
+        document.write("V is not in the array");
+    }
+
+
+    // for (let i = 0; i < length; i++) {
+    //     if (number == myArray[i]) {
+    //         count++;
+    //     }
+    // }
+    // if (count > 0) {
+    //     document.write("V is in the array");
+    // } else {
+    //     document.write("V is not in the array");
+    // }
+
+</script>
+</html>

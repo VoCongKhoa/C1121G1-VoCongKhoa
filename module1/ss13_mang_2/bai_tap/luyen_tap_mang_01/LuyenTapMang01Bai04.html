@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.</title>
+</head>
+<body>
+
+</body>
+<script>
+    //Cách 1: Khởi tạo
+    // let myNumber1 = [];
+    // let myReverse1 = [];
+    // let random = Math.floor(Math.random()*1000 + 1);
+    // for (let i = 0; i < 20; i++) {
+    //     myNumber1[i] = random;
+    //     random = Math.floor(Math.random()*1000 + 1);
+    // }
+    // console.log(myNumber1);
+    // // console.log(myNumber1.reverse());
+    // let myReverse1 = myNumber1.reverse();
+    // document.write(myReverse1);
+    // console.log(myNumber1);
+
+    //Cách 2: Nhập vào
+    let length = prompt("Nhập chiều dài mảng:");
+    let myNumber2 = [];
+    let myReverse2 = [];
+    do {
+        let number = prompt("Nhập số bất kỳ:");
+        myNumber2.push(number);
+    } while (myNumber2.length < length);
+
+    myReverse2 = myNumber2.reverse();
+    document.write(myReverse2);
+    console.log(myNumber2);
+
+</script>
+</html>

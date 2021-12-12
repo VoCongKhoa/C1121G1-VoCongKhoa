@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Faking Textarea on Typing</title>
+</head>
+<body>
+<h1>Type something</h1><br>
+<textarea id="box" cols="80" rows="10" aria-multiline="true" onkeypress="countChar() "></textarea>
+
+</body>
+<script>
+    //Mỗi lần nhấn bàn phím, thì in ra từng chữ cái cảu từ cho trước!
+
+    //Hàm đếm
+    let text = 'You won!!!';
+    let count = -1;
+    let arrayText = text.trim().split("");
+    let result = document.getElementById("box");
+    function countChar() {
+        count++;
+        result.value += "T";
+        // result.value = "aaaaaa";
+    }
+</script>
+</html>

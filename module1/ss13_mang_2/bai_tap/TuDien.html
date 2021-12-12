@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<input id="textEL" placeholder="English"><br>
+
+<button onclick="tran('EL')">Dịch từ EL sang TV</button>
+<button onclick="tran('TV')">Dịch từ TV sang EL</button>
+<br>
+<input id="textTV" placeholder="Tiếng Việt"><br>
+<button onclick="add()">Add</button>
+<button onclick="reset()">Reset</button>
+
+
+</body>
+<script>
+    // Tạo 2 mảng có độ dài bằng nhau để lưu trữ danh sách các từ. Mảng 1 lưu trữ các từ tiếng Anh, mảng 2 lưu trữ các từ tiếng Việt tương ứng.
+    // Khi tìm kiếm, tìm vị trí của từ tiếng Anh trong mảng 1. Nếu tìm thấy thì hiển thị từ tiếng Việt ở cùng vị trí trong mảng 2.
+    // Nếu không tìm thấy thì hiển thị thông báo không tìm thấy.
+
+    let check = true;
+    let arrayTV = new Array(10);
+    arrayTV = ['Xin chào', 'Cảm ơn', 'Tạm biệt', "Một"];
+    let arrayEL = new Array(10);
+    arrayEL = ['Hello', 'Thank you', 'Good bye', 'One', 'three'];
+
+    //Hàm thêm từ mới vào từ điển, từ điển chứa ít hơn 10 từ
+    function add() {
+        if (arrayEL.length < 10 || arrayTV.length < 10) {
+            let preValEL = prompt("Bạn hãy nhập từ tiếng anh:");
+            let aftValEL = preValEL.trim().split(" ").join();
+            let preValTV = prompt("Bạn hãy nhập nghĩa tiếng việt:");
+            let aftValTV = preValTV.trim().split(" ").join();
+            arrayEL.push(aftValEL);
+            arrayTV.push(aftValTV);
+            console.log(arrayEL);
+            console.log(arrayTV);
+        } else {
+            alert("Bạn đã thêm quá nhiều từ vào từ điển, nên không thể thêm được nữa!!!")
+        }
+    }
+
+    //Hàm dịch
+    function tran(language) {
+        if (language == 'TV') {
+            let wordTV = document.getElementById("textTV").value.replace(/\s/g, '').toLowerCase();
+            let i = -1;
+            while (!check || ++i < arrayTV.length) {
+                if (arrayTV[i].replace(/\s/g, '').toLowerCase() == wordTV) {
+                    if (i <= arrayEL.length-1) {
+                        document.getElementById("textEL").value = arrayEL[i];
+                        return check = true;
+                    } else {
+                        alert("Do not found!!!"); //Trường hợp có từ trong mảng TV nhưng không match với từ trong mảng EL
+                        return check = false;
+                    }
+                }
+            }
+            if (check) {
+                alert("Do not found!!!");
+            }
+        }
+
+        if (language == 'EL') {
+            let wordEL = document.getElementById("textEL").value.replace(/\s/g, '').toLowerCase();
+            let i = -1;
+            while (!check || ++i < arrayEL.length) {
+                if (arrayEL[i].replace(/\s/g, '').toLowerCase() == wordEL) {
+                    if (i <= arrayTV.length-1) {
+                        document.getElementById("textTV").value = arrayTV[i];
+                        return check = true;
+                    } else {
+                        alert("Do not found!!!"); //Trường hợp có từ trong mảng EL nhưng không match với từ trong mảng TV
+                        return check = false;
+                    }
+                }
+            }
+            if (check) {
+                alert("Do not found!!!");
+            }
+        }
+    }
+
+    //Hàm reset
+    function reset() {
+        document.getElementById("textTV").value = "";
+        document.getElementById("textEL").value = "";
+        count = 0;
+    }
+
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In các ký tự trong một mảng theo thứ tự đảo ngược.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let length = prompt("Nhập chiều dài mảng:");
+    let myArray = [];
+    do {
+        let number = prompt("Nhập ký tự bất kỳ trong mảng:");
+        myArray.push(number);
+    } while (myArray.length < length);
+    console.log(myArray);
+    document.write(`Ta có mảng: ${myArray}<br>`);
+    document.write(`Ta có mảng sau khi đảo ngược: ${myArray.reverse().join("")}`);
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển các ký tự chữ thường trong chuỗi vừa nhập sang thành dạng chữ hoa.</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    // function checkUpperLowerCase(character) {
+    //     if (character == character.toUpperCase()) {
+    //         return true; // Chữ HOA trả về true
+    //     } else {
+    //         return false; // Chữ thường trả về false
+    //     }
+    // };
+    // console.log(checkUpperLowerCase("A"));
+
+    let str = prompt("Nhập chuỗi string:");
+    console.log(str.split(""));
+    let myArray = str.split("");
+    for (let i = 0; i < str.length; i++) {
+        if (myArray[i] == myArray[i].toUpperCase()) {
+            myArray[i] = myArray[i].toLowerCase();
+        } else {
+            myArray[i] = myArray[i].toUpperCase();
+        }
+    }
+    document.write(myArray.join(""))
+    // console.log(myArray.join(""));
+</script>
+</html>

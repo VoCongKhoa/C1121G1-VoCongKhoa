@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đếm số ký tự số trong mảng.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let count = 0;
+    let length = prompt("Nhập chiều dài mảng:");
+    let myArray = [];
+    let newArray = [];
+    do {
+        let number = prompt("Nhập ký tự bất kỳ trong mảng:");
+        myArray.push(number);
+    } while (myArray.length < length);
+    console.log(myArray);
+    document.write(`Ta có mảng: ${myArray}<br>`);
+
+    for (let i = 0; i < length; i++) {
+        if (!isNaN(myArray[i])) {
+            count++;
+        }
+    }
+    alert(`Có ${count} ký tự số trong mảng.`);
+</script>
+</html>

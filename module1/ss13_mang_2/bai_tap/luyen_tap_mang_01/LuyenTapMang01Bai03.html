@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất, giá trị trung bình của các phần tử trong mảng.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let random = Math.floor(Math.random()*1000 + 1);
+    let myNumber = [];
+    let max = 0;
+    let sum = 0;
+    for (let i = 0; i < 20; i++) {
+        myNumber[i] = random;
+        random = Math.floor(Math.random()*1000 + 1);
+    }
+    console.log(myNumber);
+    let length = myNumber.length;
+    for (let i = 0; i < length; i++) {
+        sum += myNumber[i];
+        if (myNumber[i] > max) {
+            max = myNumber[i];
+        }
+    }
+    document.write(`Giá trị lớn nhất trong mảng là myNumber[${myNumber.indexOf(max)}] = ${max}<br>`);
+    document.write(`Giá trị trung bình của các phần tử trong mảng là: average = ${sum/length}`);
+</script>
+</html>

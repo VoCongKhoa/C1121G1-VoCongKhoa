@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nếu V thuộc mảng đã cho xoá V khỏi mảng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let length = prompt("Nhập chiều dài mảng:");
+    let myArray = [];
+    let temp1;
+    let temp2;
+    do {
+        let number = prompt("Nhập số nguyên trong mảng:");
+        myArray.push(number);
+    } while (myArray.length < length);
+    console.log(myArray);
+    let number = prompt("Nhập số nguyên bất kỳ:");
+    document.write(`Ta có mảng: ${myArray}<br>`);
+    if (myArray.indexOf(number) !== -1) {
+        document.write(`Số V cần tìm trong mảng là: ${number}<br>`);
+        temp1 = myArray.slice(0, myArray.indexOf(number));
+        temp2 = myArray.slice(myArray.indexOf(number) + 1);
+        temp2.push(0);
+        document.write(`Số V có trong mảng tại vị trí là: ${myArray.indexOf(number)}<br>`);
+        document.write(`Ta có mảng mới sau khi xoá V là: ${temp1.concat(temp2)}`);
+    } else {
+        document.write(`Số bạn nhập không có trong mảng.`);
+    }
+</script>
+</html>

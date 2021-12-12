@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>khởi tạo mảng 2 chiều, gồm một bộ các phần tử có sẵn,  in ra các phần tử trong mảng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let random = Math.floor(Math.random()*100 + 1);
+    let myMatrix = new Array(10).fill(new Array(10));
+    for (let i = 0; i < myMatrix.length; i++) {
+        for (let j = 0; j < 10; j++) {
+            myMatrix[i][j] = random;
+            random = Math.floor(Math.random()*100 + 1);
+        }
+    }
+    console.log(myMatrix);
+</script>
+</html>

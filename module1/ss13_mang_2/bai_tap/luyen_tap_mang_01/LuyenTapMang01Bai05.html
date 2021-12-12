@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chương trình đếm số nguyên âm trong mảng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let random = Math.floor(Math.random()*1000 - Math.random()*1000);
+    let myNegativeInteger = [];
+    let count = 0;
+    for (let i = 0; i < 20; i++) {
+        myNegativeInteger[i] = random;
+        random = Math.floor(Math.random()*1000 - Math.random()*1000);
+    }
+    console.log(myNegativeInteger);
+    let length = myNegativeInteger.length;
+    for (let i = 0; i < length; i++) {
+        if (myNegativeInteger[i] < 0) {
+            count++;
+        }
+    }
+    document.write(`Trong mảng có ${count} số nguyên âm.`)
+
+</script>
+</html>

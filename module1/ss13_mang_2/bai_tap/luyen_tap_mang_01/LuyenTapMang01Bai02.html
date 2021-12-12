@@ -10,10 +10,16 @@
 <script>
     let myArray = [123, 15, 456, 123, 5, 46, 546, 8, 94, 56];
     let length = myArray.length;
-    let index = 0;
+    // let index = 0;
+    let max = 0;
 
     for (let i = 0; i < length; i++) {
-
+        if (myArray[i] > max) {
+            max = myArray[i];
+        }
     }
+
+    document.write(`Giá trị lớn nhất trong mảng là myArray[${myArray.indexOf(max)}] = ${max}`);
+
 </script>
 </html>
