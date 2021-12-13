@@ -62,9 +62,7 @@
             if (check) {
                 alert("Do not found!!!");
             }
-        }
-
-        if (language == 'EL') {
+        } else { //language == 'EL'
             let wordEL = document.getElementById("textEL").value.replace(/\s/g, '').toLowerCase();
             let i = -1;
             while (!check || ++i < arrayEL.length) {
@@ -81,7 +79,10 @@
             if (check) {
                 alert("Do not found!!!");
             }
+
         }
+        // if (language == 'EL') {
+        // }
     }
 
     //Hàm reset

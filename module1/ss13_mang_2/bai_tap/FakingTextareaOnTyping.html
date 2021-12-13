@@ -10,17 +10,20 @@
 
 </body>
 <script>
-    //Mỗi lần nhấn bàn phím, thì in ra từng chữ cái cảu từ cho trước!
+    //Mỗi lần nhấn bàn phím, thì in ra từng chữ cái của từ cho trước!
 
     //Hàm đếm
     let text = 'You won!!!';
-    let count = -1;
+    let str = "";
     let arrayText = text.trim().split("");
-    let result = document.getElementById("box");
+    let result = document.getElementById("box").value;
+    console.log(arrayText);
     function countChar() {
-        count++;
-        result.value += "T";
-        // result.value = "aaaaaa";
+        for (let i = 0; i < result.length; i++) {
+            str = str + arrayText[i];
+        }
+        document.getElementById("box").value = str;
+        str = "";
     }
 </script>
 </html>

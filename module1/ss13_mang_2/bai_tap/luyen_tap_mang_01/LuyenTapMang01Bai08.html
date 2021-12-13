@@ -22,24 +22,11 @@
     for (let i = 0; i < length; i++) {
         for (let j = 0; j < length; j++) {
             if (myArray[j] < myArray[j+1]) {
-
             }   temp = myArray[j];
             myArray[j] = myArray[j+1];
             myArray[j+1] = temp;
         }
     }
-
-    let pivot = myArray[0];
-    let leftPointer = myArray[0];
-    let rightPointer = myArray[myArray.length-1];
-    if (rightPointer < pivot) {
-        rightPointer = myArray[myArray.length-1 -1];
-    } else {
-        myArray[0] = rightPointer;
-        leftPointer = myArray[0 + 1];
-    }
-
-
 
     document.write(`Ta có mảng sau khi sắp xếp là: ${myArray}<br>`);
 </script>

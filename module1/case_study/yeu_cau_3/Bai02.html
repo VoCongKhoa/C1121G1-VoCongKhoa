@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // Ví dụ:  A=[7,2,5,3,5,3] và B=[7,2,5,4,6,3,5,3] thì kết quả missingValue(A, B) = [4, 6]
+
+    let A = [7,2,5,3,5,3];
+    let B = [7,2,5,4,6,3,5,3];
+    let missingValue = [];
+    for (let i = 0; i < A.length; i++) {
+        A.indexOf(B[i]);
+        if (A.indexOf(B[i]) == -1){
+            missingValue.push(B[i]);
+        }
+    }
+    document.write(missingValue);
+</script>
+</html>
