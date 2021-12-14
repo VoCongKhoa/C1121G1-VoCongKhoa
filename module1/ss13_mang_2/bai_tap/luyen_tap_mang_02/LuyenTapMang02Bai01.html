@@ -8,12 +8,12 @@
 
 </body>
 <script>
-    let random = Math.floor(Math.random()*100 + 1);
-    let myMatrix = new Array(10).fill(new Array(10));
+    let myMatrix = new Array(3).fill(new Array(3));
     for (let i = 0; i < myMatrix.length; i++) {
-        for (let j = 0; j < 10; j++) {
-            myMatrix[i][j] = random;
-            random = Math.floor(Math.random()*100 + 1);
+        document.write("row " + i + "<br>");
+        for (let j = 0; j < myMatrix[i].length; j++) {
+            myMatrix[i][j] = Math.floor(Math.random()*100 + 1);
+            document.write(myMatrix[i][j] + "<br>");
         }
     }
     console.log(myMatrix);

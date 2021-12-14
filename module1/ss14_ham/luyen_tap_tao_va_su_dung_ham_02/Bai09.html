@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let text = prompt("Ký tự bất kỳ: ");
+    let myArray = ["Khoa", "Vo", "Cong"];
+    function checkArray(character, array) {
+        let aftCha = character.trim().toLowerCase();
+        let count = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (aftCha == array.trim().toLowerCase()) {
+                count ++;
+            }
+        }
+        if (count > 0) {
+            return count;
+        } else return  -1;
+    }
+
+    console.log(checkArray(text,myArray));
+
+</script>
+</html>

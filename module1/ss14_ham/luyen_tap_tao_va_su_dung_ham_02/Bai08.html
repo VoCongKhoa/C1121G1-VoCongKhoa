@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm truyền vào mảng số nguyên bất kỳ, sau đó đảo ngược mảng số nguyên đó.</title>
+</head>
+<body>
+
+</body>
+<script>
+    // function reverse(length) {
+    //     let randomArray = new Array(length);
+    //     for (let i = 0; i < length; i++) {
+    //         randomArray[i] = Math.round(Math.random()*100 + 1);
+    //     }
+    //     return console.log(randomArray.reverse());
+    // }
+    // reverse(5);
+    let length;
+    let check;
+    do {
+        length = parseInt(prompt("Nhập chiều dài mảng: "));
+        check = parseInt(length) == length && length > 0;
+    } while (!check)
+    let randomArray = new Array(length);
+    for (let i = 0; i < length; i++) {
+        randomArray[i] = Math.round(Math.random()*100 + 1);
+    }
+
+    function reverseArr(array) {
+        let temp;
+        for (let i = 0; i < (array.length-1)/2; i++) {
+            temp = array[i];
+            array[i] = array[array.length-1-i];
+            array[array.length-1-i] = temp;
+        }
+        return array;
+    }
+    // function reverseArr(array) {
+    //     return array.reverse();
+    // }
+    document.write("Mảng ban đầu: " + randomArray + "<br>");
+    document.write("Mảng sau khi đảo ngược: " + reverseArr(randomArray));
+
+</script>
+</html>

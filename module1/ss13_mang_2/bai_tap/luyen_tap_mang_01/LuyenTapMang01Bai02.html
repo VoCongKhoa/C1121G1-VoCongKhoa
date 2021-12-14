@@ -6,20 +6,63 @@
 </head>
 <body>
 
-</body>
 <script>
-    let myArray = [123, 15, 456, 123, 5, 46, 546, 8, 94, 56];
-    let length = myArray.length;
-    // let index = 0;
-    let max = 0;
+    //Hàm rút gọn check số nguyên:
+    // function checkNumber(n) {
+    //     return !(isNaN(n) || Math.floor(n) < n);
+    // }
+    let number;
+    let myArray = [];
+    let check = true;
+    let length;
+    do {
+        if (check) { //true
+            length = prompt("Nhập số lượng số trong mảng: ");
+            check = !(isNaN(length) || Math.floor(length) < length);
+            console.log(check);
+        } else {
+            length = prompt("Số bạn nhập sai! Nhập lại số lượng số trong mảng: ");
+            check = !(isNaN(length) || Math.floor(length) < length);
+            console.log(check);
+        }
+    } while (!check) // check=true =>out
 
     for (let i = 0; i < length; i++) {
-        if (myArray[i] > max) {
-            max = myArray[i];
+        do {
+            if (check) { //true
+                number = prompt("Nhập giá trị cho mảng: ");
+                check = !(isNaN(number) || Math.floor(number) < number);
+                console.log(check);
+            } else {
+                number = prompt("Số bạn nhập sai! Nhập lại giá trị cho mảng: ");
+                check = !(isNaN(number) || Math.floor(number) < number);
+                console.log(check);
+            }
+        } while (!check) // check=true =>out
+        for (let j = 0; j < i; j++) {
+            if (number == myArray[j]) {
+                number = prompt("Sô bạn nhập đã tồn tại, yêu cầu nhập lại!!!");
+            }
+        }
+        myArray[i] = parseInt(number);
+    }
+    console.log(myArray);
+    let max = 0;
+    let index;
+    for (let k = 0; k < myArray.length; k++) {
+        if (parseInt(myArray[k])>max) {
+            max = parseInt(myArray[k]);
+            index = k;
         }
     }
+    document.write("Giá trị lớn nhất trong mảng là myArray[" + index +"] = ${"+max+"}");
 
-    document.write(`Giá trị lớn nhất trong mảng là myArray[${myArray.indexOf(max)}] = ${max}`);
-
+    // document.write(`Giá trị lớn nhất trong mảng là = ${max}`);
+    // document.write(`Giá trị lớn nhất trong mảng là myArray[${myArray.indexOf(max)}] = ${max}`);
+    // console.log("kiểu dữ liệu của myArray[2] là: " + typeof myArray[2]);
+    // console.log("kiểu dữ liệu của max là: "+ typeof parseInt(max));
+    // console.log("index của max là: "+myArray.indexOf(max))
+    // console.log("max là: " + max);
 </script>
+</body>
 </html>

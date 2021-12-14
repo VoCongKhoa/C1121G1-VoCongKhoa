@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Tìm giá trị nhỏ nhất của mảng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let myArr = [12,23,56,2,32,-65,-25,45,2,-41,456,23,412];
+    function minArr(array) {
+        let min = array[0];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        return min;
+    }
+    alert("Gía trị nhở nhất của mảng là: " + minArr(myArr));
+</script>
+</html>

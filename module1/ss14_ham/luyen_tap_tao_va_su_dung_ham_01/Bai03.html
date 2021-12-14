@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo hàm nhận vào hai tham số.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let num1 = parseInt(prompt("Nhập số a:"))
+    let num2 = parseInt(prompt("Nhập số b:"))
+    console.log(typeof num1)
+    addNum(num1,num2);
+    function addNum(a,b) {
+        if (a > b) {
+            alert("Số " + a + " lớn hơn " + b);
+        } else return alert("Tổng hai số a và b là: " + (a + b));
+    }
+</script>
+</html>

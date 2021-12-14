@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm tính giai thừa của một số nguyên bất kỳ được đưa vào.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let num;
+    let check = true;
+    do {
+        if (check) {
+            num = prompt("Nhập số nguyên bất kỳ: ");
+            check = !(isNaN(num) || Math.floor(num) < num || num < 0)
+        } else {
+            num = prompt(" Nhập lại:");
+            check = !(isNaN(num) || Math.floor(num) < num || num < 0)
+        }
+    } while (!check)
+
+    alert(`Giai thừa của số nguyên ${num} là ${factorial(num)}`);
+    function factorial(number) {
+        let constNum = number;
+        for (let i = 1; i < constNum-1; i++) {
+            number = number * (constNum-i);
+        }
+        return  number;
+    }
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.</title>
+</head>
+<body>
+
+</body>
+<script>
+    function findMin(n) {
+        let numberArray =[];
+        for (let i = 0; i < n; i++) {
+            let number = parseInt(prompt("Nhập số nguyên bất kỳ"));
+            numberArray.push(number);
+            }
+        let sortedArray = numberArray.sort();
+        return sortedArray[0];
+
+    }
+
+    alert(findMin(10));
+
+</script>
+</html>

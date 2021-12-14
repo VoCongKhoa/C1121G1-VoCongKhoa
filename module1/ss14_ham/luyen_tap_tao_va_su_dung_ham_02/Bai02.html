@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm tính diện tích, hàm tính chu vi hình tròn.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let banKinh = prompt("Nhập bán kính hình tròn: ");
+    let dienTich = "Diện tích";
+    let chuVi = "Chu vi";
+    alert(`${dienTich} hình tròn có bán kính = ${banKinh} là ${circlr(dienTich, banKinh)}`);
+    alert(`${chuVi} hình tròn có bán kính = ${banKinh} là ${circlr(chuVi, banKinh)}`);
+    function circlr(calculate, number) {
+        if (calculate == "Diện tích"){
+            return  number*number*Math.PI;
+        }
+        if (calculate == "Chu vi"){
+            return  2*number*Math.PI;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Tạo một mảng với bảy phần tử dạng chuỗi</title>
+</head>
+<body onload="findStar()">
+
+</body>
+<script>
+    let ngoiSao = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let chomSao = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    // findStar();
+
+    function findStar() {
+        let str = prompt('Nhập tên ngôi sao: ')
+        let flag = false;
+        // let str = prompt("Nhập tên ngôi sao:");
+        let aftString = str.trim().toLowerCase();
+        for (let i = 0; i < ngoiSao.length; i++) {
+            if (aftString == ngoiSao[i].trim().toLowerCase()) {
+                alert("Ứng với ngôi sao "+ ngoiSao[i] + " là chòm sao " + chomSao[i]);
+                flag = true ;
+                // console.log(flag);
+                break;
+            }
+        }
+        if (!flag) {
+            alert("Do not found!!!");
+        }
+    }
+</script>
+</html>
