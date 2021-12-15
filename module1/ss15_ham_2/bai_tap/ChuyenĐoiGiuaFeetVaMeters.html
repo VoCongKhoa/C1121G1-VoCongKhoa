@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi giữa feet và meters</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inpFeet = prompt("Nhập số feet:");
+    document.write(inpFeet + " feet = " + footToMeter(inpFeet) + "meters <br>");
+
+    let inpMeters = prompt("Nhập số meters:");
+    document.write(inpMeters + " meters = " + meterToFoot(inpMeters) + "feet <br>");
+
+
+    function footToMeter(foot) {
+        return  0.305 * foot;
+    }
+    function meterToFoot(meter) {
+        return  3.279 * meter;
+    }
+</script>
+</html>

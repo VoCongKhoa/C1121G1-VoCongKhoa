@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <style>
+        table {
+            width: 40%;
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid;
+
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td:nth-child(1) {
+            width: 15%;
+            border: 1px solid;
+        }
+
+        td:nth-child(2) {
+            width: 45%;
+            border: 1px solid;
+        }
+
+        td:nth-child(3) {
+            width: 20%;
+            border: 1px solid;
+        }
+
+        td:nth-child(4) {
+            width: 20%;
+            border: 1px solid;
+        }
+
+        th {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<h1>Hệ thống quản lý sản phẩm</h1>
+<input id="inputObject">
+<button id="add">Add</button>
+<br>
+<p id="dialog"></p><br>
+<p id="table"></p><br>
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>STT</th>-->
+<!--            <th colspan='3'>Tên sản phẩm</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>1</td>-->
+<!--            <td>Coconut</td>-->
+<!--            <td>-->
+<!--                <button>Edit</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button>Remove</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>2</td>-->
+<!--            <td>Mango</td>-->
+<!--            <td>-->
+<!--                <button>Edit</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button>Remove</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>3</td>-->
+<!--            <td>Orange</td>-->
+<!--            <td>-->
+<!--                <button>Edit</button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <button>Remove</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+</body>
+<script>
+    let productArray = ['Coconut', 'Mango', 'Orange', 'Guava'];
+    createTable();
+
+    function createTable() {
+        let drawTab;
+        drawTab = "<table>\n" +
+            "        <tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th colspan='3'>Tên sản phẩm</th>\n" +
+            "        </tr>\n"
+
+        for (let i = 0; i < productArray.length; i++) {
+            drawTab +=
+                "        <tr>\n" +
+                "            <td>" + (i + 1) + "</td>\n" +
+                "            <td>" + productArray[i] + "</td>\n" +
+                "            <td>\n" +
+                "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                "            </td>\n" +
+                "        </tr>\n"
+        }
+        drawTab += "    </table>";
+
+        document.getElementById("table").innerHTML = drawTab;
+    }
+
+    function editName(index) {
+        let newObj = prompt("Nhập tên mới: ");
+        productArray[index] = newObj;
+        createTable();
+    }
+
+    function deleteObject(index) {
+        productArray.slice(index, index+1);
+        createTable();
+    }
+</script>
+</html>

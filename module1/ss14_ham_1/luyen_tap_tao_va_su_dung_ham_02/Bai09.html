@@ -9,12 +9,12 @@
 </body>
 <script>
     let text = prompt("Ký tự bất kỳ: ");
-    let myArray = ["Khoa", "Vo", "Cong"];
+    let myArray = ["Khoa", "Vo", "Cong", "Khoa", "Vo", "Cong", "Vo", "Cong", "Vo"];
     function checkArray(character, array) {
         let aftCha = character.trim().toLowerCase();
         let count = 0;
         for (let i = 0; i < array.length; i++) {
-            if (aftCha == array.trim().toLowerCase()) {
+            if (aftCha == array[i].trim().toLowerCase()) {
                 count ++;
             }
         }
@@ -23,7 +23,7 @@
         } else return  -1;
     }
 
-    console.log(checkArray(text,myArray));
+    document.write("Ký tự" + text + " xuất hiện " + checkArray(text,myArray) + " lần trong mảng");
 
 </script>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra từ đối xứng</title>
+</head>
+<body>
+
+</body>
+<script>
+    let pal = prompt("Nhập từ bất kỳ:");
+    if (isPalindrome(pal)) {
+        document.write(pal + " là từ đối xứng");
+    } else document.write(pal + " không là từ đối xứng");
+
+    //Không dùng đệ quy
+    // function isPalindrome(character) {
+    //     return character.trim().split("").reverse().join("") == character.trim();
+    // }
+    //
+    //Dùng đệ quy
+    function isPalindrome(character) {
+            if (character.length >= 2) {
+                if (character[0] == character[character.length-1]) {
+                    character = character.slice(1,character.length-1);
+                    return isPalindrome(character);
+                } else {
+                    return false;
+                }
+            } else return true;
+    }
+</script>
+</html>
