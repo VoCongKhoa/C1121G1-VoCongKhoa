@@ -73,17 +73,19 @@
     // document.getElementById('display7').innerHTML = creat7;
 
     let count = 0;
-
+    let check = true;
     function showBill(number) {
         count++;
         switch (number) {
             case 1:
-                if (count % 2 != 0) {
+                if (check && number == 1) {
                     expandList(cafe, number);
-                } else {
+                    check = false;
+                } else if (!check  && number == 1){
                     // foldList(cafe, number);
                     document.getElementById('display1').innerHTML = "<button id='cafe' onclick='showBill(1)'>1. Cafe</button>";
                     cafe = "<button id='cafe' onclick='showBill(1)'>1. Cafe</button>";
+                    check = true;
                 }
 
 //                 if (count % 2 != 0) {
@@ -104,12 +106,14 @@
                 break;
 
             case 2:
-                if (count % 2 != 0) {
+                if (check && number == 2) {
                     expandList(camvat, number);
-                } else {
+                    check = false;
+                } else if (!check  && number == 2) {
                     // foldList(camvat, number);
                     document.getElementById('display2').innerHTML = "<button id='camvat' onclick='showBill(2)'>2. Cam vắt</button>";
                     cafe = "<button id='camvat' onclick='showBill(2)'>1. Cam vắt</button>";
+                    check = true;
                 }
 
 

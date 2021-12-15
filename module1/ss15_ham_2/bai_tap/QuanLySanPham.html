@@ -45,7 +45,10 @@
 <body>
 <h1>Hệ thống quản lý sản phẩm</h1>
 <input id="inputObject">
-<button id="add">Add</button>
+<button onclick="addObj()">Add</button>
+
+<input id="searchName">
+<button onclick="searchProduct()">Search</button><button onclick="resetList()">Reset</button>
 <br>
 <p id="dialog"></p><br>
 <p id="table"></p><br>
@@ -117,14 +120,61 @@
     }
 
     function editName(index) {
-        let newObj = prompt("Nhập tên mới: ");
-        productArray[index] = newObj;
-        createTable();
+        let newName = prompt("Nhập tên mới: ");
+        if (newName == "" || newName == null) {
+            createTable();
+        } else {
+            productArray[index] = newName;
+            createTable();
+        }
+
     }
 
     function deleteObject(index) {
-        productArray.slice(index, index+1);
+        productArray.splice(index, 1);
         createTable();
+    }
+
+    function addObj() {
+        let addObjVar = document.getElementById("inputObject").value;
+        productArray.push(addObjVar);
+        document.getElementById("dialog").innerHTML = "Đã thêm " + addObjVar + "vào danh sách sản phẩm";
+        createTable();
+    }
+
+    function searchProduct() {
+        let drawSearchTable;
+        let searchObjVar = document.getElementById("searchName").value;
+        for (let i = 0; i < productArray.length; i++) {
+            if (searchObjVar.trim().toLowerCase() == productArray[i].toLowerCase()) {
+                drawSearchTable = "<table>\n" +
+                    "        <tr>\n" +
+                    "            <th>STT</th>\n" +
+                    "            <th colspan='3'>Tên sản phẩm</th>\n" +
+                    "        </tr>\n" +
+                    "        <tr>\n" +
+                    "            <td>" + (i + 1) + "</td>\n" +
+                    "            <td>" + productArray[i] + "</td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                    "            </td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                    "            </td>\n" +
+                    "        </tr>\n" +
+                    "    </table>";
+                document.getElementById("table").innerHTML = drawSearchTable;
+            } else {
+                document.getElementById("dialog").innerHTML = "Sản phẩm bạn tìm không có trong danh sách";
+            }
+        }
+    }
+
+    function resetList() {
+        createTable();
+        document.getElementById("inputObject").value = "";
+        document.getElementById("searchName").value = "";
+        document.getElementById("dialog").innerHTML = "";
     }
 </script>
 </html>
