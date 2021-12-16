@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm chuẩn hóa xâu ký tự</title>
+</head>
+<body>
+
+</body>
+<script>
+    let inputStr = prompt("Nhập tên bất kỳ: ");
+    alert("Trước khi xử lý chuỗi: " + inputStr);
+    console.log("Trước khi xử lý chuỗi: " + inputStr);
+
+    alert("Sau khi xử lý chuỗi: " + optimizeString(inputStr));
+    console.log("Sau khi xử lý chuỗi: " + optimizeString(inputStr));
+
+    alert("Từ dài nhất trong chuỗi sau khi xử lý chuỗi là: " + findLongestWord(optimizeString(inputStr)));
+    console.log("Từ dài nhất trong chuỗi sau khi xử lý chuỗi là: " + findLongestWord(optimizeString(inputStr)));
+
+    function optimizeString(string) {
+        let newArr = [];
+        let processedStr;
+        string = string.split(" ");
+        for (let i = 0; i < string.length; i++) {
+            if (string[i] != "") {
+                processedStr = string[i].toLowerCase().charAt(0).toUpperCase() + string[i].toLowerCase().slice(1);
+                newArr.push(processedStr);
+            }
+        }
+        return newArr.join(" ");
+    }
+    
+    function findLongestWord(string) {
+        let strArr = string.split(" ");
+        let max = strArr[0].length;
+        let longestWord;
+        for (let i = 1; i < strArr.length; i++) {
+            if (strArr[i].length > max) {
+                max = strArr[i].length;
+                longestWord = strArr[i];
+            }
+        }
+        return longestWord;
+    }
+</script>
+</html>

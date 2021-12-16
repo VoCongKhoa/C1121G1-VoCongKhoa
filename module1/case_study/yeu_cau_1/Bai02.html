@@ -9,9 +9,9 @@
 </body>
 <script>
     let h = 10;
-    for (let i = 1; i < h+1; i++) {
-        for (let j = 0; j < i; j++) {
-            if (j === 0 || j === i-1 || i === h) {
+    for (let i = 0; i < h; i++) {
+        for (let j = 0; j <= i; j++) {
+            if (j === 0 || j === i || i === h-1) {
                 document.write("*");
             } else {
                 document.write("&nbsp;&nbsp;");

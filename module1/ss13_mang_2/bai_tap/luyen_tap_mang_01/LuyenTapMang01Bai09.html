@@ -15,9 +15,9 @@
     let length = prompt("Nhập chiều dài mảng:");
     let arrayA = [];
     let arrayB = [];
-    let arrayC = new Array(20);
+    // let arrayC = new Array(20);
     let random = Math.floor(Math.random() * 100 + 1);
-    let temp = [];
+    let arrayC = [];
     do {
         let number = prompt("Nhập số nguyên trong mảng:");
         arrayA.push(number);
@@ -30,9 +30,11 @@
     }
     console.log(arrayB);
     document.write(`Ta có mảng B: ${arrayB}<br>`);
-    for (let i = 0; i < arrayA.length + arrayB.length; i++) {
-        arrayC[i] = temp.concat(arrayA, arrayB)[i];
-    }
+
+    arrayC = arrayC.concat(arrayA, arrayB);
+    // for (let i = 0; i < arrayA.length + arrayB.length; i++) {
+    //     arrayC[i] = temp.concat(arrayA, arrayB)[i];
+    // }
 
     console.log(arrayC);
     document.write(`Ta có mảng C: ${arrayC}<br>`);

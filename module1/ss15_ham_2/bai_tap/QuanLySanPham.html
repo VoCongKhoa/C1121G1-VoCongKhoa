@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
     <style>
-        table {
+        .table {
             width: 40%;
             text-align: center;
             border-collapse: collapse;
@@ -12,6 +12,9 @@
 
         }
 
+        .noBoder {
+            border:none;
+        }
         .center {
             margin-left: auto;
             margin-right: auto;
@@ -44,55 +47,104 @@
 </head>
 <body>
 <h1>Hệ thống quản lý sản phẩm</h1>
-<input id="inputObject">
+<input id="inputObject" placeholder="Nhập tên sản phẩm">
 <button onclick="addObj()">Add</button>
 
 <input id="searchName">
-<button onclick="searchProduct()">Search</button><button onclick="resetList()">Reset</button>
+<button onclick="searchProduct()">Search</button>
+<button onclick="resetList()">Reset</button>
+<button onclick="sortName()">Sort</button>
 <br>
 <p id="dialog"></p><br>
 <p id="table"></p><br>
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <th>STT</th>-->
-<!--            <th colspan='3'>Tên sản phẩm</th>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>1</td>-->
-<!--            <td>Coconut</td>-->
-<!--            <td>-->
-<!--                <button>Edit</button>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <button>Remove</button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>2</td>-->
-<!--            <td>Mango</td>-->
-<!--            <td>-->
-<!--                <button>Edit</button>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <button>Remove</button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>3</td>-->
-<!--            <td>Orange</td>-->
-<!--            <td>-->
-<!--                <button>Edit</button>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <button>Remove</button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
+
+<p id="pageNumber"></p>;
+<a href="javascript:changePage(0)">All</a>
+<a href="javascript:changePage(1)">Trang 1</a>
+<a href="javascript:changePage(2)">Trang 2</a>
+<!--<button>Trang 1</button>-->
+<!--<button onclick="">Trang 2</button>-->
+<table class="noBoder">
+    <tr>
+        <td>Trang 1</td>
+        <td>Trang 2</td>
+    </tr>
+</table>
 </body>
 <script>
-    let productArray = ['Coconut', 'Mango', 'Orange', 'Guava'];
-    createTable();
+    let productArray = ['Coconut', 'Mango', 'Orange', 'Guava', 'Apple', 'Banana', 'Watermelon', 'Lemon', 'Dragonfruit'];
+    createDisplayTab(5);
+    //Phân trang - done
+    //Search - done
+    //Sort - done
+    //CRUD: Create Read Update Delete
 
+    function createNumberPage() {
+
+    }
+    
+    function changePage(pageNumber,itemNumber) {
+        if (pageNumber == 0) {
+            createTable();
+        }
+        if (pageNumber == 1) {
+            createDisplayTab(5);
+        }
+        if (pageNumber == 2) {
+            let drawTab;
+            drawTab = "<table class='table'>\n" +
+                "        <tr>\n" +
+                "            <th>STT</th>\n" +
+                "            <th colspan='3'>Tên sản phẩm</th>\n" +
+                "        </tr>\n"
+
+            for (let i = 0; i < productArray.length-5; i++) {
+                drawTab +=
+                    "        <tr>\n" +
+                    "            <td>" + (i + 1 + 5) + "</td>\n" +
+                    "            <td>" + productArray[i + 5] + "</td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='editName(" + (i + 5) + ")'>Edit</button>\n" +
+                    "            </td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='deleteObject(" + (i + 5) + ")'>Remove</button>\n" +
+                    "            </td>\n" +
+                    "        </tr>\n"
+            }
+            drawTab += "    </table>";
+
+            document.getElementById("table").innerHTML = drawTab;
+        }
+    }
+
+    //Hàm khởi tạo bảng ban đầu (5 sản phẩm)
+    function createDisplayTab(itemNumber) {
+        let drawTab;
+        drawTab = "<table class='table'>\n" +
+            "        <tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th colspan='3'>Tên sản phẩm</th>\n" +
+            "        </tr>\n"
+
+        for (let i = 0; i < itemNumber; i++) {
+            drawTab +=
+                "        <tr>\n" +
+                "            <td>" + (i + 1) + "</td>\n" +
+                "            <td>" + productArray[i] + "</td>\n" +
+                "            <td>\n" +
+                "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                "            </td>\n" +
+                "        </tr>\n"
+        }
+        drawTab += "    </table>";
+
+        document.getElementById("table").innerHTML = drawTab;
+    }
+
+    //Hàm khởi tạo bảng full tất cả sản phẩm
     function createTable() {
         let drawTab;
         drawTab = "<table>\n" +
@@ -122,36 +174,54 @@
     function editName(index) {
         let newName = prompt("Nhập tên mới: ");
         if (newName == "" || newName == null) {
-            createTable();
+            createDisplayTab(5);
         } else {
             productArray[index] = newName;
-            createTable();
+            createDisplayTab(5);
         }
 
     }
 
     function deleteObject(index) {
-        productArray.splice(index, 1);
-        createTable();
+        let inform = confirm("Bạn có muốn xoá " + productArray[index] + "ra khỏi danh sách sản phẩm");
+        if (inform) {
+            productArray.splice(index, 1);
+            createDisplayTab(5);
+        } else {
+            createDisplayTab(5);
+        }
     }
 
+
+    let count = 0;  //Đếm số hàng hiển thị đã thêm bao nhiêu sản phẩm
     function addObj() {
         let addObjVar = document.getElementById("inputObject").value;
-        productArray.push(addObjVar);
-        document.getElementById("dialog").innerHTML = "Đã thêm " + addObjVar + "vào danh sách sản phẩm";
-        createTable();
+        if (addObjVar.trim() !=null && addObjVar.trim() != "" && count<=3) {
+            productArray.push(addObjVar);
+            document.getElementById("dialog").innerHTML += "Đã thêm " + addObjVar + "vào danh sách sản phẩm <br>";
+            count++;
+        } else if (addObjVar.trim() !=null && addObjVar.trim() != "") {
+            productArray.push(addObjVar);
+            document.getElementById("dialog").innerHTML = "Đã thêm " + addObjVar + "vào danh sách sản phẩm <br>";
+            count = 0;
+        } else {
+            alert("Nhập tên sản phẩm");
+        }
+        document.getElementById("inputObject").value = "";
+        createDisplayTab(5);
     }
 
     function searchProduct() {
         let drawSearchTable;
         let searchObjVar = document.getElementById("searchName").value;
+        drawSearchTable = "<table>\n" +
+            "        <tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th colspan='3'>Tên sản phẩm</th>\n" +
+            "        </tr>\n"
         for (let i = 0; i < productArray.length; i++) {
-            if (searchObjVar.trim().toLowerCase() == productArray[i].toLowerCase()) {
-                drawSearchTable = "<table>\n" +
-                    "        <tr>\n" +
-                    "            <th>STT</th>\n" +
-                    "            <th colspan='3'>Tên sản phẩm</th>\n" +
-                    "        </tr>\n" +
+            if (productArray[i].toLowerCase().includes(searchObjVar)) {
+                drawSearchTable +=
                     "        <tr>\n" +
                     "            <td>" + (i + 1) + "</td>\n" +
                     "            <td>" + productArray[i] + "</td>\n" +
@@ -161,20 +231,54 @@
                     "            <td>\n" +
                     "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
                     "            </td>\n" +
-                    "        </tr>\n" +
-                    "    </table>";
+                    "        </tr>\n"
                 document.getElementById("table").innerHTML = drawSearchTable;
             } else {
                 document.getElementById("dialog").innerHTML = "Sản phẩm bạn tìm không có trong danh sách";
             }
         }
+        drawSearchTable += "    </table>";
+
+        // for (let i = 0; i < productArray.length; i++) {
+        //     if (searchObjVar.trim().toLowerCase() == productArray[i].toLowerCase()) {
+        //         drawSearchTable = "<table>\n" +
+        //             "        <tr>\n" +
+        //             "            <th>STT</th>\n" +
+        //             "            <th colspan='3'>Tên sản phẩm</th>\n" +
+        //             "        </tr>\n" +
+        //             "        <tr>\n" +
+        //             "            <td>" + (i + 1) + "</td>\n" +
+        //             "            <td>" + productArray[i] + "</td>\n" +
+        //             "            <td>\n" +
+        //             "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+        //             "            </td>\n" +
+        //             "            <td>\n" +
+        //             "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+        //             "            </td>\n" +
+        //             "        </tr>\n" +
+        //             "    </table>";
+        //         document.getElementById("table").innerHTML = drawSearchTable;
+        //     } else {
+        //         document.getElementById("dialog").innerHTML = "Sản phẩm bạn tìm không có trong danh sách";
+        //     }
+        // }
     }
 
     function resetList() {
-        createTable();
+        createDisplayTab(5);
         document.getElementById("inputObject").value = "";
         document.getElementById("searchName").value = "";
         document.getElementById("dialog").innerHTML = "";
     }
+
+    function sortName() {
+        for (let i = 0; i < productArray.length; i++) {
+            productArray[i] = productArray[i].toLowerCase().charAt(0).toUpperCase() +
+                productArray[i].toLowerCase().slice(1).toLowerCase();
+        }
+        productArray = productArray.sort();
+        createDisplayTab(5);
+    }
+
 </script>
 </html>
