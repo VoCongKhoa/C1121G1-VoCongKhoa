@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
     <style>
-        .table {
+        table {
             width: 40%;
             text-align: center;
             border-collapse: collapse;
@@ -12,8 +12,9 @@
 
         }
 
-        .noBoder {
+        .pageTable {
             border:none;
+
         }
         .center {
             margin-left: auto;
@@ -57,94 +58,72 @@
 <br>
 <p id="dialog"></p><br>
 <p id="table"></p><br>
-
-<p id="pageNumber"></p>;
-<a href="javascript:changePage(0)">All</a>
-<a href="javascript:changePage(1)">Trang 1</a>
-<a href="javascript:changePage(2)">Trang 2</a>
-<!--<button>Trang 1</button>-->
-<!--<button onclick="">Trang 2</button>-->
-<table class="noBoder">
-    <tr>
-        <td>Trang 1</td>
-        <td>Trang 2</td>
-    </tr>
-</table>
+<p id="pageNumber"></p>
 </body>
 <script>
-    let productArray = ['Coconut', 'Mango', 'Orange', 'Guava', 'Apple', 'Banana', 'Watermelon', 'Lemon', 'Dragonfruit'];
-    createDisplayTab(5);
+    let productArray = ['Coconut', 'Mango', 'Orange', 'Guava', 'Apple', 'Banana', 'Watermelon', 'Lemon', 'Dragonfruit','a','b'];
+    // let countPage;
+    createDisplayTab(1,5);
     //Phân trang - done
     //Search - done
     //Sort - done
     //CRUD: Create Read Update Delete
 
+    //Tạo số trang để hiển thị phân trang bằng bảng
     function createNumberPage() {
+        let countPage = Math.ceil(productArray.length/5);
+        // console.log(countPage);
+        let drawTab;
+        drawTab = "<table style='border:none;width:20%;margin-left:10%;'>\n" +
+                "    <tr>"
+        for (let i = 0; i < countPage; i++) {
+            drawTab += "<td style='border:none;width:fit-content;'><a href='javascript:changePage("+(i+1)+")'>Trang "+(i+1)+"</a></td>";
+        }
+        drawTab += "</tr>\n" +
+            "</table>";
 
+        document.getElementById("pageNumber").innerHTML = drawTab;
     }
-    
-    function changePage(pageNumber,itemNumber) {
-        if (pageNumber == 0) {
-            createTable();
-        }
-        if (pageNumber == 1) {
-            createDisplayTab(5);
-        }
-        if (pageNumber == 2) {
-            let drawTab;
-            drawTab = "<table class='table'>\n" +
-                "        <tr>\n" +
-                "            <th>STT</th>\n" +
-                "            <th colspan='3'>Tên sản phẩm</th>\n" +
-                "        </tr>\n"
 
-            for (let i = 0; i < productArray.length-5; i++) {
-                drawTab +=
-                    "        <tr>\n" +
-                    "            <td>" + (i + 1 + 5) + "</td>\n" +
-                    "            <td>" + productArray[i + 5] + "</td>\n" +
-                    "            <td>\n" +
-                    "                <button onclick='editName(" + (i + 5) + ")'>Edit</button>\n" +
-                    "            </td>\n" +
-                    "            <td>\n" +
-                    "                <button onclick='deleteObject(" + (i + 5) + ")'>Remove</button>\n" +
-                    "            </td>\n" +
-                    "        </tr>\n"
-            }
-            drawTab += "    </table>";
-
-            document.getElementById("table").innerHTML = drawTab;
-        }
+    //Hàm thay đổi bảng khi thay đổi trang
+    function changePage(pageNumber) {
+        let countPage = Math.ceil(productArray.length/5);
+        if (pageNumber <= countPage) {
+            createDisplayTab(pageNumber*5-4,pageNumber*5);//Xử lý logic cho hàm createDisplayTab(STT sp đầu tiên, STT sp cuối cùng)
+        }                                                 //hiển thị trong bảng
     }
 
     //Hàm khởi tạo bảng ban đầu (5 sản phẩm)
-    function createDisplayTab(itemNumber) {
+    function createDisplayTab(itemNumberStart,itemNumberFinish) {
         let drawTab;
-        drawTab = "<table class='table'>\n" +
+        drawTab = "<table>\n" +
             "        <tr>\n" +
             "            <th>STT</th>\n" +
             "            <th colspan='3'>Tên sản phẩm</th>\n" +
             "        </tr>\n"
 
-        for (let i = 0; i < itemNumber; i++) {
-            drawTab +=
-                "        <tr>\n" +
-                "            <td>" + (i + 1) + "</td>\n" +
-                "            <td>" + productArray[i] + "</td>\n" +
-                "            <td>\n" +
-                "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
-                "            </td>\n" +
-                "            <td>\n" +
-                "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
-                "            </td>\n" +
-                "        </tr>\n"
+        for (let i = itemNumberStart-1; i < itemNumberFinish; i++) {
+            if (productArray[i] != undefined){
+                drawTab +=
+                    "        <tr>\n" +
+                    "            <td>" + (i+1) + "</td>\n" +
+                    "            <td>" + productArray[i] + "</td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                    "            </td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                    "            </td>\n" +
+                    "        </tr>\n"
+            }
         }
         drawTab += "    </table>";
 
         document.getElementById("table").innerHTML = drawTab;
+        createNumberPage();
     }
 
-    //Hàm khởi tạo bảng full tất cả sản phẩm
+    //Hàm khởi tạo bảng full tất cả sản phẩm, chưa cần dùng
     function createTable() {
         let drawTab;
         drawTab = "<table>\n" +
@@ -171,6 +150,7 @@
         document.getElementById("table").innerHTML = drawTab;
     }
 
+    //Hàm edit tên sản phẩm
     function editName(index) {
         let newName = prompt("Nhập tên mới: ");
         if (newName == "" || newName == null) {
@@ -182,6 +162,7 @@
 
     }
 
+    //Hàm xoá sản phẩm
     function deleteObject(index) {
         let inform = confirm("Bạn có muốn xoá " + productArray[index] + "ra khỏi danh sách sản phẩm");
         if (inform) {
@@ -193,7 +174,7 @@
     }
 
 
-    let count = 0;  //Đếm số hàng hiển thị đã thêm bao nhiêu sản phẩm
+    let count = 0;  //Đếm số hàng hiển thị "đã thêm sản phẩm gì...", chỉ giới hạn tối đa 5 dòng
     function addObj() {
         let addObjVar = document.getElementById("inputObject").value;
         if (addObjVar.trim() !=null && addObjVar.trim() != "" && count<=3) {
@@ -208,9 +189,10 @@
             alert("Nhập tên sản phẩm");
         }
         document.getElementById("inputObject").value = "";
-        createDisplayTab(5);
+        createDisplayTab(1,5);
     }
 
+    //Hàm search
     function searchProduct() {
         let drawSearchTable;
         let searchObjVar = document.getElementById("searchName").value;
@@ -264,6 +246,7 @@
         // }
     }
 
+    //Hàm reset
     function resetList() {
         createDisplayTab(5);
         document.getElementById("inputObject").value = "";
@@ -271,6 +254,7 @@
         document.getElementById("dialog").innerHTML = "";
     }
 
+    //Hàm sort sau khi đã xử lý chuỗi cho tên sản phẩm
     function sortName() {
         for (let i = 0; i < productArray.length; i++) {
             productArray[i] = productArray[i].toLowerCase().charAt(0).toUpperCase() +
