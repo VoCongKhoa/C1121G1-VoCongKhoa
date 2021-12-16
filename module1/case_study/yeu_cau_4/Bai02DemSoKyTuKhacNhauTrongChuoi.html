@@ -12,14 +12,14 @@
     // inputStr = inputStr.trim().split(" ").join("").split("").sort();
     // console.log(inputStr);
 
-    let countDupLet = checkDifferentLetter(inputStr).length -1;
-    let dupLet = "";
-    for (let i = 0; i < checkDifferentLetter(inputStr).length-1; i++) {
-        dupLet += checkDifferentLetter(inputStr)[i];
-    }
-    alert(dupLet);
-    alert("Chuỗi có " + countDupLet + " ký tự trùng nhau là: "
-        + dupLet.split("").join(","));
+    // let countDupLet = checkDifferentLetter(inputStr).length -1;
+    // let dupLet = "";
+    // for (let i = 0; i < checkDifferentLetter(inputStr).length-1; i++) {
+    //     dupLet += checkDifferentLetter(inputStr)[i];
+    // }
+    // alert(dupLet);
+    // alert("Chuỗi có " + countDupLet + " ký tự trùng nhau là: "
+    //     + dupLet.split("").join(","));
 
     //Hàm xử lý chuỗi
     //Xử lý chuỗi thành mảng A
@@ -27,29 +27,28 @@
     //Dùng for duyệt A, từ A[1]
     //Kiểm tra từng phần tử trong A có tồn tại trong B hay không, nếu không tồn tại thì push vào B
 
-
+    console.log(checkDifferentLetter(inputStr));
 
     function checkDifferentLetter(string) {
         string = string.trim().split(" ").join("").split("").sort();
+        let newArr = [string[0]];
+        let flag = true;
         // let anyLetter = string[0];
-        let tempArray = [];
+        // let tempArray = [];
         let checkLetter;
         // let count = 0;
         // let duplicatedStrArr = [];
         for (let i = 0; i < string.length; i++) {
             checkLetter = string[i];
-            for (let j = i + 1; j < string.length; j++) {
+            for (let j = 0; j < string.length; j++) {
                 if (checkLetter == string[j]) {
-                    if (count <2) {
-                        count++;
-                        duplicatedStrArr.push(checkLetter);
-                    }
-
+                    string.splice(j,1);
                 }
             }
         }
-        duplicatedStrArr.push(count);
-        return duplicatedStrArr;
+        console.log(string);
+        // duplicatedStrArr.push(count);
+        return string;
     }
 </script>
 </html>
