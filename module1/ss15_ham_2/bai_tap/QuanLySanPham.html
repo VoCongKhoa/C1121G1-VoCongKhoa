@@ -62,7 +62,7 @@
 </body>
 <script>
     let productArray = ['Coconut', 'Mango', 'Orange', 'Guava', 'Apple', 'Banana', 'Watermelon', 'Lemon', 'Dragonfruit','a','b'];
-    // let countPage;
+    // let flag = false;
     createDisplayTab(1,5);
     //Phân trang - done
     //Search - done
@@ -121,6 +121,7 @@
 
         document.getElementById("table").innerHTML = drawTab;
         createNumberPage();
+        // return flag;
     }
 
     //Hàm khởi tạo bảng full tất cả sản phẩm, chưa cần dùng
@@ -154,10 +155,10 @@
     function editName(index) {
         let newName = prompt("Nhập tên mới: ");
         if (newName == "" || newName == null) {
-            createDisplayTab(5);
+            createDisplayTab(1,5);
         } else {
             productArray[index] = newName;
-            createDisplayTab(5);
+                createDisplayTab(1,5);
         }
 
     }
@@ -167,9 +168,9 @@
         let inform = confirm("Bạn có muốn xoá " + productArray[index] + "ra khỏi danh sách sản phẩm");
         if (inform) {
             productArray.splice(index, 1);
-            createDisplayTab(5);
+            createDisplayTab(1,5);
         } else {
-            createDisplayTab(5);
+            createDisplayTab(1,5);
         }
     }
 
@@ -220,35 +221,11 @@
             }
         }
         drawSearchTable += "    </table>";
-
-        // for (let i = 0; i < productArray.length; i++) {
-        //     if (searchObjVar.trim().toLowerCase() == productArray[i].toLowerCase()) {
-        //         drawSearchTable = "<table>\n" +
-        //             "        <tr>\n" +
-        //             "            <th>STT</th>\n" +
-        //             "            <th colspan='3'>Tên sản phẩm</th>\n" +
-        //             "        </tr>\n" +
-        //             "        <tr>\n" +
-        //             "            <td>" + (i + 1) + "</td>\n" +
-        //             "            <td>" + productArray[i] + "</td>\n" +
-        //             "            <td>\n" +
-        //             "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
-        //             "            </td>\n" +
-        //             "            <td>\n" +
-        //             "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
-        //             "            </td>\n" +
-        //             "        </tr>\n" +
-        //             "    </table>";
-        //         document.getElementById("table").innerHTML = drawSearchTable;
-        //     } else {
-        //         document.getElementById("dialog").innerHTML = "Sản phẩm bạn tìm không có trong danh sách";
-        //     }
-        // }
     }
 
     //Hàm reset
     function resetList() {
-        createDisplayTab(5);
+        createDisplayTab(1,5);
         document.getElementById("inputObject").value = "";
         document.getElementById("searchName").value = "";
         document.getElementById("dialog").innerHTML = "";
@@ -261,7 +238,7 @@
                 productArray[i].toLowerCase().slice(1).toLowerCase();
         }
         productArray = productArray.sort();
-        createDisplayTab(5);
+        createDisplayTab(1,5);
     }
 
 </script>
