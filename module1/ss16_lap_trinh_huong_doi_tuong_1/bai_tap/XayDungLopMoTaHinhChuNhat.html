@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="200">
+</canvas>
+</body>
+<script>
+
+    class Rectangle {
+        constructor (width,height) {
+            this.width = width;
+            this.height = height;
+        }
+        getArea() {
+            return this.length * this.width;
+        }
+        getPerimeter() {
+            return (this.length + this.width)*2;
+        }
+    }
+
+    let rectangle = new Rectangle(500,200);
+    let areaRec = rectangle.getArea();
+    let perimeterRec = rectangle.getPerimeter();
+    let width = rectangle.width;
+    let height = rectangle.height;
+    console.log(areaRec);
+    console.log(perimeterRec);
+
+    let c = document.getElementById("myCanvas");
+    let ctx = c.getContext("2d");
+    ctx.beginPath(); // Khai báo vẽ đường thẳng mới
+    ctx.moveTo(0,0); // Xác định điểm bắt đầu
+    ctx.lineTo(width,0); // Xác định điểm kết thúc
+    ctx.strokeStyle = 'red' // Màu của đường thẳng
+    ctx.lineWidth = 10;
+    ctx.stroke();
+
+    ctx.beginPath(); // Khai báo vẽ đường thẳng mới
+    ctx.moveTo(width,0); // Xác định điểm bắt đầu
+    ctx.lineTo(width,height); // Xác định điểm kết thúc
+    ctx.strokeStyle = 'red' // Màu của đường thẳng
+    ctx.lineWidth = 10; //Độ rộng
+    ctx.stroke(); // Tiến hành vẽ
+
+    ctx.beginPath(); // Khai báo vẽ đường thẳng mới
+    ctx.moveTo(width,height); // Xác định điểm bắt đầu
+    ctx.lineTo(0,height); // Xác định điểm kết thúc
+    ctx.strokeStyle = 'red' // Màu của đường thẳng
+    ctx.lineWidth = 10; //Độ rộng
+    ctx.stroke(); // Tiến hành vẽ
+
+    ctx.beginPath(); // Khai báo vẽ đường thẳng mới
+    ctx.moveTo(0,height); // Xác định điểm bắt đầu
+    ctx.lineTo(0,0); // Xác định điểm kết thúc
+    ctx.strokeStyle = 'red' // Màu của đường thẳng
+    ctx.lineWidth = 10; //Độ rộng
+    ctx.stroke(); // Tiến hành vẽ
+
+</script>
+</html>

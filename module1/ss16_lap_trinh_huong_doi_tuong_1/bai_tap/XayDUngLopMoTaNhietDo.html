@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Temperature {
+        constructor(degreeC) {
+            this.degreeC = degreeC;
+        }
+        convertCToF () {
+            return this.degreeC*9/5+32;
+        }
+        convertCToKelvin () {
+            return this.degreeC+273.15;
+        }
+    }
+
+    let temperature = new Temperature (25);
+        document.write("Nhiệt độ F tương ứng là: " + temperature.convertCToF() + "<br>");
+    document.write("Nhiệt độ Kelvin tương ứng là: " + temperature.convertCToKelvin());
+</script>
+</html>
