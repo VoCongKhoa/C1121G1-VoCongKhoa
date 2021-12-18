@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hàm</title>
+</head>
+<body>
+<table border=1px>
+    <tr>
+        <td>1</td>
+        <td onclick="showPrice(1)">cafe</td>
+
+    </tr>
+</table>
+<p id="1"></p>
+<table border=1px>
+    <tr>
+        <td>2</td>
+        <td onclick="showPrice(2)">cam vắt</td>
+    </tr>
+</table>
+<p id="2"></p>
+<table border=1px>
+    <tr>
+        <td>3</td>
+        <td onclick="showPrice(3)">Nước ép cà rốt</td>
+
+    </tr>
+</table>
+<p id="3"></p>
+<table border=1px>
+    <tr>
+        <td>4</td>
+        <td onclick="showPrice(4)">Nước ép cà chua</td>
+
+    </tr>
+</table>
+<p id="4"></p>
+<table border=1px>
+    <tr>
+        <td>5</td>
+        <td onclick="showPrice(5)">Nước lọc</td>
+
+    </tr>
+</table>
+<p id="5"></p>
+<table border=1px>
+    <tr>
+        <td>6</td>
+        <td onclick="showPrice(6)">Nước dừa</td>
+
+    </tr>
+</table>
+<p id="6"></p>
+<table border=1px>
+    <tr>
+        <td>7</td>
+        <td onclick="showBill()">thoát gọi món</td>
+    </tr>
+</table>
+<p id="7"></p>
+</body>
+<script>
+    let flag = true;
+    let menuArr = ['Cafe', 'Cam vắt', 'Nước ép cà rốt', 'Nước ép cà chua', 'Nước lọc', 'Nước dừa'];
+    let priceArr = [10000, 25000, 22000, 20000, 5000, 15000];
+    let orderedMenu = [];
+    let orderedQuantity = [];
+
+    function showPrice(order) {
+        switch (order) {
+            case 1:
+                subTable(order, priceArr);
+                break;
+            case 2:
+                subTable(order, priceArr);
+                break;
+            case 3:
+                subTable(order, priceArr);
+                break;
+            case 4:
+                subTable(order, priceArr);
+                break;
+            case 5:
+                subTable(order, priceArr);
+                break;
+            case 6:
+                subTable(order, priceArr);
+                break;
+        }
+    }
+
+    function subTable(order, priceArr) {
+        if (flag) {
+            // console.log(priceArr[order-1]);
+            let drawSubTab = "<table border=1px>" +
+                "<tr>" +
+                "<td>Giá</td>" +
+                "<td>SL</td>" +
+                // "<td>TT</td>" +
+                "<td rowspan='2'><button onclick='addItem(" + priceArr[order - 1] + ", " + order + ")'>Add</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td><input id='giaTien' style='width: 50px' value=" + priceArr[order - 1] + "></td>" +
+                "<td><input id='soLuong" + (order - 1) + "' style='width: 50px'></td>" +
+                // "<td><input id='thanhTien' style='width: 50px'></td>" +
+                "</tr>" +
+                "</table>"
+            document.getElementById(order).innerHTML = drawSubTab;
+            flag = false;
+        } else {
+            document.getElementById(order).innerHTML = "";
+            flag = true;
+        }
+    }
+
+    // function showMoney(soLuong,order) {
+    //     let val = document.getElementById('giaTien').value;
+    //     document.getElementById('thanhTien').value = soLuong*val;
+    // }
+
+    function addItem(price, order) {
+        let confirmBox = confirm("Bạn có xác nhận muốn chọn món này?")
+        if (confirmBox) {
+            let soLuong = document.getElementById("soLuong" + (order - 1)).value;
+            orderedMenu.push(menuArr[order - 1]);
+            orderedQuantity.push(soLuong);
+            alert("Bạn đã order " + soLuong + " " +menuArr[order - 1]+"!!!")
+        }
+        // console.log(menuArr[order-1])
+        console.log(orderedMenu)
+        console.log(orderedQuantity)
+    }
+
+    function showBill() {
+        let sum = 0;
+        let drawBill = "<table border=1px>" +
+            "<tr>" +
+            "<td>Thức uống</td>" +
+            "<td>SL</td>" +
+            "<td>Giá</td>" +
+            "<td>TT</td>" +
+            "</tr>";
+
+        for (let i = 0; i < orderedMenu.length; i++) {
+
+            drawBill += "<tr>" +
+                "<td>" + orderedMenu[i] + "</td>" +
+                "<td>" + orderedQuantity[i] + "</td>" +
+                "<td>" + priceArr[menuArr.indexOf(orderedMenu[i])] + "</td>" +
+                "<td>" + orderedQuantity[i] * priceArr[menuArr.indexOf(orderedMenu[i])] + "</td>" +
+                "</tr>";
+            sum += orderedQuantity[i] * priceArr[menuArr.indexOf(orderedMenu[i])];
+        }
+
+        drawBill += "<tr>" +
+            "<td>Tổng bill</td>" +
+            "<td colspan='3'>"+ sum +"</td>" +
+            "</tr>" +
+            "</table>";
+
+        document.getElementById("7").innerHTML = drawBill;
+        console.log(sum)
+    }
+</script>
+</html>
