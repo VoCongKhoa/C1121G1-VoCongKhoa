@@ -8,47 +8,50 @@
 
 </body>
 <script>
-    let inputStr = prompt("Nhập chuỗi bất kỳ: ");
-    // inputStr = inputStr.trim().split(" ").join("").split("").sort();
-    // console.log(inputStr);
-
-    // let countDupLet = checkDifferentLetter(inputStr).length -1;
-    // let dupLet = "";
-    // for (let i = 0; i < checkDifferentLetter(inputStr).length-1; i++) {
-    //     dupLet += checkDifferentLetter(inputStr)[i];
+    // let inputStr = prompt("Nhập chuỗi bất kỳ: ");
+    // // inputStr = inputStr.trim().split(" ").join("").split("").sort();
+    // // console.log(inputStr);
+    //
+    // // let countDupLet = checkDifferentLetter(inputStr).length -1;
+    // // let dupLet = "";
+    // // for (let i = 0; i < checkDifferentLetter(inputStr).length-1; i++) {
+    // //     dupLet += checkDifferentLetter(inputStr)[i];
+    // // }
+    // // alert(dupLet);
+    // // alert("Chuỗi có " + countDupLet + " ký tự trùng nhau là: "
+    // //     + dupLet.split("").join(","));
+    //
+    // //Hàm xử lý chuỗi
+    // //Xử lý chuỗi thành mảng A
+    // //Khai báo mảng mới B, có phần tử đầu tiên là A[0]
+    // //Dùng for duyệt A, từ A[1]
+    // //Kiểm tra từng phần tử trong A có tồn tại trong B hay không, nếu không tồn tại thì push vào B
+    //
+    // console.log(checkDifferentLetter(inputStr));
+    //
+    // function checkDifferentLetter(string) {
+    //     string = string.trim().split(" ").join("").split("").sort();
+    //     let newArr = [string[0]];
+    //     let flag = true;
+    //     // let anyLetter = string[0];
+    //     // let tempArray = [];
+    //     let checkLetter;
+    //     // let count = 0;
+    //     // let duplicatedStrArr = [];
+    //     for (let i = 0; i < string.length; i++) {
+    //         checkLetter = string[i];
+    //         for (let j = 0; j < string.length; j++) {
+    //             if (checkLetter == string[j]) {
+    //                 string.splice(j,1);
+    //             }
+    //         }
+    //     }
+    //     console.log(string);
+    //     // duplicatedStrArr.push(count);
+    //     return string;
     // }
-    // alert(dupLet);
-    // alert("Chuỗi có " + countDupLet + " ký tự trùng nhau là: "
-    //     + dupLet.split("").join(","));
 
-    //Hàm xử lý chuỗi
-    //Xử lý chuỗi thành mảng A
-    //Khai báo mảng mới B, có phần tử đầu tiên là A[0]
-    //Dùng for duyệt A, từ A[1]
-    //Kiểm tra từng phần tử trong A có tồn tại trong B hay không, nếu không tồn tại thì push vào B
-
-    console.log(checkDifferentLetter(inputStr));
-
-    function checkDifferentLetter(string) {
-        string = string.trim().split(" ").join("").split("").sort();
-        let newArr = [string[0]];
-        let flag = true;
-        // let anyLetter = string[0];
-        // let tempArray = [];
-        let checkLetter;
-        // let count = 0;
-        // let duplicatedStrArr = [];
-        for (let i = 0; i < string.length; i++) {
-            checkLetter = string[i];
-            for (let j = 0; j < string.length; j++) {
-                if (checkLetter == string[j]) {
-                    string.splice(j,1);
-                }
-            }
-        }
-        console.log(string);
-        // duplicatedStrArr.push(count);
-        return string;
-    }
+    let arr = [1,10,6,3];
+    console.log(arr.sort());
 </script>
 </html>

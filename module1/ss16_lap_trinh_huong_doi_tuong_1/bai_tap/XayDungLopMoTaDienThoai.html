@@ -5,39 +5,176 @@
     <title>Xây dựng lớp mô tả điện thoại</title>
 </head>
 <body>
-
+<h1>NOKIA</h1>
+OFF<input type="range" min="0" max="1" onclick="nokia.batTat()" style="width: 30px">ON</input><br><br>
+<textarea rows="5" cols="30"></textarea><br><br>
+<button onclick="nokia.kiemTraBatTat()">kiemTraBatTat</button>
+<button onclick="nokia.sacPin()">sacPin</button>
+<button onclick="nokia.soanTinNhan()">soanTinNhan</button>
+<button onclick="nokia.guiTinNhan ()">guiTinNhan</button>
+<button onclick="nokia.nhanTinNhan(nokia,iPhone)">nhanTinNhan</button>
+<button onclick="nokia.xemHopThuDen()">xemHopThuDen</button>
+<button onclick="nokia.xemTinDaGui()">xemTinDaGui</button>
+<h1>IPHONE</h1>
+OFF<input type="range" min="0" max="1" onclick="iPhone.batTat()" style="width: 30px">ON</input><br><br>
+<button onclick="iPhone.kiemTraBatTat()">kiemTraBatTat</button>
+<button onclick="iPhone.sacPin()">sacPin</button>
+<button onclick="iPhone.soanTinNhan()">soanTinNhan</button>
+<button onclick="iPhone.guiTinNhan ()">guiTinNhan</button>
+<button onclick="iPhone.nhanTinNhan(iPhone,nokia)">nhanTinNhan</button>
+<button onclick="iPhone.xemHopThuDen()">xemHopThuDen</button>
+<button onclick="iPhone.xemTinDaGui()">xemTinDaGui</button>
 </body>
 <script>
     class Mobile {
-        constructor (trangThaiPin,tinNhanNhap,hopThuDen,tinDaGui) {
-            this.trangThaiPin = trangThaiPin;
-            this.boNhoTinNhan = tinNhanNhap;
-            this.hopThuDen = hopThuDen;
-            this.tinDaGui = tinDaGui;
+        constructor(phanTramPin, boNhoTinNhanNhap, boNhoTinNhanDen, boNhoTinNhanDaGui, flag) {
+            this.phanTramPin = phanTramPin;
+            this.boNhoTinNhanNhap = boNhoTinNhanNhap;
+            this.boNhoTinNhanDen = boNhoTinNhanDen;
+            this.boNhoTinNhanDaGui = boNhoTinNhanDaGui;
+            this.flag = flag; //Thêm thuộc tính flag để kiểm tra bật tắt
         }
 
-        kiemTraBatTat () {
+        kiemTraBatTat() {
+            if (this.flag) {
+                alert("Điện thoại đang bật");
+            } else {
+                alert("Điện thoại đang tắt");
+            }
 
+            //Phần trăm pin dưới 10 thì thông báo sạc pin
+            if (this.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+            }
+            this.phanTramPin--;
+        }
+
+        batTat() {
+            this.flag = !this.flag;
+            // return mobile.flag = !mobile.flag;
+            console.log(this.flag);
+            // console.log(flag2);
+            if (this.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+
+            }
+                this.phanTramPin--;
+
+        }
+
+        //Phần trăm pin dưới 10, tối đa 50dv
+        sacPin() {
+            if (this.flag) {
+                while (10 < this.phanTramPin && this.phanTramPin < 50) {
+                    alert("Bắt đầu sạc pin")
+                    this.phanTramPin++;
+                }
+                if (this.phanTramPin == 50) {
+                    alert("Điện thoại bạn full pin")
+                }
+            } else {
+                alert("Điện thoại đang tắt");
+            }
+
+        }
+
+        //Soạn TN --> gởi đến bộ nhớ TN nháp, để chuẩn bị gửi đi
+        soanTinNhan() {
+            if (this.flag) {
+                let tinNhan = prompt("Soạn tin nhắn");
+                this.boNhoTinNhanNhap.push(tinNhan);
+            } else {
+                alert("Điện thoại đang tắt");
+            }
+
+            if (this.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+            }
+                this.phanTramPin--;
+
+        }
+
+        //Sau khi soạn TN, nhấn Gửi TN để lấy TN trong bộ nhớ TN nháp để gửi đi, lưu TN đã gửi đi trong bộ nhớ TN đã gửi
+        guiTinNhan() {
+            if (this.flag) {
+                if (this.boNhoTinNhanNhap.length != 0) {
+                    let tinNhan = this.boNhoTinNhanNhap[0];
+                    this.boNhoTinNhanDaGui.push(this.boNhoTinNhanNhap[0]);
+                    alert("Bạn đã gửi tin nhắn:" + tinNhan);
+                    console.log(this.boNhoTinNhanDaGui);
+                } else {
+                    alert("Bạn chưa soạn tin nhắn!");
+                }
+
+            } else {
+                alert("Điện thoại đang tắt");
+            }
+            if (this.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+            }
+                this.phanTramPin--;
+        }
+
+        //Nhận TN ở máy 1 sau khi bấm nút gửi TN ở máy 2,
+        // đồng thời remove TN từ bộ nhớ TN nháp của máy 2 sang bộ nhớ TN đến của máy 1
+        nhanTinNhan(mobile1, mobile2) {
+            if (mobile1.flag) {
+                let tinNhan = mobile2.boNhoTinNhanNhap.shift();
+                mobile1.boNhoTinNhanDen.push(tinNhan);
+                alert("Tin nhắn nhận được là: " + mobile1.boNhoTinNhanDen[0]);
+            } else {
+                alert("Điện thoại đang tắt")
+            }
+            if (mobile1.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+            } else {
+                mobile1.phanTramPin--;
+            }
+        }
+
+        xemHopThuDen() {
+            if (this.flag) {
+                alert(this.boNhoTinNhanDen.join(","));
+            } else {
+                alert("Điện thoại đang tắt")
+            }
+            if (this.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+            } else {
+                this.phanTramPin--;
+            }
+        }
+
+        xemTinDaGui() {
+            if (this.flag) {
+                alert(this.boNhoTinNhanDaGui.join(","));
+            } else {
+                alert("Điện thoại đang tắt")
+            }
+            if (this.phanTramPin < 10) {
+                alert("Bạn cần sạc pin điện thoại");
+            } else {
+                this.phanTramPin--;
+            }
         }
     }
 
-    let nokia = new Mobile();
-    let iPhone = new Mobile();
+    let
+        tinNhanNhapArrnokia = [];
+    let
+        tinNhanDenArrnokia = [];
+    let
+        tinNhanDaGuiArrnokia = [];
+    let
+        tinNhanNhapArriPhone = [];
+    let
+        tinNhanDenArriPhone = [];
+    let
+        tinNhanDaGuiArriPhone = [];
 
-    class Student {
-        constructor (name,age,address,gender) {
-            this.name = name;
-            this.age = age;
-            this.address = address;
-            this.gender = gender;
-        }
-
-        study () {
-            ...
-        }
-        playSport () {
-            ...
-        }
-    }
+    let
+        nokia = new Mobile(50, tinNhanNhapArrnokia, tinNhanDenArrnokia, tinNhanDaGuiArrnokia, true);
+    let
+        iPhone = new Mobile(50, tinNhanNhapArriPhone, tinNhanDenArriPhone, tinNhanDaGuiArriPhone, true);
 </script>
 </html>

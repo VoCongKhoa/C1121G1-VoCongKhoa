@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm tính tổng các số chẵn trong ma trận có kích thước m*n.</title>
+</head>
+<body>
+
+</body>
+<script>
+    let matrixLength = parseInt(prompt("Nhập chiều dài mảng cha: "));
+    let elementLength = parseInt(prompt("Nhập mảng con: "));
+    let inpArr = new Array(matrixLength).fill(new Array(elementLength));
+    let random = Math.floor(Math.random()*50+1);
+    let sum = 0;
+    for (let i = 0; i < matrixLength; i++) {
+        for (let j = 0; j < elementLength; j++) {
+            inpArr[i][j] = random;
+            random = Math.floor(Math.random()*50+1);
+        }
+
+    }
+
+    //Cho vòng lặp mới , vì nếu gộp chung thì hàm random sẽ chạy, đưa ra kết quả sum bị sai
+    for (let i = 0; i < matrixLength; i++) {
+        for (let j = 0; j < elementLength; j++) {
+            if (inpArr[i][j]%2 == 0) {
+                sum += inpArr[i][j];
+            }
+        }
+
+    }
+    console.log(inpArr);
+    console.log(sum);
+
+</script>
+</html>

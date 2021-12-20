@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hàm liệt kê các số nguyên tố trong mảng 2 chiều</title>
+</head>
+<body>
+
+</body>
+<script>
+    let matrixLength = parseInt(prompt("Nhập chiều dài mảng cha: "));
+    let elementLength = parseInt(prompt("Nhập mảng con: "));
+    let inpArr = new Array(matrixLength).fill(new Array(elementLength));
+    let random = Math.floor(Math.random() * 50 + 1);
+    for (let i = 0; i < matrixLength; i++) {
+        for (let j = 0; j < elementLength; j++) {
+            inpArr[i][j] = random;
+            random = Math.floor(Math.random() * 50 + 1);
+        }
+
+    }
+
+    function checkSoNguyenTo(number) {
+        let uocSo = 1;
+        for (let i = 2; i <= number; i++) {
+            if (number < 2) {
+                return false;
+            } else if (number % i == 0) {
+                if (uocSo < 2) {
+                    uocSo++;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return uocSo > 1;
+    }
+
+    //List SNT
+    let resultArr = [];
+    for (let i = 0; i < matrixLength; i++) {
+        for (let j = 0; j < elementLength; j++) {
+            if (checkSoNguyenTo(inpArr[i][j])) {
+                resultArr.push(inpArr[i][j]);
+            }
+        }
+
+    }
+
+    document.write("Các số nguyên tố trong mảng 2 chiều là: " + resultArr.join(",") + "<br>");
+    document.write("Số nguyên tố có trong mảng 2 chiều là: " + resultArr.length);
+    console.log(resultArr);
+</script>
+</html>
