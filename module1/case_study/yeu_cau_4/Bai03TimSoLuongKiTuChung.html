@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm số lượng kí tự chung</title>
+</head>
+<body>
+
+</body>
+<script>
+    let strArr1 = prompt("Nhập chuỗi thứ nhất:").trim().toLowerCase().split("").sort();
+    let strArr2 = prompt("Nhập chuỗi thứ hai:").trim().toLowerCase().split("").sort();
+    let result = [];
+    commonCharacterCount(strArr1,strArr2);
+    alert("Hai chuỗi có "+result.length+" ký tự chung là: "
+    +result);
+    function commonCharacterCount(str1, str2) {
+        for (let i = 0; i < str1.length; i++) {
+            if (str1[i]!=str1[i+1]){
+                for (let j = 0; j < str2.length; j++) {
+                    if (str1[i]==str2[j]) {
+                        result.push(str1[i]);
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+</script>
+</html>

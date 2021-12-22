@@ -5,48 +5,184 @@
     <title>Xổ Số</title>
 </head>
 <body>
-<h1>Xổ Số</h1>
-<table>
-    <tr>
-        <td onclick=""><input></td>
-        <td onclick=""><input></td>
-        <td onclick=""><input></td>
-        <td onclick=""><input></td>
-        <td onclick=""><input></td>
-        <td onclick=""><input></td>
-    </tr>
-</table>
+<p id="show"></p>
+<!--<h1>Xổ Số</h1>-->
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td><input onclick="number1.pickNumber()"></td>-->
+<!--        <td><input onclick="number2.pickNumber()"></td>-->
+<!--        <td><input onclick="number3.pickNumber()"></td>-->
+<!--        <td><input onclick="number4.pickNumber()"></td>-->
+<!--        <td><input onclick="number5.pickNumber()"></td>-->
+<!--        <td><input onclick="number6.pickNumber()"></td>-->
+<!--    </tr>-->
+<!--</table>-->
 
-<button>Mua vé</button>
-<button>Xem kết quả</button>
+<!--<button onclick="muaVe()">Mua vé</button>-->
+<!--<button>Xem kết quả</button>-->
 
 </body>
 <script>
-class XoSo {
-    constructor(array,number) {
-        this.array = array
-        this.number = number;
+
+    class Ticket {
+        constructor() {
+            this.listNumber = [];
+            this.number = null;
+
+        }
+        randomNumber () {
+            this.number = Math.round(Math.random()*99);
+            return this.number;
+        }
+        pickNumber(){
+            this.number = prompt("Nhập 0-99");
+            this.listNumber.push(this.number);
+        }
+        getListNumber(){
+            return this.listNumber;
+        }
 
     }
 
-    randomNumber () {
+    let number1 = new Ticket();
+    let number2 = new Ticket();
+    let number3 = new Ticket();
+    let number4 = new Ticket();
+    let number5 = new Ticket();
+    let number6 = new Ticket();
 
+    console.log(number1.randomNumber());
+    console.log(number2.randomNumber());
+    console.log(number3.randomNumber());
+    console.log(number4.randomNumber());
+    console.log(number5.randomNumber());
+    console.log(number6.randomNumber());
+    let resultAr = [];
+    showBox();
+
+    // function daySoKetQua() {
+    //     for (let i = 0; i < 6; i++) {
+    //         resultAr[i] = Math.round(Math.random() * 99);
+    //     }
+    //     console.log(resultAr);
+    // }
+
+    // function chonSo() {
+    //     return prompt("Bạn hãy nhập số ngẫu nhiên từ 0-99:");
+    // }
+
+    function muaVe() {
+        let number;
+        do {
+            number = parseInt(prompt("Bạn có 2 lựa chọn:\n" +
+                "1.Bạn muốn tự chọn số.\n" +
+                "2.Hệ thống tự random."));
+            // alert("Bạn vui lòng chọn lại số 1 hoặc 2.");
+        } while (number != 1 && number != 2)
+
+        if (number == 1) {
+            alert("Bạn hãy kích vào mỗi ô để chọn số của bạn")
+        } else if (number == 2) {
+            daySoKetQua()
+        } else {
+
+        }
     }
 
-    displayTable () {
+    function showBox() {
+        let show = "<h1>Xổ Số</h1>" +
+                "<table>" +
+                    "<tr>" +
+                    "<td><input onclick='number1.pickNumber()'></td>" +
+                    "<td><input onclick='number2.pickNumber()'></td>" +
+                    "<td><input onclick='number3.pickNumber()'></td>" +
+                    "<td><input onclick='number4.pickNumber()'></td>" +
+                    "<td><input onclick='number5.pickNumber()'></td>" +
+                    "<td><input onclick='number6.pickNumber()'></td>" +
+                    "</tr>" +
+                "</table>" +
+                "<table>" +
+                "<tr>" +
+                "<td><input></td>" +
+                "<td><input></td>" +
+                "<td><input></td>" +
+                "<td><input></td>" +
+                "<td><input></td>" +
+                "<td><input></td>" +
+                "</tr>" +
+                "</table>" +
 
+                "<button onclick='muaVe()'>Mua vé</button>" +
+                "<button>Xem kết quả</button>"
+        document.getElementById("show").innerHTML = show;
     }
+    showResult()
+    function showResult() {
+        let show = "<h1>Xổ Số</h1>" +
+            "<table>" +
+            "<tr>" +
+            "<td><input onclick='number1.pickNumber()'></td>" +
+            "<td><input onclick='number2.pickNumber()'></td>" +
+            "<td><input onclick='number3.pickNumber()'></td>" +
+            "<td><input onclick='number4.pickNumber()'></td>" +
+            "<td><input onclick='number5.pickNumber()'></td>" +
+            "<td><input onclick='number6.pickNumber()'></td>" +
+            "</tr>" +
+            "</table>" +
+            "<table>" +
+            "<tr>" +
+            "<td><input value='"+number1.randomNumber()+"'></td>" +
+            "<td><input value='"+number2.randomNumber()+"'></td>" +
+            "<td><input value='"+number3.randomNumber()+"'></td>" +
+            "<td><input value='"+number4.randomNumber()+"'></td>" +
+            "<td><input value='"+number5.randomNumber()+"'></td>" +
+            "<td><input value='"+number6.randomNumber()+"'></td>" +
+            "</tr>" +
+            "</table>" +
 
-    showResult () {
-        
+            "<button onclick='muaVe()'>Mua vé</button>" +
+            "<button>Xem kết quả</button>"
+        document.getElementById("show").innerHTML = show;
     }
-}
+    //     class Person {
+    //         constructor() {
+    //             this.ticket;
+    //             this.rewward;
+    //         }
+    //
+    //         play() {
+    //
+    //         }
+    //         pickNumber() {
+    //
+    //         }
+    //
+    //         win() {
+    //
+    //         }
+    //     }
 
-let personArr = [];
-let machineArr = [];
 
-let person = new XoSo(personArr);
-let machine = new XoSo(machineArr);
+    //
+    // class Machine {
+    //         constructor() {
+    //             this.listNumber;
+    //             this.reward;
+    //
+    //         }
+    //
+    //         inform() {
+    //
+    //         }
+    //         randomNumber() {
+    //
+    //         }
+    // }
+    // let personArr = [];
+    // let machineArr = [];
+    //
+    // let person = new XoSo(personArr);
+    // let machine = new XoSo(machineArr);
 
 </script>
 </html>
