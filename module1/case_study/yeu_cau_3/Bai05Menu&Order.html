@@ -114,11 +114,6 @@
         }
     }
 
-    // function showMoney(soLuong,order) {
-    //     let val = document.getElementById('giaTien').value;
-    //     document.getElementById('thanhTien').value = soLuong*val;
-    // }
-
     function addItem(price, order) {
         let confirmBox = confirm("Bạn có xác nhận muốn chọn món này?")
         if (confirmBox) {
@@ -127,9 +122,6 @@
             orderedQuantity.push(soLuong);
             alert("Bạn đã order " + soLuong + " " +menuArr[order - 1]+"!!!")
         }
-        // console.log(menuArr[order-1])
-        console.log(orderedMenu)
-        console.log(orderedQuantity)
     }
 
     function showBill() {

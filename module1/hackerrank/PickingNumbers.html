@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Picking Numbers</title>
+</head>
+<body>
+
+</body>
+<script>
+    function pickingNumbers(a) {
+        let max = 0;
+        a = a.sort((a, b) => b - a);
+        let c
+        for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j < a.length; j++) {
+                a[j] = a[j] - (a[a.length - 1] + 1);
+            }
+            if (a.indexOf(0) == -1) {
+                c = a.splice(a.indexOf(-1));
+            } else {
+                c = a.splice(a.indexOf(0));
+            }
+            if (c.length > max) {
+                max = c.length;
+            }
+        }
+        return max
+    }
+
+    pickingNumbers([4, 97, 5, 97, 97, 4, 97, 4, 97, 97, 97, 97, 4, 4, 5, 5, 97, 5, 97, 99, 4, 97, 5, 97, 97, 97, 5, 5, 97, 4, 5, 97, 97, 5, 97, 4, 97, 5, 4, 4, 97, 5, 5, 5, 4, 97, 97, 4, 97, 5, 4, 4, 97, 97, 97, 5, 5, 97, 4, 97, 97, 5, 4, 97, 97, 4, 97, 97, 97, 5, 4, 4, 97, 4, 4, 97, 5, 97, 97, 97, 97, 4, 97, 5, 97, 5, 4, 97, 4, 5, 97, 97, 5, 97, 5, 97, 5, 97, 97, 97])
+
+</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hurdle Race</title>
+</head>
+<body>
+
+</body>
+<script>
+    function hurdleRace(k, height) {
+        height.sort((a,b)=>b-a);
+        let result = 0;
+        (k >= height[0]) ? result=0 : result=(height[0]-k);
+        return console.log(result)
+    }
+    hurdleRace(4,[1,6,3,5,2])
+</script>
+</html>

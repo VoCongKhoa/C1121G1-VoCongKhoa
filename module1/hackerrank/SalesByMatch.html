@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales by Match</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    // Sample Input
+    //
+    // STDIN                                    Function
+    // -----                                    --------
+    //     9                                        n = 9
+    // 10 20 20 10 10 30 50 10 20               ar = [10, 20, 20, 10, 10, 30, 50, 10, 20]
+    //
+    // Sample Output
+    //
+    // 3
+
+    function sockMerchant(ar) {
+        ar = ar.sort(function (a, b) {
+            return a - b;
+        });
+        let count = 0;
+        let numPair = 0;
+        for (let i = 0; i < ar.length; i = i + count + 1) {
+            count = ar.lastIndexOf(ar[i]) - ar.indexOf(ar[i]);
+            numPair += Math.ceil(count / 2);
+        }
+        return numPair;
+    }
+
+    // sockMerchant([1, 2, 3, 6, 5, 2, 7, 3, 2, 3, 4, 4, 4, 4])
+    console.log(sockMerchant([1,2,3,6,5,2,7,3,2,3,4,4,4,4,5,6]));
+</script>
+</html>

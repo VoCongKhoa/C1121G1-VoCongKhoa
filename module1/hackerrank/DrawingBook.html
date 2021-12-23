@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drawing Book</title>
+</head>
+<body>
+
+</body>
+<script>
+    function pageCount(n, p) {
+        let firstCount = (p % 2 == 0) ? (p / 2) : (p - 1) / 2;
+        let secondCount = 0;
+        for (let i = n; i > p; i = i - 2) {
+            if (i==p){
+                break;
+            } else if (i>(p+1)) {
+                secondCount++;
+            } else if (i%2 == 0) {
+                secondCount = 1;
+                break;
+            }
+        }
+        return (firstCount < secondCount) ? firstCount : secondCount;
+    }
+
+    // sockMerchant([1, 2, 3, 6, 5, 2, 7, 3, 2, 3, 4, 4, 4, 4])
+    console.log(pageCount(7, 4));
+</script>
+</html>

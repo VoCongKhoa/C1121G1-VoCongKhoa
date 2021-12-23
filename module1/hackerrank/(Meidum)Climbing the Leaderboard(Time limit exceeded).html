@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climbing the Leaderboard</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //Hàm ok nhưng lỗi Time limit exceeded
+    //Logic: Add điểm vào arr ranked--> sort arr ranked
+    //--> tạo arr mới là order(thứ hạng): chứa thứ hạng của arr ranked
+    //-->set và sort arr order (thứ hạng có thể trùng nhau)
+    //--> push giá trị thứ hàng của arr order vào result(dựa vào chỉ số pos tìm được thông qua hàm ranked.indexOf(player[i]))
+    function climbingLeaderboard(ranked, player) {
+        let order = [1];
+        let result = [];
+        let pos;
+        for (let i = 0; i < player.length; i++) {
+            ranked.push(player[i]);
+            ranked.sort((a, b) => b - a);
+            pos = ranked.indexOf(player[i]);
+            for (let j = 0; j < ranked.length; j++) {
+                order.sort((a, b) => a - b);
+                if (ranked[j + 1] == ranked[j]) {
+                    order[j + 1] = order[j];
+                } else if (ranked[j + 1] < ranked[j]) {
+                    order[j + 1] = order[j] + 1;
+                }
+            }
+            result.push(order[pos])
+        }
+        return result;
+    }
+    climbingLeaderboard([100, 100,100,90, 90, 90, 80,80, 70, 60],[50,60,85,90,100]);
+</script>
+</html>
