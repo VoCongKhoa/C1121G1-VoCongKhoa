@@ -8,21 +8,21 @@
 
 </body>
 <script>
-    let inputStr = prompt("Nhập chuỗi bất kỳ: ");
+
+    let inputStr = prompt("Nhập chuỗi bất kỳ: ").trim();
     let result = checkDifferentLetter(inputStr);
+    console.log(result);
     alert("Chuỗi có " + result.length + " ký tự trùng nhau là: "
         + result.join(","));
     function checkDifferentLetter(string) {
-        string = string.trim().split(" ").join("").split("");
-        for (let i = 0; i < string.length-1; i++) {
-            for (let j = i+1; j < string.length; j++) {
-                if (string[i] == string[j]) {
-                    string.splice(j,1);
-                    console.log(string);
-                }
+        let result = [];
+        string = string.split("").sort();
+        for (let i = 0; i < string.length; i++) {
+            if (result.indexOf(string[i])== -1) {
+                result.push(string[i]);
             }
         }
-        return string;
+        return result;
     }
 </script>
 </html>
