@@ -11,10 +11,10 @@
     //     Ví dụ: numerators = [5, 2, 5] và denominators = [6, 3, 4], thì kết quả maxFraction(numerators, denominators) = 2.
     // ⇨	5/4 là phân số lớn nhất, có chỉ số là 2.
 
-    let numerators = [5, 2, 5, 10, 9, 8, 1, 4];
-    let denominators = [6, 3, 4, 9, 8, 9, 5, 2];
+    let numerators = [-5, -2, -5, -10, -9, -8, -1, 4, 5];
+    let denominators = [-6, -3, 4, -9, -8, -9, -5, 2, 1];
     let fraction = [];
-    let maxFraction = 0;
+    let maxFraction = [numerators[0]/denominators[0]];
     for (let i = 0; i <numerators.length; i++) {
         fraction[i] = numerators[i] / denominators[i];
     }
@@ -23,6 +23,7 @@
             maxFraction = fraction[i];
         }
     }
+    // console.log(maxFraction);
     // console.log(fraction);
     // console.log(fraction.indexOf(maxFraction));
     document.write(`${numerators[fraction.indexOf(maxFraction)]}/${denominators[fraction.indexOf(maxFraction)]} là
