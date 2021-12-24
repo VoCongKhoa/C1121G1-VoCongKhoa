@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+    <style>
+        table {
+            width: 40%;
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid;
+
+        }
+
+        .pageTable {
+            border: none;
+
+        }
+
+        .center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td:nth-child(1) {
+            width: 10%;
+            border: 1px solid;
+        }
+
+        td:nth-child(2) {
+            width: 30%;
+            border: 1px solid;
+        }
+
+        td:nth-child(3) {
+            width: 15%;
+            border: 1px solid;
+        }
+
+        td:nth-child(4) {
+            width: 15%;
+            border: 1px solid;
+        }
+
+        td:nth-child(5) {
+            width: 15%;
+            border: 1px solid;
+        }
+
+        td:nth-child(6) {
+            width: 15%;
+            border: 1px solid;
+        }
+
+        th {
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<h1>Hệ thống quản lý sản phẩm</h1>
+<input id="inputObjName" placeholder="Nhập tên sản phẩm">
+<input id="inputObjWeight" placeholder="Nhập khối lượng sản phẩm">
+<input id="inputObjQuantity" placeholder="Nhập số lượng sản phẩm">
+<input id="inputObjQuality" placeholder="Nhập chất lượng sản phẩm">
+<button onclick="addObj()">Add</button>
+<br><br>
+
+<input id="searchName">
+<button onclick="searchProduct()">Search</button>
+<button onclick="resetList()">Reset</button>
+<button onclick="sortName()">Sort by Name</button>
+<button onclick="sortQuan()">Sort by Quantity</button>
+<br>
+<p id="dialog"></p><br>
+<p id="table"></p><br>
+<p id="pageNumber"></p>
+
+<script>
+    class Fruit {
+        constructor(name, weight, quantity, quanlity) {
+            this.name = name;
+            this.weight = weight;
+            this.quantity = quantity;
+            this.quanlity = quanlity;
+        }
+    }
+
+    let mango = new Fruit("Mango", 3, 10, "Good");
+    let coconut = new Fruit("Coconut", 4, 15, "Excellent");
+    let orange = new Fruit("Orange", 5, 29, "Perfect");
+    let guava = new Fruit("Guava", 6, 30, "Normal");
+    let apple = new Fruit("Apple", 7, 40, "Not good");
+    let banana = new Fruit("Banana", 8, 20, "Bad");
+    let watermelon = new Fruit("Watermelon", 9, 19, "Excellent");
+    let a = new Fruit("a", 9, 19, "Excellent");
+    let b = new Fruit("b", 9, 19, "Excellent");
+    let c = new Fruit("c", 9, 19, "Good");
+    let d = new Fruit("d", 9, 19, "Not good");
+    let productArray = [coconut, mango, orange, guava, apple, banana, watermelon, a, b, c, d];
+
+    createDisplayTab(1, 5);
+    // createTable();
+    //Phân trang - done
+    //Search - done
+    //Sort - done
+    //CRUD: Create Read Update Delete
+
+    //Tạo số trang để hiển thị phân trang bằng bảng
+    function createNumberPage() {
+        let countPage = Math.ceil(productArray.length / 5);
+        // console.log(countPage);
+        let drawTab;
+        drawTab = "<table style='border:none;width:20%;margin-left:10%;'>\n" +
+            "    <tr>"
+        for (let i = 0; i < countPage; i++) {
+            drawTab += "<td style='border:none;width:fit-content;'><a href='javascript:changePage(" + (i + 1) + ")'>Trang " + (i + 1) + "</a></td>";
+        }
+        drawTab += "</tr>\n" +
+            "</table>";
+
+        document.getElementById("pageNumber").innerHTML = drawTab;
+    }
+
+    //Hàm thay đổi bảng khi thay đổi trang
+    function changePage(pageNumber) {
+        let countPage = Math.ceil(productArray.length / 5);
+        if (pageNumber <= countPage) {
+            createDisplayTab(pageNumber * 5 - 4, pageNumber * 5);//Xử lý logic cho hàm createDisplayTab(STT sp đầu tiên, STT sp cuối cùng)
+        }                                                 //hiển thị trong bảng
+    }
+
+    // Hàm khởi tạo bảng ban đầu (5 sản phẩm)
+    function createDisplayTab(itemNumberStart, itemNumberFinish) {
+        let drawTab;
+        drawTab = "<table>\n" +
+            "        <tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th>Tên sản phẩm</th>\n" +
+            "            <th>SL</th>" +
+            "            <th colspan='3'>Thao tác</th>" +
+            "        </tr>\n"
+
+        for (let i = itemNumberStart - 1; i < itemNumberFinish; i++) {
+            if (productArray[i] != undefined) {
+                // console.log(productArray[i].name);
+                drawTab +=
+                    "        <tr>\n" +
+                    "            <td>" + (i + 1) + "</td>\n" +
+                    "            <td title='Chất lượng: " + productArray[i].quanlity + "'>" + productArray[i].name + "</td>\n" +
+                    "            <td>" + productArray[i].quantity + "</td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='showDetails(" + i + ")'>Details</button>\n" +
+                    "            </td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                    "            </td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                    "            </td>\n" +
+                    "        </tr>\n"
+            }
+        }
+        drawTab += "    </table>";
+
+        document.getElementById("table").innerHTML = drawTab;
+        createNumberPage();
+        // return flag;
+    }
+
+    // Hàm khởi tạo bảng full tất cả sản phẩm, chưa cần dùng
+    function createTable() {
+        let drawTab;
+        drawTab = "<table>\n" +
+            "        <tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th>Tên sản phẩm</th>\n" +
+            "            <th>SL</th>" +
+            "            <th colspan='3'>Thao tác</th>" +
+            "        </tr>\n"
+
+        for (let i = 0; i < productArray.length; i++) {
+            drawTab +=
+                "        <tr>\n" +
+                "            <td>" + (i + 1) + "</td>\n" +
+                "            <td title='Chất lượng: " + productArray[i].quanlity + "'>" + productArray[i].name + "</td>\n" +
+                "            <td>" + productArray[i].quantity + "</td>\n" +
+                "            <td>\n" +
+                "                <button onclick='showDetails(" + i + ")'>Details</button>\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                "            </td>\n" +
+                "        </tr>\n"
+        }
+        drawTab += "    </table>";
+
+        document.getElementById("table").innerHTML = drawTab;
+    }
+
+    // //Hàm xem chi tiết sản phẩm
+    function showDetails(index) {
+        alert("Sản phẩm " + productArray[index].name + " có số lượng tồn kho là " + productArray[index].quantity
+            + " với chất lượng " + productArray[index].quanlity);
+    }
+
+    // // Hàm edit tên sản phẩm
+    function editName(index) {
+        let number;
+        let newName;
+        let newWeight;
+        let newQuantity;
+        let newQuanlity;
+        do {
+            number = parseInt(prompt("Hãy chọn số 1,2,3 hoặc 4 để ứng với bạn muốn sửa gì:\n" +
+                "1.Bạn muốn sửa tên.\n" +
+                "2.Hệ thống sửa khối lượng.\n" +
+                "3.Hệ thống sửa số lượng.\n" +
+                "4.Hệ thống sửa chất lượng.\n"));
+        } while (number != 1 && number != 2 && number != 3 && number != 4 && number == "")
+
+        switch (number) {
+            case 1:
+                newName = prompt("Bạn hãy nhập tên muốn sửa");
+                if (newName != "" && newName != null) {
+                    productArray[index].name = newName;
+                    createDisplayTab(1, 5);
+                    // createTable();
+                } else {
+                    createDisplayTab(1, 5);
+                    // createTable();
+                }
+                break;
+            case 2:
+                newWeight = parseFloat(prompt("Bạn hãy nhập khối lượng muốn sửa"));
+                if (newWeight != "" && newWeight != null) {
+                    productArray[index].weight = newWeight;
+                    createDisplayTab(1, 5);
+                    // createTable();
+                } else {
+                    createDisplayTab(1, 5);
+                    // createTable();
+                }
+                break;
+            case 3:
+                newQuantity = parseFloat(prompt("Bạn hãy nhập số lượng muốn sửa"));
+                if (newQuantity != "" && newQuantity != null) {
+                    productArray[index].quantity = newQuantity;
+                    createDisplayTab(1, 5);
+                    // createTable();
+                } else {
+                    createDisplayTab(1, 5);
+                    // createTable();
+                }
+                break;
+            case 4:
+                newQuanlity = prompt("Bạn hãy nhập chất lượng muốn sửa");
+                if (newQuanlity != "" && newQuanlity != null) {
+                    productArray[index].quanlity = newQuanlity;
+                    createDisplayTab(1, 5);
+                    // createTable();
+                } else {
+                    createDisplayTab(1, 5);
+                    // createTable();
+                }
+                break;
+
+        }
+    }
+
+    // // Hàm xoá sản phẩm
+    function deleteObject(index) {
+        let inform = confirm("Bạn có muốn xoá " + productArray[index].name + "ra khỏi danh sách sản phẩm");
+        if (inform) {
+            productArray.splice(index, 1);
+            createDisplayTab(1, 5);
+            // createTable()
+
+        } else {
+            createDisplayTab(1, 5);
+            // createTable()
+        }
+    }
+
+
+    let count = 0;  //Đếm số hàng hiển thị "đã thêm sản phẩm gì...", chỉ giới hạn tối đa 5 dòng
+    function addObj() {
+        let addObjNameVar = document.getElementById("inputObjName").value;
+        let addObjWeightVar = document.getElementById("inputObjWeight").value;
+        let addObjQuantityVar = document.getElementById("inputObjQuantity").value;
+        let addObjQualityVar = document.getElementById("inputObjQuality").value;
+
+        let newObj = new Fruit(addObjNameVar, addObjWeightVar, addObjQuantityVar, addObjQualityVar);
+
+        let checkNumber = isNaN(addObjWeightVar) || isNaN(addObjQuantityVar);
+        let checkNull = addObjNameVar == null || addObjNameVar === "" || addObjWeightVar == null || addObjWeightVar === ""
+            || addObjQuantityVar == null || addObjQuantityVar === "" || addObjQualityVar == null || addObjQualityVar === "";
+
+        if (checkNumber || checkNull) {
+            alert("Bạn hãy nhập đúng định dạng!!!");
+        } else if (count <= 3) {
+            productArray.push(newObj);
+            document.getElementById("dialog").innerHTML += "Đã thêm " + newObj.name + " vào danh sách sản phẩm <br>";
+            count++;
+        } else {
+            productArray.push(newObj);
+            document.getElementById("dialog").innerHTML = "Đã thêm " + newObj.name + " vào danh sách sản phẩm <br>";
+            count = 0;
+        }
+        console.log(count);
+        createDisplayTab(1, 5);
+    }
+
+    // // Hàm search
+    function searchProduct() {
+        let drawSearchTable;
+        let searchObjVar = document.getElementById("searchName").value;
+        drawSearchTable = "<table>\n" +
+            "        <tr>\n" +
+            "            <th>STT</th>\n" +
+            "            <th colspan='3'>Tên sản phẩm</th>\n" +
+            "        </tr>\n"
+        for (let i = 0; i < productArray.length; i++) {
+            if (productArray[i].name.toLowerCase().includes(searchObjVar)) {
+                drawSearchTable +=
+                    "        <tr>\n" +
+                    "            <td>" + (i + 1) + "</td>\n" +
+                    "            <td>" + productArray[i].name + "</td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='editName(" + i + ")'>Edit</button>\n" +
+                    "            </td>\n" +
+                    "            <td>\n" +
+                    "                <button onclick='deleteObject(" + i + ")'>Remove</button>\n" +
+                    "            </td>\n" +
+                    "        </tr>\n"
+                document.getElementById("table").innerHTML = drawSearchTable;
+            } else {
+                document.getElementById("dialog").innerHTML = "Sản phẩm bạn tìm không có trong danh sách";
+            }
+        }
+        drawSearchTable += "    </table>";
+    }
+
+    // Hàm reset
+    function resetList() {
+        createDisplayTab(1, 5);
+        document.getElementById("inputObjName").value = "";
+        document.getElementById("inputObjWeight").value = "";
+        document.getElementById("inputObjQuantity").value = "";
+        document.getElementById("inputObjQuality").value = "";
+        document.getElementById("searchName").value = "";
+        document.getElementById("dialog").innerHTML = "";
+    }
+
+    // // Hàm sort tên sau khi đã xử lý chuỗi cho tên sản phẩm
+    function sortName() {
+        productArray.sort(function (a, b) {
+            let nameA = a.name.toLowerCase();
+            let nameB = b.name.toLowerCase();
+            if (nameA > nameB) {
+                return 1;
+            }
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA == nameB) {
+                return 0;
+            }
+        })
+        createDisplayTab(1, 5);
+    }
+
+    // // Hàm sort theo SL sau khi đã xử lý chuỗi cho tên sản phẩm
+    function sortQuan() {
+        for (let i = 0; i < productArray.length; i++) {
+            productArray[i].quantity = parseInt(productArray[i].quantity);
+        }
+        productArray.sort(function (a, b) {
+            return b.quantity - a.quantity;
+        });
+        createDisplayTab(1, 5);
+    }
+
+
+    //WHY??? bị lỗi sắp xếp Object theo name
+    // productArray.sort(function (a, b) {
+    //     let nameA = a.name.toLowerCase();
+    //     let nameB = b.name.toLowerCase();
+    //
+    //     if (nameA > nameB) {
+    //         return 1;
+    //     }
+    //     if (nameA > nameB) {
+    //         return -1;
+    //     }
+    //     if (nameA == nameB) {
+    //         return 0;
+    //     }
+    // })
+    // console.log(productArray);
+
+</script>
+</body>
+</html>
