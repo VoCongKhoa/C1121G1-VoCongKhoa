@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staircase</title>
+</head>
+<body>
+
+</body>
+<script>
+    function staircase(n) {
+        let a = "";
+        for (let i = 0; i < n; i++) {
+            a += " ";
+        }
+        let b = "";
+        let c = "";
+        for (let i = 0; i < n; i++) {
+            a = a.slice(0, n - 1 - i);
+            b += "#";
+            c = a + b;
+            console.log(c);
+        }
+    }
+</script>
+</html>

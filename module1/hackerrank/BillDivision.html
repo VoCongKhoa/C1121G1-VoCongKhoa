@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill Division</title>
+</head>
+<body>
+
+</body>
+<script>
+    function bonAppetit(bill, k, b) {
+        let sum = 0;
+        for (let i = 0; i < bill.length; i++) {
+            sum += bill[i];
+        }
+        let money = (sum - bill[k]) / 2;
+        if (money == b) {
+            console.log("Bon Appetit");
+        }
+        if (money != b) {
+            console.log(b - money);
+        }
+
+    }
+</script>
+</html>

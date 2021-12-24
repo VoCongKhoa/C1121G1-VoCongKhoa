@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apple and Orange</title>
+</head>
+<body>
+
+</body>
+<script>
+    function countApplesAndOranges(s, t, a, b, apples, oranges) {
+        let countApp = 0;
+        let countOrg = 0;
+        let n;
+        if (apples.length > oranges.length) {
+            n = apples.length;
+        } else {
+            n = oranges.length;
+        }
+        for (let i = 0; i < n; i++) {
+            apples[i] = apples[i] + a;
+            oranges[i] = oranges[i] + b;
+
+            if (apples[i] >= s && apples[i] <= t) {
+                countApp++;
+            }
+            if (oranges[i] >= s && oranges[i] <= t) {
+                countOrg++;
+            }
+        }
+        console.log(countApp);
+        console.log(countOrg);
+
+    }
+</script>
+</html>

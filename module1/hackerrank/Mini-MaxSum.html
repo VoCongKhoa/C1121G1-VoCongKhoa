@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini-Max Sum</title>
+</head>
+<body>
+
+</body>
+<script>
+    function miniMaxSum(arr) {
+        let n = arr.length;
+        let max = 0;
+        let min = arr[0];
+        let sum = 0;
+        for (let i = 0; i < n; i++) {
+            if (arr[i] > max) {
+                max = arr[i]
+            }
+            if (min > arr[i]) {
+                min = arr[i];
+            }
+            sum += arr[i]
+        }
+        console.log(sum - max, sum - min);
+    }
+</script>
+</html>

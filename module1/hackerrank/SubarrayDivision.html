@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subarray Division</title>
+</head>
+<body>
+
+</body>
+<script>
+    function birthday(s, d, m) {
+        let n = s.length;
+        let count = 0;
+        for (let i = 0; i < n; i++) {
+            let sum = 0;
+            for (let j = i; j < m + i; j++) {
+                sum += s[j];
+            }
+            if (sum == d) {
+                count++;
+            }
+        }
+        return count;
+    }
+</script>
+</html>
