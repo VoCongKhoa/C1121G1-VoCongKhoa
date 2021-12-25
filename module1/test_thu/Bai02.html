@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bài 02</title>
 </head>
 <body>
 
 </body>
+<script>
+    function shortenString(string) {
+        string = prompt("Nhập vào chuỗi các ký tự:");
+        let strArr = string.trim().split(" ");
+        console.log(strArr);
+        let firstLetter = "";
+        for (let i = 0; i < strArr.length; i++) {
+            if (strArr.length == 1) {
+                alert("Chuỗi chỉ có 1 từ nên không cần viết tắc");
+            } else if (strArr[i] != "") {
+                firstLetter += strArr[i].charAt(0).toUpperCase();
+            }
+        }
+        return firstLetter;
+    }
+    document.write(shortenString());
+</script>
 </html>

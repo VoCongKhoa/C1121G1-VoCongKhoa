@@ -2,9 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bài 01</title>
 </head>
 <body>
 
 </body>
+<script>
+    let n;
+    let number;
+    let numArr = [15,2,3,5,10,15,7,8,9,10];
+    let check = true;
+    let sum = 0;
+    let count = 0;
+    checkInteger = number => Math.floor(number) == number;
+    do {
+        n = prompt("Nhập số lượng phần tử (n <= 50, n là số nguyên):");
+        check = checkInteger(n);
+    } while (n > 50 || !check)
+    do {
+        number = prompt("Nhập vào số nguyên bất kỳ:");
+        check = checkInteger(number);
+        while (!check) {
+            number = prompt("Bạn nhập sai, vui lòng nhập lại số nguyên:")
+            check = checkInteger(number);
+        }
+        numArr.push(number);
+    } while (numArr.length < n)
+
+    document.write(numArr.join(",")+"<br>");
+
+    for (let i = 0; i < numArr.length; i++) {
+        if (i%3==0) {
+            if (numArr[i]%5==0) {
+                sum+=numArr[i];
+                count++;
+            }
+        }
+    }
+    (count>0) ? (document.write("Kết quả: "+ sum/count)) : alert("Mảng không có số đáp ứng yêu cầu");
+</script>
 </html>

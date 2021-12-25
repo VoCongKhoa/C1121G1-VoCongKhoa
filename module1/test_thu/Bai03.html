@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bài 03</title>
 </head>
 <body>
 
 </body>
+<script>
+    function outputFib(array) {
+        array = [1, 5, 6, 13, -9, 12, -8, 0, 5,1];
+        array.sort((a, b) => b - a);
+        let result = [];
+        let fib = [0];
+        let firstFib = 1;
+        let secondFib = 0;
+        for (let i = 0; i < fib.length && fib[i] < array[0]; i++) {
+            firstFib = firstFib + secondFib;
+            secondFib = secondFib + firstFib;
+            fib.push(firstFib);
+            fib.push(secondFib);
+        }
+        console.log(fib);
+        console.log(array);
+        for (let i = 0; i < array.length; i++) {
+            for (let j = 0; j < fib.length; j++) {
+                if (array[i] == fib[j]) {
+                    result.push(array[i]);
+                    array.splice(i,1);
+                }
+                if (array[i]==0) {
+                    result.push(array[i]);
+                    array.splice(i,1);
+                }
+            }
+        }
+        document.write("Kết quả:" + result.sort((a,b)=>a-b));
+    }
+
+    outputFib()
+</script>
 </html>
