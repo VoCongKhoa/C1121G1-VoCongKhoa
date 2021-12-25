@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beautiful Days at the Movies</title>
+</head>
+<body>
+
+</body>
+<script>
+    function beautifulDays(i, j, k) {
+        let day;
+        let count =0;
+        for (let l = i; l <= j; l++) {
+            day = parseFloat(l.toString().split("").reverse().join(""));
+            if (Math.floor(Math.abs(l-day)/k) == Math.abs(l-day)/k) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    beautifulDays(20, 23, 6)
+</script>
+</html>
