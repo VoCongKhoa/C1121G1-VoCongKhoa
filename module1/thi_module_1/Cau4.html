@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 4</title>
+</head>
+<body>
+<p id="bangHienThi"></p>
+</body>
+<script>
+    class CongNhan {
+        constructor(hoVaTen, ngaySinh, diaChi, luong, chucVu) {
+            this.hoVaTen = hoVaTen;
+            this.ngaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.luong = luong;
+            this.chucVu = chucVu;
+        }
+
+        getHoVaTen() {
+            return this.hoVaTen;
+        }
+
+        setHoVaTen(hoVaTen) {
+            this.hoVaTen = hoVaTen;
+        }
+
+        getNgaySinh() {
+            return this.ngaySinh;
+        }
+
+        setNgaySinh(ngaySinh) {
+            this.ngaySinh = ngaySinh;
+        }
+
+        getDiaChi() {
+            return this.diaChi;
+        }
+
+        setDiaChi(diaChi) {
+            this.diaChi = diaChi;
+        }
+
+        getLuong() {
+            return this.luong;
+        }
+
+        setLuong(luong) {
+            this.luong = luong;
+        }
+
+        getChucVu() {
+            return this.chucVu;
+        }
+
+        setChucVu(chucVu) {
+            this.chucVu = chucVu;
+        }
+
+        toString() {
+            this.hoVaTen = this.hoVaTen.toString();
+            this.ngaySinh = this.ngaySinh.toString();
+            this.diaChi = this.diaChi.toString();
+            this.luong = this.luong.toString();
+            this.chucVu = this.chucVu.toString();
+        }
+    }
+
+    let congNhan1 = new CongNhan("Trương Văn A","11-10-1992" ,"Quảng Nam", 2000, "ABC");
+    let congNhan2 = new CongNhan("Nguyễn Văn B","11-11-1993" ,"Đà Nẵng", 5000, "ADF");
+    let congNhan3 = new CongNhan("Bùi Văn C","11-12-1994" ,"Quảng Nam", 3000, "ARG");
+    let danhSach = [congNhan1, congNhan2, congNhan3]
+    hienThiBang(danhSach)
+    function hienThiBang(danhSachMang) {
+        danhSachMang.sort(function (a, b) {
+            let hoVaTenA = a.hoVaTen.toLowerCase();
+            let hoVaTenB = b.hoVaTen.toLowerCase();
+            if (hoVaTenA > hoVaTenB) {
+                return 1;
+            }
+            if (hoVaTenA < hoVaTenB) {
+                return -1;
+            }
+            if (hoVaTenA == hoVaTenB) {
+                return 0;
+            }
+        })
+        let bangHienThi = '<table border="1px" style="border-collapse: collapse">\n' +
+            '    <tr>\n' +
+            '        <td>STT</td>\n' +
+            '        <td>Họ và tên</td>\n' +
+            '        <td>Ngày sinh</td>\n' +
+            '        <td>Địa chỉ</td>\n' +
+            '        <td>Lương</td>\n' +
+            '        <td>Chức vụ</td>\n' +
+            '    </tr>\n'
+        for (let i = 0; i < danhSachMang.length; i++) {
+            bangHienThi += '    <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + danhSachMang[i].getHoVaTen() + '</td>\n' +
+                '        <td>' + danhSachMang[i].getNgaySinh() + '</td>\n' +
+                '        <td>' + danhSachMang[i].getDiaChi() + '</td>\n' +
+                '        <td>' + danhSachMang[i].getLuong() + '</td>\n' +
+                '        <td>' + danhSachMang[i].getChucVu() + '</td>\n' +
+                '    </tr>\n'
+
+        }
+        bangHienThi += '</table>';
+        document.getElementById("bangHienThi").innerHTML = bangHienThi;
+    }
+</script>
+</html>

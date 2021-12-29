@@ -23,7 +23,7 @@
         let y = Math.random() * window.innerHeight;
         let circle= new Circle(x, y, radius);
         ctx.beginPath();
-        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.arc(circle.x, circle.y, circle.radius, 0.5 * Math.PI, 2 * Math.PI);
         ctx.fillStyle = getRandomColor();
         ctx.fill();
     }

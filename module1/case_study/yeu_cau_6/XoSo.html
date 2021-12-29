@@ -6,188 +6,172 @@
 </head>
 <body>
 <h1>Xổ Số</h1>
-<p id="showBox1"></p><br>
-<p id="showBox2"></p>
+<p id="show"></p><br><br>
+<p id="showResult"></p><br>
 
 <button onclick="buyTicket()">Mua vé</button>
-<button>Xem kết quả</button>
+<button onclick="showResult()">Xem kết quả</button>
 
 </body>
 <script>
-    class Person {
-        constructor(ticket) {
-            this.ticket = ticket;
-        }
-
-        pickNumber(){
-            number = prompt("Nhập 0-99");
-            this.ticket.listNumber.push(number);
-        }
-
-    }
 
     class Machine {
         constructor(ticket) {
             this.ticket = ticket;
-            this.resultNumber1 = null;
-            this.resultNumber2 = null;
-            this.resultNumber3 = null;
-            this.resultNumber4 = null;
-            this.resultNumber5 = null;
-            this.resultNumber6 = null;
         }
 
-        randomNumber () {
-            this.ticket.listNumber[0] = Math.round(Math.random()*99);
-            this.ticket.listNumber[1] = Math.round(Math.random()*99);
-            this.ticket.listNumber[2] = Math.round(Math.random()*99);
-            this.ticket.listNumber[3] = Math.round(Math.random()*99);
-            this.ticket.listNumber[4] = Math.round(Math.random()*99);
-            this.ticket.listNumber[5] = Math.round(Math.random()*99);
-            // return this.number;
+        pickNumber() {
+            this.ticket.setNumber1(parseInt(prompt("Bạn hãy nhập số thứ 1:")))
+            this.ticket.setNumber2(parseInt(prompt("Bạn hãy nhập số thứ 2:")))
+            this.ticket.setNumber3(parseInt(prompt("Bạn hãy nhập số thứ 3:")))
+            this.ticket.setNumber4(parseInt(prompt("Bạn hãy nhập số thứ 4:")))
+            this.ticket.setNumber5(parseInt(prompt("Bạn hãy nhập số thứ 5:")))
+            this.ticket.setNumber6(parseInt(prompt("Bạn hãy nhập số thứ 6:")))
         }
-        setRandomResult () {
-            this.resultNumber1 = Math.round(Math.random()*99);
-            this.resultNumber2 = Math.round(Math.random()*99);
-            this.resultNumber3 = Math.round(Math.random()*99);
-            this.resultNumber4 = Math.round(Math.random()*99);
-            this.resultNumber5 = Math.round(Math.random()*99);
-            this.resultNumber6 = Math.round(Math.random()*99);
+
+        randomNumber() {
+            this.ticket.setNumber1(Math.round(Math.random() * 99))
+            this.ticket.setNumber2(Math.round(Math.random() * 99))
+            this.ticket.setNumber3(Math.round(Math.random() * 99))
+            this.ticket.setNumber4(Math.round(Math.random() * 99))
+            this.ticket.setNumber5(Math.round(Math.random() * 99))
+            this.ticket.setNumber6(Math.round(Math.random() * 99))
+
         }
     }
 
     class Ticket {
-        constructor() {
-            this.listNumber = [];
+        constructor(number1, number2, number3, number4, number5, number6) {
+            this.number1 = number1;
+            this.number2 = number2;
+            this.number3 = number3;
+            this.number4 = number4;
+            this.number5 = number5;
+            this.number6 = number6;
         }
 
-        setListNumber(){
-
+        setNumber1(number1) {
+            this.number1 = number1;
         }
 
-        getListNumber(){
-            return this.listNumber;
+        getNumber1() {
+            return this.number1;
         }
 
-        getNumber1(){
-            return this.listNumber[0]
+        setNumber2(number2) {
+            this.number2 = number2;
         }
-        getNumber2(){
-            return this.listNumber[1]
+
+        getNumber2() {
+            return this.number2;
         }
-        getNumber3(){
-            return this.listNumber[2]
+
+        setNumber3(number3) {
+            this.number3 = number3;
         }
-        getNumber4(){
-            return this.listNumber[3]
+
+        getNumber3() {
+            return this.number3;
         }
-        getNumber5(){
-            return this.listNumber[4]
+
+        setNumber4(number4) {
+            this.number4 = number4;
         }
-        getNumber6(){
-            return this.listNumber[5]
+
+        getNumber4() {
+            return this.number4;
+        }
+
+        setNumber5(number5) {
+            this.number5 = number5;
+        }
+
+        getNumber5() {
+            return this.number5;
+        }
+
+        setNumber6(number6) {
+            this.number6 = number6;
+        }
+
+        getNumber6() {
+            return this.number6;
         }
 
     }
 
     let ticket = new Ticket();
-    let person = new Person(ticket);
     let machine = new Machine(ticket);
     let number;
-    firstCreate();
-    //Kích mua vé
-    //Chọn 1 hoặc 2
-    //Trường hợp 1:
-    //showPickNumber()
-    //sau 6 lần chọn;
-    //showResult();
-
-    //Trường hợp 2:
-    //showRandomNumber();
-    //showResult();
+    let arrTicket = [];
+    let resultArr = []
 
     function buyTicket() {
-        number = parseInt(prompt("Bạn có 2 lựa chọn:\n" +
-            "1.Bạn muốn tự chọn số.\n" +
-            "2.Hệ thống tự random."));
-        if (number == 1){
-            showPickNumber();
+        if (arrTicket.length < 4) {
+            number = parseInt(prompt("Bạn có 2 lựa chọn:\n" +
+                "1.Bạn muốn tự chọn số.\n" +
+                "2.Hệ thống tự random."));
+            if (number == 1) {
+                showPickNumber();
+            }
+            if (number == 2) {
+                showRandomNumber(ticket);
+            }
+        } else {
+            alert("Bạn chỉ được mua tối đa 4 vé")
         }
-        if (number == 2){
-            showRandomNumber();
-        }
-    }
-
-    function firstCreate() {
-        let show1 =
-            "<table>" +
-            "<tr>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "</tr>" +
-            "</table>"
-        let show2 =
-            "<table>" +
-            "<tr>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "<td><input></td>" +
-            "</tr>" +
-            "</table>"
-        document.getElementById("showBox1").innerHTML = show1;
-        document.getElementById("showBox2").innerHTML = show2;
     }
 
     function showPickNumber() {
-        let show =
-                "<table>" +
-                    "<tr>" +
-                        "<td><input value='"+ticket.getNumber1()+"' onclick='person.pickNumber()'></td>" +
-                        "<td><input value='"+ticket.getNumber2()+"' onclick='person.pickNumber()'></td>" +
-                        "<td><input value='"+ticket.getNumber3()+"' onclick='person.pickNumber()'></td>" +
-                        "<td><input value='"+ticket.getNumber4()+"' onclick='person.pickNumber()'></td>" +
-                        "<td><input value='"+ticket.getNumber5()+"' onclick='person.pickNumber()'></td>" +
-                        "<td><input value='"+ticket.getNumber6()+"' onclick='person.pickNumber()'></td>" +
-                    "</tr>" +
-                "</table>"
-        document.getElementById("showBox1").innerHTML = show;
+        machine.pickNumber();
+        let ticketNew = new Ticket(ticket.getNumber1(), ticket.getNumber2(), ticket.getNumber3(), ticket.getNumber4(), ticket.getNumber5(), ticket.getNumber6())
+        arrTicket.push(ticketNew);
+        let show = '<input id="number1" value="' + machine.ticket.getNumber1() + '">\n' +
+            '<input id="number2" value="' + machine.ticket.getNumber2() + '">\n' +
+            '<input id="number3" value="' + machine.ticket.getNumber3() + '">\n' +
+            '<input id="number4" value="' + machine.ticket.getNumber4() + '">\n' +
+            '<input id="number5" value="' + machine.ticket.getNumber5() + '">\n' +
+            '<input id="number6" value="' + machine.ticket.getNumber6() + '">' +
+            '<br>'
+        document.getElementById("show").innerHTML += show;
     }
+
     function showRandomNumber() {
-        let show =
-            "<table>" +
-                "<tr>" +
-                    "<td><input value='"+ticket.listNumber[0]+"' onclick='person.pickNumber()'></td>" +
-                    "<td><input value='"+ticket.listNumber[1]+"' onclick='person.pickNumber()'></td>" +
-                    "<td><input value='"+ticket.listNumber[2]+"' onclick='person.pickNumber()'></td>" +
-                    "<td><input value='"+ticket.listNumber[3]+"' onclick='person.pickNumber()'></td>" +
-                    "<td><input value='"+ticket.listNumber[4]+"' onclick='person.pickNumber()'></td>" +
-                    "<td><input value='"+ticket.listNumber[5]+"' onclick='person.pickNumber()'></td>" +
-                "</tr>" +
-            "</table>"
-        document.getElementById("showBox2").innerHTML = show;
+        machine.randomNumber();
+        let ticketNew = new Ticket(ticket.getNumber1(), ticket.getNumber2(), ticket.getNumber3(), ticket.getNumber4(), ticket.getNumber5(), ticket.getNumber6())
+        arrTicket.push(ticketNew);
+        let show = '<input id="number1" value="' + machine.ticket.getNumber1() + '">\n' +
+            '<input id="number2" value="' + machine.ticket.getNumber2() + '">\n' +
+            '<input id="number3" value="' + machine.ticket.getNumber3() + '">\n' +
+            '<input id="number4" value="' + machine.ticket.getNumber4() + '">\n' +
+            '<input id="number5" value="' + machine.ticket.getNumber5() + '">\n' +
+            '<input id="number6" value="' + machine.ticket.getNumber6() + '">' +
+            '<br>'
+        document.getElementById("show").innerHTML += show;
     }
 
     function showResult() {
-        machine.setRandomResult ();
-        let show =
-            "<table>" +
-            "<tr>" +
-            "<td><input value='"+machine.resultNumber1()+"'></td>" +
-            "<td><input value='"+machine.resultNumber2()+"'></td>" +
-            "<td><input value='"+machine.resultNumber3()+"'></td>" +
-            "<td><input value='"+machine.resultNumber4()+"'></td>" +
-            "<td><input value='"+machine.resultNumber5()+"'></td>" +
-            "<td><input value='"+machine.resultNumber6()+"'></td>" +
-            "</tr>" +
-            "</table>"
-        document.getElementById("show").innerHTML = show;
+        let result = [11, 22, 33, 44, 55, 66];
+        resultArr.push(result);
+        let show = '<input id="number1" value="' + result[0] + '">\n' +
+            '<input id="number2" value="' + result[1] + '">\n' +
+            '<input id="number3" value="' + result[2] + '">\n' +
+            '<input id="number4" value="' + result[3] + '">\n' +
+            '<input id="number5" value="' + result[4] + '">\n' +
+            '<input id="number6" value="' + result[5] + '">' +
+            '<br>'
+        document.getElementById("showResult").innerHTML = show;
+
+        if (result[5] == ticket.getNumber6() && result[4] == ticket.getNumber5() && result[3] == ticket.getNumber4()
+            && result[2] == ticket.getNumber3() && result[1] == ticket.getNumber2() && result[0] == ticket.getNumber1()) {
+            alert("Giải nhất");
+        } else if (result[5] == ticket.getNumber6() && result[4] == ticket.getNumber5() && result[3] == ticket.getNumber4()
+            && result[2] == ticket.getNumber3() && result[1] == ticket.getNumber2()) {
+            alert("Giải nhất");
+        } else if ((result[5] == ticket.getNumber6() && result[4] == ticket.getNumber5() && result[3] == ticket.getNumber4())
+            || (result[5] == ticket.getNumber6() && result[4] == ticket.getNumber5() && result[3] == ticket.getNumber4() && result[2] == ticket.getNumber3())) {
+            alert("Giải khuyến khích");
+        }
     }
 </script>
 </html>

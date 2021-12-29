@@ -5,7 +5,7 @@
     <title>Bài 04</title>
 </head>
 <body>
-<input id = "maTK" type="text" placeholder="Thêm mã tài khoản">
+<input onblur="checkNumber()" id = "maTK" type="text" placeholder="Thêm mã tài khoản">
 <input id = "tenTK" type="text" placeholder="Thêm tên chủ tài khoản">
 <input id = "tenNH" type="text" placeholder="Thêm tên ngân hàng">
 <input id = "tongTien" type="number" placeholder="Thêm tổng tiền tài khoản">
@@ -54,6 +54,9 @@
         }
 
         toString() {
+            this.maTaiKhoan = this.maTaiKhoan.toString();
+            this.tenChuTaiKhoan = this.tenChuTaiKhoan.toString();
+            this.tenNganHang = this.tenNganHang.toString();
             this.tongTienTaiKhoan = this.tongTienTaiKhoan.toString();
         }
     }
@@ -63,6 +66,7 @@
     let danhSachTaiKhoan = [taiKhoan1,taiKhoan2];
     hienThi(danhSachTaiKhoan)
     function hienThi(danhSach) {
+        // danhSach.sort()
         let veBang = '<table border="1px" style="border-collapse: collapse">\n' +
             '    <tr>\n' +
             '        <th>STT</th>\n' +
@@ -84,18 +88,27 @@
         document.getElementById("bang").innerHTML = veBang;
     }
 
+    function checkNumber(maTaiKhoanMoi) {
+        maTaiKhoanMoi = document.getElementById("maTK").value;
+        if (!(maTaiKhoanMoi.toString().length<=5 && !isNaN(maTaiKhoanMoi))) {
+            alert("Bạn nhập sai mã tài khoản");
+            document.getElementById("maTK").value ="";
+        }
+    }
     function themMoi() {
         let maTaiKhoanMoi = document.getElementById("maTK").value;
+        checkNumber(maTaiKhoanMoi)
         let tenChuTaiKhoanMoi = document.getElementById("tenTK").value;
         let tenNganHangMoi = document.getElementById("tenNH").value;
         let tongTienTaiKhoanMoi = document.getElementById("tongTien").value;
-        let taiKhoanMoi = new TaiKhoanNganHang(maTaiKhoanMoi,tenChuTaiKhoanMoi,tenNganHangMoi,tongTienTaiKhoanMoi)
+        let taiKhoanMoi = new TaiKhoanNganHang(maTaiKhoanMoi,tenChuTaiKhoanMoi,tenNganHangMoi,tongTienTaiKhoanMoi);
         danhSachTaiKhoan.push(taiKhoanMoi);
         document.getElementById("maTK").value = "";
         document.getElementById("tenTK").value = "";
         document.getElementById("tenNH").value = "";
         document.getElementById("tongTien").value = "";
-        hienThi(danhSachTaiKhoan)
+
+        hienThi(danhSachTaiKhoan);
     }
 </script>
 </html>

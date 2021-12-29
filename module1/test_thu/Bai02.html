@@ -9,7 +9,6 @@
 </body>
 <script>
     function shortenString(string) {
-        string = prompt("Nhập vào chuỗi các ký tự:");
         let strArr = string.trim().split(" ");
         console.log(strArr);
         let firstLetter = "";
@@ -22,6 +21,6 @@
         }
         return firstLetter;
     }
-    document.write(shortenString());
+    document.write(shortenString("object Oriented programming"));
 </script>
 </html>

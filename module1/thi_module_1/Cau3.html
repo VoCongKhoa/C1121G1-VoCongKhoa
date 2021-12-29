@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p id="printResult"></p>
+</body>
+<script>
+    let tempArr = [];
+    let inputNumber = prompt("Nhập số tháng và năm:");
+    let result = document.getElementById("printResult");
+    let month;
+    let year;
+    let other;
+    let check;
+    inputNumber = inputNumber.trim().split("");
+
+    console.log(inputNumber);
+    for (let i = 0; i < inputNumber.length; i++) {
+        if (inputNumber[i] != ""){
+            tempArr.push(inputNumber[i]);
+        }
+    }
+    tempArr = tempArr.join("");
+    console.log(tempArr);
+    month = tempArr[0]+tempArr[1];
+
+    other = tempArr[2];
+
+    year = tempArr[3]+tempArr[4]+tempArr[5]+tempArr[6];
+
+    console.log(month + other + year);
+    if (parseInt(month) >=1 && parseInt(month)<=12) {
+        if (other  == "/") {
+            check = true;
+        }
+    } else check = false;
+
+    if (check) {
+        switch (parseInt(month)) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                result.innerHTML = `Tháng ${month} có 31 ngày`
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                result.innerHTML = `Tháng ${month} có 30 ngày`
+                break;
+            // Kiểm tra năm hiện tại là năm nhuận hay không, rồi cho kết quả tháng 2 có 28 hoặc 29
+            case 2:
+                (parseInt(year)%4 == 0) ?
+                    ((parseInt(year)%100 == 0) ?
+                        ((parseInt(year)%400 == 0) ?
+                            result.innerHTML = `Tháng ${month} có 29 ngày` : result.innerHTML = `Tháng ${month} có 28 ngày`) : result.innerHTML = `Tháng ${month} có 29 ngày`) : result.innerHTML = `Tháng ${month} có 28 ngày`;
+                break;
+            default: result.innerHTML = `Bạn nhập sai. Vui lòng nhập lại!`
+                break;
+        }
+    } else {
+        alert("Bạn nhập sai định dạng, hãy nhập lại!")
+    }
+</script>
+</html>
