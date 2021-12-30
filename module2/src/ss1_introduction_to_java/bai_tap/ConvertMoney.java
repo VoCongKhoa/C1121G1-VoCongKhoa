@@ -6,9 +6,9 @@ public class ConvertMoney {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         long money;
-        final int RATEUSD = 23000;
+        final int RATE_USD = 23000;
         System.out.println("Input USD: ");
         money = sc.nextLong();
-        System.out.printf("Output VND: %d VND", RATEUSD*money);
+        System.out.printf("Output VND: %d VND", RATE_USD*money);
     }
 }
