@@ -20,7 +20,7 @@ public class CalculateSumOfColum {
         int colPos = sc.nextInt();
         float sum = 0.0f;
         for (int i = 0; i < row; i++) {
-            sum += myMatrix[colPos][i];
+            sum += myMatrix[i][colPos];
         }
         System.out.printf("Sum of colum %d : %f",colPos,sum);
     }
