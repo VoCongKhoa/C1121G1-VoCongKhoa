@@ -7,21 +7,24 @@ public class CheckIsPrime {
         Scanner sc = new Scanner(System.in);
         System.out.println("Input a number: ");
         int number = sc.nextInt();
-        System.out.println("Result: " + isString(number));
+        System.out.println("Result: " + isPrime(number));
     }
-
-    public static boolean isString(int number) {
-        int count = 0;
+    public static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }
-        for (int i = 2; i <= number; i++) {
-            if (count >= 1 && i < number) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
                 return false;
-            } else if (number % i == 0) {
-                count++;
             }
         }
+//        for (int i = 2; i <= number; i++) {
+//            if (count >= 1 && i < number) {
+//                return false;
+//            } else if (number % i == 0) {
+//                count++;
+//            }
+//        }
         return true;
     }
 }

@@ -5,24 +5,27 @@ import java.util.Scanner;
 public class OutputNumberOfPrimes {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int count = 0, prime = 2;
         System.out.println("Input numbers of Prime you want: ");
-        int number = sc.nextInt();
-        while (count < number) {
-            int i = 2;
-            boolean check = true;
-            while (i < prime) {
-                if (prime % i == 0) {
-                    check = false;
-                    break;
-                }
-                i++;
-            }
-            if (check){
-                System.out.println(prime + " is a prime");
+        int n = sc.nextInt();
+        int count = 0;
+        int i = 2;
+        while (count < n) {
+            if (isPrime(i)) {
+                System.out.print(i + " ");
                 count++;
             }
-            prime++;
+            i++;
         }
+    }
+
+    public static boolean isPrime(int number) {
+        int i = 2;
+        while (i <= Math.sqrt(number)) {
+            if (number % i == 0) {
+                return false;
+            }
+            i++;
+        }
+        return true;
     }
 }
