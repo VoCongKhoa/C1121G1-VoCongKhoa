@@ -6,6 +6,7 @@ public class MainMenu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DemoStudentManager studentManager = new DemoStudentManager();
+        studentManager.createArr();
         int choice = -1;
         while (choice != 6) {
             displayMainMenu();

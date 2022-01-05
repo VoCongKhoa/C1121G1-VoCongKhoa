@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/FuramaResort.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/out/production/FuramaResort/controllers/FuramaController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/controllers/FuramaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Booking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Contract.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Facility.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/House.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/models/Villa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/BookingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/BookingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/ContractService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/ContractServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/CustomerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/EmployeeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/EmployeeServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/FacilityService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/FacilityServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuramaResort/src/services/Service.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/DemoStudentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/DemoStudentManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss3_mang_va_phuong_thuc_trong_java/bai_tap/DeleteElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss3_mang_va_phuong_thuc_trong_java/bai_tap/DeleteElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/DemoStudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/DemoStudentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss3_mang_va_phuong_thuc_trong_java/bai_tap/DeleteElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss3_mang_va_phuong_thuc_trong_java/bai_tap/DeleteElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss5_access_modifier_static_method_static_property/thuc_hanh/static_property/TestStaticProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss5_access_modifier_static_method_static_property/thuc_hanh/static_property/TestStaticProperty.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="23Gu64X5e5x6XjLU6hms0nfgy19" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected="Application.TestStaticProperty">
+    <configuration name="ConvertMoney" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss1_introduction_to_java.bai_tap.ConvertMoney" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss1_introduction_to_java.bai_tap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FuramaController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FuramaResort.controllers.FuramaController" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuramaResort.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.student_manager.MainMenu" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.student_manager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestStaticMethod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss5_access_modifier_static_method_static_property.thuc_hanh.static_method.TestStaticMethod" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss5_access_modifier_static_method_static_property.thuc_hanh.static_method.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestStaticProperty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss5_access_modifier_static_method_static_property.thuc_hanh.static_property.TestStaticProperty" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss5_access_modifier_static_method_static_property.thuc_hanh.static_property.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestStaticProperty" />
+        <item itemvalue="Application.TestStaticMethod" />
+        <item itemvalue="Application.FuramaController" />
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.ConvertMoney" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="" />
+      <created>1641372574908</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1641372574908</updated>
+      <workItem from="1641372582540" duration="1284000" />
+      <workItem from="1641384126063" duration="8820000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

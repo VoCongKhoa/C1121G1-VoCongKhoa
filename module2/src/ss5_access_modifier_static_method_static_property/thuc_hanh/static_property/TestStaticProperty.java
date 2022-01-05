@@ -5,9 +5,11 @@ public class TestStaticProperty {
 
         Car car1 = new Car("BMW","ABC123");
 
-        System.out.println(Car.numberOfCars);
+//        System.out.println(Car.numberOfCars);
 
         Car car2 = new Car("Lexus","XYZ456");
+        Car car3 = new Car("Lexus","XYZ456");
+
 
         System.out.println(Car.numberOfCars);
 
