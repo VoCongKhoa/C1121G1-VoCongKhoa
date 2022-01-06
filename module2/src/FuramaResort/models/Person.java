@@ -2,7 +2,6 @@ package FuramaResort.models;
 
 public abstract class Person {
     private String name;
-    private int age;
     private String dateOfBirth;
     private String gender;
     private String idNumber;
@@ -12,9 +11,8 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, int age, String dateOfBirth, String gender, String idNumber, String phoneNumber, String email) {
+    public Person(String name, String dateOfBirth, String gender, String idNumber, String phoneNumber, String email) {
         this.name = name;
-        this.age = age;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.idNumber = idNumber;
@@ -28,14 +26,6 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getDateOfBirth() {
@@ -82,7 +72,6 @@ public abstract class Person {
     public String toString() {
         return "Person{" +
                 "name = '" + name + '\'' +
-                ", age = " + age +
                 ", dateOfBirth = " + dateOfBirth +
                 ", gender = " + gender+
                 ", idNumber = " + idNumber+

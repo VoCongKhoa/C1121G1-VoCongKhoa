@@ -17,8 +17,9 @@ public class Employee extends Person {
         this.empSalary = empSalary;
     }
 
-    public Employee(String name, int age, String dateOfBirth, String gender, String idNumber, String phoneNumber, String email, int empId, String empDegree, String empRole, double empSalary) {
-        super(name, age, dateOfBirth, gender, idNumber, phoneNumber, email);
+    public Employee(int empId, String name,String dateOfBirth , String gender, String idNumber,
+                    String phoneNumber, String email, String empDegree, String empRole, double empSalary) {
+        super(name, dateOfBirth, gender, idNumber, phoneNumber, email);
         this.empId = empId;
         this.empDegree = empDegree;
         this.empRole = empRole;
@@ -61,14 +62,14 @@ public class Employee extends Person {
     public String toString() {
         return "Employee{" +
                 "empId = '" + empId + '\'' +
-                ", name = " + getName()+
-                ", dateOfBirth = " + getDateOfBirth()+
-                ", gender = " + getGender()+
-                ", idNumber = " + getIdNumber()+
-                ", phoneNumber = " + getPhoneNumber()+
-                ", email = " + getEmail()+
-                ", empDegree = " + empDegree+
-                ", empRole = " + empRole+
+                ", name = " + getName() +
+                ", dateOfBirth = " + getDateOfBirth() +
+                ", gender = " + getGender() +
+                ", idNumber = " + getIdNumber() +
+                ", phoneNumber = " + getPhoneNumber() +
+                ", email = " + getEmail() +
+                ", empDegree = " + empDegree +
+                ", empRole = " + empRole +
                 ", empSalary = " + empSalary +
                 '}';
     }

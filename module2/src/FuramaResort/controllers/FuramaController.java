@@ -8,9 +8,15 @@ import java.util.Scanner;
 public class FuramaController {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        BookingServiceImpl bookingService = new BookingServiceImpl();
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        CustomerService customerService = new CustomerServiceImpl();
+        EmployeeService employeeService = new EmployeeServiceImpl();
+        Service facilityService = new FacilityServiceImpl();
         int choice = -1;
         while (choice != 6) {
             displayMainMenu();
+
             System.out.print("Input your choice: ");
             choice = sc.nextInt();
             switch (choice) {
@@ -19,6 +25,20 @@ public class FuramaController {
                             "2\tAdd new employee\n" +
                             "3\tEdit employee\n" +
                             "4\tReturn main menu\n");
+                    System.out.println("Input your choice:");
+                    int empChoice = sc.nextInt();
+                    if (empChoice == 1) {
+                        employeeService.displayEmp();
+                    } else if (empChoice == 2) {
+                        employeeService.addEmp();
+                    } else if (empChoice == 3) {
+                        employeeService.editEmp();
+                    } else if (empChoice == 4) {
+                        employeeService.returnMainMenu();
+                    } else {
+                        System.out.println("Choice again: ");
+                    }
+
                     break;
                 case 2:
                     System.out.println("1.\tDisplay list customers\n" +
@@ -51,36 +71,31 @@ public class FuramaController {
 
             }
         }
-        Person employee = new Employee("Khoa", 29,"22/08/1993","male","123","0905472592","youandme8668@gmail.com",
-                1,"ĐH","junior",20);
-        Person customer = new Customer("Su", 26,"05/07/1996","female","456","0905472111","8668@gmail.com",
-                2,"Diamond","ĐN");
-        Facility villa = new Villa("bookingVilla",100,10,10,"day","big",25,3);
-        Facility house = new House("bookingVilla",100,10,10,"day","medium",2);
-        Facility room = new Room("bookingVilla",100,10,10,"day","free");
+        Person employee = new Employee(1, "Khoa", "22/08/1993", "male", "123", "0905472592", "youandme8668@gmail.com",
+                "ĐH", "junior", 20);
+        Person customer = new Customer(2, "Su", "05/07/1996", "female", "456", "0905472111", "8668@gmail.com",
+                "Diamond", "ĐN");
+        Facility villa = new Villa("bookingVilla", 100, 10, 10, "day", "big", 25, 3);
+        Facility house = new House("bookingVilla", 100, 10, 10, "day", "medium", 2);
+        Facility room = new Room("bookingVilla", 100, 10, 10, "day", "free");
 
-        Booking booking = new Booking(123, "1/1/2022", "7/1/2022",3,"bookingVilla","day");
-        Contract contract = new Contract(1000,20,50,123,3);
+        Booking booking = new Booking(123, "1/1/2022", "7/1/2022", 3, "bookingVilla", "day");
+        Contract contract = new Contract(1000, 20, 50, 123, 3);
 
-        System.out.println(employee);
-        System.out.println(customer);
-        System.out.println(villa);
-        System.out.println(house);
-        System.out.println(room);
-        System.out.println(booking);
-        System.out.println(contract);
+//        System.out.println(employee);
+//        System.out.println(customer);
+//        System.out.println(villa);
+//        System.out.println(house);
+//        System.out.println(room);
+//        System.out.println(booking);
+//        System.out.println(contract);
 
-        BookingServiceImpl bookingService = new BookingServiceImpl();
-        ContractServiceImpl contractService = new ContractServiceImpl();
-        CustomerService customerService = new CustomerServiceImpl();
-        EmployeeService employeeService = new EmployeeServiceImpl();
-        Service facilityService = new FacilityServiceImpl();
 
-        bookingService.addBooking();
-        contractService.displayCusUseService();
-        customerService.displayCus();
+//        bookingService.addBooking();
+//        contractService.displayCusUseService();
+//        customerService.displayCus();
         employeeService.displayEmp();
-        facilityService.returnMainMenu();
+//        facilityService.returnMainMenu();
     }
 
     static void displayMainMenu() {
