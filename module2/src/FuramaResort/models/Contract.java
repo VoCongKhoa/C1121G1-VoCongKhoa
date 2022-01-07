@@ -16,7 +16,7 @@ public class Contract {
         this.contractDeposit = contractDeposit;
         this.contractSum = contractSum;
         setBookingNumber(bookingNumber);
-        setCusId(cusId);
+        setNumberOfCustomer(cusId);
     }
 
     public int getContractNumber() {
@@ -50,7 +50,7 @@ public class Contract {
                 ", bookingNumber = " + getBookingNumber() +
                 ", contractDeposit = " + contractDeposit +
                 ", contractSum = " + contractSum +
-                ", cusId = " + getCusId() +
+                ", cusId = " + getNumberOfCustomer() +
                 '}';
     }
 }

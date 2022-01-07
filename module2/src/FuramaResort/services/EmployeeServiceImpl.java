@@ -1,15 +1,12 @@
 package FuramaResort.services;
 
 import java.util.Scanner;
-
 import FuramaResort.models.Employee;
-import FuramaResort.models.Person;
-
 import java.util.ArrayList;
 
 public class EmployeeServiceImpl implements EmployeeService {
     Scanner sc = new Scanner(System.in);
-    static ArrayList<Employee> employeeList = new ArrayList();
+    static ArrayList<Employee> employeeList = new ArrayList<>();
 
     static {
         Employee employee1 = new Employee(1, "Khoa", "22/08/1993", "male", "123",
@@ -58,8 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void editEmp() {
-        System.out.println("editEmp");
-        System.out.println("Input id of person you wanna edit:");
+        System.out.println("Input id of employee you wanna edit:");
         int editIdEmpChoice = sc.nextInt();
         for (Employee employee : employeeList) {
             if (employee.getEmpId() == editIdEmpChoice) {

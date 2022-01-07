@@ -6,7 +6,7 @@ public class MainMenu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DemoStudentManager studentManager = new DemoStudentManager();
-        studentManager.createArr();
+//        studentManager.createArr();
         int choice = -1;
         while (choice != 6) {
             displayMainMenu();
@@ -23,15 +23,15 @@ public class MainMenu {
                     break;
                 case 3:
                     System.out.println("Edit");
-                    studentManager.edit();
+//                    studentManager.edit();
                     break;
                 case 4:
                     System.out.println("Delete");
-                    studentManager.delete();
+//                    studentManager.delete();
                     break;
                 case 5:
-                    System.out.println("Search");
-                    studentManager.search();
+                    System.out.println("show method");
+                    studentManager.showMethod();
                     break;
                 case 6:
                     System.exit(0);
@@ -45,7 +45,7 @@ public class MainMenu {
                 "2.\tDisplay\n" +
                 "3.\tEdit\n" +
                 "4.\tDelete\n" +
-                "5.\tSearch\n" +
+                "5.\tShow method\n" +
                 "6.\tExit\n");
     }
 }

@@ -1,7 +1,5 @@
 package FuramaResort.models;
 
-import java.util.Date;
-
 import static FuramaResort.models.Customer.*;
 import static FuramaResort.models.Facility.*;
 
@@ -13,11 +11,11 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int bookingNumber, String startDate, String endDate,int cusId, String serviceName, String rentType) {
+    public Booking(int bookingNumber, String startDate, String endDate,int NumberOfCustomer, String serviceName, String rentType) {
         this.bookingNumber = bookingNumber;
         this.startDate = startDate;
         this.endDate = endDate;
-        setCusId(cusId);
+        setNumberOfCustomer(NumberOfCustomer);
         setServiceName(serviceName);
         setRentType(rentType);
     }
@@ -52,7 +50,7 @@ public class Booking {
                 "bookingNumber = '" + bookingNumber + '\'' +
                 ", startDate = " + startDate +
                 ", endDate = " + endDate +
-                ", cusId = " + getCusId() +
+                ", cusId = " + getNumberOfCustomer() +
                 ", serviceName = " + getServiceName() +
                 ", rentType = " + getRentType() +
                 '}';

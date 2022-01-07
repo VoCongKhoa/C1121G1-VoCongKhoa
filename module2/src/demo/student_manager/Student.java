@@ -1,81 +1,29 @@
 package demo.student_manager;
 
-public class Student {
-    private int id;
-    private String name;
-    private String dateOfBirth;
-    private String address;
-    private String grade;
-    private String school;
+public class Student extends Person {
+    private String className;
     private double mark;
 
     public Student() {
     }
 
-    public Student(int id, String name, String dateOfBirth, String address) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-    }
-
-    public Student(int id, String name, String dateOfBirth, String address, String grade, String school){
-        this(id,name,dateOfBirth,address);
-        this.grade = grade;
-        this.school = school;
-    }
-
-    public Student(int id, String name, String dateOfBirth, String address, String grade, String school, double mark) {
-        this(id, name, dateOfBirth, address, grade, school);
+    public Student(String className, double mark) {
+        this.className = className;
         this.mark = mark;
     }
 
-    public int getId() {
-        return this.id;
+    public Student(int id, String name, String dateOfBirth, int age, String address, String className, double mark) {
+        super(id, name, dateOfBirth, age, address);
+        this.className = className;
+        this.mark = mark;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getClassName() {
+        return className;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    public String getSchool() {
-        return school;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
+    public void setClassName(String className) {
+        this.className = className;
     }
 
     public double getMark() {
@@ -89,13 +37,20 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", address='" + address + '\'' +
-                ", grade='" + grade + '\'' +
-                ", school='" + school + '\'' +
+                "className='" + className + '\'' +
                 ", mark=" + mark +
                 '}';
+    }
+
+    public void study(String subject) {
+        System.out.println("Study " + subject);
+    }
+
+    public String isClass() {
+        return "Study " + className;
+    }
+
+    public void goToBy(String vehicle) {
+        System.out.println("Go to school by " + vehicle);
     }
 }

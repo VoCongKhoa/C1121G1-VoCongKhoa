@@ -10,9 +10,9 @@ public class FuramaController {
         Scanner sc = new Scanner(System.in);
         BookingServiceImpl bookingService = new BookingServiceImpl();
         ContractServiceImpl contractService = new ContractServiceImpl();
-        CustomerService customerService = new CustomerServiceImpl();
-        EmployeeService employeeService = new EmployeeServiceImpl();
-        Service facilityService = new FacilityServiceImpl();
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+        FacilityServiceImpl facilityService = new FacilityServiceImpl();
         int choice = -1;
         while (choice != 6) {
             displayMainMenu();
@@ -45,6 +45,19 @@ public class FuramaController {
                             "2.\tAdd new customer\n" +
                             "3.\tEdit customer\n" +
                             "4.\tReturn main menu\n");
+                    System.out.println("Input your choice:");
+                    int cusChoice = sc.nextInt();
+                    if (cusChoice == 1) {
+                        customerService.displayCus();
+                    } else if (cusChoice == 2) {
+                        customerService.addCus();
+                    } else if (cusChoice == 3) {
+                        customerService.editCus();
+                    } else if (cusChoice == 4) {
+                        customerService.returnMainMenu();
+                    } else {
+                        System.out.println("Choice again: ");
+                    }
                     break;
                 case 3:
                     System.out.println("1\tDisplay list facility\n" +
@@ -71,13 +84,16 @@ public class FuramaController {
 
             }
         }
-        Person employee = new Employee(1, "Khoa", "22/08/1993", "male", "123", "0905472592", "youandme8668@gmail.com",
-                "ĐH", "junior", 20);
-        Person customer = new Customer(2, "Su", "05/07/1996", "female", "456", "0905472111", "8668@gmail.com",
-                "Diamond", "ĐN");
-        Facility villa = new Villa("bookingVilla", 100, 10, 10, "day", "big", 25, 3);
-        Facility house = new House("bookingVilla", 100, 10, 10, "day", "medium", 2);
-        Facility room = new Room("bookingVilla", 100, 10, 10, "day", "free");
+        Employee employee = new Employee(1, "Khoa", "22/08/1993", "male", "123",
+                "0905472592", "youandme8668@gmail.com", "ĐH", "junior", 20);
+        Customer customer = new Customer("Su", "05/07/1996", "female", "456",
+                "0905472111", "8668@gmail.com", "Diamond", "ĐN");
+        Villa villa = new Villa("bookingVilla", 100, 10, 10,
+                "day", "big", 25, 3);
+        House house = new House("bookingVilla", 100, 10, 10,
+                "day", "medium", 2);
+        Room room = new Room("bookingVilla", 100, 10, 10,
+                "day", "free");
 
         Booking booking = new Booking(123, "1/1/2022", "7/1/2022", 3, "bookingVilla", "day");
         Contract contract = new Contract(1000, 20, 50, 123, 3);

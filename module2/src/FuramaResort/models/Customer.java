@@ -2,33 +2,42 @@ package FuramaResort.models;
 
 
 public class Customer extends Person {
-    private static int cusId;
+    private static int numberOfCustomer;
     private String cusRank;
     private String cusAddress;
+    private int id;
 
     public Customer() {
     }
 
-    public Customer(int cusId, String cusRank, String cusAddress) {
-        this.cusId = cusId;
+    public Customer(String cusRank, String cusAddress) {
+        this.id = this.numberOfCustomer++ + 1;
         this.cusRank = cusRank;
         this.cusAddress = cusAddress;
     }
 
-    public Customer(int cusId,String name, String dateOfBirth, String gender, String idNumber, String phoneNumber,
-                    String email,  String cusRank, String cusAddress) {
+    public Customer(String name, String dateOfBirth, String gender, String idNumber, String phoneNumber,
+                    String email, String cusRank, String cusAddress) {
         super(name, dateOfBirth, gender, idNumber, phoneNumber, email);
-        this.cusId = cusId;
+        this.id = this.numberOfCustomer++ + 1;
         this.cusRank = cusRank;
         this.cusAddress = cusAddress;
     }
 
-    public static int getCusId() {
-        return cusId;
+    public int getId() {
+        return id;
     }
 
-    public static void setCusId(int cusId) {
-        Customer.cusId = cusId;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static int getNumberOfCustomer() {
+        return numberOfCustomer;
+    }
+
+    public static void setNumberOfCustomer(int numberOfCustomer) {
+        Customer.numberOfCustomer = numberOfCustomer;
     }
 
     public String getCusRank() {
@@ -50,7 +59,7 @@ public class Customer extends Person {
     @Override
     public String toString() {
         return "Customer{" +
-                "cusId = '" + cusId + '\'' +
+                "cusId = '" + numberOfCustomer + '\'' +
                 ", name = " + getName()+
                 ", dateOfBirth = " + getDateOfBirth()+
                 ", gender = " + getGender()+
