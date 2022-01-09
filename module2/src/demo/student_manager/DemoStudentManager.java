@@ -1,7 +1,5 @@
 package demo.student_manager;
 
-import com.sun.javafx.iio.gif.GIFImageLoaderFactory;
-
 import java.util.Scanner;
 
 public class DemoStudentManager {

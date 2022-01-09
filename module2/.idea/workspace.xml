@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/demo/student_manager/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/demo/student_manager/Teacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/thuc_hanh/circle_comparator/CircleComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/thuc_hanh/circle_comparator/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/thuc_hanh/interface_comparable/ComparableCircle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/thuc_hanh/interface_comparable/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/controllers/FuramaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/controllers/FuramaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/models/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/models/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/models/Contract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/models/Contract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/models/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/models/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/CustomerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/EmployeeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/EmployeeServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/DemoStudentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/DemoStudentManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/controllers/FuramaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/controllers/FuramaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/models/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/models/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/models/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/models/Contract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/models/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/models/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/EmployeeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/demo/student_manager/DemoStudentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/DemoStudentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -49,17 +37,18 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.MainMenu">
-    <configuration name="FuramaController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FuramaResort.controllers.FuramaController" />
+  <component name="RunManager" selected="Application.ResizeableTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss7_abstract_class_va_interface.thuc_hanh.interface_comparable.Main" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="FuramaResort.controllers.*" />
+          <option name="PATTERN" value="ss7_abstract_class_va_interface.thuc_hanh.interface_comparable.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -73,6 +62,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="demo.student_manager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResizeableTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss7_abstract_class_va_interface.bai_tap.ResizeableTest" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss7_abstract_class_va_interface.bai_tap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,26 +108,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestStaticProperty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss5_access_modifier_static_method_static_property.thuc_hanh.static_property.TestStaticProperty" />
-      <module name="module2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ss5_access_modifier_static_method_static_property.thuc_hanh.static_property.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ResizeableTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.Test1" />
-        <item itemvalue="Application.FuramaController" />
-        <item itemvalue="Application.TestStaticProperty" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +132,9 @@
       <workItem from="1641473568362" duration="2261000" />
       <workItem from="1641483822814" duration="952000" />
       <workItem from="1641517856445" duration="4095000" />
-      <workItem from="1641537268562" duration="479000" />
+      <workItem from="1641537268562" duration="4930000" />
+      <workItem from="1641703319703" duration="1187000" />
+      <workItem from="1641735738490" duration="7226000" />
     </task>
     <servers />
   </component>
