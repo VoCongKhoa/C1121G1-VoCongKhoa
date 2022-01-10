@@ -9,7 +9,6 @@ public class DemoStudentManager {
     static Person[] personList = new Person[20];
 
     static {
-
         Person student1 = new Student(1, "a", "12/1/2020", 16, "ád", "11A", 10.0);
         Person student2 = new Student(2, "b", "2/2/2020", 17, "ád", "12B", 9.0);
         Person student3 = new Student(3, "c", "3/3/2020", 18, "ád", "10C", 8.0);
@@ -17,13 +16,9 @@ public class DemoStudentManager {
         Person teacher2 = new Teacher(2, "BB", "10/2/2020", 27, "ád", "Ly", 9);
         Person teacher3 = new Teacher(3, "CC", "10/3/2020", 38, "ád", "Hoa", 8);
 
-//        System.out.println(student1 instanceof Student);
-//        System.out.println(student1 instanceof Person);
         studentList[0] = (Student)student1;
         studentList[1] = (Student) student2;
         studentList[2] = (Student) student3;
-//        System.out.println(student1 instanceof Student);
-//        System.out.println(student1 instanceof Person);
 
         teacherList[0] = (Teacher) teacher1;
         teacherList[1] = (Teacher) teacher2;
@@ -68,11 +63,11 @@ public class DemoStudentManager {
     }
 
     public void display() {
-        for (int i = 0; i < personList.length; i++) {
-            if (personList[i] == null) {
+        for (Person person : personList) {
+            if (person == null) {
                 break;
             } else {
-                System.out.println(personList[i]);
+                System.out.println(person);
             }
         }
     }
