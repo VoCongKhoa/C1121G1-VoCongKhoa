@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Square colorableSquare1 = new ColorableSquare(5.0);
         Square normalSquare = new Square(10);
+
         Square[] list = new Square[2];
         list[0] = colorableSquare1;
         list[1] = normalSquare;
