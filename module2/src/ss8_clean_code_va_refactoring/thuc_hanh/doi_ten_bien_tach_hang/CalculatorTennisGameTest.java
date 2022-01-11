@@ -5,7 +5,7 @@ import ss8_clean_code_va_refactoring.thuc_hanh.doi_ten_bien_tach_hang.Calculator
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorTest {
+class CalculatorTennisGameTest {
 
     @Test
     @DisplayName("Testing addition")

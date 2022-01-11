@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CylinderTest {
+class CylinderTennisGameTest {
 
     @Test
     @DisplayName("Testing getVolume(0, 0)")

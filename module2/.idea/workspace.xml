@@ -2,28 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/MyList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/MyListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/Cylinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/MyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/TestMyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/module2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/colorable/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/colorable/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/thuc_hanh/interface_comparable/ComparableCircle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/thuc_hanh/interface_comparable/ComparableCircle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/colorable/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/colorable/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/Resizeable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/Resizeable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableCircle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableRectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableRectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/bai_tap/resizeable_shape/ResizeableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/thuc_hanh/interface_comparable/ComparableCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss7_abstract_class_va_interface/thuc_hanh/interface_comparable/ComparableCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/MyList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/MyListTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/Resizeable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableCircle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableRectangle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableSquare.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/bai_tap/TennisGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/bai_tap/TennisGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/bai_tap/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListPractice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/MyListTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTennisGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTennisGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTennisGameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +66,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.MyListTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss7_abstract_class_va_interface.thuc_hanh.interface_comparable.Main" />
+  <component name="RunManager" selected="Application.MyCreatedArrayListTest">
+    <configuration name="MyCreatedArrayListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss10array_list_va_linked_list.bai_tap.array_list.MyCreatedArrayListTest" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss7_abstract_class_va_interface.thuc_hanh.interface_comparable.*" />
+          <option name="PATTERN" value="ss10array_list_va_linked_list.bai_tap.array_list.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,11 +81,11 @@
       </method>
     </configuration>
     <configuration name="MyListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss10array_list_va_linked_list.thuc_hanh.MyListTest" />
+      <option name="MAIN_CLASS_NAME" value="ss10array_list_va_linked_list.thuc_hanh.array_list_practice.MyListTest" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss10array_list_va_linked_list.thuc_hanh.*" />
+          <option name="PATTERN" value="ss10array_list_va_linked_list.thuc_hanh.array_list_practice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -88,8 +93,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss8_clean_code_va_refactoring.bai_tap.Test" />
+    <configuration name="PrefixSums" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.PrefixSums" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestMyLinkedList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss10array_list_va_linked_list.thuc_hanh.linked_list_practice.TestMyLinkedList" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ss10array_list_va_linked_list.thuc_hanh.linked_list_practice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TennisGameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module2" />
       <extension name="coverage">
         <pattern>
@@ -97,35 +127,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CylinderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="module2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ss8_clean_code_va_refactoring.thuc_hanh.tach_phuong_thuc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ss8_clean_code_va_refactoring.thuc_hanh.tach_phuong_thuc" />
-      <option name="MAIN_CLASS_NAME" value="ss8_clean_code_va_refactoring.thuc_hanh.tach_phuong_thuc.CylinderTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FizzBuzzTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="module2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ss8_clean_code_va_refactoring.thuc_hanh.tach_bien.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ss8_clean_code_va_refactoring.thuc_hanh.tach_bien" />
-      <option name="MAIN_CLASS_NAME" value="ss8_clean_code_va_refactoring.thuc_hanh.tach_bien.FizzBuzzTest" />
+      <option name="PACKAGE_NAME" value="ss8_clean_code_va_refactoring.bai_tap" />
+      <option name="MAIN_CLASS_NAME" value="ss8_clean_code_va_refactoring.bai_tap.TennisGameTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -133,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyCreatedArrayListTest" />
+        <item itemvalue="Application.TestMyLinkedList" />
+        <item itemvalue="JUnit.TennisGameTest" />
+        <item itemvalue="Application.PrefixSums" />
         <item itemvalue="Application.MyListTest" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.CylinderTest" />
-        <item itemvalue="JUnit.FizzBuzzTest" />
       </list>
     </recent_temporary>
   </component>
@@ -160,7 +163,8 @@
       <workItem from="1641735738490" duration="7226000" />
       <workItem from="1641788256161" duration="2285000" />
       <workItem from="1641796471995" duration="8267000" />
-      <workItem from="1641868676097" duration="4465000" />
+      <workItem from="1641868676097" duration="22207000" />
+      <workItem from="1641905400841" duration="8447000" />
     </task>
     <servers />
   </component>
