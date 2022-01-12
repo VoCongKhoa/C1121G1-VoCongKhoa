@@ -2,33 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/MyLinkedList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/TestMyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/MyList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/MyListTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/Resizeable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableCircle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableRectangle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableSquare.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss7_abstract_class_va_interface/bai_tap/ResizeableTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/bai_tap/TennisGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/bai_tap/TennisGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/bai_tap/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListPractice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/MyListTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/bai_tap/TennisGameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/doi_ten_bien_tach_hang/CalculatorTennisGameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_bien/FizzBuzzTennisGameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss8_clean_code_va_refactoring/thuc_hanh/tach_phuong_thuc/CylinderTennisGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +142,9 @@
       <workItem from="1641788256161" duration="2285000" />
       <workItem from="1641796471995" duration="8267000" />
       <workItem from="1641868676097" duration="22207000" />
-      <workItem from="1641905400841" duration="8447000" />
+      <workItem from="1641905400841" duration="8549000" />
+      <workItem from="1641949705655" duration="2769000" />
+      <workItem from="1641969128731" duration="728000" />
     </task>
     <servers />
   </component>

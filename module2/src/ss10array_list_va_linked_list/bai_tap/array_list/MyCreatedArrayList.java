@@ -20,27 +20,25 @@ public class MyCreatedArrayList<E> {
         if (index > size() || index < 0) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + size());
         }else {
-            if (size == elements.length) {
-                ensureCapacity(size);
-            }
+//            if (size == elements.length) {
+//                ensureCapacity(size);
+//            }
             int numberLength = 0;
             for (Object o : elements) {
                 if (o != null) {
                     numberLength++;
                 }
             }
+            elements = Arrays.copyOf(elements, numberLength + 1);
             if (index == numberLength) {
-                elements = Arrays.copyOf(elements, index + 1);
                 elements[index] = element;
             } else if (index < numberLength) {
-                elements = Arrays.copyOf(elements, numberLength + 1);
                 for (int i = elements.length - 1; i > 0; i--) {
                     if (i > index) {
                         elements[i] = elements[i - 1];
                     } else if (i == index) {
                         elements[i] = element;
                     }
-
                 }
             }
             size++;
