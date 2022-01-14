@@ -70,8 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                         "8.Edit employee degree\n" +
                         "9.Edit employee role\n" +
                         "10.Edit employee salary\n");
-                int editPropertyEmpChoice = sc.nextInt();
-                sc.nextLine();
+                int editPropertyEmpChoice = Integer.parseInt(sc.nextLine());
                 switch (editPropertyEmpChoice) {
                     case 1:
                         System.out.println("Input your new employee id:");

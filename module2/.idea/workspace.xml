@@ -2,40 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ss11_stack_va_queue/bai_tap/BracketByStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss11_stack_va_queue/bai_tap/DecimalConvertToBinaryByStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss11_stack_va_queue/bai_tap/PalindromeByQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss11_stack_va_queue/bai_tap/ReverseByStack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss11_stack_va_queue/bai_tap/TreeMapSolution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/thuc_hanh/TestMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/NameAndAgeComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/thuc_hanh/hashmap_va_hashset/HashMapAndHashSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/thuc_hanh/hashmap_va_hashset/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/controllers/ProductManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/ElectricProduct.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Laptop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Tablet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/SortByName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/SortByPrice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/demo/student_manager/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/demo/student_manager/Student.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedList$Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedListTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListPractice.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/MyLinkedList$Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/MyLinkedList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/TestMyLinkedList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/demo/student_manager/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo/student_manager/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/bai_tap/array_list/MyCreatedArrayListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/bai_tap/linked_list/MyCreatedLinkedListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListPractice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/thuc_hanh/array_list_practice/MyListPractice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/array_list_practice/MyListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/thuc_hanh/array_list_practice/MyListTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/thuc_hanh/linked_list_practice/MyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss10array_list_va_linked_list/thuc_hanh/linked_list_practice/TestMyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss10_array_list_va_linked_list/thuc_hanh/linked_list_practice/TestMyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/EmployeeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/EmployeeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/EmployeeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +57,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.ProductManager">
     <configuration name="BracketByStack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ss11_stack_va_queue.bai_tap.BracketByStack" />
       <module name="module2" />
@@ -113,12 +97,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PalindromeByQueue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss11_stack_va_queue.bai_tap.PalindromeByQueue" />
+    <configuration name="ProductManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.controllers.ProductManager" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss11_stack_va_queue.bai_tap.*" />
+          <option name="PATTERN" value="ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProductManager" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.HashMapAndHashSet" />
         <item itemvalue="Application.BracketByStack" />
         <item itemvalue="Application.TestMap" />
-        <item itemvalue="Application.PalindromeByQueue" />
       </list>
     </recent_temporary>
   </component>
@@ -176,6 +160,8 @@
       <workItem from="1642036364071" duration="6416000" />
       <workItem from="1642054610948" duration="13214000" />
       <workItem from="1642081353190" duration="7649000" />
+      <workItem from="1642122648127" duration="12686000" />
+      <workItem from="1642138793969" duration="5680000" />
     </task>
     <servers />
   </component>
