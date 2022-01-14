@@ -174,15 +174,13 @@ public class PhoneServiceImpl implements PhoneService {
 
     @Override
     public void sortProductByPrice() {
-        SortByPrice sortByPrice = new SortByPrice();
-        Collections.sort(phoneArrayList,sortByPrice); //ArrayList và List => đều có thể dùng trực tiếp phương thức sort??
+        Collections.sort(phoneArrayList,new SortByPrice()); //ArrayList và List => đều có thể dùng trực tiếp phương thức sort??
         System.out.println("Sort by Price Successfully!!!");
     }
 
     @Override
     public void sortProductByName() {
-        SortByName sortByName = new SortByName();
-        Collections.sort(phoneArrayList,sortByName);
+        Collections.sort(phoneArrayList,new SortByName());
         System.out.println("Sort by Name Successfully!!!");
     }
 }
