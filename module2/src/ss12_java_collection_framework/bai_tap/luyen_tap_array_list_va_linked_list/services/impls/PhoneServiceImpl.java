@@ -70,34 +70,42 @@ public class PhoneServiceImpl implements PhoneService {
                     case 1:
                         System.out.println("Input your new name:");
                         phoneArrayList.get(i).setName(sc.nextLine());
+                        System.out.println("Edit name successfully!!!");
                         break;
                     case 2:
                         System.out.println("Input your new brand:");
                         phoneArrayList.get(i).setBrand(sc.nextLine());
+                        System.out.println("Edit brand successfully!!!");
                         break;
                     case 3:
                         System.out.println("Input your new price:");
                         phoneArrayList.get(i).setPrice(Integer.parseInt(sc.nextLine()));
+                        System.out.println("Edit price successfully!!!");
                         break;
                     case 4:
                         System.out.println("Input your new screen:");
                         phoneArrayList.get(i).setScreen(sc.nextLine());
+                        System.out.println("Edit screen successfully!!!");
                         break;
                     case 5:
                         System.out.println("Input your new RAM:");
                         phoneArrayList.get(i).setRAM(sc.nextLine());
+                        System.out.println("Edit RAM successfully!!!");
                         break;
                     case 6:
                         System.out.println("Input your new color:");
                         phoneArrayList.get(i).setColor(sc.nextLine());
+                        System.out.println("Edit color successfully!!!");
                         break;
                     case 7:
                         System.out.println("Input your camera:");
                         phoneArrayList.get(i).setCamera(sc.nextLine());
+                        System.out.println("Edit camera successfully!!!");
                         break;
                     case 8:
                         System.out.println("Input your new type:");
                         phoneArrayList.get(i).setType(sc.nextLine());
+                        System.out.println("Edit type successfully!!!");
                         break;
                 }
             }
@@ -135,13 +143,15 @@ public class PhoneServiceImpl implements PhoneService {
         Scanner sc = new Scanner(System.in);
         System.out.println("Input name of phone you wanna search:");
         String searchNamePhone = sc.nextLine();
+        boolean flag = false;
         for (int i = 0; i < phoneArrayList.size(); i++) {
-            if (phoneArrayList.get(i).getName().contains(searchNamePhone)){
+            if (phoneArrayList.get(i).getName().toLowerCase().contains(searchNamePhone.toLowerCase())){
                 System.out.println(phoneArrayList.get(i).toString());
+                flag = true;
             }
-//            if (phoneArrayList.get(i).getName().equals(searchNamePhone)){
-//                System.out.println(phoneArrayList.get(i).toString());
-//            }
+        }
+        if (!flag){
+            System.out.println("Not found!!!");
         }
     }
 
@@ -150,25 +160,29 @@ public class PhoneServiceImpl implements PhoneService {
         Scanner sc = new Scanner(System.in);
         System.out.println("Input type of phone you wanna search:");
         String searchTypePhone = sc.nextLine();
+        boolean flag = false;
         for (int i = 0; i < phoneArrayList.size(); i++) {
-            if (phoneArrayList.get(i).getType().contains(searchTypePhone)){
+            if (phoneArrayList.get(i).getType().toLowerCase().contains(searchTypePhone.toLowerCase())){
                 System.out.println(phoneArrayList.get(i).toString());
+                flag = true;
             }
         }
+        if (!flag){
+            System.out.println("Not found!!!");
+        }
     }
-//            if (phoneArrayList.get(i).getName().equals(searchNamePhone)){
-//                System.out.println(phoneArrayList.get(i).toString());
-//            }
 
     @Override
     public void sortProductByPrice() {
         SortByPrice sortByPrice = new SortByPrice();
         Collections.sort(phoneArrayList,sortByPrice); //ArrayList và List => đều có thể dùng trực tiếp phương thức sort??
+        System.out.println("Sort by Price Successfully!!!");
     }
 
     @Override
     public void sortProductByName() {
         SortByName sortByName = new SortByName();
         Collections.sort(phoneArrayList,sortByName);
+        System.out.println("Sort by Name Successfully!!!");
     }
 }

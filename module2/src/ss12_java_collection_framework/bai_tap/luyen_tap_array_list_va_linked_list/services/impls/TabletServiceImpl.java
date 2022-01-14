@@ -63,26 +63,32 @@ public class TabletServiceImpl implements TabletService {
                     case 1:
                         System.out.println("Input your new name:");
                         tabletArrayList.get(i).setName(sc.nextLine());
+                        System.out.println("Edit name successfully!!!");
                         break;
                     case 2:
                         System.out.println("Input your new brand:");
                         tabletArrayList.get(i).setBrand(sc.nextLine());
+                        System.out.println("Edit brand successfully!!!");
                         break;
                     case 3:
                         System.out.println("Input your new price:");
                         tabletArrayList.get(i).setPrice(Integer.parseInt(sc.nextLine()));
+                        System.out.println("Edit price successfully!!!");
                         break;
                     case 4:
                         System.out.println("Input your new screen:");
                         tabletArrayList.get(i).setScreen(sc.nextLine());
+                        System.out.println("Edit screen successfully!!!");
                         break;
                     case 5:
                         System.out.println("Input your new RAM:");
                         tabletArrayList.get(i).setRAM(sc.nextLine());
+                        System.out.println("Edit RAM successfully!!!");
                         break;
                     case 6:
                         System.out.println("Input your new color:");
                         tabletArrayList.get(i).setColor(sc.nextLine());
+                        System.out.println("Edit color successfully!!!");
                         break;
                 }
             }
@@ -122,15 +128,13 @@ public class TabletServiceImpl implements TabletService {
         String searchNameTablet = sc.nextLine();
         boolean flag = false;
         for (int i = 0; i < tabletArrayList.size(); i++) {
-            if (tabletArrayList.get(i).getName().contains(searchNameTablet)){
+            if (tabletArrayList.get(i).getName().toLowerCase().contains(searchNameTablet.toLowerCase())){
                 System.out.println(tabletArrayList.get(i).toString());
                 flag = true;
             }
         }
         if (!flag){
             System.out.println("Not Found!!!");
-        } else {
-            System.out.println("Search by Name Successfully!!!");
         }
     }
 
@@ -138,11 +142,13 @@ public class TabletServiceImpl implements TabletService {
     public void sortProductByPrice() {
         SortByPrice sortByPrice = new SortByPrice();
         Collections.sort(tabletArrayList,sortByPrice);
+        System.out.println("Sort by Price Successfully!!!");
     }
 
     @Override
     public void sortProductByName() {
         SortByPrice sortByName = new SortByPrice();
         Collections.sort(tabletArrayList,sortByName);
+        System.out.println("Sort by Name Successfully!!!");
     }
 }

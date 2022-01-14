@@ -1,8 +1,12 @@
 package ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.controllers;
 
+import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.services.LaptopService;
+import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.services.PhoneService;
+import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.services.Service;
 import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.services.impls.LaptopServiceImpl;
 import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.services.impls.PhoneServiceImpl;
 import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.services.impls.TabletServiceImpl;
+
 import java.util.Scanner;
 
 public class ProductManager {
@@ -21,82 +25,19 @@ public class ProductManager {
                     displayPropertyMenu("phone");
                     System.out.println("Input your choice:");
                     int phoneChoice = Integer.parseInt(sc.nextLine());
-                    if (phoneChoice == 1) {
-                        phoneService.displayProduct();
-                    } else if (phoneChoice == 2) {
-                        phoneService.addProduct();
-                        System.out.println("Add Successfully!!!");
-                    } else if (phoneChoice == 3) {
-                        phoneService.editProductByName();
-                        System.out.println("Edit Successfully!!!");
-                    } else if (phoneChoice == 4) {
-                        phoneService.deleteProductByName();
-                    } else if (phoneChoice == 5) {
-                        phoneService.sortProductByPrice();
-                        System.out.println("Sort by Price Successfully!!!");
-                    } else if (phoneChoice == 6) {
-                        phoneService.sortProductByName();
-                        System.out.println("Sort by Name Successfully!!!");
-                    } else if (phoneChoice == 7) {
-                        phoneService.searchProductByName();
-                    } else if (phoneChoice == 8) {
-                        phoneService.seachProductByType();
-                    } else {
-                        System.out.println("Choice again: ");
-                    }
+                    choiceMethod(phoneService, phoneChoice);
                     break;
                 case 2:
                     displayPropertyMenu("laptop");
                     System.out.println("Input your choice:");
                     int laptopChoice = Integer.parseInt(sc.nextLine());
-                    if (laptopChoice == 1) {
-                        laptopService.displayProduct();
-                    } else if (laptopChoice == 2) {
-                        laptopService.addProduct();
-                        System.out.println("Add Successfully!!!");
-                    } else if (laptopChoice == 3) {
-                        laptopService.editProductByName();
-                        System.out.println("Edit Successfully!!!");
-                    } else if (laptopChoice == 4) {
-                        laptopService.deleteProductByName();
-                    } else if (laptopChoice == 5) {
-                        laptopService.sortProductByPrice();
-                        System.out.println("Sort by Price Successfully!!!");
-                    } else if (laptopChoice == 6) {
-                        laptopService.sortProductByName();
-                        System.out.println("Sort by Name Successfully!!!");
-                    } else if (laptopChoice == 7) {
-                        laptopService.searchProductByName();
-                    } else if (laptopChoice == 8) {
-                        laptopService.seachProductBySSD();
-                    } else {
-                        System.out.println("Choice again: ");
-                    }
+                    choiceMethod(laptopService, laptopChoice);
                     break;
                 case 3:
                     displayPropertyMenu("tablet");
                     System.out.println("Input your choice:");
                     int tabletChoice = Integer.parseInt(sc.nextLine());
-                    if (tabletChoice == 1) {
-                        tabletService.displayProduct();
-                    } else if (tabletChoice == 2) {
-                        tabletService.addProduct();
-                    } else if (tabletChoice == 3) {
-                        tabletService.editProductByName();
-                        System.out.println("Edit Successfully!!!");
-                    } else if (tabletChoice == 4) {
-                        tabletService.deleteProductByName();
-                    } else if (tabletChoice == 5) {
-                        tabletService.sortProductByPrice();
-                        System.out.println("Sort by Price Successfully!!!");
-                    } else if (tabletChoice == 6) {
-                        tabletService.sortProductByName();
-                        System.out.println("Sort by Name Successfully!!!");
-                    } else if (tabletChoice == 7) {
-                        tabletService.searchProductByName();
-                    } else {
-                        System.out.println("Choice again: ");
-                    }
+                    choiceMethod(tabletService, tabletChoice);
                     break;
                 case 4:
                     System.exit(0);
@@ -129,6 +70,39 @@ public class ProductManager {
             System.out.println(propertyMenu);
         } else {
             System.out.println(propertyMenu);
+        }
+    }
+
+    static void choiceMethod(Service service, int choice) {
+        switch (choice) {
+            case 1:
+                service.displayProduct();
+                break;
+            case 2:
+                service.addProduct();
+                break;
+            case 3:
+                service.editProductByName();
+                break;
+            case 4:
+                service.deleteProductByName();
+                break;
+            case 5:
+                service.sortProductByPrice();
+                break;
+            case 6:
+                service.sortProductByName();
+                break;
+            case 7:
+                service.searchProductByName();
+                break;
+            case 8:
+                if (service instanceof PhoneService) {
+                    ((PhoneService) service).seachProductByType();
+                } else if (service instanceof LaptopService) {
+                    ((LaptopService) service).seachProductBySSD();
+                }
+                break;
         }
     }
 }

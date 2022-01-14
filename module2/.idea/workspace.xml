@@ -2,24 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/controllers/ProductManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/ElectricProduct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Laptop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Phone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Tablet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/SortByName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/SortByPrice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/Oto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/PhuongTienGiaoThong.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/XeMay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/XeTai.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/EmployeeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/EmployeeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/thuc_hanh/comparable_va_comparator/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/controllers/ProductManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/controllers/ProductManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Tablet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/models/Tablet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/Service.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/controllers/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/controllers/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/LaptopServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/PhoneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss12_java_collection_framework/bai_tap/luyen_tap_array_list_va_linked_list/services/impls/TabletServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +161,7 @@
       <workItem from="1642054610948" duration="13214000" />
       <workItem from="1642081353190" duration="7649000" />
       <workItem from="1642122648127" duration="12686000" />
-      <workItem from="1642138793969" duration="5680000" />
+      <workItem from="1642138793969" duration="9236000" />
     </task>
     <servers />
   </component>

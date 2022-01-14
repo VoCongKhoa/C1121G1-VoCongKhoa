@@ -68,30 +68,37 @@ public class LaptopServiceImpl implements LaptopService {
                     case 1:
                         System.out.println("Input your new name:");
                         laptopArrayList.get(i).setName(sc.nextLine());
+                        System.out.println("Edit name successfully!!!");
                         break;
                     case 2:
                         System.out.println("Input your new brand:");
                         laptopArrayList.get(i).setBrand(sc.nextLine());
+                        System.out.println("Edit brand successfully!!!");
                         break;
                     case 3:
                         System.out.println("Input your new price:");
                         laptopArrayList.get(i).setPrice(Integer.parseInt(sc.nextLine()));
+                        System.out.println("Edit price successfully!!!");
                         break;
                     case 4:
                         System.out.println("Input your new screen:");
                         laptopArrayList.get(i).setScreen(sc.nextLine());
+                        System.out.println("Edit screen successfully!!!");
                         break;
                     case 5:
                         System.out.println("Input your new RAM:");
                         laptopArrayList.get(i).setRAM(sc.nextLine());
+                        System.out.println("Edit RAM successfully!!!");
                         break;
                     case 6:
                         System.out.println("Input your new color:");
                         laptopArrayList.get(i).setColor(sc.nextLine());
+                        System.out.println("Edit color successfully!!!");
                         break;
                     case 7:
-                        System.out.println("Input your camera:");
+                        System.out.println("Input your SSD:");
                         laptopArrayList.get(i).setSSD(sc.nextLine());
+                        System.out.println("Edit SSD successfully!!!");
                         break;
                 }
             }
@@ -131,15 +138,13 @@ public class LaptopServiceImpl implements LaptopService {
         String searchNameLaptop = sc.nextLine();
         boolean flag = false;
         for (int i = 0; i < laptopArrayList.size(); i++) {
-            if (laptopArrayList.get(i).getName().contains(searchNameLaptop)){
+            if (laptopArrayList.get(i).getName().toLowerCase().contains(searchNameLaptop.toLowerCase())){
                 System.out.println(laptopArrayList.get(i).toString());
                 flag = true;
             }
         }
         if (!flag){
             System.out.println("Not Found!!!");
-        } else {
-            System.out.println("Search by Name Successfully!!!");
         }
     }
 
@@ -156,8 +161,6 @@ public class LaptopServiceImpl implements LaptopService {
         }
         if (!flag){
             System.out.println("Not Found!!!");
-        } else {
-            System.out.println("Search by SDD Successfully!!!");
         }
     }
 
@@ -165,11 +168,13 @@ public class LaptopServiceImpl implements LaptopService {
     public void sortProductByPrice() {
         SortByPrice sortByPrice = new SortByPrice();
         Collections.sort(laptopArrayList,sortByPrice);
+        System.out.println("Sort by Price Successfully!!!");
     }
 
     @Override
     public void sortProductByName() {
         SortByName sortByName = new SortByName();
         Collections.sort(laptopArrayList,sortByName);
+        System.out.println("Sort by Name Successfully!!!");
     }
 }
