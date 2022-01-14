@@ -1,10 +1,12 @@
 package demo.student_manager;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class MainMenu {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        HashSet <Student> hashSet = new HashSet<>();
         DemoStudentManager studentManager = new DemoStudentManager();
 //        studentManager.createArr();
         int choice = -1;
