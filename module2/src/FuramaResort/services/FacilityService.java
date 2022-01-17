@@ -1,7 +1,7 @@
 package FuramaResort.services;
 
 public interface FacilityService extends Service{
-    void displayFac();
-    void addFac();
-    void displayFacMaintenance();
+    void displayFacility();
+    void addFacility();
+    void displayFacilityMaintenance();
 }

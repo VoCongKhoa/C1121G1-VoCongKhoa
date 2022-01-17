@@ -1,11 +1,11 @@
 package FuramaResort.models;
 
 public abstract class Facility {
-    private static String serviceName;
+    private String serviceName;
     private double usableArea;
     private double price;
     private int maximumPerson;
-    private static String rentType;
+    private String rentType;
 
     public Facility() {
     }
@@ -18,12 +18,12 @@ public abstract class Facility {
         this.rentType = rentType;
     }
 
-    public static String getServiceName() {
+    public String getServiceName() {
         return serviceName;
     }
 
-    public static void setServiceName(String serviceName) {
-        Facility.serviceName = serviceName;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public double getUsableArea() {
@@ -50,12 +50,12 @@ public abstract class Facility {
         this.maximumPerson = maximumPerson;
     }
 
-    public static String getRentType() {
+    public String getRentType() {
         return rentType;
     }
 
-    public static void setRentType(String rentType) {
-        Facility.rentType = rentType;
+    public void setRentType(String rentType) {
+        this.rentType = rentType;
     }
 
     @Override

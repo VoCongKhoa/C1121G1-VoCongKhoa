@@ -1,13 +1,13 @@
-package FuramaResort.services;
+package FuramaResort.services.impls;
 
+import java.util.List;
 import java.util.Scanner;
 import FuramaResort.models.Employee;
+import FuramaResort.services.EmployeeService;
 import java.util.ArrayList;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    Scanner sc = new Scanner(System.in);
-    static ArrayList<Employee> employeeList = new ArrayList<>();
-
+    static List<Employee> employeeList = new ArrayList<>();
     static {
         Employee employee1 = new Employee(1, "Khoa", "22/08/1993", "male", "123",
                 "0905472592", "youandme8668@gmail.com", "ĐH", "junior", 20);
@@ -21,12 +21,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void displayEmp() {
-        System.out.println(employeeList);
+    public void displayEmployee() {
+        for (Employee employee : employeeList) {
+            System.out.println(employee);
+        }
     }
 
     @Override
-    public void addEmp() {
+    public void addEmployee() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Add new id of employee: ");
         int newEmpId = sc.nextInt();
         sc.nextLine();
@@ -54,11 +57,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void editEmp() {
+    public void editEmployee() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Input id of employee you wanna edit:");
         int editIdEmpChoice = sc.nextInt();
         for (Employee employee : employeeList) {
-            if (employee.getEmpId() == editIdEmpChoice) {
+            if (employee.getEmployeeId() == editIdEmpChoice) {
                 System.out.println("Input property you wanna edit:\n" +
                         "1.Edit employee id\n" +
                         "2.Edit name\n" +
@@ -74,7 +78,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 switch (editPropertyEmpChoice) {
                     case 1:
                         System.out.println("Input your new employee id:");
-                        employee.setEmpId(sc.nextInt());
+                        employee.setEmployeeId(sc.nextInt());
                         break;
                     case 2:
                         System.out.println("Input your new name:");
@@ -103,20 +107,20 @@ public class EmployeeServiceImpl implements EmployeeService {
                         break;
                     case 8:
                         System.out.println("Input your new employee id:");
-                        employee.setEmpId(sc.nextInt());
+                        employee.setEmployeeId(sc.nextInt());
                         sc.nextLine();
                         break;
                     case 9:
                         System.out.println("Input your new employee degree:");
-                        employee.setEmpDegree(sc.nextLine());
+                        employee.setEmployeeDegree(sc.nextLine());
                         break;
                     case 10:
                         System.out.println("Input your new employee role:");
-                        employee.setEmpRole(sc.nextLine());
+                        employee.setEmployeeRole(sc.nextLine());
                         break;
                     case 11:
                         System.out.println("Input your new salary:");
-                        employee.setEmpSalary(sc.nextDouble());
+                        employee.setEmployeeSalary(sc.nextDouble());
                         break;
                 }
             }

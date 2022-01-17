@@ -1,13 +1,14 @@
-package FuramaResort.services;
+package FuramaResort.services.impls;
 
 import FuramaResort.models.Customer;
+import FuramaResort.services.CustomerService;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
     static LinkedList<Customer> customerList = new LinkedList<>();
-
     static {
         Customer customer1 = new Customer("Su", "05/07/1996", "female", "456",
                 "0905472111", "8668@gmail.com", "Diamond", "ĐN");
@@ -21,13 +22,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void displayCus() {
+    public void displayCustomer() {
         System.out.println(customerList);
 
     }
 
     @Override
-    public void addCus() {
+    public void addCustomer() {
         System.out.println("Add new name of customer: ");
         String newName = sc.nextLine();
         System.out.println("Add new DoB of customer: ");
@@ -50,7 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void editCus() {
+    public void editCustomer() {
         System.out.println("Input id of customer you wanna edit:");
         int editIdCusChoice = sc.nextInt();
         System.out.println(Customer.getNumberOfCustomer());
@@ -100,11 +101,11 @@ public class CustomerServiceImpl implements CustomerService {
                         break;
                     case 8:
                         System.out.println("Input your new customer rank:");
-                        customer.setCusRank(sc.nextLine());
+                        customer.setCustomerRank(sc.nextLine());
                         break;
                     case 9:
                         System.out.println("Input your new customer address:");
-                        customer.setCusAddress(sc.nextLine());
+                        customer.setCustomerAddress(sc.nextLine());
                         break;
                 }
             }

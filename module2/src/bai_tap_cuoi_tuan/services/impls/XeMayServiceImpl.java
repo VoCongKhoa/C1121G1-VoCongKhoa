@@ -1,7 +1,6 @@
 package bai_tap_cuoi_tuan.services.impls;
 
-import bai_tap_cuoi_tuan.models.HangSanXuat;
-import bai_tap_cuoi_tuan.models.XeMay;
+import bai_tap_cuoi_tuan.models.*;
 import bai_tap_cuoi_tuan.services.XeMayService;
 
 import java.util.*;
@@ -19,11 +18,11 @@ public class XeMayServiceImpl implements XeMayService {
         hangSanXuatList.add(new HangSanXuat("HSX-006", "Toyota", "Nhật Bản"));
         hangSanXuatList.add(new HangSanXuat("HSX-006", "Hino", "Nhật Bản"));
 
-        xeMayArrayList.add(new XeMay("43G1-015.45", "HSX-001,Yamaha,Nhật Bản", 2010,
+        xeMayArrayList.add(new XeMay("43G1-015.45", hangSanXuatList.get(2), 2010,
                 "Khoa", "1000cc"));
-        xeMayArrayList.add(new XeMay("92G1-593.45", "HSX-002,Honda,Nhật Bản", 2005,
+        xeMayArrayList.add(new XeMay("92G1-593.45", hangSanXuatList.get(3), 2005,
                 "Su", "2000cc"));
-        xeMayArrayList.add(new XeMay("92G1-136.45", "HSX-005,Ford,Mỹ", 2000,
+        xeMayArrayList.add(new XeMay("92G1-136.45", hangSanXuatList.get(4), 2000,
                 "Vo", "3000cc"));
     }
     @Override
@@ -39,7 +38,7 @@ public class XeMayServiceImpl implements XeMayService {
                 "5.\tFord\n" +
                 "6.\tToyota\n" +
                 "7.\tHino\n");
-        String tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine())-1).toString();
+        HangSanXuat tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine())-1);
         System.out.println("Nhập năm sản xuất mới:");
         int namSanXuat = Integer.parseInt(sc.nextLine());
         System.out.println("Nhập chủ sở hữu mới:");
@@ -64,14 +63,14 @@ public class XeMayServiceImpl implements XeMayService {
         String bienKiemSoat = sc.nextLine();
         boolean flag = false;
         for (int i = 0; i < xeMayArrayList.size(); i++) {
-            if (xeMayArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())){
+            if (xeMayArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())) {
                 flag = true;
                 System.out.println("Bạn có xác nhận muốn xoá xe máy có biển kiểm soát " +
                         xeMayArrayList.get(i).getBienKiemSoat() + " khỏi danh sách không?");
                 System.out.println("1. Có");
                 System.out.println("2. Không");
                 int xacNhan = Integer.parseInt(sc.nextLine());
-                if (xacNhan == 1){
+                if (xacNhan == 1) {
                     System.out.println("Bạn đã xoá xe máy có biển kiểm soát " +
                             xeMayArrayList.get(i).getBienKiemSoat() + " khỏi danh sách!");
                     xeMayArrayList.remove(i);
@@ -79,7 +78,7 @@ public class XeMayServiceImpl implements XeMayService {
                 break;
             }
         }
-        if (!flag){
+        if (!flag) {
             System.out.println("Bạn nhập sai!");
         }
     }

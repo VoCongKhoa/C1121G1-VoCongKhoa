@@ -1,7 +1,7 @@
 package FuramaResort.controllers;
 
 import FuramaResort.models.*;
-import FuramaResort.services.*;
+import FuramaResort.services.impls.*;
 
 import java.util.Scanner;
 
@@ -18,7 +18,7 @@ public class FuramaController {
             displayMainMenu();
 
             System.out.print("Input your choice: ");
-            choice = sc.nextInt();
+            choice = Integer.parseInt(sc.nextLine());
             switch (choice) {
                 case 1:
                     System.out.println("1\tDisplay list employees\n" +
@@ -26,14 +26,14 @@ public class FuramaController {
                             "3\tEdit employee\n" +
                             "4\tReturn main menu\n");
                     System.out.println("Input your choice:");
-                    int empChoice = sc.nextInt();
-                    if (empChoice == 1) {
-                        employeeService.displayEmp();
-                    } else if (empChoice == 2) {
-                        employeeService.addEmp();
-                    } else if (empChoice == 3) {
-                        employeeService.editEmp();
-                    } else if (empChoice == 4) {
+                    int employeeChoice = Integer.parseInt(sc.nextLine());
+                    if (employeeChoice == 1) {
+                        employeeService.displayEmployee();
+                    } else if (employeeChoice == 2) {
+                        employeeService.addEmployee();
+                    } else if (employeeChoice == 3) {
+                        employeeService.editEmployee();
+                    } else if (employeeChoice == 4) {
                         employeeService.returnMainMenu();
                     } else {
                         System.out.println("Choice again: ");
@@ -46,14 +46,14 @@ public class FuramaController {
                             "3.\tEdit customer\n" +
                             "4.\tReturn main menu\n");
                     System.out.println("Input your choice:");
-                    int cusChoice = sc.nextInt();
-                    if (cusChoice == 1) {
-                        customerService.displayCus();
-                    } else if (cusChoice == 2) {
-                        customerService.addCus();
-                    } else if (cusChoice == 3) {
-                        customerService.editCus();
-                    } else if (cusChoice == 4) {
+                    int customerChoice = Integer.parseInt(sc.nextLine());
+                    if (customerChoice == 1) {
+                        customerService.displayCustomer();
+                    } else if (customerChoice == 2) {
+                        customerService.addCustomer();
+                    } else if (customerChoice == 3) {
+                        customerService.editCustomer();
+                    } else if (customerChoice == 4) {
                         customerService.returnMainMenu();
                     } else {
                         System.out.println("Choice again: ");
@@ -64,6 +64,19 @@ public class FuramaController {
                             "2\tAdd new facility\n" +
                             "3\tDisplay list facility maintenance\n" +
                             "4\tReturn main menu\n");
+                    System.out.println("Input your choice:");
+                    int facilityChoice = Integer.parseInt(sc.nextLine());
+                    if (facilityChoice == 1) {
+                        facilityService.displayFacility();
+                    } else if (facilityChoice == 2) {
+                        facilityService.addFacility();
+                    } else if (facilityChoice == 3) {
+                        facilityService.displayFacilityMaintenance();
+                    } else if (facilityChoice == 4) {
+                        facilityService.returnMainMenu();
+                    } else {
+                        System.out.println("Choice again: ");
+                    }
                     break;
                 case 4:
                     System.out.println("1.\tAdd new booking\n" +
@@ -72,6 +85,21 @@ public class FuramaController {
                             "4.\tDisplay list contracts\n" +
                             "5.\tEdit contracts\n" +
                             "6.\tReturn main menu\n");
+                    System.out.println("Input your choice:");
+                    int bookingChoice = Integer.parseInt(sc.nextLine());
+                    if (bookingChoice == 1) {
+                        bookingService.addBooking();
+                    } else if (bookingChoice == 2) {
+                        bookingService.displayBooking();
+                    } else if (bookingChoice == 3) {
+                        bookingService.createNewContract();
+                    } else if (bookingChoice == 4) {
+                        bookingService.displayContract();
+                    } else if (bookingChoice == 5) {
+                        bookingService.editContract();
+                    } else {
+                        System.out.println("Choice again: ");
+                    }
                     break;
                 case 5:
                     System.out.println("1.\tDisplay list customers use service\n" +
@@ -84,34 +112,10 @@ public class FuramaController {
 
             }
         }
-        Employee employee = new Employee(1, "Khoa", "22/08/1993", "male", "123",
-                "0905472592", "youandme8668@gmail.com", "ĐH", "junior", 20);
-        Customer customer = new Customer("Su", "05/07/1996", "female", "456",
-                "0905472111", "8668@gmail.com", "Diamond", "ĐN");
-        Villa villa = new Villa("bookingVilla", 100, 10, 10,
-                "day", "big", 25, 3);
-        House house = new House("bookingVilla", 100, 10, 10,
-                "day", "medium", 2);
-        Room room = new Room("bookingVilla", 100, 10, 10,
-                "day", "free");
 
-        Booking booking = new Booking(123, "1/1/2022", "7/1/2022", 3, "bookingVilla", "day");
-        Contract contract = new Contract(1000, 20, 50, 123, 3);
+//        Booking booking = new Booking(123, "1/1/2022", "7/1/2022", 3, "bookingVilla", "day");
+//        Contract contract = new Contract(1000, 20, 50, 123, 3);
 
-//        System.out.println(employee);
-//        System.out.println(customer);
-//        System.out.println(villa);
-//        System.out.println(house);
-//        System.out.println(room);
-//        System.out.println(booking);
-//        System.out.println(contract);
-
-
-//        bookingService.addBooking();
-//        contractService.displayCusUseService();
-//        customerService.displayCus();
-        employeeService.displayEmp();
-//        facilityService.returnMainMenu();
     }
 
     static void displayMainMenu() {
@@ -122,4 +126,6 @@ public class FuramaController {
                 "5.\tPromotion Management\n" +
                 "6.\tExit\n");
     }
+
+
 }

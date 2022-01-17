@@ -1,4 +1,6 @@
-package FuramaResort.services;
+package FuramaResort.services.impls;
+
+import FuramaResort.services.ContractService;
 
 public class ContractServiceImpl implements ContractService {
     @Override

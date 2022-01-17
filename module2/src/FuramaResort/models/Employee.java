@@ -2,75 +2,75 @@ package FuramaResort.models;
 
 
 public class Employee extends Person {
-    private int empId;
-    private String empDegree;
-    private String empRole;
-    private double empSalary;
+    private int employeeId;
+    private String employeeDegree;
+    private String employeeRole;
+    private double employeeSalary;
 
     public Employee() {
     }
 
-    public Employee(int empId, String empDegree, String empRole, double empSalary) {
-        this.empId = empId;
-        this.empDegree = empDegree;
-        this.empRole = empRole;
-        this.empSalary = empSalary;
+    public Employee(int employeeId, String employeeDegree, String employeeRole, double employeeSalary) {
+        this.employeeId = employeeId;
+        this.employeeDegree = employeeDegree;
+        this.employeeRole = employeeRole;
+        this.employeeSalary = employeeSalary;
     }
 
-    public Employee(int empId, String name,String dateOfBirth , String gender, String idNumber,
-                    String phoneNumber, String email, String empDegree, String empRole, double empSalary) {
+    public Employee(int employeeId, String name, String dateOfBirth , String gender, String idNumber,
+                    String phoneNumber, String email, String employeeDegree, String employeeRole, double employeeSalary) {
         super(name, dateOfBirth, gender, idNumber, phoneNumber, email);
-        this.empId = empId;
-        this.empDegree = empDegree;
-        this.empRole = empRole;
-        this.empSalary = empSalary;
+        this.employeeId = employeeId;
+        this.employeeDegree = employeeDegree;
+        this.employeeRole = employeeRole;
+        this.employeeSalary = employeeSalary;
     }
 
-    public int getEmpId() {
-        return empId;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setEmpId(int empId) {
-        this.empId = empId;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public String getEmpDegree() {
-        return empDegree;
+    public String getEmployeeDegree() {
+        return employeeDegree;
     }
 
-    public void setEmpDegree(String empDegree) {
-        this.empDegree = empDegree;
+    public void setEmployeeDegree(String employeeDegree) {
+        this.employeeDegree = employeeDegree;
     }
 
-    public String getEmpRole() {
-        return empRole;
+    public String getEmployeeRole() {
+        return employeeRole;
     }
 
-    public void setEmpRole(String empRole) {
-        this.empRole = empRole;
+    public void setEmployeeRole(String employeeRole) {
+        this.employeeRole = employeeRole;
     }
 
-    public double getEmpSalary() {
-        return empSalary;
+    public double getEmployeeSalary() {
+        return employeeSalary;
     }
 
-    public void setEmpSalary(double empSalary) {
-        this.empSalary = empSalary;
+    public void setEmployeeSalary(double employeeSalary) {
+        this.employeeSalary = employeeSalary;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "empId = '" + empId + '\'' +
+                "employeeId = '" + employeeId + '\'' +
                 ", name = " + getName() +
                 ", dateOfBirth = " + getDateOfBirth() +
                 ", gender = " + getGender() +
                 ", idNumber = " + getIdNumber() +
                 ", phoneNumber = " + getPhoneNumber() +
                 ", email = " + getEmail() +
-                ", empDegree = " + empDegree +
-                ", empRole = " + empRole +
-                ", empSalary = " + empSalary +
+                ", employeeDegree = " + employeeDegree +
+                ", employeeRole = " + employeeRole +
+                ", employeeSalary = " + employeeSalary +
                 '}';
     }
 }

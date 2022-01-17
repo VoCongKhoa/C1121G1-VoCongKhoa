@@ -1,7 +1,7 @@
 package FuramaResort.services;
 
 public interface CustomerService extends Service{
-    void displayCus();
-    void addCus();
-    void editCus();
+    void displayCustomer();
+    void addCustomer();
+    void editCustomer();
 }

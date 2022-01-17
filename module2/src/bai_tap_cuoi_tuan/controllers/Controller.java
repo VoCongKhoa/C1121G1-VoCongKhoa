@@ -1,6 +1,5 @@
 package bai_tap_cuoi_tuan.controllers;
 
-import bai_tap_cuoi_tuan.services.Service;
 import bai_tap_cuoi_tuan.services.impls.OtoServiceImpl;
 import bai_tap_cuoi_tuan.services.impls.XeMayServiceImpl;
 import bai_tap_cuoi_tuan.services.impls.XeTaiServiceImpl;
@@ -9,9 +8,10 @@ import java.util.Scanner;
 
 public class Controller {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        OtoServiceImpl otoService = new OtoServiceImpl();
-        XeMayServiceImpl xeMayService = new XeMayServiceImpl();
+        OtoServiceImpl otoService = new OtoServiceImpl(); //???
+        XeMayServiceImpl xeMayService = new XeMayServiceImpl(); //???
         XeTaiServiceImpl xeTaiService = new XeTaiServiceImpl();
 
         int choose = -1;

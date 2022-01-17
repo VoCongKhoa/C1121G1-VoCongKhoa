@@ -3,25 +3,25 @@ package FuramaResort.models;
 
 public class Customer extends Person {
     private static int numberOfCustomer;
-    private String cusRank;
-    private String cusAddress;
+    private String customerRank;
+    private String customerAddress;
     private int id;
 
     public Customer() {
     }
 
-    public Customer(String cusRank, String cusAddress) {
+    public Customer(String customerRank, String customerAddress) {
         this.id = this.numberOfCustomer++ + 1;
-        this.cusRank = cusRank;
-        this.cusAddress = cusAddress;
+        this.customerRank = customerRank;
+        this.customerAddress = customerAddress;
     }
 
     public Customer(String name, String dateOfBirth, String gender, String idNumber, String phoneNumber,
-                    String email, String cusRank, String cusAddress) {
+                    String email, String customerRank, String customerAddress) {
         super(name, dateOfBirth, gender, idNumber, phoneNumber, email);
         this.id = this.numberOfCustomer++ + 1;
-        this.cusRank = cusRank;
-        this.cusAddress = cusAddress;
+        this.customerRank = customerRank;
+        this.customerAddress = customerAddress;
     }
 
     public int getId() {
@@ -40,34 +40,34 @@ public class Customer extends Person {
         Customer.numberOfCustomer = numberOfCustomer;
     }
 
-    public String getCusRank() {
-        return cusRank;
+    public String getCustomerRank() {
+        return customerRank;
     }
 
-    public void setCusRank(String cusRank) {
-        this.cusRank = cusRank;
+    public void setCustomerRank(String customerRank) {
+        this.customerRank = customerRank;
     }
 
-    public String getCusAddress() {
-        return cusAddress;
+    public String getCustomerAddress() {
+        return customerAddress;
     }
 
-    public void setCusAddress(String cusAddress) {
-        this.cusAddress = cusAddress;
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "cusId = '" + numberOfCustomer + '\'' +
+                "customerId = '" + numberOfCustomer + '\'' +
                 ", name = " + getName()+
                 ", dateOfBirth = " + getDateOfBirth()+
                 ", gender = " + getGender()+
                 ", idNumber = " + getIdNumber()+
                 ", phoneNumber = " + getPhoneNumber()+
                 ", email = " + getEmail()+
-                ", cusRank = " + cusRank+
-                ", cusAdress = " + cusAddress+
+                ", customerRank = " + customerRank +
+                ", customerAdress = " + customerAddress +
                 '}';
     }
 }

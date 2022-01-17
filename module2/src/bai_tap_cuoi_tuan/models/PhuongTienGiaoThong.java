@@ -2,16 +2,16 @@ package bai_tap_cuoi_tuan.models;
 
 public abstract class PhuongTienGiaoThong {
     private String bienKiemSoat;
-    private String tenHangSanXuat;
+    private HangSanXuat hangSanXuat;
     private int namSanXuat;
     private String chuSoHuu;
 
     public PhuongTienGiaoThong() {
     }
 
-    public PhuongTienGiaoThong(String bienKiemSoat, String tenHangSanXuat, int namSanXuat, String chuSoHuu) {
+    public PhuongTienGiaoThong(String bienKiemSoat, HangSanXuat hangSanXuat, int namSanXuat, String chuSoHuu) {
         this.bienKiemSoat = bienKiemSoat;
-        this.tenHangSanXuat = tenHangSanXuat;
+        this.hangSanXuat = hangSanXuat;
         this.namSanXuat = namSanXuat;
         this.chuSoHuu = chuSoHuu;
     }
@@ -24,12 +24,12 @@ public abstract class PhuongTienGiaoThong {
         this.bienKiemSoat = bienKiemSoat;
     }
 
-    public String getTenHangSanXuat() {
-        return tenHangSanXuat;
+    public HangSanXuat getHangSanXuat() {
+        return hangSanXuat;
     }
 
-    public void setTenHangSanXuat(String tenHangSanXuat) {
-        this.tenHangSanXuat = tenHangSanXuat;
+    public void setHangSanXuat(HangSanXuat hangSanXuat) {
+        this.hangSanXuat = hangSanXuat;
     }
 
     public int getNamSanXuat() {
@@ -52,7 +52,7 @@ public abstract class PhuongTienGiaoThong {
     public String toString() {
         return "PhuongTienGiaoThong{" +
                 "bienKiemSoat='" + bienKiemSoat + '\'' +
-                ", tenHangSanXuat='" + tenHangSanXuat + '\'' +
+                ", tenHangSanXuat='" + hangSanXuat + '\'' +
                 ", namSanXuat='" + namSanXuat + '\'' +
                 ", chuSoHuu='" + chuSoHuu + '\'' +
                 '}';

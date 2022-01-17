@@ -12,7 +12,7 @@ public class Oto extends PhuongTienGiaoThong{
         this.kieuXe = kieuXe;
     }
 
-    public Oto(String bienKiemSoat, String tenHangSanXuat, int namSanXuat, String chuSoHuu, int soChoNgoi, String kieuXe) {
+    public Oto(String bienKiemSoat, HangSanXuat tenHangSanXuat, int namSanXuat, String chuSoHuu, int soChoNgoi, String kieuXe) {
         super(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu);
         this.soChoNgoi = soChoNgoi;
         this.kieuXe = kieuXe;
@@ -38,7 +38,7 @@ public class Oto extends PhuongTienGiaoThong{
     public String toString() {
         return "Oto{" +
                 "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-                ", tenHangSanXuat='" + super.getTenHangSanXuat() + '\'' +
+                ", tenHangSanXuat='" + super.getHangSanXuat() + '\'' +
                 ", namSanXuat='" + super.getNamSanXuat() + '\'' +
                 ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
                 ", soChoNgoi=" + soChoNgoi +

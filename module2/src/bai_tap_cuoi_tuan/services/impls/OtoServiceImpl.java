@@ -1,7 +1,6 @@
 package bai_tap_cuoi_tuan.services.impls;
 
-import bai_tap_cuoi_tuan.models.HangSanXuat;
-import bai_tap_cuoi_tuan.models.Oto;
+import bai_tap_cuoi_tuan.models.*;
 import bai_tap_cuoi_tuan.services.OtoService;
 
 import java.util.*;
@@ -24,11 +23,11 @@ public class OtoServiceImpl implements OtoService {
         kieuXeList.put(1, "Du lịch");
         kieuXeList.put(2, "Xe khách");
 
-        otoArrayList.add(new Oto("43G1-123.45", "HSX-005,Ford,Mỹ", 2000,
+        otoArrayList.add(new Oto("43G1-123.45", hangSanXuatList.get(1), 2000,
                 "Khoa", 7, "Du lịch"));
-        otoArrayList.add(new Oto("92E1-456.78", "HSX-002,Honda,Nhật Bản", 2010,
+        otoArrayList.add(new Oto("92E1-456.78", hangSanXuatList.get(2), 2010,
                 "Su", 7, "Xe khách"));
-        otoArrayList.add(new Oto("43G1-789.00", "HSX-001,Yamaha,Nhật Bản", 2000,
+        otoArrayList.add(new Oto("43G1-789.00", hangSanXuatList.get(3), 2000,
                 "Khoa", 7, "Du lịch"));
     }
 
@@ -45,7 +44,7 @@ public class OtoServiceImpl implements OtoService {
                 "5.\tFord\n" +
                 "6.\tToyota\n" +
                 "7.\tHino\n");
-        String tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine())-1).toString();
+        HangSanXuat tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine()) - 1);
         System.out.println("Nhập năm sản xuất mới:");
         int namSanXuat = Integer.parseInt(sc.nextLine());
         System.out.println("Nhập chủ sở hữu mới:");
@@ -69,19 +68,20 @@ public class OtoServiceImpl implements OtoService {
 
     @Override
     public void xoa() {
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập biển kiểm soát xe ôtô cần xoá:");
         String bienKiemSoat = sc.nextLine();
         boolean flag = false;
         for (int i = 0; i < otoArrayList.size(); i++) {
-            if (otoArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())){
+            if (otoArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())) {
                 flag = true;
                 System.out.println("Bạn có xác nhận muốn xoá xe ô tô có biển kiểm soát " +
                         otoArrayList.get(i).getBienKiemSoat() + " khỏi danh sách không?");
                 System.out.println("1. Có");
                 System.out.println("2. Không");
                 int xacNhan = Integer.parseInt(sc.nextLine());
-                if (xacNhan == 1){
+                if (xacNhan == 1) {
                     System.out.println("Bạn đã xoá xe ô tô có biển kiểm soát " +
                             otoArrayList.get(i).getBienKiemSoat() + " khỏi danh sách!");
                     otoArrayList.remove(i);
@@ -89,8 +89,9 @@ public class OtoServiceImpl implements OtoService {
                 break;
             }
         }
-        if (!flag){
+        if (!flag) {
             System.out.println("Bạn nhập sai!");
         }
     }
 }
+

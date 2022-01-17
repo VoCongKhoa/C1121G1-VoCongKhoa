@@ -15,8 +15,8 @@ public class Contract {
         this.contractNumber = contractNumber;
         this.contractDeposit = contractDeposit;
         this.contractSum = contractSum;
-        setBookingNumber(bookingNumber);
-        setNumberOfCustomer(cusId);
+//        setBookingNumber(bookingNumber);
+//        setNumberOfCustomer(cusId);
     }
 
     public int getContractNumber() {
@@ -47,7 +47,7 @@ public class Contract {
     public String toString() {
         return "Contract{" +
                 "contractNumber = '" + contractNumber + '\'' +
-                ", bookingNumber = " + getBookingNumber() +
+                ", bookingNumber = " + "FAILED" +
                 ", contractDeposit = " + contractDeposit +
                 ", contractSum = " + contractSum +
                 ", cusId = " + getNumberOfCustomer() +

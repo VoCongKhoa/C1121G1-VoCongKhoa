@@ -1,25 +1,25 @@
 package bai_tap_cuoi_tuan.models;
 
 public class HangSanXuat {
-    private String idHangSanXuat;
+    private String maHangSanXuat;
     private String tenHangSanXuat;
     private String quocGia;
 
     public HangSanXuat() {
     }
 
-    public HangSanXuat(String idHangSanXuat, String tenHangSanXuat, String quocGia) {
-        this.idHangSanXuat = idHangSanXuat;
+    public HangSanXuat(String maHangSanXuat, String tenHangSanXuat, String quocGia) {
+        this.maHangSanXuat = maHangSanXuat;
         this.tenHangSanXuat = tenHangSanXuat;
         this.quocGia = quocGia;
     }
 
-    public String getIdHangSanXuat() {
-        return idHangSanXuat;
+    public String getMaHangSanXuat() {
+        return maHangSanXuat;
     }
 
-    public void setIdHangSanXuat(String idHangSanXuat) {
-        this.idHangSanXuat = idHangSanXuat;
+    public void setMaHangSanXuat(String maHangSanXuat) {
+        this.maHangSanXuat = maHangSanXuat;
     }
 
     public String getTenHangSanXuat() {
@@ -40,6 +40,6 @@ public class HangSanXuat {
 
     @Override
     public String toString() {
-        return idHangSanXuat+ ", " + tenHangSanXuat + ", " + quocGia;
+        return maHangSanXuat + ", " + tenHangSanXuat + ", " + quocGia;
     }
 }

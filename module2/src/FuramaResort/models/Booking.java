@@ -1,31 +1,33 @@
 package FuramaResort.models;
 
+import java.util.Objects;
+
 import static FuramaResort.models.Customer.*;
 import static FuramaResort.models.Facility.*;
 
 public class Booking {
-    private static int bookingNumber;
+    private int bookingNumber;
     private String startDate;
     private String endDate;
 
     public Booking() {
     }
 
-    public Booking(int bookingNumber, String startDate, String endDate,int NumberOfCustomer, String serviceName, String rentType) {
+    public Booking(int bookingNumber, String startDate, String endDate,int id, String serviceName, String rentType) {
         this.bookingNumber = bookingNumber;
         this.startDate = startDate;
         this.endDate = endDate;
-        setNumberOfCustomer(NumberOfCustomer);
-        setServiceName(serviceName);
-        setRentType(rentType);
+        setNumberOfCustomer(id);
+//        setServiceName(serviceName);
+//        setRentType(rentType);
     }
 
-    public static int getBookingNumber() {
+    public int getBookingNumber() {
         return bookingNumber;
     }
 
-    public static void setBookingNumber(int bookingNumber) {
-        Booking.bookingNumber = bookingNumber;
+    public void setBookingNumber(int bookingNumber) {
+        bookingNumber = bookingNumber;
     }
 
     public String getStartDate() {
@@ -51,8 +53,22 @@ public class Booking {
                 ", startDate = " + startDate +
                 ", endDate = " + endDate +
                 ", cusId = " + getNumberOfCustomer() +
-                ", serviceName = " + getServiceName() +
-                ", rentType = " + getRentType() +
+                ", serviceName = " + "FAILED" +
+                ", rentType = " + "FAILED" +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(bookingNumber, booking.bookingNumber) && Objects.equals(startDate, booking.startDate)
+                && Objects.equals(endDate, booking.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startDate, endDate);
     }
 }
