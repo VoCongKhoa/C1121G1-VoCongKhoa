@@ -11,8 +11,10 @@ public class InsertionSort {
         integerList.add(46);
         integerList.add(32);
         integerList.add(15);
+        integerList.add(0);
         integerList.add(55);
         integerList.add(-45);
+        System.out.println(integerList);
         System.out.println(insertSort(integerList));
     }
 
@@ -20,15 +22,15 @@ public class InsertionSort {
         int tempValue = 0;
         int currentValue = 0;
         for (int i = 0; i < array.size()-1; i++) {
-            int curPos = i;
-            while (curPos >= 0) {
-                currentValue = array.get(curPos);
-                tempValue = array.get(curPos + 1);
+            int currentPosition = i;
+            while (currentPosition >= 0) {
+                currentValue = array.get(currentPosition);
+                tempValue = array.get(currentPosition + 1);
                 if (tempValue < currentValue) {
-                    array.set(curPos, tempValue);
-                    array.set(curPos + 1, currentValue);
+                    array.set(currentPosition, tempValue);
+                    array.set(currentPosition + 1, currentValue);
                 }
-                curPos--;
+                currentPosition--;
             }
         }
         return array;

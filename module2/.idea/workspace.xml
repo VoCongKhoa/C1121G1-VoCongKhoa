@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ss13_thuat_toan_tim_kiem/bai_tap/FindLongestConsecutiveString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ss14_thuat_toan_sap_xep/thuc_hanh/BubbleSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../module1/ss11_cau_truc_lap_2/bai_tap/luyen_tap_vong_lap_01/LuyenTapVongLap01Bai05.html" beforeDir="false" afterPath="$PROJECT_DIR$/../module1/ss11_cau_truc_lap_2/bai_tap/luyen_tap_vong_lap_01/LuyenTapVongLap01Bai05.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss13_thuat_toan_tim_kiem/thuc_hanh/AlgorithmComplexity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/controllers/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/controllers/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/Oto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/Oto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/PhuongTienGiaoThong.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/PhuongTienGiaoThong.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/XeMay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/XeMay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/XeTai.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/models/XeTai.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/Service.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/impls/OtoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/impls/OtoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/impls/XeMayServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/impls/XeMayServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/impls/XeTaiServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_tap_cuoi_tuan/services/impls/XeTaiServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/Oto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/Oto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/PhuongTienGiaoThong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/PhuongTienGiaoThong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/XeMay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/XeMay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/XeTai.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/models/XeTai.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/impls/OtoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/impls/OtoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/impls/XeMayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/impls/XeMayServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/impls/XeTaiServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_tap_cuoi_tuan/services/impls/XeTaiServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,13 +44,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.FindingLongestIncreaseString">
-    <configuration name="BubbleSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss14_thuat_toan_sap_xep.thuc_hanh.BubbleSort" />
+  <component name="RunManager" selected="Application.AlgorithmComplexity">
+    <configuration name="AlgorithmComplexity" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss13_thuat_toan_tim_kiem.thuc_hanh.AlgorithmComplexity" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss14_thuat_toan_sap_xep.thuc_hanh.*" />
+          <option name="PATTERN" value="ss13_thuat_toan_tim_kiem.thuc_hanh.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -77,12 +58,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bai_tap_cuoi_tuan.controllers.Controller" />
+    <configuration name="BubbleSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss14_thuat_toan_sap_xep.thuc_hanh.BubbleSort" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bai_tap_cuoi_tuan.controllers.*" />
+          <option name="PATTERN" value="ss14_thuat_toan_sap_xep.thuc_hanh.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,11 +112,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.FindingLongestIncreaseString" />
+        <item itemvalue="Application.AlgorithmComplexity" />
         <item itemvalue="Application.InsertionSort" />
+        <item itemvalue="Application.FindingLongestIncreaseString" />
         <item itemvalue="Application.BubbleSort" />
         <item itemvalue="Application.FindLongestConsecutiveString" />
-        <item itemvalue="Application.Controller" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +156,7 @@
       <workItem from="1642400925840" duration="17620000" />
       <workItem from="1642427248200" duration="1903000" />
       <workItem from="1642468891995" duration="2396000" />
-      <workItem from="1642487565894" duration="6292000" />
+      <workItem from="1642487565894" duration="7577000" />
     </task>
     <servers />
   </component>
