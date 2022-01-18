@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ss13_thuat_toan_tim_kiem/thuc_hanh/AlgorithmComplexity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module2/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss14_thuat_toan_sap_xep/bai_tap/InsertionSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss13_thuat_toan_tim_kiem/bai_tap/FindingLongestIncreaseString.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +42,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Application.AlgorithmComplexity">
+  <component name="RunManager" selected="Application.FindingLongestIncreaseString">
     <configuration name="AlgorithmComplexity" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ss13_thuat_toan_tim_kiem.thuc_hanh.AlgorithmComplexity" />
       <module name="module2" />
@@ -112,9 +110,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FindingLongestIncreaseString" />
         <item itemvalue="Application.AlgorithmComplexity" />
         <item itemvalue="Application.InsertionSort" />
-        <item itemvalue="Application.FindingLongestIncreaseString" />
         <item itemvalue="Application.BubbleSort" />
         <item itemvalue="Application.FindLongestConsecutiveString" />
       </list>
@@ -156,7 +154,7 @@
       <workItem from="1642400925840" duration="17620000" />
       <workItem from="1642427248200" duration="1903000" />
       <workItem from="1642468891995" duration="2396000" />
-      <workItem from="1642487565894" duration="7577000" />
+      <workItem from="1642487565894" duration="7880000" />
     </task>
     <servers />
   </component>
