@@ -1,10 +1,16 @@
 package bai_tap_cuoi_tuan.models;
 
+import java.util.Objects;
+
 public abstract class PhuongTienGiaoThong {
     private String bienKiemSoat;
     private HangSanXuat hangSanXuat;
     private int namSanXuat;
     private String chuSoHuu;
+
+    public PhuongTienGiaoThong(String bienKiemSoat) {
+        this.bienKiemSoat = bienKiemSoat;
+    }
 
     public PhuongTienGiaoThong() {
     }
@@ -57,4 +63,13 @@ public abstract class PhuongTienGiaoThong {
                 ", chuSoHuu='" + chuSoHuu + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhuongTienGiaoThong that = (PhuongTienGiaoThong) o;
+        return Objects.equals(bienKiemSoat, that.bienKiemSoat);
+    }
+
 }

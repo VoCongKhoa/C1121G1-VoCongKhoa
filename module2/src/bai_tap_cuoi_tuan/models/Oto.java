@@ -18,6 +18,10 @@ public class Oto extends PhuongTienGiaoThong{
         this.kieuXe = kieuXe;
     }
 
+    public Oto(String bienKiemSoat) {
+        super(bienKiemSoat);
+    }
+
     public int getSoChoNgoi() {
         return soChoNgoi;
     }

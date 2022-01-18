@@ -66,32 +66,62 @@ public class OtoServiceImpl implements OtoService {
         }
     }
 
-    @Override
-    public void xoa() {
+
+    public void delete() {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập biển kiểm soát xe ôtô cần xoá:");
         String bienKiemSoat = sc.nextLine();
-        boolean flag = false;
-        for (int i = 0; i < otoArrayList.size(); i++) {
-            if (otoArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())) {
-                flag = true;
+//        Oto deleteOto = new Oto("ádsad");
+
+        for (Oto oto : otoArrayList) {
+            if (oto.getBienKiemSoat().contains(bienKiemSoat)) {
                 System.out.println("Bạn có xác nhận muốn xoá xe ô tô có biển kiểm soát " +
-                        otoArrayList.get(i).getBienKiemSoat() + " khỏi danh sách không?");
+                        oto.getBienKiemSoat() + " khỏi danh sách không?");
                 System.out.println("1. Có");
                 System.out.println("2. Không");
                 int xacNhan = Integer.parseInt(sc.nextLine());
                 if (xacNhan == 1) {
                     System.out.println("Bạn đã xoá xe ô tô có biển kiểm soát " +
-                            otoArrayList.get(i).getBienKiemSoat() + " khỏi danh sách!");
-                    otoArrayList.remove(i);
+                            oto.getBienKiemSoat() + " khỏi danh sách!");
+//                    this.delete(oto);
                 }
                 break;
             }
         }
-        if (!flag) {
-            System.out.println("Bạn nhập sai!");
-        }
+
+//        Scanner sc = new Scanner(System.in);
+//        System.out.println("Nhập biển kiểm soát xe ôtô cần xoá:");
+//        String bienKiemSoat = sc.nextLine();
+//        boolean flag = false;
+//        for (int i = 0; i < otoArrayList.size(); i++) {
+//            if (otoArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())) {
+//                flag = true;
+//                System.out.println("Bạn có xác nhận muốn xoá xe ô tô có biển kiểm soát " +
+//                        otoArrayList.get(i).getBienKiemSoat() + " khỏi danh sách không?");
+//                System.out.println("1. Có");
+//                System.out.println("2. Không");
+//                int xacNhan = Integer.parseInt(sc.nextLine());
+//                if (xacNhan == 1) {
+//                    System.out.println("Bạn đã xoá xe ô tô có biển kiểm soát " +
+//                            otoArrayList.get(i).getBienKiemSoat() + " khỏi danh sách!");
+//                    otoArrayList.remove(i);
+//                }
+//                break;
+//            }
+//        }
+//        if (!flag) {
+//            System.out.println("Bạn nhập sai!");
+//        }
+    }
+
+    public boolean xacNhan(Oto oto){
+        return otoArrayList.contains(oto);
+    }
+
+    @Override
+    public <Oto> void xoa(Oto oto){
+            otoArrayList.remove(oto);
     }
 }
 

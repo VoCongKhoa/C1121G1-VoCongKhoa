@@ -56,8 +56,8 @@ public class XeMayServiceImpl implements XeMayService {
         }
     }
 
-    @Override
-    public void xoa() {
+
+    public void delete() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập biển kiểm soát xe máy cần xoá:");
         String bienKiemSoat = sc.nextLine();
@@ -81,5 +81,13 @@ public class XeMayServiceImpl implements XeMayService {
         if (!flag) {
             System.out.println("Bạn nhập sai!");
         }
+    }
+
+    public boolean xacNhan(XeMay xeMay){
+        return xeMayArrayList.contains(xeMay);
+    }
+    @Override
+    public <XeMay> void xoa(XeMay xeMay){
+        xeMayArrayList.remove(xeMay);
     }
 }

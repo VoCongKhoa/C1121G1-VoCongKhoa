@@ -2,6 +2,7 @@ package bai_tap_cuoi_tuan.services.impls;
 
 import bai_tap_cuoi_tuan.models.*;
 import bai_tap_cuoi_tuan.services.XeTaiService;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,7 +26,10 @@ public class XeTaiServiceImpl implements XeTaiService {
                 "Su", "20T"));
         xeTaiArrayList.add(new XeTai("92G1-741.42", hangSanXuatList.get(6), 2000,
                 "Vo", "30T"));
+        xeTaiArrayList.add(new XeTai("43G1-741.42", hangSanXuatList.get(3), 2010,
+                "Vo", "50T"));
     }
+
     @Override
     public void themMoi() {
         Scanner sc = new Scanner(System.in);
@@ -40,7 +44,7 @@ public class XeTaiServiceImpl implements XeTaiService {
                 "6.\tToyota\n" +
                 "7.\tHino\n");
 
-        HangSanXuat tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine())-1);
+        HangSanXuat tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine()) - 1);
         System.out.println("Nhập năm sản xuất mới:");
         int namSanXuat = Integer.parseInt(sc.nextLine());
         System.out.println("Nhập chủ sở hữu mới:");
@@ -48,7 +52,7 @@ public class XeTaiServiceImpl implements XeTaiService {
         System.out.println("Nhập trọng tải mới:");
         String trongTai = sc.nextLine();
         xeTaiArrayList.add(new XeTai(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu, trongTai));
-        System.out.println("Thêm mới xe máy thành công!!!");
+        System.out.println("Thêm mới xe tải thành công!!!");
     }
 
     @Override
@@ -58,11 +62,12 @@ public class XeTaiServiceImpl implements XeTaiService {
         }
     }
 
-    @Override
-    public void xoa() {
+
+    public void delete() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập biển kiểm soát xe tải cần xoá:");
         String bienKiemSoat = sc.nextLine();
+
         boolean flag = false;
         for (int i = 0; i < xeTaiArrayList.size(); i++) {
             if (xeTaiArrayList.get(i).getBienKiemSoat().toLowerCase().contains(bienKiemSoat.toLowerCase())) {
@@ -83,5 +88,13 @@ public class XeTaiServiceImpl implements XeTaiService {
         if (!flag) {
             System.out.println("Bạn nhập sai!");
         }
+    }
+
+    public boolean xacNhan(XeTai xeTai){
+        return xeTaiArrayList.contains(xeTai);
+    }
+    @Override
+    public <XeTai> void xoa(XeTai xeTai){
+        xeTaiArrayList.remove(xeTai);
     }
 }
