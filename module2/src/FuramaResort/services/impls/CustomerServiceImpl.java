@@ -23,8 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void displayCustomer() {
-        System.out.println(customerList);
-
+        for (Customer customer : customerList) {
+            System.out.println(customer);
+        }
     }
 
     @Override
@@ -89,7 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
                         break;
                     case 5:
                         System.out.println("Input your new identification number:");
-                        customer.setIdNumber(sc.nextLine());
+                        customer.setIDNumber(sc.nextLine());
                         break;
                     case 6:
                         System.out.println("Input your new phone number:");

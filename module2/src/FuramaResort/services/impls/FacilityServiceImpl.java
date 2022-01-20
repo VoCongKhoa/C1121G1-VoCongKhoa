@@ -8,14 +8,14 @@ import java.util.*;
 public class FacilityServiceImpl implements FacilityService {
 
     Scanner sc = new Scanner(System.in);
-    private static Map<Facility, Integer> facilityServiceList = new LinkedHashMap<>();
+    static Map<Facility, Integer> facilityServiceList = new LinkedHashMap<>();
 
     static {
-        Villa villa = new Villa("bookingVilla", 100, 10, 10,
+        Villa villa = new Villa("VL001","bookingVilla", 100, 10, 10,
                 "day", "big", 25, 3);
-        House house = new House("bookingVilla", 100, 10, 10,
+        House house = new House("HS001","bookingHouse", 100, 10, 10,
                 "day", "medium", 2);
-        Room room = new Room("bookingVilla", 100, 10, 10,
+        Room room = new Room("RO001","bookingRoom", 100, 10, 10,
                 "day", "free");
 
         facilityServiceList.put(villa, 2);
@@ -25,7 +25,20 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayFacility() {
-        System.out.println(facilityServiceList.keySet());
+        for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
+            System.out.println(entry.getKey() + ", bookedTimes = " + entry.getValue());
+        }
+        //Không cast KDL Facility sang Room, House,Villa được??
+//        Collection<Facility> facilityList = facilityServiceList.keySet();
+//        for (int i = 0; i < facilityList.size(); i++) {
+//            if ((Room)facilityList.toArray()[i] instanceof Room){
+//                System.out.println("Room");
+//            } else if ((Villa)facilityList.toArray()[i] instanceof Villa){
+//                System.out.println("Villa");
+//            } else if ((House)facilityList.toArray()[i] instanceof House){
+//                System.out.println("House");
+//            }
+//        }
     }
 
     @Override
@@ -39,6 +52,8 @@ public class FacilityServiceImpl implements FacilityService {
         int addFacilityChoice = Integer.parseInt(sc.nextLine());
         switch (addFacilityChoice) {
             case 1:
+                System.out.print("Input id service:");
+                String villaIdService = sc.nextLine();
                 System.out.print("Input service name:");
                 String villaServiceName = sc.nextLine();
                 System.out.print("Input usable area:");
@@ -55,12 +70,14 @@ public class FacilityServiceImpl implements FacilityService {
                 double villaPoolArea = Double.parseDouble(sc.nextLine());
                 System.out.print("Input villa number floor:");
                 int villaNumberFloor = Integer.parseInt(sc.nextLine());
-                Villa newVilla = new Villa(villaServiceName, villaUsableArea, villaPrice, villaMaximumPerson,
+                Villa newVilla = new Villa(villaIdService,villaServiceName, villaUsableArea, villaPrice, villaMaximumPerson,
                         villaRentType, villaType, villaPoolArea, villaNumberFloor);
                 facilityServiceList.put(newVilla, 0);
                 System.out.println("Add a new villa successfully!!!");
                 break;
             case 2:
+                System.out.print("Input id service:");
+                String houseIdService = sc.nextLine();
                 System.out.print("Input service name:");
                 String houseServiceName = sc.nextLine();
                 System.out.print("Input usable area:");
@@ -75,12 +92,14 @@ public class FacilityServiceImpl implements FacilityService {
                 String houseType = sc.nextLine();
                 System.out.print("Input house number floor:");
                 int houseNumberFloor = Integer.parseInt(sc.nextLine());
-                House newHouse = new House(houseServiceName, houseUsableArea, housePrice, houseMaximumPerson,
+                House newHouse = new House(houseIdService,houseServiceName, houseUsableArea, housePrice, houseMaximumPerson,
                         houseRentType, houseType, houseNumberFloor);
                 facilityServiceList.put(newHouse, 0);
                 System.out.println("Add a new house successfully!!!");
                 break;
             case 3:
+                System.out.print("Input id service:");
+                String roomIdService = sc.nextLine();
                 System.out.print("Input service name:");
                 String roomServiceName = sc.nextLine();
                 System.out.print("Input usable area:");
@@ -93,7 +112,7 @@ public class FacilityServiceImpl implements FacilityService {
                 String roomRentType = sc.nextLine();
                 System.out.print("Input room type:");
                 String roomFreeService = sc.nextLine();
-                Room newRoom = new Room(roomServiceName, roomUsableArea, roomPrice, roomMaximumPerson,
+                Room newRoom = new Room(roomIdService,roomServiceName, roomUsableArea, roomPrice, roomMaximumPerson,
                         roomRentType, roomFreeService);
                 facilityServiceList.put(newRoom, 0);
                 System.out.println("Add a new room successfully!!!");
@@ -109,15 +128,9 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayFacilityMaintenance() {
-        Collection<Integer> valueList = facilityServiceList.values();
-        Set<Facility> keyList = facilityServiceList.keySet();
-        Facility maintenanceFacility;
-        for (int i = 0; i < facilityServiceList.size(); i++) {
-            System.out.println((int) valueList.toArray()[i]);
-            if ((int) valueList.toArray()[i] >= 5) {
-                maintenanceFacility= (Facility) keyList.toArray()[i];
-                System.out.println(maintenanceFacility.toString());
-                break;
+        for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
+            if (entry.getValue() >= 5) {
+                System.out.println(entry.getKey() + ", bookedTimes = " + entry.getValue());
             }
         }
     }

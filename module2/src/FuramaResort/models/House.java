@@ -1,6 +1,6 @@
 package FuramaResort.models;
 
-public class House extends Facility{
+public class House extends Facility {
     private String houseType;
     private int houseNumberFloor;
 
@@ -12,8 +12,8 @@ public class House extends Facility{
         this.houseNumberFloor = houseNumberFloor;
     }
 
-    public House(String serviceName, double usableArea, double price, int maximumPerson, String rentType, String houseType, int houseNumberFloor) {
-        super(serviceName, usableArea, price, maximumPerson, rentType);
+    public House(String idService, String serviceName, double usableArea, double price, int maximumPerson, String rentType, String houseType, int houseNumberFloor) {
+        super(idService, serviceName, usableArea, price, maximumPerson, rentType);
         this.houseType = houseType;
         this.houseNumberFloor = houseNumberFloor;
     }
@@ -37,7 +37,8 @@ public class House extends Facility{
     @Override
     public String toString() {
         return "House{" +
-                "serviceName = '" + getServiceName() + '\'' +
+                "idService = '" + getIdService() + '\'' +
+                ", serviceName = " + getServiceName() +
                 ", usableArea = " + getUsableArea() +
                 ", price = " + getPrice() +
                 ", maximumPerson = " + getMaximumPerson() +

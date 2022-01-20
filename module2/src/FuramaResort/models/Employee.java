@@ -17,9 +17,9 @@ public class Employee extends Person {
         this.employeeSalary = employeeSalary;
     }
 
-    public Employee(int employeeId, String name, String dateOfBirth , String gender, String idNumber,
+    public Employee(int employeeId, String name, String dateOfBirth , String gender, String IDNumber,
                     String phoneNumber, String email, String employeeDegree, String employeeRole, double employeeSalary) {
-        super(name, dateOfBirth, gender, idNumber, phoneNumber, email);
+        super(name, dateOfBirth, gender, IDNumber, phoneNumber, email);
         this.employeeId = employeeId;
         this.employeeDegree = employeeDegree;
         this.employeeRole = employeeRole;
@@ -65,7 +65,7 @@ public class Employee extends Person {
                 ", name = " + getName() +
                 ", dateOfBirth = " + getDateOfBirth() +
                 ", gender = " + getGender() +
-                ", idNumber = " + getIdNumber() +
+                ", idNumber = " + getIDNumber() +
                 ", phoneNumber = " + getPhoneNumber() +
                 ", email = " + getEmail() +
                 ", employeeDegree = " + employeeDegree +

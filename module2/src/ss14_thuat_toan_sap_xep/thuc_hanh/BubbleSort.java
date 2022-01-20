@@ -11,10 +11,13 @@ public class BubbleSort {
         integerList.add(46);
         integerList.add(32);
         integerList.add(1);
+        integerList.add(1);
+        integerList.add(0);
         integerList.add(54);
         integerList.add(78);
+        integerList.add(-78);
         System.out.println(integerList);
-        System.out.println(bubbleSort(integerList));
+        System.out.println(bubbleSortDemo(integerList));
     }
     public static ArrayList<Integer> bubbleSort(ArrayList<Integer> array) {
         for (int i = 1; i < array.size(); i++) {
@@ -23,6 +26,23 @@ public class BubbleSort {
                     int temp = array.get(j);
                     array.set(j,array.get(j+1));
                     array.set(j+1,temp);
+                }
+            }
+        }
+        return array;
+    }
+
+    //Có flag tối ưu hơn
+    public static ArrayList<Integer> bubbleSortDemo(ArrayList<Integer> array) {
+        boolean flag = true; //Cần phải sx
+        for (int i = 0; i < array.size() && flag; i++) {
+            flag = false; //Đã sx
+            for (int j = array.size()-1; j >i; j--) {
+                if (array.get(j)<array.get(j-1)){
+                    int temp = array.get(j);
+                    array.set(j,array.get(j-1));
+                    array.set(j-1,temp);
+                    flag = true;
                 }
             }
         }

@@ -14,8 +14,10 @@ public class InsertionSort {
         integerList.add(0);
         integerList.add(55);
         integerList.add(-45);
+        integerList.add(-45);
+        integerList.add(-45);
         System.out.println(integerList);
-        System.out.println(insertSort(integerList));
+        System.out.println(insertSortDemo(integerList));
     }
 
     public static ArrayList<Integer> insertSort(ArrayList<Integer> array) {
@@ -32,6 +34,25 @@ public class InsertionSort {
                 }
                 currentPosition--;
             }
+        }
+        return array;
+    }
+
+    //Thầy Chánh làm
+    public static ArrayList<Integer> insertSortDemo(ArrayList<Integer> array) {
+        for (int i = 1; i < array.size(); i++) {
+            int currentPosition = i;
+            int tempValue = array.get(i);
+            //Giá trị lấy ra để ss tempValue để ss với từng giá trị trong mảng con
+            //Nếu tempValue nhỏ hơn giá trị tại vị trí currentPosition-1,
+            //thì mới gán giá trị currentPosition = giá trị currentPosition-1
+            //Nếu tempValue nhỏ hơn giá trị tại vị trí currentPosition-1,
+            //thì gán giá trị currentPosition = giá trị tempValue.
+            while (currentPosition > 0 && tempValue < array.get(currentPosition-1)) {
+                array.set(currentPosition,array.get(currentPosition-1));
+                currentPosition--;
+            }
+            array.set(currentPosition,tempValue);
         }
         return array;
     }

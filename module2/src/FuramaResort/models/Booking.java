@@ -2,24 +2,37 @@ package FuramaResort.models;
 
 import java.util.Objects;
 
-import static FuramaResort.models.Customer.*;
-import static FuramaResort.models.Facility.*;
-
 public class Booking {
+    private static int numberOfBooking;
     private int bookingNumber;
     private String startDate;
     private String endDate;
+    private Facility facility;
+    private Customer customer;
 
     public Booking() {
     }
 
-    public Booking(int bookingNumber, String startDate, String endDate,int id, String serviceName, String rentType) {
-        this.bookingNumber = bookingNumber;
+    public Booking(String startDate, String endDate) {
+        this.bookingNumber = numberOfBooking++ +10;
         this.startDate = startDate;
         this.endDate = endDate;
-        setNumberOfCustomer(id);
-//        setServiceName(serviceName);
-//        setRentType(rentType);
+    }
+
+    public Booking(String startDate, String endDate,Customer customer, Facility facility) {
+        this.bookingNumber = numberOfBooking++ +10;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.customer = customer;
+        this.facility = facility;
+    }
+
+    public static int getNumberOfBooking() {
+        return numberOfBooking;
+    }
+
+    public static void setNumberOfBooking(int numberOfBooking) {
+        Booking.numberOfBooking = numberOfBooking;
     }
 
     public int getBookingNumber() {
@@ -27,7 +40,7 @@ public class Booking {
     }
 
     public void setBookingNumber(int bookingNumber) {
-        bookingNumber = bookingNumber;
+        this.bookingNumber = bookingNumber;
     }
 
     public String getStartDate() {
@@ -46,15 +59,31 @@ public class Booking {
         this.endDate = endDate;
     }
 
+    public Facility getFacility() {
+        return facility;
+    }
+
+    public void setFacility(Facility facility) {
+        this.facility = facility;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingNumber = '" + bookingNumber + '\'' +
+                "bookingNumber = '" + getBookingNumber() + '\'' +
                 ", startDate = " + startDate +
                 ", endDate = " + endDate +
-                ", cusId = " + getNumberOfCustomer() +
-                ", serviceName = " + "FAILED" +
-                ", rentType = " + "FAILED" +
+                ", customerId = " + customer.getId() +
+                ", serviceName = " + facility.getServiceName() +
+                ", rentType = " + facility.getRentType() +
                 '}';
     }
 

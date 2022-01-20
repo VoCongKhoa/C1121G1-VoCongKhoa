@@ -4,19 +4,29 @@ import static FuramaResort.models.Booking.*;
 import static FuramaResort.models.Customer.*;
 
 public class Contract {
+    private static int numberOfContract;
     private int contractNumber;
     private double contractDeposit;
     private double contractSum;
+    private Booking booking;
 
     public Contract() {
     }
 
-    public Contract(int contractNumber, double contractDeposit, double contractSum, int bookingNumber, int cusId) {
-        this.contractNumber = contractNumber;
+    public Contract(double contractDeposit, double contractSum, Booking booking) {
+        this.contractNumber = numberOfContract++ +100;
         this.contractDeposit = contractDeposit;
         this.contractSum = contractSum;
-//        setBookingNumber(bookingNumber);
-//        setNumberOfCustomer(cusId);
+        this.booking = booking;
+
+    }
+
+    public static int getNumberOfContract() {
+        return numberOfContract;
+    }
+
+    public static void setNumberOfContract(int numberOfContract) {
+        Contract.numberOfContract = numberOfContract;
     }
 
     public int getContractNumber() {
@@ -43,14 +53,22 @@ public class Contract {
         this.contractSum = contractSum;
     }
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
     @Override
     public String toString() {
         return "Contract{" +
-                "contractNumber = '" + contractNumber + '\'' +
-                ", bookingNumber = " + "FAILED" +
+                "contractNumber = '" + getContractNumber() + '\'' +
+                ", bookingNumber = " + getBooking().getBookingNumber() +
                 ", contractDeposit = " + contractDeposit +
                 ", contractSum = " + contractSum +
-                ", cusId = " + getNumberOfCustomer() +
+                ", customerId = " + getBooking().getCustomer().getId() +
                 '}';
     }
 }

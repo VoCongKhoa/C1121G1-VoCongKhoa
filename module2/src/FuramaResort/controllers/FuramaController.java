@@ -1,6 +1,5 @@
 package FuramaResort.controllers;
 
-import FuramaResort.models.*;
 import FuramaResort.services.impls.*;
 
 import java.util.Scanner;
@@ -81,9 +80,9 @@ public class FuramaController {
                 case 4:
                     System.out.println("1.\tAdd new booking\n" +
                             "2.\tDisplay list booking\n" +
-                            "3.\tCreate new constracts\n" +
+                            "3.\tCreate new contract\n" +
                             "4.\tDisplay list contracts\n" +
-                            "5.\tEdit contracts\n" +
+                            "5.\tEdit contract\n" +
                             "6.\tReturn main menu\n");
                     System.out.println("Input your choice:");
                     int bookingChoice = Integer.parseInt(sc.nextLine());
@@ -105,6 +104,17 @@ public class FuramaController {
                     System.out.println("1.\tDisplay list customers use service\n" +
                             "2.\tDisplay list customers get voucher\n" +
                             "3.\tReturn main menu\n");
+                    System.out.println("Input your choice:");
+                    int promotionChoice = Integer.parseInt(sc.nextLine());
+                    if (promotionChoice == 1) {
+                        contractService.displayCustomerUseService();
+                    } else if (promotionChoice == 2) {
+                        contractService.displayCustomerGetVoucher();
+                    } else if (promotionChoice == 3) {
+                        contractService.returnMainMenu();
+                    } else {
+                        System.out.println("Choice again: ");
+                    }
                     break;
                 case 6:
                     System.exit(0);
@@ -112,9 +122,6 @@ public class FuramaController {
 
             }
         }
-
-//        Booking booking = new Booking(123, "1/1/2022", "7/1/2022", 3, "bookingVilla", "day");
-//        Contract contract = new Contract(1000, 20, 50, 123, 3);
 
     }
 

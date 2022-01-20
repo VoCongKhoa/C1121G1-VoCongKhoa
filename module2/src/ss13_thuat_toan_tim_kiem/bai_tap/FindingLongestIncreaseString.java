@@ -8,10 +8,10 @@ import java.util.Map;
 public class FindingLongestIncreaseString {
 
     public static void main(String[] args) {
-        String str = "Welcome";
+        String str = "Jqtoabcd";
         String strTemp = "";
         String strResult = "";
-
+        Map<Integer,String> stringMap = new HashMap<>();
         for (int i = 0; i < str.length(); i++) {
             strTemp += str.charAt(i);
             for (int j = i; j < str.length()-1; j++) {
@@ -24,6 +24,8 @@ public class FindingLongestIncreaseString {
             }
             strTemp = "";
         }
+        stringMap.put(strResult.length(),strResult);
         System.out.println(strResult);
+        System.out.println(stringMap);
     }
 }

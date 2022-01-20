@@ -95,7 +95,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                         break;
                     case 5:
                         System.out.println("Input your new identification number:");
-                        employee.setIdNumber(sc.nextLine());
+                        employee.setIDNumber(sc.nextLine());
                         break;
                     case 6:
                         System.out.println("Input your new phone number:");
