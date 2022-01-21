@@ -2,6 +2,7 @@ package bai_tap_cuoi_tuan.services.impls;
 
 import bai_tap_cuoi_tuan.models.*;
 import bai_tap_cuoi_tuan.services.OtoService;
+import bai_tap_cuoi_tuan.utils.ReadAndWriteFile;
 
 import java.util.*;
 
@@ -23,17 +24,19 @@ public class OtoServiceImpl implements OtoService {
         kieuXeList.put(1, "Du lịch");
         kieuXeList.put(2, "Xe khách");
 
-        otoArrayList.add(new Oto("43G1-123.45", hangSanXuatList.get(1), 2000,
-                "Khoa", 7, "Du lịch"));
-        otoArrayList.add(new Oto("92E1-456.78", hangSanXuatList.get(2), 2010,
-                "Su", 7, "Xe khách"));
-        otoArrayList.add(new Oto("43G1-789.00", hangSanXuatList.get(3), 2000,
-                "Khoa", 7, "Du lịch"));
+//        otoArrayList.add(new Oto("43G1-123.45", hangSanXuatList.get(1), 2000,
+//                "Khoa", 7, "Du lịch"));
+//        otoArrayList.add(new Oto("92E1-456.78", hangSanXuatList.get(2), 2010,
+//                "Su", 7, "Xe khách"));
+//        otoArrayList.add(new Oto("43G1-789.00", hangSanXuatList.get(3), 2000,
+//                "Khoa", 7, "Du lịch"));
     }
 
     @Override
     public void themMoi() {
         Scanner sc = new Scanner(System.in);
+        List<HangSanXuat> hangSanXuatListFile = ReadAndWriteFile.readHangSanXuatFileToCSV(
+                "src/bai_tap_cuoi_tuan/data/HangSanXuat.csv");
         System.out.println("Nhập biển kiểm soát mới:");
         String bienKiemSoat = sc.nextLine();
         System.out.println("Chọn tên hãng sản xuất mới:");
@@ -44,7 +47,9 @@ public class OtoServiceImpl implements OtoService {
                 "5.\tFord\n" +
                 "6.\tToyota\n" +
                 "7.\tHino\n");
-        HangSanXuat tenHangSanXuat = hangSanXuatList.get(Integer.parseInt(sc.nextLine()) - 1);
+        HangSanXuat tenHangSanXuat = hangSanXuatListFile.get(Integer.parseInt(sc.nextLine()) - 1);
+//        ReadAndWriteFile.writeHangSanXuatFileToCSV("src/bai_tap_cuoi_tuan/data/HangSanXuat.csv",
+//                tenHangSanXuat,false);
         System.out.println("Nhập năm sản xuất mới:");
         int namSanXuat = Integer.parseInt(sc.nextLine());
         System.out.println("Nhập chủ sở hữu mới:");
@@ -55,14 +60,25 @@ public class OtoServiceImpl implements OtoService {
         System.out.println("1.\tDu lịch\n" +
                 "2.\tXe khách\n");
         String kieuXe = kieuXeList.get(Integer.parseInt(sc.nextLine()));
-        otoArrayList.add(new Oto(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu, soChoNgoi, kieuXe));
+        ReadAndWriteFile.writeOtoFileToCSV("src/bai_tap_cuoi_tuan/data/Oto.csv",
+                new Oto(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu, soChoNgoi, kieuXe),true);
+//        otoArrayList.add(new Oto(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu, soChoNgoi, kieuXe));
         System.out.println("Thêm mới Ô tô thành công!!!");
     }
 
     @Override
     public void hienThi() {
-        for (Oto oto : otoArrayList) {
-            System.out.println(oto);
+
+        List<HangSanXuat> hangSanXuatListFile = ReadAndWriteFile.readHangSanXuatFileToCSV
+                ("src/bai_tap_cuoi_tuan/data/HangSanXuat.csv");
+        List<Oto> otoListFile = ReadAndWriteFile.readOtoFileToCSV
+                ("src/bai_tap_cuoi_tuan/data/Oto.csv", "src/bai_tap_cuoi_tuan/data/HangSanXuat.csv");
+
+        for (HangSanXuat hangSanXuat : hangSanXuatListFile) {
+            System.out.println(hangSanXuat);
+        }
+        for (Oto oto : otoListFile) {
+            System.out.println(oto.toString());
         }
     }
 

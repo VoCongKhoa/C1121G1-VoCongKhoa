@@ -34,7 +34,7 @@ public class BubbleSort {
 
     //Có flag tối ưu hơn
     public static ArrayList<Integer> bubbleSortDemo(ArrayList<Integer> array) {
-        boolean flag = true; //Cần phải sx
+        boolean flag = true; //Cần phải sắp xếp
         for (int i = 0; i < array.size() && flag; i++) {
             flag = false; //Đã sx
             for (int j = array.size()-1; j >i; j--) {
@@ -42,7 +42,7 @@ public class BubbleSort {
                     int temp = array.get(j);
                     array.set(j,array.get(j-1));
                     array.set(j-1,temp);
-                    flag = true;
+                    flag = true;//Cần sắp xếp
                 }
             }
         }

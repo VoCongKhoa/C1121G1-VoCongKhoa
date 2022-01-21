@@ -27,7 +27,7 @@ public class XeMay extends PhuongTienGiaoThong{
     public String toString() {
         return "XeMay{" +
                 "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-                ", tenHangSanXuat='" + super.getHangSanXuat() + '\'' +
+                ", tenHangSanXuat='" + super.getHangSanXuat().getTenHangSanXuat() + '\'' +
                 ", namSanXuat='" + super.getNamSanXuat() + '\'' +
                 ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
                 ", congSuat='" + congSuat + '\'' +

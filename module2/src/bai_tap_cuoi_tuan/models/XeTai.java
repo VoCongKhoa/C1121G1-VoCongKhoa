@@ -27,7 +27,7 @@ public class XeTai extends PhuongTienGiaoThong{
     public String toString() {
         return "XeTai{" +
                 "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-                ", tenHangSanXuat='" + super.getHangSanXuat() + '\'' +
+                ", tenHangSanXuat='" + super.getHangSanXuat().getTenHangSanXuat() + '\'' +
                 ", namSanXuat='" + super.getNamSanXuat() + '\'' +
                 ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
                 ", trongTai='" + trongTai + '\'' +

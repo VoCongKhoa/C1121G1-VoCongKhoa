@@ -42,11 +42,16 @@ public class Oto extends PhuongTienGiaoThong{
     public String toString() {
         return "Oto{" +
                 "bienKiemSoat='" + super.getBienKiemSoat() + '\'' +
-                ", tenHangSanXuat='" + super.getHangSanXuat() + '\'' +
+                ", tenHangSanXuat='" + super.getHangSanXuat().getTenHangSanXuat() + '\'' +
                 ", namSanXuat='" + super.getNamSanXuat() + '\'' +
                 ", chuSoHuu='" + super.getChuSoHuu() + '\'' +
                 ", soChoNgoi=" + soChoNgoi +
                 ", kieuXe='" + kieuXe + '\'' +
                 '}';
+    }
+
+    public String getInforToCSVFile(){
+        return super.getBienKiemSoat() + ',' + super.getHangSanXuat().getTenHangSanXuat()
+                + ',' + + super.getNamSanXuat() + ',' + super.getChuSoHuu() + ',' + soChoNgoi + ','+ kieuXe + ',';
     }
 }

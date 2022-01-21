@@ -126,7 +126,7 @@ public class BookingServiceImpl implements BookingService {
         Scanner sc = new Scanner(System.in);
         System.out.println("Input the number of contract you wanna edit:");
         int editNumberContract = Integer.parseInt(sc.nextLine());
-        boolean flag = false;
+        boolean flag = false;//Hoặc true
         while (!flag){
             for (Contract contract : contractList) {
                 if (contract.getContractNumber() == editNumberContract) {
