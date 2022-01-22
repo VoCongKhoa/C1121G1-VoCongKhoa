@@ -5,32 +5,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtils {
-    public static List<String> readFile(String pathFile){
+    public static List<String> readFile(String pathFile) {
         List<String> listLine = new ArrayList<>();
+        BufferedReader bufferedReader = null;
+        FileReader fileReader;
         try {
-            FileReader fileReader = new FileReader(pathFile);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null){
+            fileReader = new FileReader(pathFile);
+            bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
                 listLine.add(line);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
         return listLine;
     }
 
-    public static void writeFile(String pathFile,String line){
+    public static void writeFile(String pathFile, String line) {
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter = null;
         try {
-            FileWriter fileWriter = new FileWriter(pathFile,true); // append = true: có thể sửa file
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            fileWriter = new FileWriter(pathFile, true); // append = true: có thể sửa file
+            bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(line);
             bufferedWriter.newLine(); // Để xuống hàng
             bufferedWriter.close(); // Phải close để lưu
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        finally {
+            if (bufferedWriter != null){
+                try {
+                    bufferedWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

@@ -6,9 +6,9 @@ import FuramaResort.services.BookingService;
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
-    static private Set<Booking> bookingTreeSet = new TreeSet<>(new SortByStartDate());
+    static Set<Booking> bookingTreeSet = new TreeSet<>(new SortByStartDate());
     static Queue<Booking> bookingQueue = new ArrayDeque<>();//Booking for add contract
-    static private List<Contract> contractList = new ArrayList<>();
+    static List<Contract> contractList = new ArrayList<>();
     static Set<Facility> facilitySet;
 
     static {
@@ -17,15 +17,15 @@ public class BookingServiceImpl implements BookingService {
         Facility facility2 = (Facility) facilitySet.toArray()[1];
         Facility facility3 = (Facility) facilitySet.toArray()[2];
 
-        Booking booking1 = new Booking("01/01/2020", "7/1/2020",
+        Booking booking1 = new Booking("01/01/2020", "07/01/2020",
                 CustomerServiceImpl.customerList.get(0), facility1);
-        Booking booking2 = new Booking("04/01/2019", "7/1/2019",
+        Booking booking2 = new Booking("04/01/2019", "07/01/2019",
                 CustomerServiceImpl.customerList.get(1), facility2);
-        Booking booking3 = new Booking("01/01/2021", "6/1/2021",
+        Booking booking3 = new Booking("01/01/2022", "06/01/2022",
                 CustomerServiceImpl.customerList.get(2), facility3);
-        Booking booking4 = new Booking("03/01/2021", "7/1/2021",
+        Booking booking4 = new Booking("03/01/2022", "07/01/2022",
                 CustomerServiceImpl.customerList.get(0), facility1);
-        Booking booking5 = new Booking("01/01/2020", "8/1/2020",
+        Booking booking5 = new Booking("01/01/2020", "08/01/2020",
                 CustomerServiceImpl.customerList.get(1), facility2);
 
         bookingTreeSet.add(booking1);
