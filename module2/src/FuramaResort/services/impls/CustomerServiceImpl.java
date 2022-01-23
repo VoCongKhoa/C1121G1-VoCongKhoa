@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
     static LinkedList<Customer> customerList = new LinkedList<>();
+
     static {
         Customer customer1 = new Customer("Su", "05/07/1996", "female", "456",
                 "0905472111", "8668@gmail.com", "Diamond", "ĐN");
@@ -53,65 +54,76 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void editCustomer() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Input id of customer you wanna edit:");
-        int editIdCusChoice = sc.nextInt();
-        System.out.println(Customer.getNumberOfCustomer());
+        int editIdCusChoice = Integer.parseInt(sc.nextLine());
         for (Customer customer : customerList) {
             if (customer.getId() == editIdCusChoice) {
-                System.out.println("Input property you wanna edit:\n" +
-                                   "1.Edit customer id\n" +
-                                   "2.Edit name\n" +
-                                   "3.Edit date of birth\n" +
-                                   "4.Edit gender\n" +
-                                   "5.Edit identification number\n" +
-                                   "6.Edit phone number\n" +
-                                   "7.Edit email\n" +
-                                   "8.Edit customer rank\n" +
-                                   "9.Edit customer address\n");
-                int editPropertyCusChoice = sc.nextInt();
-                sc.nextLine();
-                switch (editPropertyCusChoice) {
-                    case 1:
-                        System.out.println("Input your new customer id:");
-                        Customer.setNumberOfCustomer(sc.nextInt());
-                        break;
-                    case 2:
-                        System.out.println("Input your new name:");
-                        customer.setName(sc.nextLine());
-                        sc.nextLine();
-                        break;
-                    case 3:
-                        System.out.println("Input your new date of birth:");
-                        customer.setDateOfBirth(sc.nextLine());
-                        break;
-                    case 4:
-                        System.out.println("Input your new gender:");
-                        customer.setGender(sc.nextLine());
-                        break;
-                    case 5:
-                        System.out.println("Input your new identification number:");
-                        customer.setIDNumber(sc.nextLine());
-                        break;
-                    case 6:
-                        System.out.println("Input your new phone number:");
-                        customer.setPhoneNumber(sc.nextLine());
-                        break;
-                    case 7:
-                        System.out.println("Input your new email:");
-                        customer.setEmail(sc.nextLine());
-                        break;
-                    case 8:
-                        System.out.println("Input your new customer rank:");
-                        customer.setCustomerRank(sc.nextLine());
-                        break;
-                    case 9:
-                        System.out.println("Input your new customer address:");
-                        customer.setCustomerAddress(sc.nextLine());
-                        break;
-                }
+                boolean customerFlag = false;
+                do {
+                    System.out.println("List of customer property:\n" +
+                            "1.Edit name\n" +
+                            "2.Edit date of birth\n" +
+                            "3.Edit gender\n" +
+                            "4.Edit identification number\n" +
+                            "5.Edit phone number\n" +
+                            "6.Edit email\n" +
+                            "7.Edit customer rank\n" +
+                            "8.Edit customer address\n" +
+                            "9.Return customer management menu\n");
+                    System.out.print("Input property you wanna edit: ");
+                    int editPropertyEmpChoice = Integer.parseInt(sc.nextLine());
+                    switch (editPropertyEmpChoice) {
+                        case 1:
+                            System.out.println("Input your new name:");
+                            customer.setName(sc.nextLine());
+                            System.out.println("Edit customer name successfully!!!");
+                            break;
+                        case 2:
+                            System.out.println("Input your new date of birth:");
+                            customer.setDateOfBirth(sc.nextLine());
+                            System.out.println("Edit customer DoB successfully!!!");
+                            break;
+                        case 3:
+                            System.out.println("Input your new gender:");
+                            customer.setGender(sc.nextLine());
+                            System.out.println("Edit customer gender successfully!!!");
+                            break;
+                        case 4:
+                            System.out.println("Input your new identification number:");
+                            customer.setIDNumber(sc.nextLine());
+                            System.out.println("Edit customer identification number successfully!!!");
+                            break;
+                        case 5:
+                            System.out.println("Input your new phone number:");
+                            customer.setPhoneNumber(sc.nextLine());
+                            System.out.println("Edit customer phone number successfully!!!");
+                            break;
+                        case 6:
+                            System.out.println("Input your new email:");
+                            customer.setEmail(sc.nextLine());
+                            System.out.println("Edit customer email successfully!!!");
+                            break;
+                        case 7:
+                            System.out.println("Input your new customer rank:");
+                            customer.setCustomerRank(sc.nextLine());
+                            System.out.println("Edit customer rank successfully!!!");
+                            break;
+                        case 8:
+                            System.out.println("Input your new customer address:");
+                            customer.setCustomerAddress(sc.nextLine());
+                            System.out.println("Edit customer address successfully!!!");
+                            break;
+                        case 9:
+                            customerFlag = true;
+                            returnMainMenu();
+                            break;
+                        default:
+                            System.out.println("Choice again!!!");
+                    }
+                } while (!customerFlag);
             }
         }
-
     }
 
     @Override

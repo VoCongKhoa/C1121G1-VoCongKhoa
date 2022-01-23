@@ -4,7 +4,7 @@ import static FuramaResort.models.Booking.*;
 import static FuramaResort.models.Customer.*;
 
 public class Contract {
-    private static int numberOfContract;
+    private static int numberOfContract; //Tự động tăng contract Number
     private int contractNumber;
     private double contractDeposit;
     private double contractSum;

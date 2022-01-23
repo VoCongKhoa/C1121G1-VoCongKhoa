@@ -3,11 +3,11 @@ package FuramaResort.models;
 import java.util.Objects;
 
 public class Booking {
-    private static int numberOfBooking;
+    private static int numberOfBooking; //Tự động tăng booking number
     private int bookingNumber;
     private String startDate;
     private String endDate;
-    private Facility facility;
+    private Facility facility; //Để lấy serviceName
     private Customer customer;
 
     public Booking() {

@@ -47,7 +47,7 @@ public class BookingServiceImpl implements BookingService {
         for (int i = 0; i < CustomerServiceImpl.customerList.size(); i++) {
             System.out.println(i + 1 + "." + CustomerServiceImpl.customerList.get(i));
         }
-        System.out.println("Choice a number:");
+        System.out.println("Choice customer id: ");
         int customerBookingChoice = Integer.parseInt(sc.nextLine());
         Customer bookingCustomer = CustomerServiceImpl.customerList.get(customerBookingChoice - 1);
         System.out.println("Service List:");
@@ -89,7 +89,6 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void createNewContract() {
         Scanner sc = new Scanner(System.in);
-        //Số HĐ, Mã Bk, số tiền cọc trước, tổng số tiền thanh toán, mã KH
         System.out.println("Booking list:");
         for (Booking booking : bookingQueue) {
             System.out.println(booking);
@@ -116,48 +115,55 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void displayContract() {
-        for (Contract contract : contractList) {
-            System.out.println(contract);
+        if (contractList.isEmpty()) {
+            System.out.println("There're no contracts!!!");
+        } else {
+            for (Contract contract : contractList) {
+                System.out.println(contract);
+            }
         }
     }
 
     @Override
     public void editContract() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input the number of contract you wanna edit:");
-        int editNumberContract = Integer.parseInt(sc.nextLine());
-        boolean flag = false;//Hoặc true
-        while (!flag){
-            for (Contract contract : contractList) {
-                if (contract.getContractNumber() == editNumberContract) {
-                    flag = true;
-                    System.out.println("Your choice: ");
-                    System.out.println("1. Edit contract deposit");
-                    System.out.println("2. Edit total charge of contract");
-                    int editChoice = Integer.parseInt(sc.nextLine());
-                    while (editChoice != 1 && editChoice != 2) {
-                        System.out.println("Choice wrong number!!!");
-                        System.out.println("Choice again:");
-                        editChoice = Integer.parseInt(sc.nextLine());
+        if (contractList.isEmpty()) {
+            System.out.println("There're no contracts!!!");
+        } else {
+            System.out.println("Input the number of contract you wanna edit:");
+            int editNumberContract = Integer.parseInt(sc.nextLine());
+            boolean flag = false;
+            while (!flag) {
+                for (Contract contract : contractList) {
+                    if (contract.getContractNumber() == editNumberContract) {
+                        flag = true;
+                        System.out.println("Your choice: ");
+                        System.out.println("1. Edit contract deposit");
+                        System.out.println("2. Edit total charge of contract");
+                        int editChoice = Integer.parseInt(sc.nextLine());
+                        while (editChoice != 1 && editChoice != 2) {
+                            System.out.println("Choice wrong number!!!");
+                            System.out.println("Choice again:");
+                            editChoice = Integer.parseInt(sc.nextLine());
+                        }
+                        if (editChoice == 1) {
+                            System.out.println("Input new deposit of contract:");
+                            contract.setContractDeposit(Double.parseDouble(sc.nextLine()));
+                            System.out.println("Edit successfully!!!");
+                        } else {
+                            System.out.println("Input new total charge of contract:");
+                            contract.setContractSum(Double.parseDouble(sc.nextLine()));
+                            System.out.println("Edit successfully!!!");
+                        }
+                        break;
                     }
-                    if (editChoice == 1) {
-                        System.out.println("Input new deposit of contract:");
-                        contract.setContractDeposit(Double.parseDouble(sc.nextLine()));
-                        System.out.println("Edit successfully!!!");
-                    } else {
-                        System.out.println("Input new total charge of contract:");
-                        contract.setContractSum(Double.parseDouble(sc.nextLine()));
-                        System.out.println("Edit successfully!!!");
-                    }
-                    break;
+                }
+                if (!flag) {
+                    System.out.println("Input again the number of contract you wanna edit:");
+                    editNumberContract = Integer.parseInt(sc.nextLine());
                 }
             }
-            if (!flag){
-                System.out.println("Input again the number of contract you wanna edit:");
-                editNumberContract = Integer.parseInt(sc.nextLine());
-            }
         }
-
     }
 
     @Override

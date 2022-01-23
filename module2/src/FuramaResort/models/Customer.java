@@ -2,7 +2,7 @@ package FuramaResort.models;
 
 
 public class Customer extends Person {
-    private static int numberOfCustomer;
+    private static int numberOfCustomer; // Tự động tăng Customer id
     private String customerRank;
     private String customerAddress;
     private int id;
