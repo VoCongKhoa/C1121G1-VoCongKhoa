@@ -4,6 +4,7 @@ import FuramaResort.models.*;
 import FuramaResort.services.FacilityService;
 import FuramaResort.utils.Validation;
 
+import java.io.IOException;
 import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
@@ -40,7 +41,7 @@ public class FacilityServiceImpl implements FacilityService {
                     "2.\tAdd new House\n" +
                     "3.\tAdd new Room\n" +
                     "4.\tBack to facility management menu\n");
-            System.out.println("Choose facility you wanna add:");
+            System.out.print("Choose facility you wanna add: ");
             int addFacilityChoice = Integer.parseInt(sc.nextLine());
             switch (addFacilityChoice) {
                 case 1:
@@ -60,7 +61,7 @@ public class FacilityServiceImpl implements FacilityService {
                     returnMainMenu();
                     break;
                 default:
-                    System.out.println("Choice again: ");
+                    System.out.print("Choice again: ");
             }
         } while (!flagAddFacility);
     }
@@ -97,12 +98,13 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
 
-        System.out.print("Input facility service name:");
+        System.out.print("Input facility service name: ");
         String serviceName = "";
         while (!validation.validateServiceName(serviceName = sc.nextLine())) {
             System.out.println("Wrong format!!! Input again!");
         }
-        System.out.print("Input facility usable area:");
+
+        System.out.print("Input facility usable area: ");
         double usableArea;
         while (true) {
             try {
@@ -118,7 +120,8 @@ public class FacilityServiceImpl implements FacilityService {
                 System.out.println("Wrong format !!! Input again!");
             }
         }
-        System.out.print("Input facility price:");
+
+        System.out.print("Input facility price: ");
         double price;
         while (true) {
             try {
@@ -134,7 +137,8 @@ public class FacilityServiceImpl implements FacilityService {
                 System.out.println("Wrong format !!! Input again!");
             }
         }
-        System.out.print("Input facility maximum person:");
+
+        System.out.print("Input facility maximum person: ");
         int maximumPerson;
         while (true) {
             try {
@@ -151,18 +155,21 @@ public class FacilityServiceImpl implements FacilityService {
                 System.out.println("Wrong format !!! Input again!");
             }
         }
-        System.out.print("Input facility rent type:");
+
+        System.out.print("Input facility rent type: ");
         String rentType = "";
         while (!validation.validateRentType(rentType = sc.nextLine())) {
             System.out.println("Wrong format!!! Input again!");
         }
+
         if (facility instanceof Villa) {
-            System.out.print("Input villa type:");
+            System.out.print("Input villa type: ");
             String villaType = "";
             while (!validation.validateVillaType(villaType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
-            System.out.print("Input villa pool area:");
+
+            System.out.print("Input villa pool area: ");
             double villaPoolArea;
             while (true) {
                 try {
@@ -178,7 +185,8 @@ public class FacilityServiceImpl implements FacilityService {
                     System.out.println("Wrong format !!! Input again!");
                 }
             }
-            System.out.print("Input villa number floor:");
+
+            System.out.print("Input villa number floor: ");
             int villaNumberFloor;
             while (true) {
                 try {
@@ -194,17 +202,19 @@ public class FacilityServiceImpl implements FacilityService {
                     System.out.println("Wrong format !!! Input again!");
                 }
             }
+
             Villa newVilla = new Villa(idService, serviceName, usableArea, price, maximumPerson,
                     rentType, villaType, villaPoolArea, villaNumberFloor);
             facilityServiceList.put(newVilla, 0);
             System.out.println("Add a new villa successfully!!!");
         } else if (facility instanceof House) {
-            System.out.print("Input house type:");
+            System.out.print("Input house type: ");
             String houseType = "";
             while (!validation.validateHouseType(houseType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
-            System.out.print("Input house number floor:");
+
+            System.out.print("Input house number floor: ");
             int houseNumberFloor;
             while (true) {
                 try {
@@ -220,13 +230,22 @@ public class FacilityServiceImpl implements FacilityService {
                     System.out.println("Wrong format !!! Input again!");
                 }
             }
+
             House newHouse = new House(idService, serviceName, usableArea, price, maximumPerson,
                     rentType, houseType, houseNumberFloor);
             facilityServiceList.put(newHouse, 0);
             System.out.println("Add a new house successfully!!!");
         } else if (facility instanceof Room) {
-            System.out.print("Input room free service:");
-            String roomFreeService = sc.nextLine();
+            System.out.print("Input free service of room: ");
+            String roomFreeService;
+            while (true) {
+                    if (!(roomFreeService = sc.nextLine()).trim().equals("")) {
+                        break;
+                    } else {
+                        System.out.println("free service of room can't be empty!!! Input again!");
+                    }
+            }
+
             Room newRoom = new Room(idService, serviceName, usableArea, price, maximumPerson,
                     rentType, roomFreeService);
             facilityServiceList.put(newRoom, 0);
