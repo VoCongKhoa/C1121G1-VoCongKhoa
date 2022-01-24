@@ -1,7 +1,6 @@
 package FuramaResort.controllers;
 
 import FuramaResort.services.impls.*;
-import FuramaResort.utils.RegexFormat;
 
 import java.util.Scanner;
 
