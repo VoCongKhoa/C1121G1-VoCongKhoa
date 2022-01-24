@@ -14,15 +14,14 @@ public class CopyFileText {
         {
             try {
                 fileReader = new FileReader(pathOriginalFile);
-                fileWriter = new FileWriter(pathCloneFile,true);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                fileWriter = new FileWriter(pathCloneFile,false);
+                BufferedReader bufferedReader = new BufferedReader(fileReader); //bộ nhớ tạm
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 while ((line = bufferedReader.readLine())!= null){
                     bufferedWriter.write(line); //Cộng chuỗi không được trong vòng while???
                     bufferedWriter.newLine();
                 }
                 bufferedWriter.close();
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

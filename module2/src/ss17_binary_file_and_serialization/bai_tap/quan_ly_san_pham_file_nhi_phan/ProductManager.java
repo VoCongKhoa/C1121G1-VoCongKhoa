@@ -1,13 +1,12 @@
 package ss17_binary_file_and_serialization.bai_tap.quan_ly_san_pham_file_nhi_phan;
 
-import ss12_java_collection_framework.bai_tap.luyen_tap_array_list_va_linked_list.models.Phone;
+import ss17_binary_file_and_serialization.ReadAndWriteBinaryFile;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ProductManager {
+    final String PRODUCT_PATH_FILE = "src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.dat";
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ProductManager productManager = new ProductManager();
@@ -54,7 +53,6 @@ public class ProductManager {
 
     public void add(){
         Scanner sc = new Scanner(System.in);
-        List<Product> productList = ReadAndWriteBinaryFile.readBinaryFile("src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt");
         System.out.print("Input product ID: ");
         int productID = Integer.parseInt(sc.nextLine());
         System.out.print("Input name: ");
@@ -66,34 +64,33 @@ public class ProductManager {
         System.out.print("Input other information: ");
         String otherInfor = sc.nextLine();
 
+        List<Product> productList = ReadAndWriteBinaryFile.readBinaryFile(PRODUCT_PATH_FILE);
         productList.add(new Product(productID,name,brand,price,otherInfor));
-        for (Product product:productList) {
-            System.out.println(product);
-        }
-        ReadAndWriteBinaryFile.writeToBinaryFile("src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt",
-                productList);
-        productList = ReadAndWriteBinaryFile.readBinaryFile("src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt");
+        ReadAndWriteBinaryFile.writeToBinaryFile(PRODUCT_PATH_FILE,productList);
         for (Product product:productList) {
             System.out.println(product);
         }
         System.out.println("Add product successfully!!");
-
     }
 
     public void showAll(){
-        List<Product> showProductList = ReadAndWriteBinaryFile.readBinaryFile("src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt");
-        for (Product product:showProductList) {
+        List<Product> showProductList = ReadAndWriteBinaryFile.readBinaryFile(PRODUCT_PATH_FILE);
+        if (showProductList.isEmpty()){
+            System.out.println("There're no product!!!");
+        }else {
+            for (Product product:showProductList) {
                 System.out.println(product);
+            }
         }
     }
 
     public void search(){
         Scanner sc = new Scanner(System.in);
-        List<Product> editProductList = ReadAndWriteBinaryFile.readBinaryFile("src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt");
+        List<Product> editProductList = ReadAndWriteBinaryFile.readBinaryFile(PRODUCT_PATH_FILE);
         System.out.println("Input name of product you wanna search:");
-        String editNname = sc.nextLine();
+        String editName = sc.nextLine();
         for (Product product:editProductList) {
-            if (product.getName().toLowerCase().contains(editNname.toLowerCase())){
+            if (product.getName().toLowerCase().contains(editName.toLowerCase())){
                 System.out.println(product);
             }
         }

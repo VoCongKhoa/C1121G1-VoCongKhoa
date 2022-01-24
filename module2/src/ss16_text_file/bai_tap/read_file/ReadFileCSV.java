@@ -15,7 +15,8 @@ public class ReadFileCSV {
             splitLineList = line.split(",");
             countryList.add(new Country(Integer.parseInt(splitLineList[0]),splitLineList[1],splitLineList[2]));
         }
-        System.out.println(countryList);
-
+        for (Country country: countryList) {
+            System.out.println(country);
+        }
     }
 }

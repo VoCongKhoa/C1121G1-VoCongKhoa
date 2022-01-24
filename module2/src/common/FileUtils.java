@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtils {
+
+    //Đọc file, giá trị trả về là List<String>
     public static List<String> readFile(String pathFile) {
         List<String> listLine = new ArrayList<>();
         BufferedReader bufferedReader = null;
@@ -16,11 +18,13 @@ public class FileUtils {
             while ((line = bufferedReader.readLine()) != null) {
                 listLine.add(line);
             }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
+        }
+        finally {
             if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
@@ -28,7 +32,6 @@ public class FileUtils {
                     e.printStackTrace();
                 }
             }
-
         }
         return listLine;
     }
@@ -44,9 +47,8 @@ public class FileUtils {
             bufferedWriter.close(); // Phải close để lưu
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally {
-            if (bufferedWriter != null){
+        } finally {
+            if (bufferedWriter != null) {
                 try {
                     bufferedWriter.close();
                 } catch (IOException e) {
@@ -54,5 +56,9 @@ public class FileUtils {
                 }
             }
         }
+    }
+
+    public <T> void writeFile(String pathFile, String line, T t) {
+
     }
 }

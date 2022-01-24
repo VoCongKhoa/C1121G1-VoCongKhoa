@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FuramaResort/utils/RegexFormat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/ReadAndWriteBinaryFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/copy_file_nhi_phan/CopyBinaryFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/copy_file_nhi_phan/SourceFile.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/copy_file_nhi_phan/TargetFile.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss18_string_and_regex/Validation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss18_string_and_regex/bai_tap/ValidateClassName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss18_string_and_regex/bai_tap/ValidatePhoneNumber.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss18_string_and_regex/thuc_hanh/ValidateAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ss18_string_and_regex/thuc_hanh/ValidateEmail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/controllers/FuramaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/controllers/FuramaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FuramaResort/controllers/FuramaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/controllers/FuramaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/utils/RegexFormat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/utils/RegexFormat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/common/FileUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/common/FileUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/ProductManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/ProductManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/ReadAndWriteBinaryFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/ss17_binary_file_and_serialization/thuc_hanh/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/copy_file_text/CloneFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/copy_file_text/CloneFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/copy_file_text/CopyFileText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/copy_file_text/CopyFileText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/copy_file_text/OriginalFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/copy_file_text/OriginalFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/read_file/ReadFileCSV.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss16_text_file/bai_tap/read_file/ReadFileCSV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/Product.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/bai_tap/quan_ly_san_pham_file_nhi_phan/ReadAndWriteBinaryFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/thuc_hanh/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ss17_binary_file_and_serialization/thuc_hanh/CopyFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,14 +71,18 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\codegym\module2\src\ss16_text_file\thuc_hanh\sum_of_numbers" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ss18_string_and_regex" />
+      <recent name="ss17_binary_file_and_serialization" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.FuramaController">
-    <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bai_tap_cuoi_tuan.controllers.Controller" />
+  <component name="RunManager" selected="Application.ReadFileCSV">
+    <configuration name="CopyFileText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss16_text_file.bai_tap.copy_file_text.CopyFileText" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bai_tap_cuoi_tuan.controllers.*" />
+          <option name="PATTERN" value="ss16_text_file.bai_tap.copy_file_text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -63,12 +90,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FuramaController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="FuramaResort.controllers.FuramaController" />
+    <configuration name="ReadFileCSV" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss16_text_file.bai_tap.read_file.ReadFileCSV" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="FuramaResort.controllers.*" />
+          <option name="PATTERN" value="ss16_text_file.bai_tap.read_file.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,12 +103,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss17_binary_file_and_serialization.thuc_hanh.doc_ghi_class_student_ra_file_nhi_phan.Main" />
+    <configuration name="ValidateAccount" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss18_string_and_regex.thuc_hanh.ValidateAccount" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss17_binary_file_and_serialization.thuc_hanh.doc_ghi_class_student_ra_file_nhi_phan.*" />
+          <option name="PATTERN" value="ss18_string_and_regex.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -89,12 +116,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss17_binary_file_and_serialization.thuc_hanh.Main" />
+    <configuration name="ValidateClassName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss18_string_and_regex.bai_tap.ValidateClassName" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss17_binary_file_and_serialization.thuc_hanh.*" />
+          <option name="PATTERN" value="ss18_string_and_regex.bai_tap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,12 +129,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss17_binary_file_and_serialization.bai_tap.quan_ly_san_pham_file_nhi_phan.ProductManager" />
+    <configuration name="ValidatePhoneNumber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ss18_string_and_regex.bai_tap.ValidatePhoneNumber" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ss17_binary_file_and_serialization.bai_tap.quan_ly_san_pham_file_nhi_phan.*" />
+          <option name="PATTERN" value="ss18_string_and_regex.bai_tap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,11 +144,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.FuramaController" />
-        <item itemvalue="Application.ProductManager" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Controller" />
+        <item itemvalue="Application.ReadFileCSV" />
+        <item itemvalue="Application.CopyFileText" />
+        <item itemvalue="Application.ValidatePhoneNumber" />
+        <item itemvalue="Application.ValidateClassName" />
+        <item itemvalue="Application.ValidateAccount" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +198,9 @@
       <workItem from="1642726984932" duration="7323000" />
       <workItem from="1642746401788" duration="18871000" />
       <workItem from="1642864179522" duration="5127000" />
-      <workItem from="1642936687296" duration="14788000" />
+      <workItem from="1642936687296" duration="15123000" />
+      <workItem from="1642986313317" duration="4811000" />
+      <workItem from="1643007780591" duration="11593000" />
     </task>
     <servers />
   </component>
