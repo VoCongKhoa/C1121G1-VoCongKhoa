@@ -2,11 +2,9 @@ package FuramaResort.services.impls;
 
 import java.util.List;
 import java.util.Scanner;
-
 import FuramaResort.models.Employee;
 import FuramaResort.services.EmployeeService;
 import FuramaResort.utils.Validation;
-
 import java.util.ArrayList;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -42,6 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void displayEmployee() {
+        System.out.println("Employee list:");
         for (Employee employee : employeeList) {
             System.out.println(employee);
         }
@@ -79,7 +78,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.print("Add new DoB of employee: ");//Dùng regrex DoB
         String newDateOfBirth = sc.nextLine();
 
-        System.out.print("Add new gender of employee (Male or Female): ");//Chỉ Male hoặc Female
+        System.out.print("Add new gender of employee (Only Male or Female): ");//Chỉ Male hoặc Female
         String newGender;
         while (true) {
             if (validation.validateGender(newGender = sc.nextLine())) {
@@ -169,7 +168,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             }
         }
 
-        System.out.println("Add new salary of employee: ");
+        System.out.println("Add new salary of employee (Double number): ");
         double newEmployeeSalary;
         while (true) {
             try {
@@ -383,7 +382,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                             System.out.println("Choice again!!!");
                     }
                 } while (!employeeFlag);
-
             }
         }
     }

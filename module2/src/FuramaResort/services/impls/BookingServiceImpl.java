@@ -43,31 +43,54 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void addBooking() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Customers List:");
-        for (int i = 0; i < CustomerServiceImpl.customerList.size(); i++) {
-            System.out.println(i + 1 + "." + CustomerServiceImpl.customerList.get(i));
-        }
-        System.out.println("Choice customer id: ");
-        int customerBookingChoice = Integer.parseInt(sc.nextLine());
-        Customer bookingCustomer = CustomerServiceImpl.customerList.get(customerBookingChoice - 1);
-        System.out.println("Service List:");
-        for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
-            System.out.println(entry);
-        }
-        Facility facility;
-        boolean flag = false;
-        checkIdServiceLoop:
+        Customer bookingCustomer;
         while (true) {
-            System.out.println("Input id service:");
-            String inputIdService = sc.nextLine();
-            for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
-                if (entry.getKey().getIdService().equals(inputIdService)) {
-                    facility = entry.getKey();
-                    break checkIdServiceLoop;
+            try {
+                System.out.println("Customers List:");
+                for (int i = 0; i < CustomerServiceImpl.customerList.size(); i++) {
+                    System.out.println(i + 1 + "." + CustomerServiceImpl.customerList.get(i));
                 }
+                System.out.print("Choice customer id: ");
+                int customerBookingChoice = Integer.parseInt(sc.nextLine());
+                if (customerBookingChoice > 0 && customerBookingChoice < CustomerServiceImpl.customerList.size() + 1) {
+                    bookingCustomer = CustomerServiceImpl.customerList.get(customerBookingChoice - 1);
+                    break;
+                } else {
+                    System.out.println("Wrong number!!! Input again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number!!! Input again!");
+            } catch (Exception e) {
+                System.out.println("Wrong format !!! Input again!");
             }
-            if (!flag) {
-                System.out.println("Wrong format!!");
+        }
+
+        Facility facility = null;
+        while (true) {
+            boolean flag = false;
+            try {
+                System.out.println("Service List:");
+                for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
+                    System.out.println(entry);
+                }
+                System.out.print("Choice id service: ");
+                String inputIdService = sc.nextLine();
+                for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
+                    if (entry.getKey().getIdService().equals(inputIdService)) {
+                        facility = entry.getKey();
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("Not found !!! Input again!");
+                } else {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong format !!! Input again!");
+            } catch (Exception e) {
+                System.out.println("Wrong format !!! Input again!");
             }
         }
         System.out.println("Input start date:");
@@ -89,25 +112,63 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void createNewContract() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Booking list:");
-        for (Booking booking : bookingQueue) {
-            System.out.println(booking);
-        }
-        System.out.println("Choice a booking number (earliest startDate first):");
-        int choiceBooking = Integer.parseInt(sc.nextLine());
-        Booking newContractBooking = null;
-        int newContractBookingNumber = 0;
-        for (Booking booking : bookingQueue) {
-            if (choiceBooking == booking.getBookingNumber()) {
-                newContractBooking = booking;
-                newContractBookingNumber = booking.getBookingNumber();
-                bookingQueue.remove(); //???? vì sao remove không được với LinkedList và PriorityQueue???
+        Booking newContractBooking;
+        int newContractBookingNumber;
+        boolean flag = false;
+        boundaryLoop:
+        while (true){
+            try {
+                System.out.println("Booking list:");
+                for (Booking booking : bookingQueue) {
+                    System.out.println(booking);
+                }
+                System.out.println("Choice a booking number (earliest startDate first):");
+                int choiceBooking = Integer.parseInt(sc.nextLine());
+                for (Booking booking : bookingQueue) {
+                    if (choiceBooking == booking.getBookingNumber()) {
+                        flag = true;
+                        newContractBooking = booking;
+                        newContractBookingNumber = booking.getBookingNumber();
+                        bookingQueue.remove(); //???? vì sao remove không được với LinkedList và PriorityQueue???
+                        break boundaryLoop;
+                    }
+                }
+                if (!flag){
+                    System.out.println("Not found!!! Choice again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number!!! Input again!");
+            } catch (Exception e) {
+                System.out.println("Wrong format !!! Input again!");
             }
         }
-        System.out.println("Input deposit of customer for new contract:");
-        int contractDeposit = Integer.parseInt(sc.nextLine());
-        System.out.println("Input total charge of new contract:");
-        int contractSum = Integer.parseInt(sc.nextLine());
+
+        double contractDeposit;
+        while (true){
+            try {
+                System.out.print("Input deposit of customer for new contract: ");
+                contractDeposit = Double.parseDouble(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number!!! Input again!");
+            } catch (Exception e) {
+                System.out.println("Wrong format !!! Input again!");
+            }
+        }
+
+        double contractSum;
+        while (true){
+            try {
+                System.out.print("Input total charge of new contract: ");
+                contractSum = Double.parseDouble(sc.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number!!! Input again!");
+            } catch (Exception e) {
+                System.out.println("Wrong format !!! Input again!");
+            }
+        }
+
         Contract newContract = new Contract(contractDeposit, contractSum, newContractBooking);
         contractList.add(newContract);
         System.out.println("Create new contract successfully for booking number " + newContractBookingNumber);
@@ -127,42 +188,76 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void editContract() {
         Scanner sc = new Scanner(System.in);
+
         if (contractList.isEmpty()) {
             System.out.println("There're no contracts!!!");
         } else {
-            System.out.println("Input the number of contract you wanna edit:");
-            int editNumberContract = Integer.parseInt(sc.nextLine());
             boolean flag = false;
-            while (!flag) {
-                for (Contract contract : contractList) {
-                    if (contract.getContractNumber() == editNumberContract) {
-                        flag = true;
-                        System.out.println("Your choice: ");
-                        System.out.println("1. Edit contract deposit");
-                        System.out.println("2. Edit total charge of contract");
-                        int editChoice = Integer.parseInt(sc.nextLine());
-                        while (editChoice != 1 && editChoice != 2) {
-                            System.out.println("Choice wrong number!!!");
-                            System.out.println("Choice again:");
-                            editChoice = Integer.parseInt(sc.nextLine());
-                        }
-                        if (editChoice == 1) {
-                            System.out.println("Input new deposit of contract:");
-                            contract.setContractDeposit(Double.parseDouble(sc.nextLine()));
-                            System.out.println("Edit successfully!!!");
-                        } else {
-                            System.out.println("Input new total charge of contract:");
-                            contract.setContractSum(Double.parseDouble(sc.nextLine()));
-                            System.out.println("Edit successfully!!!");
-                        }
-                        break;
+            boudaryLoop:
+            do {
+                try {
+                    System.out.println("Contract list:");
+                    for (Contract contract : contractList) {
+                        System.out.println(contract);
                     }
+                    System.out.println("Input the number of contract you wanna edit:");
+                    int editNumberContract = Integer.parseInt(sc.nextLine());
+                    for (Contract contract : contractList) {
+                        if (contract.getContractNumber() == editNumberContract) {
+                            flag = true;
+                            do {
+                                try {
+                                    System.out.println("Edit contract list:");
+                                    System.out.println("1. Edit contract deposit");
+                                    System.out.println("2. Edit total charge of contract");
+                                    System.out.print("Your choice: ");
+                                    int editChoice = Integer.parseInt(sc.nextLine());
+                                    if (editChoice == 1) {
+                                        while (true) {
+                                            try {
+                                                System.out.print("Input new deposit of contract: ");
+                                                contract.setContractDeposit(Double.parseDouble(sc.nextLine()));
+                                                System.out.println("Edit deposit of contract successfully!");
+                                                break boudaryLoop;
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Wrong format !!! Input again!");
+                                            } catch (Exception e) {
+                                                System.out.println("Wrong format !!! Input again!");
+                                            }
+                                        }
+                                    } else if (editChoice == 2) {
+                                        while (true) {
+                                            try {
+                                                System.out.print("Input new total charge of contract: ");
+                                                contract.setContractDeposit(Double.parseDouble(sc.nextLine()));
+                                                System.out.println("Edit total charge of contract successfully!");
+                                                break boudaryLoop;
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Wrong format !!! Input again!");
+                                            } catch (Exception e) {
+                                                System.out.println("Wrong format !!! Input again!");
+                                            }
+                                        }
+                                    } else {
+                                        System.out.println("Wrong number!!! Input again!");
+                                    }
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Wrong format !!! Input again!");
+                                } catch (Exception e) {
+                                    System.out.println("Wrong format !!! Input again!");
+                                }
+                            } while (true);
+                        }
+                    }
+                    if (!flag) {
+                        System.out.println("Not found");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Wrong format !!! Input again!"); // " " và "" là NumberFormatException
+                } catch (Exception e) {
+                    System.out.println("Wrong format !!! Input again!");
                 }
-                if (!flag) {
-                    System.out.println("Input again the number of contract you wanna edit:");
-                    editNumberContract = Integer.parseInt(sc.nextLine());
-                }
-            }
+            } while (true);
         }
     }
 

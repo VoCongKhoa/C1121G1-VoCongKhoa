@@ -82,7 +82,7 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     public void choiceInputFacility(Facility facility, int choiceNumber) {
-        System.out.print("Input facility id service: ");
+        System.out.print("Input facility id service (Ex: SVVL-1234, SVHO-0123, SVRO-7890,...): ");
         String idService = "";
         if (choiceNumber == 1) {
             while (!validation.validateVillaIDService(idService = sc.nextLine())) {
@@ -98,13 +98,13 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
 
-        System.out.print("Input facility service name: ");
+        System.out.print("Input facility service name (Ex: Villa service,...): ");
         String serviceName = "";
         while (!validation.validateServiceName(serviceName = sc.nextLine())) {
             System.out.println("Wrong format!!! Input again!");
         }
 
-        System.out.print("Input facility usable area: ");
+        System.out.print("Input facility usable area (More than 30): ");
         double usableArea;
         while (true) {
             try {
@@ -121,7 +121,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
 
-        System.out.print("Input facility price: ");
+        System.out.print("Input facility price (Ex:5000000,...): ");
         double price;
         while (true) {
             try {
@@ -138,7 +138,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
 
-        System.out.print("Input facility maximum person: ");
+        System.out.print("Input facility maximum person (Ex:19,...): ");
         int maximumPerson;
         while (true) {
             try {
@@ -156,20 +156,20 @@ public class FacilityServiceImpl implements FacilityService {
             }
         }
 
-        System.out.print("Input facility rent type: ");
-        String rentType = "";
+        System.out.print("Input facility rent type (Ex: Day, Month,...): ");
+        String rentType;
         while (!validation.validateRentType(rentType = sc.nextLine())) {
             System.out.println("Wrong format!!! Input again!");
         }
 
         if (facility instanceof Villa) {
-            System.out.print("Input villa type: ");
-            String villaType = "";
+            System.out.print("Input villa type (Ex:Superior, Standard,...): ");
+            String villaType;
             while (!validation.validateVillaType(villaType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
 
-            System.out.print("Input villa pool area: ");
+            System.out.print("Input villa pool area (More than 30): ");
             double villaPoolArea;
             while (true) {
                 try {
@@ -186,7 +186,7 @@ public class FacilityServiceImpl implements FacilityService {
                 }
             }
 
-            System.out.print("Input villa number floor: ");
+            System.out.print("Input villa number floor (Ex:5,...): ");
             int villaNumberFloor;
             while (true) {
                 try {
@@ -208,13 +208,13 @@ public class FacilityServiceImpl implements FacilityService {
             facilityServiceList.put(newVilla, 0);
             System.out.println("Add a new villa successfully!!!");
         } else if (facility instanceof House) {
-            System.out.print("Input house type: ");
+            System.out.print("Input house type (Ex: Luxury, Standard,...): ");
             String houseType = "";
             while (!validation.validateHouseType(houseType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
 
-            System.out.print("Input house number floor: ");
+            System.out.print("Input house number floor (Ex:5,...): ");
             int houseNumberFloor;
             while (true) {
                 try {
@@ -236,13 +236,13 @@ public class FacilityServiceImpl implements FacilityService {
             facilityServiceList.put(newHouse, 0);
             System.out.println("Add a new house successfully!!!");
         } else if (facility instanceof Room) {
-            System.out.print("Input free service of room: ");
+            System.out.print("Input free service of room (Ex: Beverage voucher, Spa voucher,...): ");
             String roomFreeService;
             while (true) {
                     if (!(roomFreeService = sc.nextLine()).trim().equals("")) {
                         break;
                     } else {
-                        System.out.println("free service of room can't be empty!!! Input again!");
+                        System.out.println("Free service of room can't be empty!!! Input again!");
                     }
             }
 

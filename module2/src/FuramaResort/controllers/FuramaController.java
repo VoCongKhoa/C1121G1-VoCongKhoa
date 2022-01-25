@@ -139,7 +139,7 @@ public class FuramaController {
                                         bookingFlag = true;
                                         bookingService.returnMainMenu();
                                     } else {
-                                        System.out.println("Choice again: ");
+                                        System.out.println("Wrong number !!! Input again!");
                                     }
                                 } catch (NumberFormatException e) {
                                     System.out.println("Wrong number !!! Input again!");
@@ -166,7 +166,7 @@ public class FuramaController {
                                         promotionFlag = true;
                                         contractService.returnMainMenu();
                                     } else {
-                                        System.out.println("Choice again: ");
+                                        System.out.println("Wrong number !!!Choice again!");
                                     }
                                 } catch (NumberFormatException e) {
                                     System.out.println("Wrong number !!! Input again!");

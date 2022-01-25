@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/demo/AlgorithsmIsPronic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/controllers/FuramaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/controllers/FuramaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/BookingServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/BookingServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/CustomerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/EmployeeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/EmployeeServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/FacilityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/services/impls/FacilityServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module2/FuramaResort/utils/Validation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/FuramaResort/utils/Validation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuramaResort/controllers/FuramaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/controllers/FuramaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuramaResort/models/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/models/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/impls/BookingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/impls/BookingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/impls/ContractServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/impls/ContractServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/impls/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/impls/CustomerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/impls/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/impls/EmployeeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FuramaResort/services/impls/FacilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/services/impls/FacilityServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FuramaResort/utils/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuramaResort/utils/Validation.java" afterDir="false" />
@@ -55,6 +66,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.FuramaController">
+    <configuration name="AlgorithsmIsPronic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demo.AlgorithsmIsPronic" />
+      <module name="module2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CopyFileText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ss16_text_file.bai_tap.copy_file_text.CopyFileText" />
       <module name="module2" />
@@ -94,19 +118,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ValidateClassName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ss18_string_and_regex.bai_tap.ValidateClassName" />
-      <module name="module2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ss18_string_and_regex.bai_tap.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ValidatePhoneNumber" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ss18_string_and_regex.bai_tap.ValidatePhoneNumber" />
       <module name="module2" />
@@ -123,10 +134,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.FuramaController" />
+        <item itemvalue="Application.AlgorithsmIsPronic" />
         <item itemvalue="Application.ReadFileCSV" />
         <item itemvalue="Application.CopyFileText" />
         <item itemvalue="Application.ValidatePhoneNumber" />
-        <item itemvalue="Application.ValidateClassName" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +190,9 @@
       <workItem from="1642936687296" duration="15123000" />
       <workItem from="1642986313317" duration="4811000" />
       <workItem from="1643007780591" duration="15153000" />
-      <workItem from="1643038374494" duration="9894000" />
+      <workItem from="1643038374494" duration="9962000" />
+      <workItem from="1643071928364" duration="8570000" />
+      <workItem from="1643091653549" duration="12259000" />
     </task>
     <servers />
   </component>

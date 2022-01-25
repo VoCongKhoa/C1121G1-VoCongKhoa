@@ -12,17 +12,26 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public void displayCustomerUseService() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input a number of year:");
-        String yearBooking = sc.nextLine();
+        String yearBooking;
         boolean flag = false;
-        for (Booking booking : BookingServiceImpl.bookingQueue) {
-            if (booking.getStartDate().contains(yearBooking) || booking.getEndDate().contains(yearBooking)) {
-                System.out.println(booking);
-                flag = true;
+        while (true) {
+            System.out.println("Input a number of year:");
+            if (!((yearBooking = sc.nextLine()).trim().equals(""))) {
+                for (Booking booking : BookingServiceImpl.bookingQueue) {
+                    if (booking.getStartDate().contains(yearBooking) || booking.getEndDate().contains(yearBooking)) {
+                        System.out.println(booking);
+                        flag = true;
+                        break;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("Not found!!!");
+                } else {
+                    break;
+                }
+            } else {
+                System.out.println("Number of year can't be empty!!! Input again!");
             }
-        }
-        if (!flag) {
-            System.out.println("Not found!!!");
         }
     }
 
@@ -43,36 +52,85 @@ public class ContractServiceImpl implements ContractService {
                 }
             }
         }
-        System.out.println(bookingStack);
-        System.out.println("Number of booking of this month(" + month + ") is: " + bookingStack.size());
-        System.out.print("Input number of 10% voucher: ");
-        int voucher10 = Integer.parseInt(sc.nextLine());
-        System.out.print("Input number of 20% voucher: ");
-        int voucher20 = Integer.parseInt(sc.nextLine());
-        System.out.print("Input number of 50% voucher: ");
-        int voucher50 = Integer.parseInt(sc.nextLine());
+        if (bookingStack.isEmpty()) {
+            System.out.println("There're no booking of this month!!!");
+        } else {
+            System.out.println(bookingStack);
+            System.out.println("Number of booking of this month(" + month + ") is: " + bookingStack.size());
+            int voucher10;
+            while (true) {
+                try {
+                    System.out.print("Input number of 10% voucher: ");
+                    voucher10 = Integer.parseInt(sc.nextLine());
+                    if (voucher10 >= 0) {
+                        break;
+                    } else {
+                        System.out.println("Number of 10% voucher have to be positive number!!! Input again!");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid number!!! Input again!");
+                } catch (Exception e) {
+                    System.out.println("Wrong format !!! Input again!");
+                }
+            }
 
-        Map<String, Integer> voucherTreeMap = new TreeMap<>();
-        voucherTreeMap.put("voucher10", voucher10);
-        voucherTreeMap.put("voucher20", voucher20);
-        voucherTreeMap.put("voucher50", voucher50);
-        System.out.println(voucherTreeMap);
+            int voucher20;
+            while (true) {
+                try {
+                    System.out.print("Input number of 20% voucher: ");
+                    voucher20 = Integer.parseInt(sc.nextLine());
+                    if (voucher20 >= 0) {
+                        break;
+                    } else {
+                        System.out.println("Number of 20% voucher have to be positive number!!! Input again!");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid number!!! Input again!");
+                } catch (Exception e) {
+                    System.out.println("Wrong format !!! Input again!");
+                }
+            }
 
-        for (Booking bookingGetVoucher : bookingStack) {
-            if (voucherTreeMap.get("voucher10") > 0) {
-                System.out.println(bookingGetVoucher + " get voucher 10%!!!");
-                voucherTreeMap.put("voucher10", voucherTreeMap.get("voucher10") - 1);
-            } else if (voucherTreeMap.get("voucher20") > 0) {
-                System.out.println(bookingGetVoucher + " get voucher 20%!!!");
-                voucherTreeMap.put("voucher20", voucherTreeMap.get("voucher20") - 1);
-            } else if (voucherTreeMap.get("voucher50") > 0) {
-                System.out.println(bookingGetVoucher + " get voucher 50%!!!");
-                voucherTreeMap.put("voucher50", voucherTreeMap.get("voucher50") - 1);
-            } else {
-                System.out.println("Run out of voucher!!!");
-                break;
+            int voucher50;
+            while (true) {
+                try {
+                    System.out.print("Input number of 50% voucher: ");
+                    voucher50 = Integer.parseInt(sc.nextLine());
+                    if (voucher50 >= 0) {
+                        break;
+                    } else {
+                        System.out.println("Number of 50% voucher have to be positive number!!! Input again!");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid number!!! Input again!");
+                } catch (Exception e) {
+                    System.out.println("Wrong format !!! Input again!");
+                }
+            }
+
+            Map<String, Integer> voucherTreeMap = new TreeMap<>();
+            voucherTreeMap.put("voucher10", voucher10);
+            voucherTreeMap.put("voucher20", voucher20);
+            voucherTreeMap.put("voucher50", voucher50);
+            System.out.println(voucherTreeMap);
+
+            for (Booking bookingGetVoucher : bookingStack) {
+                if (voucherTreeMap.get("voucher10") > 0) {
+                    System.out.println(bookingGetVoucher + " get voucher 10%!!!");
+                    voucherTreeMap.put("voucher10", voucherTreeMap.get("voucher10") - 1);
+                } else if (voucherTreeMap.get("voucher20") > 0) {
+                    System.out.println(bookingGetVoucher + " get voucher 20%!!!");
+                    voucherTreeMap.put("voucher20", voucherTreeMap.get("voucher20") - 1);
+                } else if (voucherTreeMap.get("voucher50") > 0) {
+                    System.out.println(bookingGetVoucher + " get voucher 50%!!!");
+                    voucherTreeMap.put("voucher50", voucherTreeMap.get("voucher50") - 1);
+                } else {
+                    System.out.println("Run out of voucher!!!");
+                    break;
+                }
             }
         }
+
 
     }
 
