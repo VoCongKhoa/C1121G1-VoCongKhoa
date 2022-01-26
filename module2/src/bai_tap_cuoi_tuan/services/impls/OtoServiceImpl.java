@@ -2,7 +2,7 @@ package bai_tap_cuoi_tuan.services.impls;
 
 import bai_tap_cuoi_tuan.models.*;
 import bai_tap_cuoi_tuan.services.OtoService;
-import bai_tap_cuoi_tuan.utils.ReadAndWriteFile;
+import bai_tap_cuoi_tuan.utils.ReadAndWriteFileBaiTap;
 
 import java.util.*;
 
@@ -35,7 +35,7 @@ public class OtoServiceImpl implements OtoService {
     @Override
     public void themMoi() {
         Scanner sc = new Scanner(System.in);
-        List<HangSanXuat> hangSanXuatListFile = ReadAndWriteFile.readHangSanXuatFileToCSV(
+        List<HangSanXuat> hangSanXuatListFile = ReadAndWriteFileBaiTap.readHangSanXuatFileToCSV(
                 "src/bai_tap_cuoi_tuan/data/HangSanXuat.csv");
         System.out.println("Nhập biển kiểm soát mới:");
         String bienKiemSoat = sc.nextLine();
@@ -60,7 +60,7 @@ public class OtoServiceImpl implements OtoService {
         System.out.println("1.\tDu lịch\n" +
                 "2.\tXe khách\n");
         String kieuXe = kieuXeList.get(Integer.parseInt(sc.nextLine()));
-        ReadAndWriteFile.writeOtoFileToCSV("src/bai_tap_cuoi_tuan/data/Oto.csv",
+        ReadAndWriteFileBaiTap.writeOtoFileToCSV("src/bai_tap_cuoi_tuan/data/Oto.csv",
                 new Oto(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu, soChoNgoi, kieuXe),true);
 //        otoArrayList.add(new Oto(bienKiemSoat, tenHangSanXuat, namSanXuat, chuSoHuu, soChoNgoi, kieuXe));
         System.out.println("Thêm mới Ô tô thành công!!!");
@@ -69,9 +69,9 @@ public class OtoServiceImpl implements OtoService {
     @Override
     public void hienThi() {
 
-        List<HangSanXuat> hangSanXuatListFile = ReadAndWriteFile.readHangSanXuatFileToCSV
+        List<HangSanXuat> hangSanXuatListFile = ReadAndWriteFileBaiTap.readHangSanXuatFileToCSV
                 ("src/bai_tap_cuoi_tuan/data/HangSanXuat.csv");
-        List<Oto> otoListFile = ReadAndWriteFile.readOtoFileToCSV
+        List<Oto> otoListFile = ReadAndWriteFileBaiTap.readOtoFileToCSV
                 ("src/bai_tap_cuoi_tuan/data/Oto.csv", "src/bai_tap_cuoi_tuan/data/HangSanXuat.csv");
 
         for (HangSanXuat hangSanXuat : hangSanXuatListFile) {

@@ -19,6 +19,10 @@ public class CopyBinaryFile implements Serializable {
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
+            File sourceFile = new File(PATH_SOURCE_FILE);
+            System.out.println(sourceFile.length());
+            File targetFile = new File(PATH_TARGET_FILE);
+            System.out.println(targetFile.length());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

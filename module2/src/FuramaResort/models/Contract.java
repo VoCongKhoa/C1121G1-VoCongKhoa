@@ -1,8 +1,5 @@
 package FuramaResort.models;
 
-import static FuramaResort.models.Booking.*;
-import static FuramaResort.models.Customer.*;
-
 public class Contract {
     private static int numberOfContract; //Tự động tăng contract Number
     private int contractNumber;
@@ -14,7 +11,7 @@ public class Contract {
     }
 
     public Contract(double contractDeposit, double contractSum, Booking booking) {
-        this.contractNumber = numberOfContract++ +100;
+        this.contractNumber = numberOfContract++ + 100;
         this.contractDeposit = contractDeposit;
         this.contractSum = contractSum;
         this.booking = booking;
@@ -68,7 +65,12 @@ public class Contract {
                 ", bookingNumber = " + getBooking().getBookingNumber() +
                 ", contractDeposit = " + contractDeposit +
                 ", contractSum = " + contractSum +
-                ", customerId = " + getBooking().getCustomer().getId() +
+                ", customerId = " + getBooking().getCustomer().getCustomerId() +
                 '}';
+    }
+
+    public String toStringToCSVFile() {
+        return getContractNumber() + "," + getBooking().getBookingNumber() + "," + contractDeposit + "," +
+                contractSum + "," + getBooking().getCustomer().getCustomerId();
     }
 }

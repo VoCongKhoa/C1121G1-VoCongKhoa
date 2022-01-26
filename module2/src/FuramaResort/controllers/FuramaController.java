@@ -30,7 +30,7 @@ public class FuramaController {
                                             "2\tAdd new employee\n" +
                                             "3\tEdit employee\n" +
                                             "4\tReturn main menu\n");
-                                    System.out.print("Input your choice:");
+                                    System.out.print("Input your choice: ");
                                     employeeChoice = Integer.parseInt(sc.nextLine());
                                     if (employeeChoice == 1) {
                                         employeeService.displayEmployee();
@@ -45,7 +45,7 @@ public class FuramaController {
                                         System.out.println("Wrong number !!! Choice again: ");
                                     }
                                 } catch (NumberFormatException e) {
-                                    System.out.println("Wrong number !!! Input again!");
+                                    System.out.println("Wrong format !!! Input again!");
                                 } catch (Exception e) {
                                     System.out.println("Wrong format !!!");
                                 }
@@ -60,7 +60,7 @@ public class FuramaController {
                                             "2\tAdd new customer\n" +
                                             "3\tEdit customer\n" +
                                             "4\tReturn main menu\n");
-                                    System.out.print("Input your choice:");
+                                    System.out.print("Input your choice: ");
                                     customerChoice = Integer.parseInt(sc.nextLine());
                                     if (customerChoice == 1) {
                                         customerService.displayCustomer();
@@ -91,7 +91,7 @@ public class FuramaController {
                                             "2\tAdd new facility\n" +
                                             "3\tDisplay list facility maintenance\n" +
                                             "4\tReturn main menu\n");
-                                    System.out.print("Input your choice:");
+                                    System.out.print("Input your choice: ");
                                     facilityChoice = Integer.parseInt(sc.nextLine());
                                     if (facilityChoice == 1) {
                                         facilityService.displayFacility();
@@ -123,7 +123,7 @@ public class FuramaController {
                                             "4.\tDisplay list contracts\n" +
                                             "5.\tEdit contract\n" +
                                             "6.\tReturn main menu\n");
-                                    System.out.print("Input your choice:");
+                                    System.out.print("Input your choice: ");
                                     bookingChoice = Integer.parseInt(sc.nextLine());
                                     if (bookingChoice == 1) {
                                         bookingService.addBooking();
@@ -156,7 +156,7 @@ public class FuramaController {
                                     System.out.println("1.\tDisplay list customers use service\n" +
                                             "2.\tDisplay list customers get voucher\n" +
                                             "3.\tReturn main menu\n");
-                                    System.out.print("Input your choice:");
+                                    System.out.print("Input your choice: ");
                                     promotionChoice = Integer.parseInt(sc.nextLine());
                                     if (promotionChoice == 1) {
                                         contractService.displayCustomerUseService();
@@ -180,7 +180,6 @@ public class FuramaController {
                             System.exit(0);
                             break;
                         default:
-                            flag = false;
                             System.out.println("Wrong number !!! Choice again!");
                     }
                 }

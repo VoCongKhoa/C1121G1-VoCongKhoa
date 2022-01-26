@@ -18,7 +18,6 @@ public class FileUtils {
             while ((line = bufferedReader.readLine()) != null) {
                 listLine.add(line);
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -44,7 +43,6 @@ public class FileUtils {
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(line);
             bufferedWriter.newLine(); // Để xuống hàng
-            bufferedWriter.close(); // Phải close để lưu
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -58,7 +56,4 @@ public class FileUtils {
         }
     }
 
-    public <T> void writeFile(String pathFile, String line, T t) {
-
-    }
 }

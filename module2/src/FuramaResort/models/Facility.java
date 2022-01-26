@@ -79,4 +79,8 @@ public abstract class Facility {
                 ", rentType = " + rentType +
                 '}';
     }
+
+    public String toStringToCSVFile() {
+        return idService + "," + serviceName + "," + usableArea + "," + price + "," + maximumPerson + "," + rentType;
+    }
 }

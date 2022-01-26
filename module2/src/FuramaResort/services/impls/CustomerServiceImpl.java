@@ -1,5 +1,6 @@
 package FuramaResort.services.impls;
 
+import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.Customer;
 import FuramaResort.services.CustomerService;
 import FuramaResort.utils.Validation;
@@ -12,28 +13,37 @@ import java.util.Scanner;
 public class CustomerServiceImpl implements CustomerService {
     Scanner sc = new Scanner(System.in);
     Validation validation = new Validation();
-    static LinkedList<Customer> customerList = new LinkedList<>();
+    static List<Customer> customerList = new LinkedList<>();
     private static List<String> rankList = new ArrayList<>();
+    static final String CUSTOMER_PATH_FILE = "src/FuramaResort/data/customer.csv";
+    static final String RANK_PATH_FILE = "src/FuramaResort/data/rankList.csv";
 
-    static {
-        rankList.add("Diamond");
-        rankList.add("Platinum");
-        rankList.add("Gold");
-        rankList.add("Silver");
-        rankList.add("Member");
-        Customer customer1 = new Customer("Su", "05/07/1996", "female", "456",
-                "0905472111", "8668@gmail.com", "Diamond", "ĐN");
-        Customer customer2 = new Customer("Khoa", "22/08/1993", "male", "123",
-                "0905472111", "8668@gmail.com", "Platinum", "ĐN");
-        Customer customer3 = new Customer("Khoa2", "01/01/1993", "male", "789",
-                "0905472111", "86682@gmail.com", "Gold", "QN");
-        customerList.add(customer1);
-        customerList.add(customer2);
-        customerList.add(customer3);
-    }
+//    static {
+//        rankList.add("Diamond");
+//        rankList.add("Platinum");
+//        rankList.add("Gold");
+//        rankList.add("Silver");
+//        rankList.add("Member");
+//        Customer customer1 = new Customer("Su", "05/07/1996", "female", "456",
+//                "0905472111", "8668@gmail.com", "Diamond", "ĐN");
+//        Customer customer2 = new Customer("Khoa", "22/08/1993", "male", "123",
+//                "0905472111", "8668@gmail.com", "Platinum", "ĐN");
+//        Customer customer3 = new Customer("Khoa2", "01/01/1993", "male", "789",
+//                "0905472111", "86682@gmail.com", "Gold", "QN");
+//        customerList.add(customer1);
+//        customerList.add(customer2);
+//        customerList.add(customer3);
+//        for (String rank: rankList) {
+//            ReadAndWriteFile.writeFile(RANK_PATH_FILE,rank);
+//        }
+//        for (Customer customer: customerList) {
+//            ReadAndWriteFile.writeFile(CUSTOMER_PATH_FILE,customer.toStringToCSVFile());
+//        }
+//    }
 
     @Override
     public void displayCustomer() {
+        customerList = readCSVFileToCustomerList(CUSTOMER_PATH_FILE);
         for (Customer customer : customerList) {
             System.out.println(customer);
         }
@@ -107,6 +117,7 @@ public class CustomerServiceImpl implements CustomerService {
             try {
                 newCustomerRankChoice = Integer.parseInt(sc.nextLine());
                 if (newCustomerRankChoice > 0 && newCustomerRankChoice < 6) {
+                    rankList = ReadAndWriteFile.readCSVFileToStringList(RANK_PATH_FILE);
                     newCustomerRank = rankList.get(newCustomerRankChoice - 1);
                     break;
                 } else {
@@ -128,19 +139,22 @@ public class CustomerServiceImpl implements CustomerService {
                 System.out.println("Address of customer can't be empty!!! Input again!");
             }
         }
-
         Customer newCustomer = new Customer(newName, newDateOfBirth, newGender, newIdNumber,
                 newPhoneNumber, newEmail, newCustomerRank, newCustomerAddress);
-        customerList.add(newCustomer);
+        List<String> newCustomerList = new ArrayList<>();
+        newCustomerList.add(newCustomer.toStringToCSVFile());
+        ReadAndWriteFile.writeStringListIntoCSVFile(CUSTOMER_PATH_FILE, newCustomerList, true);
+        System.out.println("Add a new customer successfully!!!");
     }
 
     @Override
     public void editCustomer() {
         Scanner sc = new Scanner(System.in);
+        customerList = readCSVFileToCustomerList(CUSTOMER_PATH_FILE);
         System.out.print("Input id of customer you wanna edit: ");
-        int editIdCusChoice = Integer.parseInt(sc.nextLine());
+        int editIdCusChoice = Integer.parseInt(sc.nextLine()); // Chưa try catch
         for (Customer customer : customerList) {
-            if (customer.getId() == editIdCusChoice) {
+            if (customer.getCustomerId() == editIdCusChoice) {
                 boolean customerFlag = false;
                 do {
                     System.out.println("List of customer property:\n" +
@@ -154,7 +168,7 @@ public class CustomerServiceImpl implements CustomerService {
                             "8.Edit customer address\n" +
                             "9.Return customer management menu\n");
                     System.out.print("Input property you wanna edit: ");
-                    int editPropertyEmpChoice = Integer.parseInt(sc.nextLine());
+                    int editPropertyEmpChoice = Integer.parseInt(sc.nextLine());//Chưa try catch
                     switch (editPropertyEmpChoice) {
                         case 1:
                             System.out.print("Input your new name: ");
@@ -162,6 +176,7 @@ public class CustomerServiceImpl implements CustomerService {
                                 String editName;
                                 if (validation.validateName(editName = sc.nextLine())) {
                                     customer.setName(editName);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList,false);
                                     break;
                                 } else {
                                     System.out.println("Wrong format!!! Input again!");
@@ -173,8 +188,9 @@ public class CustomerServiceImpl implements CustomerService {
                             System.out.print("Input your new date of birth: ");
                             while (true) {
                                 String editGender;
-                                if (validation.validateGender(editGender = sc.nextLine())) {
+                                if (validation.validateGender(editGender = sc.nextLine())) {//Fixx validate
                                     customer.setDateOfBirth(editGender);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                     break;
                                 } else {
                                     System.out.println("Wrong format!!! Input again!");
@@ -186,8 +202,9 @@ public class CustomerServiceImpl implements CustomerService {
                             System.out.print("Input your new gender: ");
                             while (true) {
                                 String editIdNumber;
-                                if (validation.validateIDNumber(editIdNumber = sc.nextLine())) {
+                                if (validation.validateGender(editIdNumber = sc.nextLine())) {
                                     customer.setGender(editIdNumber);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                     break;
                                 } else {
                                     System.out.println("Wrong format!!! Input again!");
@@ -201,6 +218,7 @@ public class CustomerServiceImpl implements CustomerService {
                                 String editIdNumber;
                                 if (validation.validateIDNumber(editIdNumber = sc.nextLine())) {
                                     customer.setIDNumber(editIdNumber);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                     break;
                                 } else {
                                     System.out.println("Wrong format!!! Input again!");
@@ -214,6 +232,7 @@ public class CustomerServiceImpl implements CustomerService {
                                 String editPhoneNumber;
                                 if (validation.validatePhoneNumber(editPhoneNumber = sc.nextLine())) {
                                     customer.setPhoneNumber(editPhoneNumber);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                     break;
                                 } else {
                                     System.out.println("Wrong format!!! Input again!");
@@ -227,6 +246,7 @@ public class CustomerServiceImpl implements CustomerService {
                                 String editEmail;
                                 if (validation.validateEmail(editEmail = sc.nextLine())) {
                                     customer.setEmail(editEmail);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                     break;
                                 } else {
                                     System.out.println("Wrong format!!! Input again!");
@@ -242,14 +262,16 @@ public class CustomerServiceImpl implements CustomerService {
                             System.out.println("4. Silver");
                             System.out.println("5. Member");
                             System.out.print("Choice the edit customer rank: ");
-                            String newCustomerRank;
+//                            String newCustomerRank;
                             int newCustomerRankChoice;
                             while (true) {
                                 try {
                                     newCustomerRankChoice = Integer.parseInt(sc.nextLine());
                                     if (newCustomerRankChoice > 0 && newCustomerRankChoice < 6) {
-                                        newCustomerRank = rankList.get(newCustomerRankChoice - 1);
+                                        rankList = ReadAndWriteFile.readCSVFileToStringList(RANK_PATH_FILE);
+                                        String newCustomerRank = rankList.get(newCustomerRankChoice - 1);
                                         customer.setCustomerRank(newCustomerRank);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                         break;
                                     } else {
                                         System.out.println("Wrong number!!! Input again!");
@@ -268,6 +290,7 @@ public class CustomerServiceImpl implements CustomerService {
                                 String editCustomerAddress;
                                 if (!(editCustomerAddress = sc.nextLine()).trim().equals("")) {
                                     customer.setCustomerAddress(editCustomerAddress);
+                                    writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
                                     break;
                                 } else {
                                     System.out.println("Address of customer can't be empty!!! Input again!");
@@ -290,4 +313,26 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void returnMainMenu() {
     }
+
+    public static List<Customer> readCSVFileToCustomerList(String pathFile) {
+        List<Customer> customerListFromReadCSV = new ArrayList<>();
+        List<String> lineList = ReadAndWriteFile.readCSVFileToStringList(pathFile);
+        String[] lineSplitList;
+        Customer.setNumberOfCustomer(0);
+        for (String line : lineList) {
+            lineSplitList = line.split(",");
+            customerListFromReadCSV.add(new Customer(lineSplitList[1], lineSplitList[2], lineSplitList[3],
+                    lineSplitList[4], lineSplitList[5], lineSplitList[6], lineSplitList[7], lineSplitList[8]));
+        }
+        return customerListFromReadCSV;
+    }
+
+    public static void writeCustomerListIntoCSVFile(String pathFile, List<Customer> customerList, boolean append) {
+        List<String> stringList = new ArrayList<>();
+        for (Customer customer : customerList) {
+            stringList.add(customer.toStringToCSVFile());
+        }
+        ReadAndWriteFile.writeStringListIntoCSVFile(pathFile, stringList, append);
+    }
+
 }

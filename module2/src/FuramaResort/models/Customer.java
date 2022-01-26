@@ -5,13 +5,13 @@ public class Customer extends Person {
     private static int numberOfCustomer; // Tự động tăng Customer id
     private String customerRank;
     private String customerAddress;
-    private int id;
+    private int customerId;
 
     public Customer() {
     }
 
     public Customer(String customerRank, String customerAddress) {
-        this.id = this.numberOfCustomer++ + 1; //Bắt đầu từ 1
+        this.customerId = this.numberOfCustomer++ + 1; //Bắt đầu từ 1
         this.customerRank = customerRank;
         this.customerAddress = customerAddress;
     }
@@ -19,17 +19,17 @@ public class Customer extends Person {
     public Customer(String name, String dateOfBirth, String gender, String IDNumber, String phoneNumber,
                     String email, String customerRank, String customerAddress) {
         super(name, dateOfBirth, gender, IDNumber, phoneNumber, email);
-        this.id = this.numberOfCustomer++ +1;
+        this.customerId = this.numberOfCustomer++ +1;
         this.customerRank = customerRank;
         this.customerAddress = customerAddress;
     }
 
-    public int getId() {
-        return id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public static int getNumberOfCustomer() {
@@ -59,7 +59,7 @@ public class Customer extends Person {
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId = '" + getId() + '\'' +
+                "customerId = '" + getCustomerId() + '\'' +
                 ", name = " + getName()+
                 ", dateOfBirth = " + getDateOfBirth()+
                 ", gender = " + getGender()+
@@ -69,5 +69,10 @@ public class Customer extends Person {
                 ", customerRank = " + customerRank +
                 ", customerAdress = " + customerAddress +
                 '}';
+    }
+
+    public String toStringToCSVFile() {
+        return getCustomerId() + "," + getName() + "," + getDateOfBirth() + "," + getGender() + "," + getIDNumber() + "," +
+                getPhoneNumber() + "," + getEmail() + "," + customerRank + "," + customerAddress;
     }
 }

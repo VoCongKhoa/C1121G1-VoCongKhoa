@@ -41,9 +41,13 @@ public class Country {
     @Override
     public String toString() {
         return "Country{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
+                "id=" + id + '\'' +
+                ", code= " + code +
+                ", name= " + name +
                 '}';
+    }
+
+    public String getStringToFileCSV() {
+        return "'" + id + "'" + ", " + code + ", " + name;
     }
 }

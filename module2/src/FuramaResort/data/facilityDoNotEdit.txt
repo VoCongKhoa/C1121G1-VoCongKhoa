@@ -1,0 +1,9 @@
+SVVL-1001,Villa Day service,500.0,500.0,15,Day,Luxury,50.0,5,6
+SVVL-1002,Villa Month service,500.0,12000.0,15,Month,Luxury,50.0,5,3
+SVVL-1003,Villa Year service,500.0,180000.0,15,Year,Luxury,50.0,5,1
+SVHO-2001,House Day service,200.0,300.0,10,Day,Superior,3,4
+SVHO-2002,House Month service,200.0,8000.0,10,Month,Superior,3,5
+SVHO-2003,House Year service,200.0,100000.0,10,Year,Superior,3,6
+SVRO-3001,Room Day service,75.0,100.0,5,Day,Standard,6
+SVRO-3002,Room Month service,75.0,2500.0,5,Month,Standard,8
+SVRO-3003,Room Year service,75.0,35000.0,5,Year,Standard,10

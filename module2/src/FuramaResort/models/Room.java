@@ -36,4 +36,9 @@ public class Room extends Facility{
                 ", roomFreeService = " + roomFreeService +
                 '}';
     }
+
+    public String toStringToCSVFile() {
+        return getIdService() + "," + getServiceName() + "," + getUsableArea() + "," + getPrice() + "," +
+                getMaximumPerson() + "," + getRentType() + "," + roomFreeService;
+    }
 }

@@ -1,9 +1,8 @@
-10,01/01/2022,05/01/2022,6,House Day service,Day
+10,01/01/2022,07/01/2022,6,House Day service,Day
 11,01/01/2022,07/01/2022,3,House Day service,Day
 12,01/01/2022,01/02/2022,5,House Month service,Month
 13,01/03/2022,07/03/2022,1,Villa Day service,Day
 14,01/03/2022,01/04/2022,4,Villa Month service,Month
 15,01/05/2022,01/06/2022,3,Room Month service,Month
-16,01/06/2022,07/06/2022,2,Room Day service,Day
-17,20/07/2022,22/07/2022,2,Villa Year service,Year
-18,21/07/2022,24/07/2022,2,Villa Year service,Year
+16,01/05/2022,07/05/2022,2,Room Day service,Day
+17,01/05/2022,07/05/2022,6,Room Day service,Day

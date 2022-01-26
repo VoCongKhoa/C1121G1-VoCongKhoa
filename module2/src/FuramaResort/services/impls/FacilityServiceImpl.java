@@ -1,5 +1,6 @@
 package FuramaResort.services.impls;
 
+import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.*;
 import FuramaResort.services.FacilityService;
 import FuramaResort.utils.Validation;
@@ -11,22 +12,80 @@ public class FacilityServiceImpl implements FacilityService {
     Scanner sc = new Scanner(System.in);
     static Map<Facility, Integer> facilityServiceList = new LinkedHashMap<>();
     Validation validation = new Validation();
+    static final String FACILITY_PATH_FILE = "src/FuramaResort/data/facility.csv";
+    static final String VILLA_PATH_FILE = "src/FuramaResort/data/villa.csv";
+    static final String HOUSE_PATH_FILE = "src/FuramaResort/data/house.csv";
+    static final String ROOM_PATH_FILE = "src/FuramaResort/data/room.csv";
 
-    static {
-        Villa villa = new Villa("VL001", "bookingVilla", 100, 10, 10,
-                "day", "big", 25, 3);
-        House house = new House("HS001", "bookingHouse", 100, 10, 10,
-                "day", "medium", 2);
-        Room room = new Room("RO001", "bookingRoom", 100, 10, 10,
-                "day", "free");
-
-        facilityServiceList.put(villa, 2);
-        facilityServiceList.put(house, 4);
-        facilityServiceList.put(room, 6);
+    public static Map<Facility, Integer> readCSVFileTofacilityServiceList(String pathFile) {
+        Map<Facility, Integer> facilityServiceListFromCSV = new LinkedHashMap<>();
+        List<String> lineList = ReadAndWriteFile.readCSVFileToStringList(pathFile);
+        String[] lineSplitList;
+        Villa villa;
+        House house;
+        Room room;
+        for (String line : lineList) {
+            lineSplitList = line.split(",");
+            if (lineSplitList[0].contains("SVVL")) {
+                villa = new Villa(lineSplitList[0], lineSplitList[1],
+                        Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                        Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
+                        Double.parseDouble(lineSplitList[7]), Integer.parseInt(lineSplitList[8]));
+                facilityServiceListFromCSV.put(villa, Integer.parseInt(lineSplitList[9]));
+            } else if (line.contains("SVHO")) {
+                house = new House(lineSplitList[0], lineSplitList[1],
+                        Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                        Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
+                        Integer.parseInt(lineSplitList[7]));
+                facilityServiceListFromCSV.put(house, Integer.parseInt(lineSplitList[8]));
+            } else if (line.contains("SVRO")) {
+                room = new Room(lineSplitList[0], lineSplitList[1],
+                        Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                        Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6]);
+                facilityServiceListFromCSV.put(room, Integer.parseInt(lineSplitList[7]));
+            }
+        }
+        return facilityServiceListFromCSV;
     }
+
+//    static {
+//        Villa villa = new Villa("VL001", "bookingVilla", 100, 10, 10,
+//                "day", "big", 25, 3);
+//        House house = new House("HS001", "bookingHouse", 100, 10, 10,
+//                "day", "medium", 2);
+//        Room room = new Room("RO001", "bookingRoom", 100, 10, 10,
+//                "day", "free");
+//    }
 
     @Override
     public void displayFacility() {
+        Map<Facility, Integer> facilityServiceList = new LinkedHashMap<>();
+        Villa villa;
+        House house;
+        Room room;
+        List<String> lineList = ReadAndWriteFile.readCSVFileToStringList(FACILITY_PATH_FILE);
+        String[] lineSplitList;
+        for (String line : lineList) {
+            lineSplitList = line.split(",");
+            if (lineSplitList[0].contains("SVVL")) {
+                villa = new Villa(lineSplitList[0], lineSplitList[1],
+                        Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                        Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
+                        Double.parseDouble(lineSplitList[7]), Integer.parseInt(lineSplitList[8]));
+                facilityServiceList.put(villa, Integer.parseInt(lineSplitList[9]));
+            } else if (line.contains("SVHO")) {
+                house = new House(lineSplitList[0], lineSplitList[1],
+                        Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                        Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
+                        Integer.parseInt(lineSplitList[7]));
+                facilityServiceList.put(house, Integer.parseInt(lineSplitList[8]));
+            } else if (line.contains("SVRO")) {
+                room = new Room(lineSplitList[0], lineSplitList[1],
+                        Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                        Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6]);
+                facilityServiceList.put(room, Integer.parseInt(lineSplitList[7]));
+            }
+        }
         for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
             System.out.println(entry.getKey() + ", bookedTimes = " + entry.getValue());
         }
@@ -68,11 +127,46 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void displayFacilityMaintenance() {
-        for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
+        Map<Facility, Integer> facilityMaintenanceList = new LinkedHashMap<>();
+        Villa villa;
+        House house;
+        Room room;
+        List<String> lineList = ReadAndWriteFile.readCSVFileToStringList(FACILITY_PATH_FILE);
+        String[] lineSplitList;
+        for (String line : lineList) {
+            lineSplitList = line.split(",");
+            if (Integer.parseInt(lineSplitList[lineSplitList.length - 1]) >= 5) {
+                if (lineSplitList[0].contains("SVVL")) {
+                    villa = new Villa(lineSplitList[0], lineSplitList[1],
+                            Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                            Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
+                            Double.parseDouble(lineSplitList[7]), Integer.parseInt(lineSplitList[8]));
+                    facilityMaintenanceList.put(villa, Integer.parseInt(lineSplitList[9]));
+                } else if (line.contains("SVHO")) {
+                    house = new House(lineSplitList[0], lineSplitList[1],
+                            Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                            Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
+                            Integer.parseInt(lineSplitList[7]));
+                    facilityMaintenanceList.put(house, Integer.parseInt(lineSplitList[8]));
+                } else if (line.contains("SVRO")) {
+                    room = new Room(lineSplitList[0], lineSplitList[1],
+                            Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
+                            Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6]);
+                    facilityMaintenanceList.put(room, Integer.parseInt(lineSplitList[7]));
+                }
+            }
+        }
+        for (Map.Entry<Facility, Integer> entry : facilityMaintenanceList.entrySet()) {
             if (entry.getValue() >= 5) {
                 System.out.println(entry.getKey() + ", bookedTimes = " + entry.getValue());
             }
         }
+//        System.out.println(entry.getKey() + ", bookedTimes = " + entry.getValue());
+//        for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
+//            if (entry.getValue() >= 5) {
+//                System.out.println(entry.getKey() + ", bookedTimes = " + entry.getValue());
+//            }
+//        }
     }
 
     @Override
@@ -205,11 +299,24 @@ public class FacilityServiceImpl implements FacilityService {
 
             Villa newVilla = new Villa(idService, serviceName, usableArea, price, maximumPerson,
                     rentType, villaType, villaPoolArea, villaNumberFloor);
-            facilityServiceList.put(newVilla, 0);
+            Map<Facility, Integer> newFacilityList = new LinkedHashMap<>();
+            Map<Villa, Integer> newVillaList = new LinkedHashMap<>();
+            newFacilityList.put(newVilla, 0);
+            List<String> stringList = new ArrayList<>();
+            for (Map.Entry<Facility, Integer> entry : newFacilityList.entrySet()) {
+                stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+            }
+            ReadAndWriteFile.writeStringListIntoCSVFile(FACILITY_PATH_FILE, stringList, true);
+            stringList.clear();
+            newVillaList.put(newVilla, 0);
+            for (Map.Entry<Villa, Integer> entry : newVillaList.entrySet()) {
+                stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+            }
+            ReadAndWriteFile.writeStringListIntoCSVFile(VILLA_PATH_FILE, stringList, true);
             System.out.println("Add a new villa successfully!!!");
         } else if (facility instanceof House) {
             System.out.print("Input house type (Ex: Luxury, Standard,...): ");
-            String houseType = "";
+            String houseType;
             while (!validation.validateHouseType(houseType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
@@ -233,23 +340,53 @@ public class FacilityServiceImpl implements FacilityService {
 
             House newHouse = new House(idService, serviceName, usableArea, price, maximumPerson,
                     rentType, houseType, houseNumberFloor);
-            facilityServiceList.put(newHouse, 0);
+            Map<Facility, Integer> newFacilityList = new LinkedHashMap<>();
+            Map<House, Integer> newHouseList = new LinkedHashMap<>();
+            newFacilityList.put(newHouse, 0);
+            List<String> stringList = new ArrayList<>();
+            for (Map.Entry<Facility, Integer> entry : newFacilityList.entrySet()) {
+                stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+            }
+            ReadAndWriteFile.writeStringListIntoCSVFile(FACILITY_PATH_FILE, stringList, true);
+            stringList.clear();
+            newHouseList.put(newHouse, 0);
+            for (Map.Entry<House, Integer> entry : newHouseList.entrySet()) {
+                stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+            }
+            ReadAndWriteFile.writeStringListIntoCSVFile(HOUSE_PATH_FILE, stringList, true);
+
             System.out.println("Add a new house successfully!!!");
         } else if (facility instanceof Room) {
             System.out.print("Input free service of room (Ex: Beverage voucher, Spa voucher,...): ");
             String roomFreeService;
             while (true) {
-                    if (!(roomFreeService = sc.nextLine()).trim().equals("")) {
-                        break;
-                    } else {
-                        System.out.println("Free service of room can't be empty!!! Input again!");
-                    }
+                if (!(roomFreeService = sc.nextLine()).trim().equals("")) {
+                    break;
+                } else {
+                    System.out.println("Free service of room can't be empty!!! Input again!");
+                }
             }
 
             Room newRoom = new Room(idService, serviceName, usableArea, price, maximumPerson,
                     rentType, roomFreeService);
-            facilityServiceList.put(newRoom, 0);
+            Map<Facility, Integer> newFacilityList = new LinkedHashMap<>();
+            Map<Room, Integer> newRoomList = new LinkedHashMap<>();
+            newFacilityList.put(newRoom, 0);
+            List<String> stringList = new ArrayList<>();
+            for (Map.Entry<Facility, Integer> entry : newFacilityList.entrySet()) {
+                stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+            }
+            ReadAndWriteFile.writeStringListIntoCSVFile(FACILITY_PATH_FILE, stringList, true);
+            stringList.clear();
+            newRoomList.put(newRoom, 0);
+            for (Map.Entry<Room, Integer> entry : newRoomList.entrySet()) {
+                stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+            }
+            ReadAndWriteFile.writeStringListIntoCSVFile(ROOM_PATH_FILE, stringList, true);
+
             System.out.println("Add a new room successfully!!!");
         }
     }
+
+
 }

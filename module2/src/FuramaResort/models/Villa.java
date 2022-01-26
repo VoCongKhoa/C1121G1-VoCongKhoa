@@ -60,4 +60,8 @@ public class Villa extends Facility{
                 ", villaNumberFloor = " + villaNumberFloor +
                 '}';
     }
+    public String toStringToCSVFile() {
+        return getIdService() + "," + getServiceName() + "," + getUsableArea() + "," + getPrice() + "," +
+                getMaximumPerson() + "," + getRentType() + "," + villaType + "," + villaPoolArea + "," + villaNumberFloor;
+    }
 }

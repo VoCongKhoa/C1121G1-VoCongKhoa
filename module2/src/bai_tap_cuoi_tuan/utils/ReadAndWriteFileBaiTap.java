@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWriteFile <E> {
+public class ReadAndWriteFileBaiTap<E> {
 
     //Đọc file CSV thành 1 List chứa các đối tượng Oto
     public static  List<Oto> readOtoFileToCSV(String pathFileOto, String pathFileHangSanXuat) {

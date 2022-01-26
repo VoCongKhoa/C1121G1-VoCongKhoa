@@ -14,13 +14,13 @@ public class Booking {
     }
 
     public Booking(String startDate, String endDate) {
-        this.bookingNumber = numberOfBooking++ +10;
+        this.bookingNumber = numberOfBooking++ + 10;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public Booking(String startDate, String endDate,Customer customer, Facility facility) {
-        this.bookingNumber = numberOfBooking++ +10;
+    public Booking(String startDate, String endDate, Customer customer, Facility facility) {
+        this.bookingNumber = numberOfBooking++ + 10;
         this.startDate = startDate;
         this.endDate = endDate;
         this.customer = customer;
@@ -81,23 +81,32 @@ public class Booking {
                 "bookingNumber = '" + getBookingNumber() + '\'' +
                 ", startDate = " + startDate +
                 ", endDate = " + endDate +
-                ", customerId = " + customer.getId() +
+                ", customerId = " + customer.getCustomerId() +
                 ", serviceName = " + facility.getServiceName() +
                 ", rentType = " + facility.getRentType() +
                 '}';
     }
 
+
+    //Bug ghi đè mặc dù khác Id, hay khác serviceName hay khác rentType
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Objects.equals(bookingNumber, booking.bookingNumber) && Objects.equals(startDate, booking.startDate)
-                && Objects.equals(endDate, booking.endDate);
+        return Objects.equals(startDate, booking.startDate) && Objects.equals(endDate, booking.endDate)
+                && (this.getCustomer().getCustomerId() == booking.getCustomer().getCustomerId())
+                && Objects.equals(this.getFacility().getServiceName(), booking.getFacility().getServiceName())
+                && Objects.equals(this.getFacility().getRentType(), booking.getFacility().getRentType());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(startDate, endDate);
+    }
+
+    public String toStringToCSVFile() {
+        return getBookingNumber() + "," + startDate + "," + endDate + "," + customer.getCustomerId()
+                + "," + facility.getServiceName() + "," + facility.getRentType();
     }
 }

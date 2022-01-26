@@ -10,15 +10,15 @@ public class Validation {
     private static final String VILLA_ID_SERVICE_REGEX = "^SVVL-\\d{4}$";
     private static final String HOUSE_ID_SERVICE_REGEX = "^SVHO-\\d{4}$";
     private static final String ROOM_ID_SERVICE_REGEX = "^SVRO-\\d{4}$";
-    private static final String SERVICE_NAME_REGEX = "^[A-Z][a-z0-9\\s]+$";
-    private static final String RENT_TYPE_REGEX = "^[A-Z][a-z0-9\\s]+$";
-    private static final String VILLA_TYPE_REGEX = "^[A-Z][a-z0-9\\s]+$";
-    private static final String HOUSE_TYPE_REGEX = "^[A-Z][a-z0-9\\s]+$";
+    private static final String SERVICE_NAME_REGEX = "^[A-Z](\\w\\s?)+$";
+    private static final String RENT_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
+    private static final String VILLA_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
+    private static final String HOUSE_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
 
-    private static final String NAME_REGEX = "^[A-Za-z](\\w\\s)+$";
+    private static final String NAME_REGEX = "^[A-Za-z](\\w\\s?)+$";
     private static final String GENDER_REGEX = "^Male|Female$";
     private static final String ID_NUMBER_REGEX = "^\\d{12}$";
-    private static final String PHONE_NUMBER_REGEX = "^\\(\\+\\d{2}\\)\\s?\\d{9}$";
+    private static final String PHONE_NUMBER_REGEX = "^\\(\\+\\d{2}\\)(\\s?\\d){9,12}$";
     private static final String EMAIL_REGEX = "^[\\w]+@\\w+(\\.\\w+)+$";
 
     //Cách 1:

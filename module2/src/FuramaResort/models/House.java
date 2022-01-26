@@ -12,7 +12,8 @@ public class House extends Facility {
         this.houseNumberFloor = houseNumberFloor;
     }
 
-    public House(String idService, String serviceName, double usableArea, double price, int maximumPerson, String rentType, String houseType, int houseNumberFloor) {
+    public House(String idService, String serviceName, double usableArea, double price, int maximumPerson,
+                 String rentType, String houseType, int houseNumberFloor) {
         super(idService, serviceName, usableArea, price, maximumPerson, rentType);
         this.houseType = houseType;
         this.houseNumberFloor = houseNumberFloor;
@@ -46,5 +47,10 @@ public class House extends Facility {
                 ", houseType = " + houseType +
                 ", houseNumberFloor = " + houseNumberFloor +
                 '}';
+    }
+
+    public String toStringToCSVFile() {
+        return getIdService() + "," + getServiceName() + "," + getUsableArea() + "," + getPrice() + "," +
+                getMaximumPerson() + "," + getRentType() + "," + houseType + "," + houseNumberFloor;
     }
 }
