@@ -2,26 +2,26 @@ package FuramaResort.services.impls;
 
 import FuramaResort.models.Booking;
 import FuramaResort.services.ContractService;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
 
 public class ContractServiceImpl implements ContractService {
+    Set<Booking> bookingSet = BookingServiceImpl.readCSVFileToBookingSet(BookingServiceImpl.BOOKING_PATH_FILE);
 
     @Override
     public void displayCustomerUseService() {
         Scanner sc = new Scanner(System.in);
+        System.out.println(bookingSet);
         String yearBooking;
         boolean flag = false;
         while (true) {
             System.out.println("Input a number of year:");
             if (!((yearBooking = sc.nextLine()).trim().equals(""))) {
-                for (Booking booking : BookingServiceImpl.bookingQueue) {
+                for (Booking booking : bookingSet) {
                     if (booking.getStartDate().contains(yearBooking) || booking.getEndDate().contains(yearBooking)) {
                         System.out.println(booking);
                         flag = true;
-                        break;
                     }
                 }
                 if (!flag) {
@@ -43,8 +43,9 @@ public class ContractServiceImpl implements ContractService {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         String year = String.valueOf(localDate.getYear());
         int month = localDate.getMonthValue();
+        System.out.println(month);
         int day = localDate.getDayOfMonth();
-        for (Booking booking : BookingServiceImpl.bookingTreeSet) {
+        for (Booking booking : bookingSet) {
             if (booking.getStartDate().contains(year) || booking.getEndDate().contains(year)) {
                 if (Integer.parseInt(booking.getStartDate().substring(3, 5)) == month
                         || Integer.parseInt(booking.getEndDate().substring(3, 5)) == month) {
@@ -136,7 +137,5 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public void returnMainMenu() {
-        System.out.println("returnMainMenu");
-
     }
 }

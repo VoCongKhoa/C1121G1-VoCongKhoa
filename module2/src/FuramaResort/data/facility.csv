@@ -6,4 +6,5 @@ SVHO-2002,House Month service,200.0,8000.0,10,Month,Superior,3,5
 SVHO-2003,House Year service,200.0,100000.0,10,Year,Superior,3,6
 SVRO-3001,Room Day service,75.0,100.0,5,Day,Standard,6
 SVRO-3002,Room Month service,75.0,2500.0,5,Month,Standard,8
-SVRO-3003,Room Year service,75.0,35000.0,5,Year,Standard,10
+SVRO-3003,Room Year service,75.0,35000.0,5,Year,Standard,11
+SVRO-3004,Room Day service,100.0,150.0,6,Day,Beverage voucher,2

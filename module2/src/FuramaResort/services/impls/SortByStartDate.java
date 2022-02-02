@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class SortByStartDate implements Comparator<Booking> {
 
-    //    String stringDate1 = "22/01/2016";
+//    String stringDate1 = "22/01/2016";
 //    String stringDate2 = "22-Jan-2016";
 //    String stringDate3 = "01 22, 2016";
 //    String stringDate4 = "Fri, Jan 22 2016";

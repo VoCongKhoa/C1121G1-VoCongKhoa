@@ -1,3 +1,5 @@
 SVVL-1001,Villa Day service,500.0,500.0,15,Day,Luxury,50.0,5,6
 SVVL-1002,Villa Month service,500.0,12000.0,15,Month,Luxury,50.0,5,3
 SVVL-1003,Villa Year service,500.0,180000.0,15,Year,Luxury,50.0,5,1
+SVVL-1234,Villa service 1,35.0,1.0E7,18,Year,Superior,40.0,7,0
+SVVL-1234,Abc,31.0,5000.0,18,Day,Abc,35.0,6,0

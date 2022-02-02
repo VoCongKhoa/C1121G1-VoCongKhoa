@@ -5,7 +5,6 @@ import FuramaResort.models.*;
 import FuramaResort.services.FacilityService;
 import FuramaResort.utils.Validation;
 
-import java.io.IOException;
 import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
@@ -48,14 +47,13 @@ public class FacilityServiceImpl implements FacilityService {
         return facilityServiceListFromCSV;
     }
 
-//    static {
-//        Villa villa = new Villa("VL001", "bookingVilla", 100, 10, 10,
-//                "day", "big", 25, 3);
-//        House house = new House("HS001", "bookingHouse", 100, 10, 10,
-//                "day", "medium", 2);
-//        Room room = new Room("RO001", "bookingRoom", 100, 10, 10,
-//                "day", "free");
-//    }
+    public static void writeFacilityListIntoCSVFile(String pathFile, Map<Facility, Integer> facilityMap, boolean append) {
+        List<String> stringList = new ArrayList<>();
+        for (Map.Entry<Facility, Integer> entry : facilityMap.entrySet()) {
+            stringList.add(entry.getKey().toStringToCSVFile() + "," + entry.getValue());
+        }
+        ReadAndWriteFile.writeStringListIntoCSVFile(pathFile, stringList, append);
+    }
 
     @Override
     public void displayFacility() {
@@ -96,32 +94,37 @@ public class FacilityServiceImpl implements FacilityService {
         Scanner sc = new Scanner(System.in);
         boolean flagAddFacility = false;
         do {
-            System.out.println("1.\tAdd new Villa\n" +
-                    "2.\tAdd new House\n" +
-                    "3.\tAdd new Room\n" +
-                    "4.\tBack to facility management menu\n");
-            System.out.print("Choose facility you wanna add: ");
-            int addFacilityChoice = Integer.parseInt(sc.nextLine());
-            switch (addFacilityChoice) {
-                case 1:
-                    Villa villa = new Villa();
-                    choiceInputFacility(villa, 1);
-                    break;
-                case 2:
-                    House house = new House();
-                    choiceInputFacility(house, 2);
-                    break;
-                case 3:
-                    Room room = new Room();
-                    choiceInputFacility(room, 3);
-                    break;
-                case 4:
-                    flagAddFacility = true;
-                    returnMainMenu();
-                    break;
-                default:
-                    System.out.print("Choice again: ");
+            try {
+                System.out.println("1.\tAdd new Villa\n" +
+                        "2.\tAdd new House\n" +
+                        "3.\tAdd new Room\n" +
+                        "4.\tBack to facility management menu\n");
+                System.out.print("Choose facility you wanna add: ");
+                int addFacilityChoice = Integer.parseInt(sc.nextLine());
+                switch (addFacilityChoice) {
+                    case 1:
+                        Villa villa = new Villa();
+                        choiceInputFacility(villa, 1);
+                        break;
+                    case 2:
+                        House house = new House();
+                        choiceInputFacility(house, 2);
+                        break;
+                    case 3:
+                        Room room = new Room();
+                        choiceInputFacility(room, 3);
+                        break;
+                    case 4:
+                        flagAddFacility = true;
+                        returnMainMenu();
+                        break;
+                    default:
+                        System.out.println("Wrong number!!! Choice again");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong format!!! Input again!");
             }
+
         } while (!flagAddFacility);
     }
 
@@ -171,22 +174,22 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void returnMainMenu() {
-        System.out.println("returnMainMenu");
-
     }
 
     public void choiceInputFacility(Facility facility, int choiceNumber) {
-        System.out.print("Input facility id service (Ex: SVVL-1234, SVHO-0123, SVRO-7890,...): ");
         String idService = "";
         if (choiceNumber == 1) {
+            System.out.print("Input facility id service (Format: SVVL-XXXX, Ex: SVVL-1234, SVVL-0123,...): ");
             while (!validation.validateVillaIDService(idService = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
         } else if (choiceNumber == 2) {
+            System.out.print("Input facility id service (Format: SVHO-XXXX, Ex: SVHO-1234, SVHO-0123,...): ");
             while (!validation.validateHouseIDService(idService = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
         } else if (choiceNumber == 3) {
+            System.out.print("Input facility id service (Format: SVRO-XXXX, Ex: SVRO-1234, SVRO-0123,...): ");
             while (!validation.validateRoomIDService(idService = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
@@ -236,7 +239,7 @@ public class FacilityServiceImpl implements FacilityService {
         int maximumPerson;
         while (true) {
             try {
-                maximumPerson = Integer.parseInt(sc.nextLine());
+                maximumPerson = Integer.parseInt(sc.nextLine().trim());
                 if (maximumPerson > 0 && maximumPerson < 20) {
                     break;
                 } else {
@@ -257,7 +260,7 @@ public class FacilityServiceImpl implements FacilityService {
         }
 
         if (facility instanceof Villa) {
-            System.out.print("Input villa type (Ex:Superior, Standard,...): ");
+            System.out.print("Input villa type (Only Luxury or Unique): ");
             String villaType;
             while (!validation.validateVillaType(villaType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
@@ -284,7 +287,7 @@ public class FacilityServiceImpl implements FacilityService {
             int villaNumberFloor;
             while (true) {
                 try {
-                    villaNumberFloor = Integer.parseInt(sc.nextLine());
+                    villaNumberFloor = Integer.parseInt(sc.nextLine().trim());
                     if (villaNumberFloor > 0) {
                         break;
                     } else {
@@ -297,8 +300,8 @@ public class FacilityServiceImpl implements FacilityService {
                 }
             }
 
-            Villa newVilla = new Villa(idService, serviceName, usableArea, price, maximumPerson,
-                    rentType, villaType, villaPoolArea, villaNumberFloor);
+            Villa newVilla = new Villa(idService.trim(), serviceName.trim(), usableArea, price, maximumPerson,
+                    rentType.trim(), villaType.trim(), villaPoolArea, villaNumberFloor);
             Map<Facility, Integer> newFacilityList = new LinkedHashMap<>();
             Map<Villa, Integer> newVillaList = new LinkedHashMap<>();
             newFacilityList.put(newVilla, 0);
@@ -315,7 +318,7 @@ public class FacilityServiceImpl implements FacilityService {
             ReadAndWriteFile.writeStringListIntoCSVFile(VILLA_PATH_FILE, stringList, true);
             System.out.println("Add a new villa successfully!!!");
         } else if (facility instanceof House) {
-            System.out.print("Input house type (Ex: Luxury, Standard,...): ");
+            System.out.print("Input house type (Only Superior or Standard): ");
             String houseType;
             while (!validation.validateHouseType(houseType = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
@@ -325,7 +328,7 @@ public class FacilityServiceImpl implements FacilityService {
             int houseNumberFloor;
             while (true) {
                 try {
-                    houseNumberFloor = Integer.parseInt(sc.nextLine());
+                    houseNumberFloor = Integer.parseInt(sc.nextLine().trim());
                     if (houseNumberFloor > 0) {
                         break;
                     } else {
@@ -338,8 +341,8 @@ public class FacilityServiceImpl implements FacilityService {
                 }
             }
 
-            House newHouse = new House(idService, serviceName, usableArea, price, maximumPerson,
-                    rentType, houseType, houseNumberFloor);
+            House newHouse = new House(idService.trim(), serviceName.trim(), usableArea, price, maximumPerson,
+                    rentType.trim(), houseType.trim(), houseNumberFloor);
             Map<Facility, Integer> newFacilityList = new LinkedHashMap<>();
             Map<House, Integer> newHouseList = new LinkedHashMap<>();
             newFacilityList.put(newHouse, 0);
@@ -367,8 +370,8 @@ public class FacilityServiceImpl implements FacilityService {
                 }
             }
 
-            Room newRoom = new Room(idService, serviceName, usableArea, price, maximumPerson,
-                    rentType, roomFreeService);
+            Room newRoom = new Room(idService.trim(), serviceName.trim(), usableArea, price, maximumPerson,
+                    rentType.trim(), roomFreeService.trim());
             Map<Facility, Integer> newFacilityList = new LinkedHashMap<>();
             Map<Room, Integer> newRoomList = new LinkedHashMap<>();
             newFacilityList.put(newRoom, 0);
@@ -387,6 +390,4 @@ public class FacilityServiceImpl implements FacilityService {
             System.out.println("Add a new room successfully!!!");
         }
     }
-
-
 }
