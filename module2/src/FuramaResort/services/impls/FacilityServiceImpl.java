@@ -177,14 +177,47 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     public void choiceInputFacility(Facility facility, int choiceNumber) {
-        String idService = "";
+        Map<Facility, Integer> facilityServiceList = readCSVFileTofacilityServiceList(FACILITY_PATH_FILE);
+        boolean flag = false;
+        String idService;
+
+        //Check IdService đã tồn tại hay chưa
+        do {
+            idService = sc.nextLine();
+            for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
+                if (entry.getKey().getIdService().contains(idService)) {
+                    System.out.println("Id Service already existed!!! Input another Id Service!");
+                    break;
+                } else {
+                    flag = true;
+                }
+            }
+        } while (!flag);
         if (choiceNumber == 1) {
-            System.out.print("Input facility id service (Format: SVVL-XXXX, Ex: SVVL-1234, SVVL-0123,...): ");
+            System.out.print("Input villa id service (Format: SVVL-XXXX, Ex: SVVL-1234, SVVL-0123,...): ");
             while (!validation.validateVillaIDService(idService = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
+//            while (true){
+//                idService = sc.nextLine();
+//                if (!validation.validateVillaIDService(idService)) {
+//                    System.out.println("Wrong format!!! Input again!");
+//                } else {
+//                    for (Map.Entry<Facility, Integer> entry : facilityServiceList.entrySet()) {
+//                        if (entry.getKey().getIdService().contains(idService)){
+//                            System.out.println("Id Service already existed!!! Input another Id Service!");
+//                            break;
+//                        } else {
+//                            flag = true;
+//                        }
+//                    }
+//                    if (flag){
+//                        break;
+//                    }
+//                }
+//            }
         } else if (choiceNumber == 2) {
-            System.out.print("Input facility id service (Format: SVHO-XXXX, Ex: SVHO-1234, SVHO-0123,...): ");
+            System.out.print("Input house id service (Format: SVHO-XXXX, Ex: SVHO-1234, SVHO-0123,...): ");
             while (!validation.validateHouseIDService(idService = sc.nextLine())) {
                 System.out.println("Wrong format!!! Input again!");
             }
@@ -196,7 +229,7 @@ public class FacilityServiceImpl implements FacilityService {
         }
 
         System.out.print("Input facility service name (Ex: Villa service,...): ");
-        String serviceName = "";
+        String serviceName;
         while (!validation.validateServiceName(serviceName = sc.nextLine())) {
             System.out.println("Wrong format!!! Input again!");
         }

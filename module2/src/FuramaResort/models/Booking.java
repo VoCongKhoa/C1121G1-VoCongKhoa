@@ -88,7 +88,7 @@ public class Booking {
     }
 
 
-    //Bug ghi đè mặc dù khác Id, hay khác serviceName hay khác rentType
+    //Bug: mặc dù khác Id, hay khác serviceName hay khác rentType equals vẫn trả về true
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

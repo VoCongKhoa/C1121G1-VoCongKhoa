@@ -43,7 +43,6 @@ public class ContractServiceImpl implements ContractService {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         String year = String.valueOf(localDate.getYear());
         int month = localDate.getMonthValue();
-        System.out.println(month);
         int day = localDate.getDayOfMonth();
         for (Booking booking : bookingSet) {
             if (booking.getStartDate().contains(year) || booking.getEndDate().contains(year)) {

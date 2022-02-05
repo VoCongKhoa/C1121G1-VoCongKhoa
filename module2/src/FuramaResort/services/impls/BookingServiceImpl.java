@@ -3,7 +3,10 @@ package FuramaResort.services.impls;
 import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.*;
 import FuramaResort.services.BookingService;
+import sun.util.resources.LocaleData;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
@@ -80,16 +83,54 @@ public class BookingServiceImpl implements BookingService {
         addBookingList.add(newBooking);
         writeBookingListIntoCSVFile(BOOKING_PATH_FILE, addBookingList, true);
 
-        //Cộng 1 cho facility đã booking
+        //Cộng 1 cho facility đã booking (Trùng năm, trùng tháng mới cộng 1, không thì không cộng)
         FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
-        for (Map.Entry<Facility,Integer> entry: FacilityServiceImpl.facilityServiceList.entrySet()) {
-            if (entry.getKey().getIdService().equals(facility.getIdService())){
-                entry.setValue(entry.getValue()+1);
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String year = String.valueOf(localDate.getYear());
+        int month = localDate.getMonthValue();
+        int day = localDate.getDayOfMonth();
+        for (Booking booking : bookingTreeSet) {
+            if (booking.getStartDate().contains(year)) {
+                if (Integer.parseInt(booking.getStartDate().substring(3, 5)) == month) {
+                    for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
+                        if (entry.getKey().getIdService().equals(facility.getIdService())) {
+                            entry.setValue(entry.getValue() + 1);
+                            break;
+                        }
+                    }
+                    FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
+                }
             }
         }
-        FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
         System.out.println("Add booking successfully!!!");
     }
+
+    public void updateBookingTimes(Facility facility) {
+        Date date = new Date();
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        String year = String.valueOf(localDate.getYear());
+        int month = localDate.getMonthValue();
+        int day = localDate.getDayOfMonth();
+        bookingTreeSet = readCSVFileToBookingSet(BOOKING_PATH_FILE);
+        FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
+        if (day == 1){
+            for (Booking booking: bookingTreeSet) {
+                if (booking.getStartDate().contains(year)) {
+                    if (Integer.parseInt(booking.getStartDate().substring(3,5)) != month){
+                        for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
+                            if (entry.getKey().getIdService().equals(facility.getIdService())) {
+                                entry.setValue(0);
+                                break;
+                            }
+                        }
+                        FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
+                    }
+                }
+            }
+        }
+    }
+
 
     //DOne
     @Override
@@ -125,7 +166,7 @@ public class BookingServiceImpl implements BookingService {
         for (Booking booking : bookingTreeSet) {
             System.out.println(booking);
         }
-        writeBookingListIntoCSVFile(BOOKING_PATH_FILE,new ArrayList<>(bookingTreeSet),false);//Săp xếp theo ngày rồi ghi đè lại
+        writeBookingListIntoCSVFile(BOOKING_PATH_FILE, new ArrayList<>(bookingTreeSet), false);//Săp xếp theo ngày rồi ghi đè lại
 //        //Ghi đè lại danh sách booking có thể làm hợp đồng để chạy phương thức createNewContract()
 //        List<Booking> addToBookingForContractFile = new ArrayList<>();
 //        for (Booking booking : bookingTreeSet) {
@@ -216,18 +257,17 @@ public class BookingServiceImpl implements BookingService {
 
         //Remove booking đã có contract khỏi file BOOKING_NOT_HAVE_CONTRACT_YET_PATH_FILE
         List<Booking> notHaveContractBookingList = new ArrayList<>(bookingQueue);
-        Collections.sort(notHaveContractBookingList,new SortByStartDate());
+        Collections.sort(notHaveContractBookingList, new SortByStartDate());
         writeBookingListIntoCSVFile(BOOKING_NOT_HAVE_CONTRACT_YET_PATH_FILE, notHaveContractBookingList, false);
 
         //Thêm booking đã có contract vào file BOOKING_ALREADY_HAD_CONTRACT_PATH_FILE
         Set<Booking> alreadyHadContractBookingSet = readCSVFileToBookingSet(BOOKING_ALREADY_HAD_CONTRACT_PATH_FILE);
         alreadyHadContractBookingSet.add(booking);
         List<Booking> alreadyHadContractBookingList = new ArrayList<>(alreadyHadContractBookingSet);
-        Collections.sort(alreadyHadContractBookingList,new SortByStartDate());
+        Collections.sort(alreadyHadContractBookingList, new SortByStartDate());
         writeBookingListIntoCSVFile(BOOKING_ALREADY_HAD_CONTRACT_PATH_FILE, alreadyHadContractBookingList, false);
         System.out.println("Create new contract successfully for booking number " + newContractBookingNumber);
     }
-
 
     @Override
     public void displayContract() {
@@ -298,7 +338,7 @@ public class BookingServiceImpl implements BookingService {
                                                 System.out.println("Wrong format !!! Input again!");
                                             }
                                         }
-                                    } else if (editChoice == 3){
+                                    } else if (editChoice == 3) {
                                         returnMainMenu();
                                         break boundaryLoop;
                                     } else {

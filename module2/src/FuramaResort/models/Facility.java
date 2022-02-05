@@ -1,6 +1,9 @@
 package FuramaResort.models;
 
-public abstract class Facility {
+import java.util.Objects;
+
+public abstract class
+Facility {
     private String idService;
     private String serviceName;
     private double usableArea;

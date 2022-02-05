@@ -1,7 +1,6 @@
 package FuramaResort.services.impls;
 
 import FuramaResort.models.Booking;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -60,7 +59,7 @@ public class SortByStartDate implements Comparator<Booking> {
                 returnNumber =  1;
             }
         } catch (ParseException e) {
-            System.out.println("Sai định dạng ngày");
+//            System.out.println("Sai định dạng ngày");
         }
         return returnNumber;
     }
