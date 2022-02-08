@@ -3,16 +3,28 @@ package FuramaResort.services.impls;
 import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.*;
 import FuramaResort.services.BookingService;
+import FuramaResort.utils.Validation;
 import sun.util.resources.LocaleData;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 public class BookingServiceImpl implements BookingService {
     static Set<Booking> bookingTreeSet = new TreeSet<>(new SortByStartDate());
     static Queue<Booking> bookingQueue = new ArrayDeque<>();//Booking for add contract
     static List<Contract> contractList = new ArrayList<>();
+    Validation validation = new Validation();
+
+    //Lấy ngày tháng năm hiện tại
+    Date date = new Date();
+    LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    String year = String.valueOf(localDate.getYear());
+    int month = localDate.getMonthValue();
+    int day = localDate.getDayOfMonth();
+
     static final String BOOKING_PATH_FILE = "src/FuramaResort/data/booking.csv";
     static final String BOOKING_VILLA_AND_HOUSE_FOR_CONTRACT_PATH_FILE = "src/FuramaResort/data/bookingVillaAndHouseForContract.csv";
     static final String BOOKING_ALREADY_HAD_CONTRACT_PATH_FILE = "src/FuramaResort/data/bookingAlreadyHadContract.csv";
@@ -74,10 +86,82 @@ public class BookingServiceImpl implements BookingService {
                 System.out.println("Wrong format !!! Input again!");
             }
         }
-        System.out.println("Input start date:");
-        String startDate = sc.nextLine();
-        System.out.println("Input end date:");
-        String endDate = sc.nextLine();
+
+        System.out.print("Input start date: ");//Dùng regrex DoB, start date phải lớn hơn hoặc bằng ngày hiện tại
+        String startDate;
+        LocalDate startDateParse = null;
+        boolean checkStartDate = false;
+        while (true) {
+            if (validation.validateDateOfBooking(startDate = sc.nextLine())) {
+                try {
+                    startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    checkStartDate = true;
+                } catch (DateTimeParseException ignored) {
+                } finally {
+                    if (!checkStartDate) {
+                        try {
+                            startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            checkStartDate = true;
+                        } catch (DateTimeParseException ignored) {
+                        } finally {
+                            if (!checkStartDate) {
+                                try {
+                                    startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                    checkStartDate = true;
+                                } catch (DateTimeParseException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+            else{
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+
+        System.out.print("Input end date: "); //End date phải lớn hơn start date
+        String endDate = null;
+        LocalDate endDateParse;
+        boolean checkEndDate = false;
+        while (!checkEndDate) {
+            if (validation.validateDateOfBooking(endDate = sc.nextLine())) {
+                try {
+                    endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    if (endDateParse.isAfter(startDateParse)){
+                        checkEndDate = true;
+                    }
+                } catch (DateTimeParseException ignored) {
+                } finally {
+                    if (!checkEndDate) {
+                        try {
+                            endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            if (endDateParse.isAfter(startDateParse)){
+                                checkEndDate = true;
+                            }
+                        } catch (DateTimeParseException ignored) {
+                        } finally {
+                            if (!checkEndDate) {
+                                try {
+                                    endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                    if (endDateParse.isAfter(startDateParse)){
+                                        checkEndDate = true;
+                                    }
+                                } catch (DateTimeParseException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }
+                if (!checkEndDate){
+                    System.out.println("End date of booking have to be after start date booking! Input again!");
+                }
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+
         List<Booking> addBookingList = new ArrayList<>();
         Booking newBooking = new Booking(startDate, endDate, bookingCustomer, facility);
         addBookingList.add(newBooking);
@@ -85,11 +169,7 @@ public class BookingServiceImpl implements BookingService {
 
         //Cộng 1 cho facility đã booking (Trùng năm, trùng tháng mới cộng 1, không thì không cộng)
         FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
-        Date date = new Date();
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        String year = String.valueOf(localDate.getYear());
-        int month = localDate.getMonthValue();
-        int day = localDate.getDayOfMonth();
+
         for (Booking booking : bookingTreeSet) {
             if (booking.getStartDate().contains(year)) {
                 if (Integer.parseInt(booking.getStartDate().substring(3, 5)) == month) {
@@ -106,61 +186,35 @@ public class BookingServiceImpl implements BookingService {
         System.out.println("Add booking successfully!!!");
     }
 
-    public void updateBookingTimes(Facility facility) {
-        Date date = new Date();
-        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        String year = String.valueOf(localDate.getYear());
-        int month = localDate.getMonthValue();
-        int day = localDate.getDayOfMonth();
-        bookingTreeSet = readCSVFileToBookingSet(BOOKING_PATH_FILE);
-        FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
-        if (day == 1){
-            for (Booking booking: bookingTreeSet) {
-                if (booking.getStartDate().contains(year)) {
-                    if (Integer.parseInt(booking.getStartDate().substring(3,5)) != month){
-                        for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
-                            if (entry.getKey().getIdService().equals(facility.getIdService())) {
-                                entry.setValue(0);
-                                break;
-                            }
-                        }
-                        FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
-                    }
-                }
-            }
-        }
-    }
-
-
-    //DOne
-    @Override
-    public void displayBooking() {
-//        List<String> lineString = ReadAndWriteFile.readCSVFileToStringList(BOOKING_PATH_FILE);
-//        String[] lineSplitList;
-//        Customer customerCSV = null;
-//        Facility facilityCSV = null;
-//        Booking bookingCSV;
-//        CustomerServiceImpl.customerList = CustomerServiceImpl.readCSVFileToCustomerList(CustomerServiceImpl.CUSTOMER_PATH_FILE);
+    //Đầu tháng sẽ reset
+    //Kiểm tra ngày bk có phải đầu tháng hay không
+    //Nếu là đầu tháng thì kiểm tra số lần bk có bằng không hay không?, kiểm tra
+    // checkResetStatus(boolean reset) là false hay true, nếu false thì reset = 0
+    //và chuyển checkResetStatus(boolean reset) thành true.
+//    public void updateBookingTimes(Facility facility) {
+//        bookingTreeSet = readCSVFileToBookingSet(BOOKING_PATH_FILE);
 //        FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
-//
-//        Booking.setNumberOfBooking(0);
-//        for (String s : lineString) {
-//            lineSplitList = s.split(",");
-//            for (Customer customer : CustomerServiceImpl.customerList) {
-//                if (Integer.parseInt(lineSplitList[3]) == customer.getCustomerId()) {
-//                    customerCSV = customer;
-//                }
-//            }
-//            for (Facility facility : FacilityServiceImpl.facilityServiceList.keySet()) {
-//                if (Objects.equals(lineSplitList[4], facility.getServiceName())) {
-//                    if (Objects.equals(lineSplitList[5], facility.getRentType())) {
-//                        facilityCSV = facility;
+//        if (day == 1) {
+//            for (Booking booking : bookingTreeSet) {
+//                if (booking.getStartDate().contains(year)) {
+//                    if (Integer.parseInt(booking.getStartDate().substring(3, 5)) != month) {
+//                        for (Map.Entry<Facility, Integer> entry : FacilityServiceImpl.facilityServiceList.entrySet()) {
+//                            if (entry.getKey().getIdService().equals(facility.getIdService())) {
+//                                entry.setValue(0);
+//                                break;
+//                            }
+//                        }
+//                        FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
 //                    }
 //                }
 //            }
-//            bookingCSV = new Booking(lineSplitList[1], lineSplitList[2], customerCSV, facilityCSV);
-//            bookingTreeSet.add(bookingCSV);
 //        }
+//    }
+
+
+    //Done
+    @Override
+    public void displayBooking() {
         bookingTreeSet = readCSVFileToBookingSet(BOOKING_PATH_FILE);
         System.out.println("Booking list:");
         for (Booking booking : bookingTreeSet) {

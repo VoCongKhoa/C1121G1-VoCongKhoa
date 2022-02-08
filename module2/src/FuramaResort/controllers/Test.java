@@ -4,62 +4,160 @@ import FuramaResort.utils.Validation;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.Scanner;
 
-//public class Test {
-//    private static final String DATE_REGEX = "^(0[1-9]|[12][0-9]|3[01])[-/ ]((0[1-9]|1[012])|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))[-/ ](\\d{4})$";
-//    public static boolean validateDate(String date) {
-//        boolean resultValid = false;
-//        if (date.matches(DATE_REGEX)) {
-//            try {
-//                SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
-//
-//                //Nếu nó set là true (Mặc định nếu bạn dùng parse là SimpleDateFormat thì nó là true) thì
-//                //bạn input date string là 31/2/2019
-//                // -> nó sẽ tự động hiểu là 3 ngày sau ngày 28/2/2019 -> thành ra 3/3/2019
-//                //Trong trường hợp này bạn sẽ muốn nó bắn về lỗi => setLenient là false
-//                formatter1.setLenient(false);
-//                //throws ParseException in case of invalid date
-//                formatter1.parse(date);
-//                resultValid = true;
-//            } catch (ParseException ignored) {
-//            } finally {
-//                if (!resultValid){
-//                    try {
-//                        SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy");
-//                        formatter2.setLenient(false);
-//                        formatter2.parse(date);
-//                        resultValid = true;
-//                    } catch (ParseException ignored) {
-//                    } finally {
-//                        if (!resultValid){
-//                            try {
-//                                SimpleDateFormat formatter3 = new SimpleDateFormat("dd-MMM-yyyy");
-//                                formatter3.setLenient(false);
-//                                formatter3.parse(date);
-//                                resultValid = true;
-//                            } catch (ParseException ignored) {
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-//        if (!resultValid){
-//            System.out.println("Invalid format!!! Input again!");
-//        }
-//        return resultValid;
-//    }
-//    public static void main(String[] args) {
-//        Validation validation = new Validation();
-//        Scanner sc = new Scanner(System.in);
-//        boolean check = false;
-//        while (!check){
-//            System.out.println("Input date:");
-//            String date = sc.nextLine();
-//            check = validateDate(date);
-//        }
-//        System.out.println("ok!");
-//    }
-//}
+public class Test {
+    private static final String DATE_REGEX = "^(0[1-9]|[12][0-9]|3[01])[-/ ]((0[1-9]|1[012])|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))[-/ ](\\d{4})$";
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Validation validation = new Validation();
+        System.out.print("Input start date:");//Dùng regrex DoB
+        String startDate;
+        LocalDate startDateParse = null;
+        boolean checkStartDate = false;
+        while (true) {
+            System.out.println("0");
+            if (validateDate(startDate = sc.nextLine())) {
+                System.out.println("1");
+                try {
+                    startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    checkStartDate = true;
+                } catch (DateTimeParseException ignored) {
+                } finally {
+                    if (!checkStartDate) {
+                        try {
+                            startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            checkStartDate = true;
+                        } catch (DateTimeParseException ignored) {
+                        } finally {
+                            if (!checkStartDate) {
+                                try {
+                                    startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                    checkStartDate = true;
+                                } catch (DateTimeParseException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+
+        System.out.print("Input end date:");
+        String endDate = null;
+        LocalDate endDateParse;
+        boolean checkEndDate = false;
+        while (!checkEndDate) {
+            if (validateDate(endDate = sc.nextLine())) {
+                try {
+                    endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    if (endDateParse.isAfter(startDateParse)){
+                        checkEndDate = true;
+                    }
+                } catch (DateTimeParseException ignored) {
+                } finally {
+                    if (!checkEndDate) {
+                        try {
+                            endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            if (endDateParse.isAfter(startDateParse)){
+                                checkEndDate = true;
+                            }
+                        } catch (DateTimeParseException ignored) {
+                        } finally {
+                            if (!checkEndDate) {
+                                try {
+                                    endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                    if (endDateParse.isAfter(startDateParse)){
+                                        checkEndDate = true;
+                                    }
+                                } catch (DateTimeParseException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }
+                if (!checkEndDate){
+                    System.out.println("End date of booking have to be after start date booking! Input again!");
+                }
+            }
+        }
+    }
+    public static boolean validateDate(String bookingDate) {
+        bookingDate = bookingDate.trim();
+        LocalDate today = LocalDate.now();
+        boolean resultValid = false;
+        boolean checkFebruary = false;
+        boolean checkAfterToday = false;
+        if (bookingDate.matches(DATE_REGEX)) {
+            try {
+                LocalDate bookingDateParse = LocalDate.parse(bookingDate,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                int dayOfBookingDate = Integer.parseInt(bookingDate.substring(0,2));
+                int dayOfBookingDateParse = bookingDateParse.getDayOfMonth();
+                if (dayOfBookingDate == dayOfBookingDateParse){
+                    if (bookingDateParse.isAfter(today)) {
+                        resultValid = true;
+                    } else {
+                        checkAfterToday = true;
+                    }
+
+                } else {
+                    checkFebruary = true;
+                }
+            } catch (DateTimeParseException ignored) {
+            } finally {
+                if (!resultValid){
+                    try {
+                        LocalDate bookingDateParse = LocalDate.parse(bookingDate,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                        int dayOfBookingDate = Integer.parseInt(bookingDate.substring(0,2));
+                        int dayOfBookingDateParse = bookingDateParse.getDayOfMonth();
+                        if (dayOfBookingDate == dayOfBookingDateParse){
+                            if (bookingDateParse.isAfter(today)) {
+                                resultValid = true;
+                            } else {
+                                checkAfterToday = true;
+                            }
+
+                        } else {
+                            checkFebruary = true;
+                        }
+                    } catch (DateTimeParseException ignored) {
+                    } finally {
+                        if (!resultValid){
+                            try {
+                                LocalDate bookingDateParse = LocalDate.parse(bookingDate,DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                int dayOfBookingDate = Integer.parseInt(bookingDate.substring(0,2));
+                                int dayOfBookingDateParse = bookingDateParse.getDayOfMonth();
+                                if (dayOfBookingDate == dayOfBookingDateParse){
+                                    if (bookingDateParse.isAfter(today)) {
+                                        resultValid = true;
+                                    } else {
+                                        checkAfterToday = true;
+                                    }
+                                } else {
+                                    checkFebruary = true;
+                                }
+                            } catch (DateTimeParseException ignored) {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (checkAfterToday){
+            System.out.println("Booking date have to after today! Input again!");
+        }
+        if (checkFebruary){
+            System.out.println("You input wrong days of February! Input again!");
+        }
+        return resultValid;
+    }
+}

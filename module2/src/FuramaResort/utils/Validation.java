@@ -2,6 +2,11 @@ package FuramaResort.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,9 +19,9 @@ public class Validation {
     private static final String ROOM_ID_SERVICE_REGEX = "^SVRO-\\d{4}$";
     private static final String SERVICE_NAME_REGEX = "^[A-Z](\\w\\s?)+$";
     private static final String RENT_TYPE_REGEX = "^Day|Month|Year|day|month|year$";
-//    private static final String RENT_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
+    //    private static final String RENT_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
     private static final String VILLA_TYPE_REGEX = "^Luxury|Unique|luxury|unique$";
-//    private static final String VILLA_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
+    //    private static final String VILLA_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
     private static final String HOUSE_TYPE_REGEX = "^Superior|Standard|superior|standard$";
 //    private static final String HOUSE_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
 
@@ -105,7 +110,7 @@ public class Validation {
                 resultValid = true;
             } catch (ParseException ignored) {
             } finally {
-                if (!resultValid){
+                if (!resultValid) {
                     try {
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd-MM-yyyy");
                         formatter2.setLenient(false);
@@ -113,7 +118,7 @@ public class Validation {
                         resultValid = true;
                     } catch (ParseException ignored) {
                     } finally {
-                        if (!resultValid){
+                        if (!resultValid) {
                             try {
                                 SimpleDateFormat formatter3 = new SimpleDateFormat("dd-MMM-yyyy");
                                 formatter3.setLenient(false);
@@ -125,6 +130,76 @@ public class Validation {
                     }
                 }
             }
+        }
+        return resultValid;
+    }
+
+    public boolean validateDateOfBooking(String bookingDate) {
+        bookingDate = bookingDate.trim();
+        LocalDate today = LocalDate.now();
+        boolean resultValid = false;
+        boolean checkFebruary = false;
+        boolean checkAfterToday = false;
+        if (bookingDate.matches(DATE_REGEX)) {
+            try {
+                LocalDate bookingDateParse = LocalDate.parse(bookingDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                int dayOfBookingDate = Integer.parseInt(bookingDate.substring(0, 2));
+                int dayOfBookingDateParse = bookingDateParse.getDayOfMonth();
+                if (dayOfBookingDate == dayOfBookingDateParse) {
+                    if (bookingDateParse.equals(today) || bookingDateParse.isAfter(today)) {
+                        resultValid = true;
+                    } else {
+                        checkAfterToday = true;
+                    }
+
+                } else {
+                    checkFebruary = true;
+                }
+            } catch (DateTimeParseException ignored) {
+            } finally {
+                if (!resultValid) {
+                    try {
+                        LocalDate bookingDateParse = LocalDate.parse(bookingDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                        int dayOfBookingDate = Integer.parseInt(bookingDate.substring(0, 2));
+                        int dayOfBookingDateParse = bookingDateParse.getDayOfMonth();
+                        if (dayOfBookingDate == dayOfBookingDateParse) {
+                            if (bookingDateParse.equals(today) || bookingDateParse.isAfter(today)) {
+                                resultValid = true;
+                            } else {
+                                checkAfterToday = true;
+                            }
+
+                        } else {
+                            checkFebruary = true;
+                        }
+                    } catch (DateTimeParseException ignored) {
+                    } finally {
+                        if (!resultValid) {
+                            try {
+                                LocalDate bookingDateParse = LocalDate.parse(bookingDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                int dayOfBookingDate = Integer.parseInt(bookingDate.substring(0, 2));
+                                int dayOfBookingDateParse = bookingDateParse.getDayOfMonth();
+                                if (dayOfBookingDate == dayOfBookingDateParse) {
+                                    if (bookingDateParse.equals(today) || bookingDateParse.isAfter(today)) {
+                                        resultValid = true;
+                                    } else {
+                                        checkAfterToday = true;
+                                    }
+                                } else {
+                                    checkFebruary = true;
+                                }
+                            } catch (DateTimeParseException ignored) {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (checkAfterToday) {
+            System.out.println("Booking date have to be equal or after today!");
+        }
+        if (checkFebruary) {
+            System.out.println("You input wrong days of February!");
         }
         return resultValid;
     }
