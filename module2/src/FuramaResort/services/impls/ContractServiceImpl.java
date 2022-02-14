@@ -129,8 +129,6 @@ public class ContractServiceImpl implements ContractService {
                 }
             }
         }
-
-
     }
 
     @Override

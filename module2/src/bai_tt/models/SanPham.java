@@ -1,5 +1,7 @@
 package bai_tt.models;
 
+import java.util.Objects;
+
 public class SanPham {
     static int soSanPham = 1;
     int idSanPham;
@@ -88,6 +90,21 @@ public class SanPham {
                 ", soLuong=" + soLuong +
                 ", nhaSanXuat='" + nhaSanXuat + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SanPham sanPham = (SanPham) o;
+        return Double.compare(sanPham.giaBan, giaBan) == 0 && soLuong == sanPham.soLuong
+                && Objects.equals(maSanPham, sanPham.maSanPham) && Objects.equals(tenSanPham, sanPham.tenSanPham)
+                && Objects.equals(nhaSanXuat, sanPham.nhaSanXuat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idSanPham, maSanPham, tenSanPham, giaBan, soLuong, nhaSanXuat);
     }
 
     public String toStringToFileCSV(){

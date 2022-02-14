@@ -1,15 +1,12 @@
 package bai_tt.controllers;
 
-import bai_tt.services.SanPhamNhapKhauServiceImpl;
 import bai_tt.services.SanPhamServiceImpl;
-import bai_tt.services.SanPhamXuatKhauServiceImpl;
+
 import java.util.Scanner;
 
 public class QuanLySanPham {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        SanPhamNhapKhauServiceImpl sanPhamNhapKhauService = new SanPhamNhapKhauServiceImpl();
-        SanPhamXuatKhauServiceImpl sanPhamXuatKhauService = new SanPhamXuatKhauServiceImpl();
         SanPhamServiceImpl sanPhamService = new SanPhamServiceImpl();
 
         QLSPLoop:
@@ -37,10 +34,10 @@ public class QuanLySanPham {
                                 int chonSanPham = Integer.parseInt(scanner.nextLine());
                                 switch (chonSanPham) {
                                     case 1:
-                                        sanPhamNhapKhauService.themMoi();
+                                        sanPhamService.themMoi(1);
                                         break;
                                     case 2:
-                                        sanPhamXuatKhauService.themMoi();
+                                        sanPhamService.themMoi(2);
                                         break;
                                     case 3:
                                         break chonSanPhamLoop;
@@ -56,8 +53,7 @@ public class QuanLySanPham {
                         sanPhamService.xoa();
                         break;
                     case 3:
-                        sanPhamNhapKhauService.hienThi();
-                        sanPhamXuatKhauService.hienThi();
+                        sanPhamService.hienThi();
                         break;
                     case 4:
                         sanPhamService.timKiem();

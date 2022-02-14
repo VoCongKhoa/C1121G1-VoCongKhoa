@@ -140,20 +140,6 @@ public class FacilityServiceImpl implements FacilityService {
         String idService = null;
 
         //Check IdService đã tồn tại hay chưa
-//        String againStr = "";
-//        do {
-//            System.out.print("Input ID of service: ");
-//            idService = sc.nextLine();
-//            for (Facility facilityCheckID : facilityServiceList) {
-//                if (facilityCheckID.getIdService().equals(idService)) {
-//                    System.out.println("Id Service already existed!!!");
-//                    break;
-//                } else {
-//                    flagExist = true;
-//                }
-//            }
-//        } while (!flagExist);
-
         //Check format serviceID
         if (choiceNumber == 1) {
             boolean flagExist = false;

@@ -27,14 +27,10 @@ public class BookingServiceImpl implements BookingService {
     static final String BOOKING_NOT_HAVE_CONTRACT_YET_PATH_FILE = "src/FuramaResort/data/bookingNotHaveContractYet.csv";
     static final String CONTRACT_PATH_FILE = "src/FuramaResort/data/contract.csv";
 
-    //Đầu tháng:
-    //Người dùng add bk => điều kiện: (đầu tháng && )chưa có booking nào của tháng này => hỏi: có muốn reset hay không?
-    //Người dùng ok => resetBookingTimes() của service đó => add chấp nhận.
-    //Người dùng không ok => chưa cho add.
-    //Đầu tháng sẽ reset
     @Override
     public void addBooking() {
         Scanner sc = new Scanner(System.in);
+        Set<Booking> bookingTreeSet = readCSVFileToBookingSet(BOOKING_PATH_FILE);
         Customer bookingCustomer;
         while (true) {
             try {
@@ -69,12 +65,31 @@ public class BookingServiceImpl implements BookingService {
                 }
                 System.out.print("Choice id service: ");
                 String inputIdService = sc.nextLine().trim();
+                boolean isExist = false;
                 for (Facility facilityElement : FacilityServiceImpl.facilityServiceList) {
                     if (facilityElement.getIdService().equals(inputIdService)) {
+                        // Add Booking:
+                        // Sau khi người dùng chọn service Id => kiểm tra trong tháng đã có booking nào sử dụng dịch vụ đó chưa?
+                        // Nếu chưa thì sẽ reset lại bookingCount cho service đó
+                        // Nếu rồi thì mới cho người dùng nhập tiếp thông tin còn lại
+                        for (Booking booking : bookingTreeSet) {
+                            if (booking.getStartDate().contains(year)) {
+                                if (Integer.parseInt(booking.getStartDate().substring(3, 5)) == month) {
+                                    isExist = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!isExist) {
+                            facilityElement.setBookingCount(0);
+                        }
                         facility = facilityElement;
                         flag = true;
                         break;
                     }
+                }
+                if (!isExist) {
+                    FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE,FacilityServiceImpl.facilityServiceList,false);
                 }
                 if (!flag) {
                     System.out.println("Not found !!! Input again!");
@@ -88,128 +103,105 @@ public class BookingServiceImpl implements BookingService {
             }
         }
 
-        // Add Booking:
-        // Sau khi người dùng chọn service Id => kiểm tra trong tháng đã có booking nào sử dụng dịch vụ đó chưa?
-        // Nếu chưa thì sẽ reset lại bookingCount cho service đó
-        // Nếu rồi thì mới cho người dùng nhập tiếp thông tin còn lại
-        Set<Booking> bookingTreeSetCheck = readCSVFileToBookingSet(BOOKING_PATH_FILE);
-        List<Booking> bookingListCheck = new ArrayList<>(bookingTreeSetCheck);
-        Collections.sort(bookingListCheck, new SortByStartDate());
-        bookingTreeSetCheck.clear();
-        bookingTreeSetCheck.addAll(bookingListCheck);
-        boolean isExist = false;
-        for (Booking booking : bookingTreeSetCheck) {
+        System.out.print("Input start date: ");//Dùng regrex DoB, start date phải lớn hơn hoặc bằng ngày hiện tại
+        String startDate;
+        LocalDate startDateParse = null;
+        boolean checkStartDate = false;
+        while (true) {
+            if (validation.validateDateOfBooking(startDate = sc.nextLine())) {
+                try {
+                    startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    checkStartDate = true;
+                } catch (DateTimeParseException ignored) {
+                } finally {
+                    if (!checkStartDate) {
+                        try {
+                            startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            checkStartDate = true;
+                        } catch (DateTimeParseException ignored) {
+                        } finally {
+                            if (!checkStartDate) {
+                                try {
+                                    startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                    checkStartDate = true;
+                                } catch (DateTimeParseException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+
+        System.out.print("Input end date: "); //End date phải lớn hơn start date
+        String endDate = null;
+        LocalDate endDateParse;
+        boolean checkEndDate = false;
+        while (!checkEndDate) {
+            if (validation.validateDateOfBooking(endDate = sc.nextLine())) {
+                try {
+                    endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                    if (endDateParse.isAfter(startDateParse)) {
+                        checkEndDate = true;
+                    }
+                } catch (DateTimeParseException ignored) {
+                } finally {
+                    if (!checkEndDate) {
+                        try {
+                            endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            if (endDateParse.isAfter(startDateParse)) {
+                                checkEndDate = true;
+                            }
+                        } catch (DateTimeParseException ignored) {
+                        } finally {
+                            if (!checkEndDate) {
+                                try {
+                                    endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
+                                    if (endDateParse.isAfter(startDateParse)) {
+                                        checkEndDate = true;
+                                    }
+                                } catch (DateTimeParseException ignored) {
+                                }
+                            }
+                        }
+                    }
+                }
+                if (!checkEndDate) {
+                    System.out.println("End date of booking have to be after start date booking! Input again!");
+                }
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+
+        List<Booking> addBookingList = new ArrayList<>();
+        Booking newBooking = new Booking(startDate, endDate, bookingCustomer, facility);
+        addBookingList.add(newBooking);
+        writeBookingListIntoCSVFile(BOOKING_PATH_FILE, addBookingList, true);
+
+        //Cộng 1 cho facility đã booking (Trùng năm, trùng tháng mới cộng 1, không thì không cộng)
+        FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
+        List<Booking> bookingList = new ArrayList<>(bookingTreeSet);
+        Collections.sort(bookingList, new SortByStartDate());
+        bookingTreeSet.clear();
+        bookingTreeSet.addAll(bookingList);
+        for (Booking booking : bookingTreeSet) {
             if (booking.getStartDate().contains(year)) {
                 if (Integer.parseInt(booking.getStartDate().substring(3, 5)) == month) {
-                    isExist = true;
+                    for (Facility facilityElement : FacilityServiceImpl.facilityServiceList) {
+                        if (facilityElement.getIdService().equals(facility.getIdService())) {
+                            facilityElement.setBookingCount(facilityElement.getBookingCount() + 1);
+                            break;
+                        }
+                    }
+                    FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
                 }
             }
         }
-        if (!isExist){
-            facility.setBookingCount(0);
-        }
-
-        System.out.print("Input start date: ");//Dùng regrex DoB, start date phải lớn hơn hoặc bằng ngày hiện tại
-            String startDate;
-            LocalDate startDateParse = null;
-            boolean checkStartDate = false;
-            while (true) {
-                if (validation.validateDateOfBooking(startDate = sc.nextLine())) {
-                    try {
-                        startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                        checkStartDate = true;
-                    } catch (DateTimeParseException ignored) {
-                    } finally {
-                        if (!checkStartDate) {
-                            try {
-                                startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                                checkStartDate = true;
-                            } catch (DateTimeParseException ignored) {
-                            } finally {
-                                if (!checkStartDate) {
-                                    try {
-                                        startDateParse = LocalDate.parse(startDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
-                                        checkStartDate = true;
-                                    } catch (DateTimeParseException ignored) {
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                }
-                else{
-                    System.out.println("Wrong format!!! Input again!");
-                }
-            }
-
-            System.out.print("Input end date: "); //End date phải lớn hơn start date
-            String endDate = null;
-            LocalDate endDateParse;
-            boolean checkEndDate = false;
-            while (!checkEndDate) {
-                if (validation.validateDateOfBooking(endDate = sc.nextLine())) {
-                    try {
-                        endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                        if (endDateParse.isAfter(startDateParse)){
-                            checkEndDate = true;
-                        }
-                    } catch (DateTimeParseException ignored) {
-                    } finally {
-                        if (!checkEndDate) {
-                            try {
-                                endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                                if (endDateParse.isAfter(startDateParse)){
-                                    checkEndDate = true;
-                                }
-                            } catch (DateTimeParseException ignored) {
-                            } finally {
-                                if (!checkEndDate) {
-                                    try {
-                                        endDateParse = LocalDate.parse(endDate, DateTimeFormatter.ofPattern("dd-MMM-yyyy"));
-                                        if (endDateParse.isAfter(startDateParse)){
-                                            checkEndDate = true;
-                                        }
-                                    } catch (DateTimeParseException ignored) {
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (!checkEndDate){
-                        System.out.println("End date of booking have to be after start date booking! Input again!");
-                    }
-                } else {
-                    System.out.println("Wrong format!!! Input again!");
-                }
-            }
-
-            List<Booking> addBookingList = new ArrayList<>();
-            Booking newBooking = new Booking(startDate, endDate, bookingCustomer, facility);
-            addBookingList.add(newBooking);
-            writeBookingListIntoCSVFile(BOOKING_PATH_FILE, addBookingList, true);
-
-            //Cộng 1 cho facility đã booking (Trùng năm, trùng tháng mới cộng 1, không thì không cộng)
-            FacilityServiceImpl.facilityServiceList = FacilityServiceImpl.readCSVFileTofacilityServiceList(FacilityServiceImpl.FACILITY_PATH_FILE);
-            Set<Booking> bookingTreeSet = readCSVFileToBookingSet(BOOKING_PATH_FILE);
-            List<Booking> bookingList = new ArrayList<>(bookingTreeSet);
-            Collections.sort(bookingList, new SortByStartDate());
-            bookingTreeSet.clear();
-            bookingTreeSet.addAll(bookingList);
-            for (Booking booking : bookingTreeSet) {
-                if (booking.getStartDate().contains(year)) {
-                    if (Integer.parseInt(booking.getStartDate().substring(3, 5)) == month) {
-                        for (Facility facilityElement : FacilityServiceImpl.facilityServiceList) {
-                            if (facilityElement.getIdService().equals(facility.getIdService())) {
-                                facilityElement.setBookingCount(facilityElement.getBookingCount() + 1);
-                                break;
-                            }
-                        }
-                        FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE, FacilityServiceImpl.facilityServiceList, false);
-                    }
-                }
-            }
-            System.out.println("Add booking successfully!!!");
+        System.out.println("Add booking successfully!!!");
     }
 
     //Done
@@ -432,12 +424,14 @@ public class BookingServiceImpl implements BookingService {
             for (Customer customer : customerList) {
                 if (Integer.parseInt(lineSplitList[3]) == customer.getCustomerId()) {
                     customerCSV = customer;
+                    break;
                 }
             }
             for (Facility facility : facilityServiceList) {
                 if (Objects.equals(lineSplitList[4], facility.getServiceName())) {
                     if (Objects.equals(lineSplitList[5], facility.getRentType())) {
                         facilityCSV = facility;
+                        break;
                     }
                 }
             }
