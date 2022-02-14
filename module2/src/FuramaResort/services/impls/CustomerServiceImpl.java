@@ -28,6 +28,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer() {
+//        List<Customer> customerList;
+//        int newIdCustomer = 1;
+//        customerList = readCSVFileToCustomerList(CUSTOMER_PATH_FILE);
+//        if (!customerList.isEmpty()){
+//            newIdCustomer = (customerList.get(customerList.size()).getCustomerId())+1;
+//        }
         System.out.print("Add new name of customer (Ex: Alex,khoa123,...): ");
         String newName;
         while (true) {

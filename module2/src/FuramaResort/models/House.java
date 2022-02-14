@@ -13,8 +13,8 @@ public class House extends Facility {
     }
 
     public House(String idService, String serviceName, double usableArea, double price, int maximumPerson,
-                 String rentType, String houseType, int houseNumberFloor) {
-        super(idService, serviceName, usableArea, price, maximumPerson, rentType);
+                 String rentType, String houseType, int houseNumberFloor, int bookingCount) {
+        super(idService, serviceName, usableArea, price, maximumPerson, rentType, bookingCount);
         this.houseType = houseType;
         this.houseNumberFloor = houseNumberFloor;
     }
@@ -46,11 +46,12 @@ public class House extends Facility {
                 ", rentType = " + getRentType() +
                 ", houseType = " + houseType +
                 ", houseNumberFloor = " + houseNumberFloor +
+                ", bookingCount=" + getBookingCount() +
                 '}';
     }
 
     public String toStringToCSVFile() {
         return getIdService() + "," + getServiceName() + "," + getUsableArea() + "," + getPrice() + "," +
-                getMaximumPerson() + "," + getRentType() + "," + houseType + "," + houseNumberFloor;
+                getMaximumPerson() + "," + getRentType() + "," + houseType + "," + houseNumberFloor + "," + getBookingCount();
     }
 }

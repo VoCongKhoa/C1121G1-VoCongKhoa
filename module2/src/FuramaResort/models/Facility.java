@@ -2,25 +2,26 @@ package FuramaResort.models;
 
 import java.util.Objects;
 
-public abstract class
-Facility {
+public abstract class Facility {
     private String idService;
     private String serviceName;
     private double usableArea;
     private double price;
     private int maximumPerson;
     private String rentType;
+    private int bookingCount;
 
     public Facility() {
     }
 
-    public Facility(String idService, String serviceName, double usableArea, double price, int maximumPerson, String rentType) {
+    public Facility(String idService, String serviceName, double usableArea, double price, int maximumPerson, String rentType, int bookingCount) {
         this.idService = idService;
         this.serviceName = serviceName;
         this.usableArea = usableArea;
         this.price = price;
         this.maximumPerson = maximumPerson;
         this.rentType = rentType;
+        this.bookingCount = bookingCount;
     }
 
     public String getIdService() {
@@ -71,19 +72,42 @@ Facility {
         this.rentType = rentType;
     }
 
+    public int getBookingCount() {
+        return bookingCount;
+    }
+
+    public void setBookingCount(int bookingCount) {
+        this.bookingCount = bookingCount;
+    }
+
     @Override
     public String toString() {
         return "Facility{" +
-                "idService = '" + idService + '\'' +
-                ", serviceName = " + serviceName +
-                ", usableArea = " + usableArea +
-                ", price = " + price +
-                ", maximumPerson = " + maximumPerson +
-                ", rentType = " + rentType +
+                "idService='" + idService + '\'' +
+                ", serviceName='" + serviceName + '\'' +
+                ", usableArea=" + usableArea +
+                ", price=" + price +
+                ", maximumPerson=" + maximumPerson +
+                ", rentType='" + rentType + '\'' +
+                ", bookingCount=" + bookingCount +
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Facility facility = (Facility) o;
+        return Objects.equals(serviceName, facility.serviceName) && Objects.equals(rentType, facility.rentType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idService, serviceName, usableArea, price, maximumPerson, rentType, bookingCount);
+    }
+
     public String toStringToCSVFile() {
-        return idService + "," + serviceName + "," + usableArea + "," + price + "," + maximumPerson + "," + rentType;
+        return idService + "," + serviceName + "," + usableArea + "," + price + "," + maximumPerson + "," + rentType
+                + "," + bookingCount;
     }
 }

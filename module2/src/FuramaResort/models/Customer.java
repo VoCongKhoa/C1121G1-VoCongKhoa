@@ -1,6 +1,8 @@
 package FuramaResort.models;
 
 
+import java.util.Objects;
+
 public class Customer extends Person {
     private static int numberOfCustomer; // Tự động tăng Customer id
     private String customerRank;
@@ -69,6 +71,19 @@ public class Customer extends Person {
                 ", customerRank = " + customerRank +
                 ", customerAdress = " + customerAddress +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return this.customerId == customer.customerId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerRank, customerAddress, customerId);
     }
 
     public String toStringToCSVFile() {

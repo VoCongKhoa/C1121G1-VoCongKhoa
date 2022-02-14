@@ -15,7 +15,6 @@ public class Contract {
         this.contractDeposit = contractDeposit;
         this.contractSum = contractSum;
         this.booking = booking;
-
     }
 
     public static int getNumberOfContract() {

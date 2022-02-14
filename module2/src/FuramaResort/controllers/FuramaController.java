@@ -1,7 +1,6 @@
 package FuramaResort.controllers;
 
 import FuramaResort.services.impls.*;
-
 import java.util.Scanner;
 
 public class FuramaController {

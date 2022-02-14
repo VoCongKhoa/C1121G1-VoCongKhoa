@@ -3,8 +3,13 @@ package FuramaResort.services.impls;
 import FuramaResort.models.Booking;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
-import java.util.Date;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalField;
+import java.util.*;
 
 public class SortByStartDate implements Comparator<Booking> {
 
@@ -52,14 +57,19 @@ public class SortByStartDate implements Comparator<Booking> {
                     returnNumber =  -1;
                 } else if (endDate2.before(endDate1)) {
                     returnNumber =  1;
+                } else {
+                    returnNumber = o1.getBookingNumber() - o2.getBookingNumber();
+                    // Dùng TreeSet cẩn thận thêm phương thức compare() của Comparator, vì nếu dùng Set không thôi, thì
+                    // Set chỉ override lại equals và hashcode để xoá phần tử trùng lặp,
+                    // Còn dùng TreeSet thì sau khi override lại equals và hashcode để xoá phần tử trùng lặp, nó sẽ dùng
+                    // phương thức compare() để sort lại, vì vậy ta phải code lại phương thức compare sao cho phù hợp
                 }
             } else if (startDate1.before(startDate2)) {
                 returnNumber =  -1;
-            } else if (startDate2.before(startDate1)) {
+            } else {
                 returnNumber =  1;
             }
         } catch (ParseException e) {
-//            System.out.println("Sai định dạng ngày");
         }
         return returnNumber;
     }

@@ -113,10 +113,9 @@ public class ContractServiceImpl implements ContractService {
             voucherTreeMap.put("voucher20", voucher20);
             voucherTreeMap.put("voucher50", voucher50);
             System.out.println(voucherTreeMap);
-
             for (Booking bookingGetVoucher : bookingStack) {
                 if (voucherTreeMap.get("voucher10") > 0) {
-                    System.out.println(bookingGetVoucher + " get voucher 10%!!!");
+                    System.out.println(bookingGetVoucher + " get voucher 10%!!!"); //Thông báo bk đã nhận voucher
                     voucherTreeMap.put("voucher10", voucherTreeMap.get("voucher10") - 1);
                 } else if (voucherTreeMap.get("voucher20") > 0) {
                     System.out.println(bookingGetVoucher + " get voucher 20%!!!");

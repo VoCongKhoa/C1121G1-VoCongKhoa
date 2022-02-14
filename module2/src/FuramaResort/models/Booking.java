@@ -89,20 +89,20 @@ public class Booking {
 
 
     //Bug: mặc dù khác Id, hay khác serviceName hay khác rentType equals vẫn trả về true
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Objects.equals(startDate, booking.startDate) && Objects.equals(endDate, booking.endDate)
-                && (this.getCustomer().getCustomerId() == booking.getCustomer().getCustomerId())
-                && Objects.equals(this.getFacility().getServiceName(), booking.getFacility().getServiceName())
-                && Objects.equals(this.getFacility().getRentType(), booking.getFacility().getRentType());
+        return bookingNumber == booking.getBookingNumber() && Objects.equals(startDate, booking.startDate) && Objects.equals(endDate, booking.endDate) &&
+                Objects.equals(facility, booking.facility) && Objects.equals(customer, booking.customer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(startDate, endDate);
+        return Objects.hash(bookingNumber, startDate, endDate, facility, customer);
     }
 
     public String toStringToCSVFile() {

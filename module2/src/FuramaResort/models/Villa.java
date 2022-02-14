@@ -1,6 +1,6 @@
 package FuramaResort.models;
 
-public class Villa extends Facility{
+public class Villa extends Facility {
     private String villaType;
     private double villaPoolArea;
     private int villaNumberFloor;
@@ -14,9 +14,8 @@ public class Villa extends Facility{
         this.villaNumberFloor = villaNumberFloor;
     }
 
-    public Villa(String idService,String serviceName, double usableArea, double price, int maximumPerson, String rentType,
-                 String villaType, double villaPoolArea, int villaNumberFloor) {
-        super(idService,serviceName, usableArea, price, maximumPerson, rentType);
+    public Villa(String idService, String serviceName, double usableArea, double price, int maximumPerson, String rentType, String villaType, double villaPoolArea, int villaNumberFloor, int bookingCount) {
+        super(idService, serviceName, usableArea, price, maximumPerson, rentType, bookingCount);
         this.villaType = villaType;
         this.villaPoolArea = villaPoolArea;
         this.villaNumberFloor = villaNumberFloor;
@@ -58,10 +57,13 @@ public class Villa extends Facility{
                 ", villaType = " + villaType +
                 ", villaPoolArea = " + villaPoolArea +
                 ", villaNumberFloor = " + villaNumberFloor +
+                ", bookingCount=" + getBookingCount() +
                 '}';
     }
+
     public String toStringToCSVFile() {
         return getIdService() + "," + getServiceName() + "," + getUsableArea() + "," + getPrice() + "," +
-                getMaximumPerson() + "," + getRentType() + "," + villaType + "," + villaPoolArea + "," + villaNumberFloor;
+                getMaximumPerson() + "," + getRentType() + "," + villaType + "," + villaPoolArea + "," +
+                villaNumberFloor + "," + getBookingCount();
     }
 }
