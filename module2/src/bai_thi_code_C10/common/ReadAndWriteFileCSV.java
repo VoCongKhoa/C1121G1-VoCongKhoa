@@ -1,8 +1,8 @@
-package bai_tt.common;
+package bai_thi_code_C10.common;
 
-import bai_tt.models.SanPham;
-import bai_tt.models.SanPhamNhapKhau;
-import bai_tt.models.SanPhamXuatKhau;
+import bai_thi_code_C10.models.SanPham;
+import bai_thi_code_C10.models.SanPhamNhapKhau;
+import bai_thi_code_C10.models.SanPhamXuatKhau;
 
 import java.io.*;
 import java.util.ArrayList;

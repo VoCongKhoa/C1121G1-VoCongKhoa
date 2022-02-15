@@ -96,11 +96,11 @@
       </method>
     </configuration>
     <configuration name="QuanLySanPham" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bai_tt.controllers.QuanLySanPham" />
+      <option name="MAIN_CLASS_NAME" value="bai_thi_code_C10.controllers.QuanLySanPham" />
       <module name="module2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bai_tt.controllers.*" />
+          <option name="PATTERN" value="bai_thi_code_C10.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

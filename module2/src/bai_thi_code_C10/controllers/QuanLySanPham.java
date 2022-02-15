@@ -1,6 +1,6 @@
-package bai_tt.controllers;
+package bai_thi_code_C10.controllers;
 
-import bai_tt.services.SanPhamServiceImpl;
+import bai_thi_code_C10.services.SanPhamServiceImpl;
 
 import java.util.Scanner;
 

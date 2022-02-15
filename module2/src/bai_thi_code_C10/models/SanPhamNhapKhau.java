@@ -1,4 +1,4 @@
-package bai_tt.models;
+package bai_thi_code_C10.models;
 
 public class SanPhamNhapKhau extends SanPham {
     double giaNhapKhau;
