@@ -4,9 +4,6 @@ import bai_thi_code_C09.common.ReadAndWriteFileCSVC09;
 import bai_thi_code_C09.models.DienThoai;
 import bai_thi_code_C09.models.DienThoaiChinhHang;
 import bai_thi_code_C09.models.DienThoaiXachTay;
-import bai_thi_code_C10.common.ReadAndWriteFileCSV;
-import bai_thi_code_C10.models.SanPham;
-import bai_thi_code_C10.models.SanPhamNhapKhau;
 
 import java.util.ArrayList;
 import java.util.List;

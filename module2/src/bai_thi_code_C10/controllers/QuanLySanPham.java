@@ -1,6 +1,7 @@
 package bai_thi_code_C10.controllers;
 
 import bai_thi_code_C10.services.SanPhamServiceImpl;
+import bai_thi_code_C10.utils.NotFoundProductException;
 
 import java.util.Scanner;
 
@@ -50,7 +51,14 @@ public class QuanLySanPham {
                         } while (true);
                         break;
                     case 2:
-                        sanPhamService.xoa();
+                        while (true){
+                            try {
+                                sanPhamService.xoa();
+                                break;
+                            } catch (NotFoundProductException e) {
+                                System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
+                            }
+                        }
                         break;
                     case 3:
                         sanPhamService.hienThi();

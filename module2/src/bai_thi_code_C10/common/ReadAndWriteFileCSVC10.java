@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWriteFileCSV {
+public class ReadAndWriteFileCSVC10 {
     public static List<String> readFileCSVToStringList(String pathFile) {
         List<String> stringList = new ArrayList<>();
         BufferedReader bufferedReader = null;

@@ -1,18 +1,17 @@
 package bai_thi_code_C10.services;
 
-import bai_thi_code_C10.common.ReadAndWriteFileCSV;
+import bai_thi_code_C10.common.ReadAndWriteFileCSVC10;
 import bai_thi_code_C10.models.SanPham;
 import bai_thi_code_C10.models.SanPhamNhapKhau;
 import bai_thi_code_C10.models.SanPhamXuatKhau;
+import bai_thi_code_C10.utils.NotFoundProductException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class SanPhamServiceImpl implements SanPhamService {
-    static final String SAN_PHAM = "src/bai_tt/data/sanPham.csv";
-    static final String SAN_PHAM_NHAP_KHAU = "src/bai_tt/data/sanPhamNhapKhau.csv";
-    static final String SAN_PHAM_XUAT_KHAU = "src/bai_tt/data/sanPhamXuatKhau.csv";
+    static final String SAN_PHAM = "src/bai_thi_code_C10/data/sanPham.csv";
 
     @Override
     public void themMoi(int caseNumber) {
@@ -127,8 +126,8 @@ public class SanPhamServiceImpl implements SanPhamService {
                 }
                 sanPhamNhapKhauList.add(new SanPhamNhapKhau(maSanPham, tenSanPham, giaBan, soLuong, nhaSanXuat
                         , giaNhapKhau, tinhThanhNhap, thueNhapKhau));
-                stringNhapKhauList = ReadAndWriteFileCSV.convertSanPhamListToStringList(sanPhamNhapKhauList);
-                ReadAndWriteFileCSV.writeStringListIntoCSVFile(SAN_PHAM, stringNhapKhauList, true);
+                stringNhapKhauList = ReadAndWriteFileCSVC10.convertSanPhamListToStringList(sanPhamNhapKhauList);
+                ReadAndWriteFileCSVC10.writeStringListIntoCSVFile(SAN_PHAM, stringNhapKhauList, true);
                 System.out.println("Thêm mới sản phẩm nhập khẩu thành công!!!");
                 break;
             case 2:
@@ -159,8 +158,8 @@ public class SanPhamServiceImpl implements SanPhamService {
                 }
                 sanPhamXuatKhauList.add(new SanPhamXuatKhau(maSanPham, tenSanPham, giaBan, soLuong, nhaSanXuat
                         , giaXuatKhau, quocGiaNhapSanPham));
-                stringXuatKhauList = ReadAndWriteFileCSV.convertSanPhamListToStringList(sanPhamXuatKhauList);
-                ReadAndWriteFileCSV.writeStringListIntoCSVFile(SAN_PHAM, stringXuatKhauList, true);
+                stringXuatKhauList = ReadAndWriteFileCSVC10.convertSanPhamListToStringList(sanPhamXuatKhauList);
+                ReadAndWriteFileCSVC10.writeStringListIntoCSVFile(SAN_PHAM, stringXuatKhauList, true);
                 System.out.println("Thêm mới sản phẩm xuất khẩu thành công!!!");
                 break;
         }
@@ -168,7 +167,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public void xoa() {
+    public void xoa() throws NotFoundProductException {
         Scanner scanner = new Scanner(System.in);
         chonMaSanPhamLoop:
         while (true) {
@@ -178,8 +177,8 @@ public class SanPhamServiceImpl implements SanPhamService {
             if (maSanPham.trim().equals("")) {
                 System.out.println("Nhập sai!!! Hãy nhập lại!");
             } else {
-                List<String> stringList = ReadAndWriteFileCSV.readFileCSVToStringList(SAN_PHAM);
-                List<SanPham> sanPhamList = ReadAndWriteFileCSV.convertStringListToSanPhamList(stringList);
+                List<String> stringList = ReadAndWriteFileCSVC10.readFileCSVToStringList(SAN_PHAM);
+                List<SanPham> sanPhamList = ReadAndWriteFileCSVC10.convertStringListToSanPhamList(stringList);
                 boolean flag = false;
                 for (SanPham sanPham : sanPhamList) {
                     if (sanPham.getMaSanPham().equals(maSanPham)) {
@@ -194,23 +193,8 @@ public class SanPhamServiceImpl implements SanPhamService {
                                 switch (xacNhan) {
                                     case 1:
                                         sanPhamList.remove(sanPham);
-                                        stringList = ReadAndWriteFileCSV.convertSanPhamListToStringList(sanPhamList);
-                                        ReadAndWriteFileCSV.writeStringListIntoCSVFile(SAN_PHAM, stringList, false);
-                                        if (sanPham instanceof SanPhamNhapKhau) { //Bug: xoá không được trong file csv
-                                            List<String> stringNhapKhauList = ReadAndWriteFileCSV.readFileCSVToStringList(SAN_PHAM_NHAP_KHAU);
-                                            List<SanPham> sanPhamNhapKhauList = ReadAndWriteFileCSV.convertStringListToSanPhamList(stringNhapKhauList);
-                                            System.out.println(sanPhamNhapKhauList.contains(sanPham));
-                                            sanPhamNhapKhauList.remove(sanPham);
-                                            stringNhapKhauList = ReadAndWriteFileCSV.convertSanPhamListToStringList(sanPhamNhapKhauList);
-                                            ReadAndWriteFileCSV.writeStringListIntoCSVFile(SAN_PHAM_NHAP_KHAU, stringNhapKhauList, false);
-                                        } else {
-                                            System.out.println(sanPham);
-                                            List<SanPham> sanPhamXuatKhauList = ReadAndWriteFileCSV.convertStringListToSanPhamList(
-                                                    ReadAndWriteFileCSV.readFileCSVToStringList(SAN_PHAM_XUAT_KHAU));
-                                            sanPhamXuatKhauList.remove(sanPham);
-                                            ReadAndWriteFileCSV.writeStringListIntoCSVFile(SAN_PHAM_XUAT_KHAU,
-                                                    ReadAndWriteFileCSV.convertSanPhamListToStringList(sanPhamXuatKhauList), false);
-                                        }
+                                        stringList = ReadAndWriteFileCSVC10.convertSanPhamListToStringList(sanPhamList);
+                                        ReadAndWriteFileCSVC10.writeStringListIntoCSVFile(SAN_PHAM, stringList, false);
                                         System.out.println("Bạn đã xoá thành công!!!");
                                         break chonMaSanPhamLoop;
                                     case 2:
@@ -220,15 +204,16 @@ public class SanPhamServiceImpl implements SanPhamService {
                                         System.out.println("Bạn chọn sai!!! Hãy nhập lại!");
                                 }
                             } catch (NumberFormatException e) {
-                                System.out.println("Nhập sai!!! Hãy nhập lại!");
+                                System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
                             }
                         } while (true);
-                    } else {
+                    }
+                    else {
                         flag = true;
                     }
                 }
                 if (flag) {
-                    System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
+                    throw new NotFoundProductException();
                 }
             }
         }
@@ -236,8 +221,8 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public void hienThi() {
-        List<String> stringList = ReadAndWriteFileCSV.readFileCSVToStringList(SAN_PHAM);
-        List<SanPham> sanPhamList = ReadAndWriteFileCSV.convertStringListToSanPhamList(stringList);
+        List<String> stringList = ReadAndWriteFileCSVC10.readFileCSVToStringList(SAN_PHAM);
+        List<SanPham> sanPhamList = ReadAndWriteFileCSVC10.convertStringListToSanPhamList(stringList);
         System.out.println("Danh sách sản phẩm: ");
         for (SanPham sanPham : sanPhamList) {
             System.out.println(sanPham);
@@ -254,8 +239,8 @@ public class SanPhamServiceImpl implements SanPhamService {
             if (timSanPham.trim().equals("")) {
                 System.out.println("Nhập sai!!! Hãy nhập lại!");
             } else {
-                List<String> stringList = ReadAndWriteFileCSV.readFileCSVToStringList(SAN_PHAM);
-                List<SanPham> sanPhamList = ReadAndWriteFileCSV.convertStringListToSanPhamList(stringList);
+                List<String> stringList = ReadAndWriteFileCSVC10.readFileCSVToStringList(SAN_PHAM);
+                List<SanPham> sanPhamList = ReadAndWriteFileCSVC10.convertStringListToSanPhamList(stringList);
                 boolean flag = false;
                 for (SanPham sanPham : sanPhamList) {
                     if (sanPham.getMaSanPham().toLowerCase().contains(timSanPham.toLowerCase())
