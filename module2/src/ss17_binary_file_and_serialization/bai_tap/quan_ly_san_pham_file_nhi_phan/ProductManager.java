@@ -24,10 +24,10 @@ public class ProductManager {
 //        }
         int flag = -1;
         while (flag != 4) {
-            System.out.println("Product management:");
-            System.out.println("1. Add new product:");
-            System.out.println("2. Show product list:");
-            System.out.println("3. Search product by name:");
+            System.out.println("Product management");
+            System.out.println("1. Add new product");
+            System.out.println("2. Show product list");
+            System.out.println("3. Search product by name");
             System.out.println("4. Exit");
             System.out.print("Choice a number: ");
             int choice = Integer.parseInt(sc.nextLine());

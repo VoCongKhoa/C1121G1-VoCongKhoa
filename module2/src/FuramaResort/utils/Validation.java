@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,15 +24,14 @@ public class Validation {
     private static final String VILLA_TYPE_REGEX = "^Luxury|Unique|luxury|unique$";
     //    private static final String VILLA_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
     private static final String HOUSE_TYPE_REGEX = "^Superior|Standard|superior|standard$";
-//    private static final String HOUSE_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
-
+    //    private static final String HOUSE_TYPE_REGEX = "^[A-Z](\\w\\s?)+$";
     private static final String NAME_REGEX = "^[A-Za-z](\\w\\s?)+$";
     private static final String GENDER_REGEX = "^Male|Female$";
     private static final String ID_NUMBER_REGEX = "^\\d{12}$";
     private static final String PHONE_NUMBER_REGEX = "^\\(\\+\\d{2}\\)(\\s?\\d){9,12}$";
     private static final String EMAIL_REGEX = "^[\\w]+@\\w+(\\.\\w+)+$";
     private static final String DATE_REGEX = "^(0[1-9]|[12][0-9]|3[01])[-/ ]((0[1-9]|1[012])|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))[-/ ](\\d{4})$";
-//    private static final String DATE_REGEX = "^((([012][0-9]|30)[\\-\\|\\/](01|03|05|07|08|10|12))|(([012][0-9]|31)[\\-\\|\\/](04|06|09|11))|(([012][0-9][\\-\\|\\/]02)))[\\-\\|\\/](\\d{4})$";
+    //    private static final String DATE_REGEX = "^((([012][0-9]|30)[\\-\\|\\/](01|03|05|07|08|10|12))|(([012][0-9]|31)[\\-\\|\\/](04|06|09|11))|(([012][0-9][\\-\\|\\/]02)))[\\-\\|\\/](\\d{4})$";
 
     //Cách 1:
 //    public boolean validateVillaIDService(String villaIDService){
@@ -202,6 +202,90 @@ public class Validation {
             System.out.println("You input wrong days of February!");
         }
         return resultValid;
+    }
+
+    public String resultNameAfterValidate(String text){
+        Scanner sc = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);//Bắt buộc bắt đầu bằng chữ
+            if (validateName(result = sc.nextLine())) {
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+        return result;
+    }
+
+    public String resultDateOfBirthAfterValidate(String text){
+        Scanner sc = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);
+            if (validateDate(result = sc.nextLine())) {
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+        return result;
+    }
+
+    public String resultGenderAfterValidate(String text){
+        Scanner sc = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);
+            if (validateGender(result = sc.nextLine())) {
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+        return result;
+    }
+
+    public String resultIDNumberAfterValidate(String text){
+        Scanner sc = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);
+            if (validateIDNumber(result = sc.nextLine())) {
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+        return result;
+    }
+
+    public String resultPhoneNumberAfterValidate(String text){
+        Scanner sc = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);
+            if (validatePhoneNumber(result = sc.nextLine())) {
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+        return result;
+    }
+
+    public String resultEmailAfterValidate(String text){
+        Scanner sc = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);
+            if (validateEmail(result = sc.nextLine())) {
+                break;
+            } else {
+                System.out.println("Wrong format!!! Input again!");
+            }
+        }
+        return result;
     }
 
 }

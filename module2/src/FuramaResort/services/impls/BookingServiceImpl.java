@@ -4,8 +4,6 @@ import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.*;
 import FuramaResort.services.BookingService;
 import FuramaResort.utils.Validation;
-import sun.util.resources.LocaleData;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -82,14 +80,13 @@ public class BookingServiceImpl implements BookingService {
                         }
                         if (!isExist) {
                             facilityElement.setBookingCount(0);
+                            FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE,
+                                    FacilityServiceImpl.facilityServiceList,false);
                         }
                         facility = facilityElement;
                         flag = true;
                         break;
                     }
-                }
-                if (!isExist) {
-                    FacilityServiceImpl.writeFacilityListIntoCSVFile(FacilityServiceImpl.FACILITY_PATH_FILE,FacilityServiceImpl.facilityServiceList,false);
                 }
                 if (!flag) {
                     System.out.println("Not found !!! Input again!");

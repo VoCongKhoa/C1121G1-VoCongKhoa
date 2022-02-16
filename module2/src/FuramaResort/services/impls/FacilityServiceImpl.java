@@ -4,6 +4,7 @@ import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.*;
 import FuramaResort.services.FacilityService;
 import FuramaResort.utils.Validation;
+
 import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
@@ -136,41 +137,35 @@ public class FacilityServiceImpl implements FacilityService {
 
     public void choiceInputFacility(Facility facility, int choiceNumber) {
         List<Facility> facilityServiceList = readCSVFileTofacilityServiceList(FACILITY_PATH_FILE);
-
         String idService = null;
 
         //Check IdService đã tồn tại hay chưa
         //Check format serviceID
-        if (choiceNumber == 1) {
-            boolean flagExist = false;
-            do {
+        boolean flagExist = false;
+        do {
+            if (choiceNumber == 1) {
                 System.out.print("Input villa id service (Format: SVVL-XXXX, Ex: SVVL-1234, SVVL-0123,...): ");
-                idService = sc.nextLine();
-                if (!validation.validateVillaIDService(idService)) {
-                    System.out.println("Wrong format!!! Input again!");
-                } else {
-                    for (Facility facilityCheckID : facilityServiceList) {
-                        if (facilityCheckID.getIdService().equals(idService)) {
-                            flagExist = false;
-                            System.out.println("Id Service already existed!!!");
-                            break;
-                        } else {
-                            flagExist = true;
-                        }
+                flagExist = validation.validateVillaIDService(idService = sc.nextLine());
+            } else if (choiceNumber == 2) {
+                System.out.print("Input house id service (Format: SVHO-XXXX, Ex: SVHO-1234, SVHO-0123,...): ");
+                flagExist = validation.validateHouseIDService(idService = sc.nextLine());
+            } else if (choiceNumber == 3) {
+                System.out.print("Input room id service (Format: SVRO-XXXX, Ex: SVRO-1234, SVRO-0123,...): ");
+                flagExist = validation.validateRoomIDService(idService = sc.nextLine());
+            }
+            if (!flagExist) {
+                System.out.println("Wrong format!!! Input again!");
+            }
+            if (flagExist) {
+                for (Facility facilityCheckID : facilityServiceList) {
+                    if (facilityCheckID.getIdService().equals(idService)) {
+                        flagExist = false;
+                        System.out.println("Id Service already existed!!!");
+                        break;
                     }
                 }
-            } while (!flagExist);
-        } else if (choiceNumber == 2) {
-            System.out.print("Input house id service (Format: SVHO-XXXX, Ex: SVHO-1234, SVHO-0123,...): ");
-            while (!validation.validateHouseIDService(idService = sc.nextLine())) {
-                System.out.println("Wrong format!!! Input again!");
             }
-        } else if (choiceNumber == 3) {
-            System.out.print("Input facility id service (Format: SVRO-XXXX, Ex: SVRO-1234, SVRO-0123,...): ");
-            while (!validation.validateRoomIDService(idService = sc.nextLine())) {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
+        } while (!flagExist);
 
         System.out.print("Input facility service name (Ex: Villa service,...): ");
         String serviceName;
@@ -278,7 +273,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
 
             Villa newVilla = new Villa(idService.trim(), serviceName.trim(), usableArea, price, maximumPerson,
-                    rentType.trim(), villaType.trim(), villaPoolArea, villaNumberFloor,0);
+                    rentType.trim(), villaType.trim(), villaPoolArea, villaNumberFloor, 0);
             List<Facility> newFacilityList = new ArrayList<>();
             List<Villa> newVillaList = new ArrayList<>();
             newFacilityList.add(newVilla);
@@ -319,7 +314,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
 
             House newHouse = new House(idService.trim(), serviceName.trim(), usableArea, price, maximumPerson,
-                    rentType.trim(), houseType.trim(), houseNumberFloor,0);
+                    rentType.trim(), houseType.trim(), houseNumberFloor, 0);
             List<Facility> newFacilityList = new ArrayList<>();
             List<House> newHouseList = new ArrayList<>();
             newFacilityList.add(newHouse);
@@ -348,7 +343,7 @@ public class FacilityServiceImpl implements FacilityService {
             }
 
             Room newRoom = new Room(idService.trim(), serviceName.trim(), usableArea, price, maximumPerson,
-                    rentType.trim(), roomFreeService.trim(),0);
+                    rentType.trim(), roomFreeService.trim(), 0);
             List<Facility> newFacilityList = new ArrayList<>();
             List<Room> newRoomList = new ArrayList<>();
             newFacilityList.add(newRoom);
@@ -387,7 +382,7 @@ public class FacilityServiceImpl implements FacilityService {
                 house = new House(lineSplitList[0], lineSplitList[1],
                         Double.parseDouble(lineSplitList[2]), Double.parseDouble(lineSplitList[3]),
                         Integer.parseInt(lineSplitList[4]), lineSplitList[5], lineSplitList[6],
-                        Integer.parseInt(lineSplitList[7]),Integer.parseInt(lineSplitList[8]));
+                        Integer.parseInt(lineSplitList[7]), Integer.parseInt(lineSplitList[8]));
                 facilityServiceListFromCSV.add(house);
             } else if (line.contains("SVRO")) {
                 room = new Room(lineSplitList[0], lineSplitList[1],

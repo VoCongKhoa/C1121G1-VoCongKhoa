@@ -4,6 +4,7 @@ import FuramaResort.common.ReadAndWriteFile;
 import FuramaResort.models.Customer;
 import FuramaResort.services.CustomerService;
 import FuramaResort.utils.Validation;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,72 +29,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer() {
-//        List<Customer> customerList;
-//        int newIdCustomer = 1;
-//        customerList = readCSVFileToCustomerList(CUSTOMER_PATH_FILE);
-//        if (!customerList.isEmpty()){
-//            newIdCustomer = (customerList.get(customerList.size()).getCustomerId())+1;
-//        }
-        System.out.print("Add new name of customer (Ex: Alex,khoa123,...): ");
-        String newName;
-        while (true) {
-            if (validation.validateName(newName = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
-
-        System.out.print("Add new DoB of customer (Ex: 01/01/2022, 01-01-2022, 01-Jan-2022,... ): ");
-        String newDateOfBirth;
-        while (true) {
-            if (validation.validateDate(newDateOfBirth = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
-
-        System.out.print("Add new gender of customer (Only Male or Female): ");
-        String newGender;
-        while (true) {
-            if (validation.validateGender(newGender = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
-
-        System.out.print("Add new ID number of customer (12 digits): ");
-        String newIdNumber;
-        while (true) {
-            if (validation.validateIDNumber(newIdNumber = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
-
-        System.out.print("Add new phone number of customer (Ex: (+86) 905472592,...): ");
-        String newPhoneNumber;
-        while (true) {
-            if (validation.validatePhoneNumber(newPhoneNumber = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
-
-        System.out.print("Add new email of customer (Ex: youandme8668@gmail.com.vn): ");
-        String newEmail;
-        while (true) {
-            if (validation.validateEmail(newEmail = sc.nextLine())) {
-                break;
-            } else {
-                System.out.println("Wrong format!!! Input again!");
-            }
-        }
-
+        String newName = validation.resultNameAfterValidate(
+                "Input new name of customer (Ex: Alex,khoa123,...): ");
+        String newDateOfBirth = validation.resultDateOfBirthAfterValidate(
+                "Input new DoB of customer (Ex: 01/01/2022, 01-01-2022, 01-Jan-2022,... ): ");
+        String newGender = validation.resultGenderAfterValidate(
+                "Input new gender of customer (Only Male or Female): ");
+        String newIdNumber = validation.resultIDNumberAfterValidate(
+                "Input new ID number of customer (12 digits): ");
+        String newPhoneNumber = validation.resultPhoneNumberAfterValidate(
+                "Input new phone number of customer (Ex: (+86) 905472592,...): ");
+        String newEmail = validation.resultEmailAfterValidate(
+                "Input new email of customer (Ex: youandme8668@gmail.com.vn): ");
         System.out.println("Customer rank:");
         System.out.println("1. Diamond");
         System.out.println("2. Platinum");
@@ -168,87 +115,45 @@ public class CustomerServiceImpl implements CustomerService {
                                 int editPropertyCustomer = Integer.parseInt(sc.nextLine());
                                 switch (editPropertyCustomer) {
                                     case 1:
-                                        System.out.print("Input your new name: ");
-                                        while (true) {
-                                            String editName = sc.nextLine();
-                                            if (validation.validateName(editName)) {
-                                                customer.setName(editName);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
-                                                break;
-                                            } else {
-                                                System.out.println("Wrong format!!! Input again!");
-                                            }
-                                        }
+                                        String editName = validation.resultNameAfterValidate(
+                                                "Input your edit name: ");
+                                        customer.setName(editName);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                         System.out.println("Edit customer name successfully!!!");
                                         break;
                                     case 2:
-                                        System.out.print("Input your new date of birth (Ex: 01/01/2022, 01-01-2022, 01-Jan-2022,... ): ");
-                                        while (true) {
-                                            String editDoB = sc.nextLine();
-                                            if (validation.validateDate(editDoB)) {
-                                                customer.setDateOfBirth(editDoB);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
-                                                break;
-                                            } else {
-                                                System.out.println("Wrong format!!! Input again!");
-                                            }
-                                        }
+                                        String editDoB = validation.resultDateOfBirthAfterValidate(
+                                                "Input your edit date of birth (Ex: 01/01/2022, 01-01-2022, 01-Jan-2022,... ): ");
+                                        customer.setDateOfBirth(editDoB);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                         System.out.println("Edit customer DoB successfully!!!");
                                         break;
                                     case 3:
-                                        System.out.print("Input your new gender: ");
-                                        while (true) {
-                                            String editGender = sc.nextLine();
-                                            if (validation.validateGender(editGender)) {
-                                                customer.setGender(editGender);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
-                                                break;
-                                            } else {
-                                                System.out.println("Wrong format!!! Input again!");
-                                            }
-                                        }
+                                        String editGender = validation.resultGenderAfterValidate(
+                                                "Input your edit gender: ");
+                                        customer.setGender(editGender);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                         System.out.println("Edit customer gender successfully!!!");
                                         break;
                                     case 4:
-                                        System.out.print("Input your new identification number: ");
-                                        while (true) {
-                                            String editIdNumber = sc.nextLine();
-                                            if (validation.validateIDNumber(editIdNumber)) {
-                                                customer.setIDNumber(editIdNumber);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
-                                                break;
-                                            } else {
-                                                System.out.println("Wrong format!!! Input again!");
-                                            }
-                                        }
+                                        String editIdNumber = validation.resultIDNumberAfterValidate(
+                                                "Input your edit identification number: ");
+                                        customer.setIDNumber(editIdNumber);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                         System.out.println("Edit customer identification number successfully!!!");
                                         break;
                                     case 5:
-                                        System.out.print("Input your new phone number: ");
-                                        while (true) {
-                                            String editPhoneNumber = sc.nextLine();
-                                            if (validation.validatePhoneNumber(editPhoneNumber)) {
-                                                customer.setPhoneNumber(editPhoneNumber);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
-                                                break;
-                                            } else {
-                                                System.out.println("Wrong format!!! Input again!");
-                                            }
-                                        }
+                                        String editPhoneNumber = validation.resultPhoneNumberAfterValidate(
+                                                "Input your edit phone number: ");
+                                        customer.setPhoneNumber(editPhoneNumber);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                         System.out.println("Edit customer phone number successfully!!!");
                                         break;
                                     case 6:
-                                        System.out.print("Input your new email: ");
-                                        while (true) {
-                                            String editEmail = sc.nextLine();
-                                            if (validation.validateEmail(editEmail)) {
-                                                customer.setEmail(editEmail);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
-                                                break;
-                                            } else {
-                                                System.out.println("Wrong format!!! Input again!");
-                                            }
-                                        }
+                                        String editEmail = validation.resultEmailAfterValidate(
+                                                "Input your new email: ");
+                                        customer.setEmail(editEmail);
+                                        writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                         System.out.println("Edit customer email successfully!!!");
                                         break;
                                     case 7:
@@ -285,7 +190,7 @@ public class CustomerServiceImpl implements CustomerService {
                                             String editCustomerAddress;
                                             if (!(editCustomerAddress = sc.nextLine()).trim().equals("")) {
                                                 customer.setCustomerAddress(editCustomerAddress);
-                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE,customerList, false);
+                                                writeCustomerListIntoCSVFile(CUSTOMER_PATH_FILE, customerList, false);
                                                 break;
                                             } else {
                                                 System.out.println("Address of customer can't be empty!!! Input again!");
