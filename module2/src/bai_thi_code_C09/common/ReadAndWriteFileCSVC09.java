@@ -1,13 +1,14 @@
-package bai_thi_code_C10.common;
+package bai_thi_code_C09.common;
 
-import bai_thi_code_C10.models.SanPham;
-import bai_thi_code_C10.models.SanPhamNhapKhau;
-import bai_thi_code_C10.models.SanPhamXuatKhau;
+import bai_thi_code_C09.models.DienThoai;
+import bai_thi_code_C09.models.DienThoaiChinhHang;
+import bai_thi_code_C09.models.DienThoaiXachTay;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadAndWriteFileCSV {
+
+public class ReadAndWriteFileCSVC09 {
     public static List<String> readFileCSVToStringList(String pathFile) {
         List<String> stringList = new ArrayList<>();
         BufferedReader bufferedReader = null;
@@ -59,34 +60,39 @@ public class ReadAndWriteFileCSV {
         }
     }
 
-    public static List<SanPham> convertStringListToSanPhamList(List<String> stringList) {
-        List<SanPham> sanPhamList = new ArrayList<>();
+    public static List<DienThoai> convertStringListToDienThoaiList(List<String> stringList) {
+        List<DienThoai> dienThoaiList = new ArrayList<>();
         String[] stringSplitArray;
-        SanPham.setSoSanPham(1);
+        DienThoai.setDemDienThoai(1);
         for (String string : stringList) {
             stringSplitArray = string.split(",");
-            if (stringSplitArray.length == 9) {
-                SanPhamNhapKhau sanPhamNhapKhau = new SanPhamNhapKhau(stringSplitArray[1], stringSplitArray[2],
-                        Double.parseDouble(stringSplitArray[3]), Integer.parseInt(stringSplitArray[4]), stringSplitArray[5],
-                        Double.parseDouble(stringSplitArray[6]), stringSplitArray[7], Double.parseDouble(stringSplitArray[8]));
-                sanPhamNhapKhau.setIdSanPham(Integer.parseInt(stringSplitArray[0]));
-                sanPhamList.add(sanPhamNhapKhau);
+            if (stringSplitArray[6].equals("Toan Quoc") || stringSplitArray[6].equals("Quoc Te")) {
+                DienThoaiChinhHang dienThoaiChinhHang = new DienThoaiChinhHang(stringSplitArray[1],
+                        Double.parseDouble(stringSplitArray[2]), Integer.parseInt(stringSplitArray[3]), stringSplitArray[4],
+                        Integer.parseInt(stringSplitArray[5]), stringSplitArray[6]);
+                dienThoaiChinhHang.setIdDienThoai(Integer.parseInt(stringSplitArray[0]));
+                dienThoaiList.add(dienThoaiChinhHang);
             } else {
-                SanPhamXuatKhau sanPhamXuatKhau = new SanPhamXuatKhau(stringSplitArray[1], stringSplitArray[2],
-                        Double.parseDouble(stringSplitArray[3]), Integer.parseInt(stringSplitArray[4]), stringSplitArray[5],
-                        Double.parseDouble(stringSplitArray[6]), stringSplitArray[7]);
-                sanPhamXuatKhau.setIdSanPham(Integer.parseInt(stringSplitArray[0]));
-                sanPhamList.add(sanPhamXuatKhau);
+                DienThoaiXachTay dienThoaiXachTay = new DienThoaiXachTay(stringSplitArray[1],
+                        Double.parseDouble(stringSplitArray[2]), Integer.parseInt(stringSplitArray[3]), stringSplitArray[4],
+                        stringSplitArray[5], stringSplitArray[6]);
+                dienThoaiXachTay.setIdDienThoai(Integer.parseInt(stringSplitArray[0]));
+                dienThoaiList.add(dienThoaiXachTay);
             }
         }
-        return sanPhamList;
+        return dienThoaiList;
     }
 
-    public static List<String> convertSanPhamListToStringList(List<SanPham> sanPhamList) {
+    public static List<String> convertDienThoaiListToStringList(List<DienThoai> dienThoaiList) {
         List<String> stringList = new ArrayList<>();
-        for (SanPham sanPham : sanPhamList) {
-            stringList.add(sanPham.toStringToFileCSV());
+        for (DienThoai dienThoai : dienThoaiList) {
+            if (dienThoai instanceof DienThoaiChinhHang){
+                stringList.add(((DienThoaiChinhHang)dienThoai).toStringToFileCSV());
+            } else {
+                stringList.add(((DienThoaiXachTay)dienThoai).toStringToFileCSV());
+            }
         }
         return stringList;
     }
 }
+
