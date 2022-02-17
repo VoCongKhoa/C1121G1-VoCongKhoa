@@ -4,6 +4,8 @@ import bai_thi_code_C09.common.ReadAndWriteFileCSVC09;
 import bai_thi_code_C09.models.DienThoai;
 import bai_thi_code_C09.models.DienThoaiChinhHang;
 import bai_thi_code_C09.models.DienThoaiXachTay;
+import bai_thi_code_C09.utils.NotFoundProductException;
+import bai_thi_code_C09.utils.ValidationC09;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,62 +13,15 @@ import java.util.Scanner;
 
 public class DienThoaiServiceImpl implements DienThoaiService {
     static final String DIEN_THOAI = "src/bai_thi_code_C09/data/dienThoai.csv";
+    ValidationC09 validationC09 = new ValidationC09();
 
     @Override
     public void themMoi(int caseNumber) {
         Scanner scanner = new Scanner(System.in);
-        String tenDienThoai;
-        while (true) {
-            System.out.print("Nhập tên điện thoại: ");
-            tenDienThoai = scanner.nextLine();
-            if (tenDienThoai.trim().equals("")) {
-                System.out.println("Nhập sai!!! Hãy nhập lại!");
-            } else {
-                break;
-            }
-        }
-
-        double giaBan;
-        while (true) {
-            try {
-                System.out.print("Nhập giá bán: ");
-                giaBan = Double.parseDouble(scanner.nextLine());
-                if (giaBan <= 0) {
-                    System.out.println("Nhập sai!!! Hãy nhập lại!");
-                } else {
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-            }
-        }
-
-        int soLuong;
-        while (true) {
-            try {
-                System.out.print("Nhập số lượng: ");
-                soLuong = Integer.parseInt(scanner.nextLine());
-                if (soLuong <= 0) {
-                    System.out.println("Nhập sai!!! Hãy nhập lại!");
-                } else {
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-            }
-        }
-
-        String nhaSanXuat;
-        while (true) {
-            System.out.print("Nhập nhà sản xuất: ");
-            nhaSanXuat = scanner.nextLine();
-            if (nhaSanXuat.trim().equals("")) {
-                System.out.println("Nhập sai!!! Hãy nhập lại!");
-            } else {
-                break;
-            }
-        }
-
+        String tenDienThoai = validationC09.resultStringAfterValidate("Nhập tên điện thoại: ");
+        double giaBan = validationC09.resultDoubleAfterValidate("Nhập giá bán: ");
+        int soLuong = validationC09.resultIntAfterValidate("Nhập số lượng: ");
+        String nhaSanXuat = validationC09.resultStringAfterValidate("Nhập nhà sản xuất: ");
         List<DienThoai> dienThoaiChinhHangList = new ArrayList<>();
         List<DienThoai> dienThoaiXachTayList = new ArrayList<>();
         List<String> stringDienThoaiChinhHangList;
@@ -143,7 +98,7 @@ public class DienThoaiServiceImpl implements DienThoaiService {
     }
 
     @Override
-    public void xoa() {
+    public void xoa() throws NotFoundProductException {
         Scanner scanner = new Scanner(System.in);
         chonMaDienThoaiLoop:
         do {
@@ -186,7 +141,7 @@ public class DienThoaiServiceImpl implements DienThoaiService {
                     }
                 }
                 if (flag) {
-                    System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
+                    throw new NotFoundProductException();
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Sai định dạng!!! Hãy nhập lại!");

@@ -10,6 +10,7 @@ public class Customer extends Person {
     private int customerId;
 
     public Customer() {
+        this.customerId = this.numberOfCustomer++ + 1; //Bắt đầu từ 1
     }
 
     public Customer(String customerRank, String customerAddress) {

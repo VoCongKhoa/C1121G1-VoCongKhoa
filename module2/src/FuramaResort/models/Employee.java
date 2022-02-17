@@ -9,6 +9,7 @@ public class Employee extends Person {
     private double employeeSalary;
 
     public Employee() {
+        this.employeeId = this.numberOfEmployee++ + 1;
     }
 
     public Employee(String employeeDegree, String employeeRole, double employeeSalary) {

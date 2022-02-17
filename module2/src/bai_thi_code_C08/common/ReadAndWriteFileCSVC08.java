@@ -1,14 +1,13 @@
-package bai_thi_code_C09.common;
+package bai_thi_code_C08.common;
 
-import bai_thi_code_C09.models.DienThoai;
-import bai_thi_code_C09.models.DienThoaiChinhHang;
-import bai_thi_code_C09.models.DienThoaiXachTay;
+import bai_thi_code_C08.models.TaiKhoan;
+import bai_thi_code_C08.models.TaiKhoanThanhToan;
+import bai_thi_code_C08.models.TaiKhoanTietKiem;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ReadAndWriteFileCSVC09 {
+public class ReadAndWriteFileCSVC08 {
     public static List<String> readFileCSVToStringList(String pathFile) {
         List<String> stringList = new ArrayList<>();
         BufferedReader bufferedReader = null;
@@ -60,40 +59,37 @@ public class ReadAndWriteFileCSVC09 {
         }
     }
 
-    public static List<DienThoai> convertStringListToDienThoaiList(List<String> stringList) {
-        List<DienThoai> dienThoaiList = new ArrayList<>();
+    public static List<TaiKhoan> convertStringListToTaiKhoanList(List<String> stringList) {
+        List<TaiKhoan> taiKhoanList = new ArrayList<>();
         String[] stringSplitArray;
-        DienThoai.setDemDienThoai(1);
+        TaiKhoan.setDemTaiKhoan(1);
         for (String string : stringList) {
             stringSplitArray = string.split(",");
-            if (stringSplitArray[6].equals("Toan Quoc") || stringSplitArray[6].equals("Quoc Te")) {
-                DienThoaiChinhHang dienThoaiChinhHang = new DienThoaiChinhHang(stringSplitArray[1],
-                        Double.parseDouble(stringSplitArray[2]), Integer.parseInt(stringSplitArray[3]), stringSplitArray[4],
-                        Integer.parseInt(stringSplitArray[5]), stringSplitArray[6]);
-                dienThoaiChinhHang.setIdDienThoai(Integer.parseInt(stringSplitArray[0]));
-                dienThoaiList.add(dienThoaiChinhHang);
+            if (stringSplitArray.length == 8) {
+                TaiKhoanTietKiem taiKhoanTietKiem = new TaiKhoanTietKiem(stringSplitArray[1], stringSplitArray[2], stringSplitArray[3],
+                        Double.parseDouble(stringSplitArray[4]), stringSplitArray[5], Integer.parseInt(stringSplitArray[6]),
+                        Integer.parseInt(stringSplitArray[7]));
+                taiKhoanTietKiem.setIdTaiKhoan(Integer.parseInt(stringSplitArray[0]));
+                taiKhoanList.add(taiKhoanTietKiem);
             } else {
-                DienThoaiXachTay dienThoaiXachTay = new DienThoaiXachTay(stringSplitArray[1],
-                        Double.parseDouble(stringSplitArray[2]), Integer.parseInt(stringSplitArray[3]), stringSplitArray[4],
-                        stringSplitArray[5], stringSplitArray[6]);
-                dienThoaiXachTay.setIdDienThoai(Integer.parseInt(stringSplitArray[0]));
-                dienThoaiList.add(dienThoaiXachTay);
+                TaiKhoanThanhToan taiKhoanThanhToan = new TaiKhoanThanhToan(stringSplitArray[1], stringSplitArray[2],
+                        stringSplitArray[3], stringSplitArray[4], Double.parseDouble(stringSplitArray[5]));
+                taiKhoanThanhToan.setIdTaiKhoan(Integer.parseInt(stringSplitArray[0]));
+                taiKhoanList.add(taiKhoanThanhToan);
             }
         }
-        return dienThoaiList;
+        return taiKhoanList;
     }
 
-        public static List<String> convertDienThoaiListToStringList(List<DienThoai> dienThoaiList) {
+    public static List<String> convertTaiKhoanListToStringList(List<TaiKhoan> taiKhoanList) {
         List<String> stringList = new ArrayList<>();
-        for (DienThoai dienThoai : dienThoaiList) {
-            stringList.add(dienThoai.toStringToFileCSV());
-//            if (dienThoai instanceof DienThoaiChinhHang){
-//                stringList.add(((DienThoaiChinhHang)dienThoai).toStringToFileCSV());
-//            } else {
-//                stringList.add(((DienThoaiXachTay)dienThoai).toStringToFileCSV());
-//            }
+        for (TaiKhoan taiKhoan : taiKhoanList) {
+            if (taiKhoan instanceof TaiKhoanTietKiem) {
+                stringList.add(((TaiKhoanTietKiem) taiKhoan).toStringToCSVFile());
+            } else {
+                stringList.add(((TaiKhoanThanhToan) taiKhoan).toStringToCSVFile());
+            }
         }
         return stringList;
     }
 }
-

@@ -1,0 +1,142 @@
+package bai_thi_code_C08.services;
+
+import bai_thi_code_C08.common.ReadAndWriteFileCSVC08;
+import bai_thi_code_C08.models.TaiKhoan;
+import bai_thi_code_C08.models.TaiKhoanThanhToan;
+import bai_thi_code_C08.models.TaiKhoanTietKiem;
+import bai_thi_code_C08.utils.NotFoundBankAccountException;
+import bai_thi_code_C08.utils.ValidationC08;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class TaiKhoanServiceImpl implements TaiKhoanService{
+    static final String TAI_KHOAN = "src/bai_thi_code_C08/data/taiKhoan.csv";
+    ValidationC08 validationC08 = new ValidationC08();
+
+    @Override
+    public void themMoi(int caseNumber) {
+        String maTaiKhoan = validationC08.resultStringAfterValidate("Nhập mã tài khoản: ");
+        String tenChuTaiKhoan= validationC08.resultStringAfterValidate("Nhập tên chủ tài khoản: ");
+        String ngayTaoTaiKhoan= validationC08.resultStringAfterValidate("Nhập ngày tạo tài khoản: ");
+        List<TaiKhoan> taiKhoanTietKiemList = new ArrayList<>();
+        List<TaiKhoan> taiKhoanThanhToanList = new ArrayList<>();
+        List<String> stringTaiKhoanTietKiemList;
+        List<String> stringTaiKhoanThanhToanList;
+
+        switch (caseNumber) {
+            case 1:
+                double soTienGuiTietKiem= validationC08.resultDoubleAfterValidate("Nhập số tiền gửi tiết kiệm: ");
+                String ngayGuiTietKiem= validationC08.resultStringAfterValidate("Nhập ngày gửi tiết kiệm: ");
+                int laiSuat= validationC08.resultIntAfterValidate("Nhập lãi suất: ");
+                int kyHan= validationC08.resultIntAfterValidate("Nhập kỳ hạn: ");
+                taiKhoanTietKiemList.add(new TaiKhoanTietKiem(maTaiKhoan, tenChuTaiKhoan, ngayTaoTaiKhoan, soTienGuiTietKiem,
+                        ngayGuiTietKiem, laiSuat, kyHan));
+                stringTaiKhoanTietKiemList = ReadAndWriteFileCSVC08.convertTaiKhoanListToStringList(taiKhoanTietKiemList);
+                ReadAndWriteFileCSVC08.writeStringListIntoCSVFile(TAI_KHOAN, stringTaiKhoanTietKiemList, true);
+                System.out.println("Thêm mới tài khoản tiết kiệm thành công!!!");
+                break;
+            case 2:
+                String soThe = validationC08.resultStringAfterValidate("Nhập số thẻ của tài khoản: ");
+                double soTienTrongTaiKhoan = validationC08.resultDoubleAfterValidate("Nhập số tiền trong tài khoản: ");
+                taiKhoanThanhToanList.add(new TaiKhoanThanhToan(maTaiKhoan, tenChuTaiKhoan, ngayTaoTaiKhoan,
+                        soThe, soTienTrongTaiKhoan));
+                stringTaiKhoanThanhToanList = ReadAndWriteFileCSVC08.convertTaiKhoanListToStringList(taiKhoanThanhToanList);
+                ReadAndWriteFileCSVC08.writeStringListIntoCSVFile(TAI_KHOAN, stringTaiKhoanThanhToanList, true);
+                System.out.println("Thêm mới tài khoản thanh toán thành công!!!");
+                break;
+        }
+    }
+
+    @Override
+    public void xoa() throws NotFoundBankAccountException {
+        Scanner scanner = new Scanner(System.in);
+        chonMaTaiKhoanLoop:
+        while (true) {
+            hienThi();
+            System.out.print("Chọn mã tài khoản muốn xoá: ");
+            String maTaiKhoan = scanner.nextLine();
+            if (maTaiKhoan.trim().equals("")) {
+                System.out.println("Nhập sai!!! Hãy nhập lại!");
+            } else {
+                List<String> stringList = ReadAndWriteFileCSVC08.readFileCSVToStringList(TAI_KHOAN);
+                List<TaiKhoan> taiKhoanList = ReadAndWriteFileCSVC08.convertStringListToTaiKhoanList(stringList);
+                boolean flag = false;
+                for (TaiKhoan taiKhoan : taiKhoanList) {
+                    if (taiKhoan.getMaTaiKhoan().equals(maTaiKhoan)) {
+                        do {
+                            int xacNhan;
+                            try {
+                                System.out.println("Bạn có xác nhận xoá tài khoản với mã tài khoản là: " + maTaiKhoan);
+                                System.out.println("1. Có");
+                                System.out.println("2. Không");
+                                System.out.print("Bạn chọn: ");
+                                xacNhan = Integer.parseInt(scanner.nextLine());
+                                switch (xacNhan) {
+                                    case 1:
+                                        taiKhoanList.remove(taiKhoan);
+                                        stringList = ReadAndWriteFileCSVC08.convertTaiKhoanListToStringList(taiKhoanList);
+                                        ReadAndWriteFileCSVC08.writeStringListIntoCSVFile(TAI_KHOAN, stringList, false);
+                                        System.out.println("Bạn đã xoá thành công!!!");
+                                        break chonMaTaiKhoanLoop;
+                                    case 2:
+                                        System.out.println("Bạn đã huỷ xoá!");
+                                        break chonMaTaiKhoanLoop;
+                                    default:
+                                        System.out.println("Bạn chọn sai!!! Hãy nhập lại!");
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
+                            }
+                        } while (true);
+                    }
+                    else {
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    throw new NotFoundBankAccountException();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void hienThi() {
+        List<String> stringList = ReadAndWriteFileCSVC08.readFileCSVToStringList(TAI_KHOAN);
+        List<TaiKhoan> taiKhoanList = ReadAndWriteFileCSVC08.convertStringListToTaiKhoanList(stringList);
+        System.out.println("Danh sách tài khoản: ");
+        for (TaiKhoan taiKhoan : taiKhoanList) {
+            System.out.println(taiKhoan.toString());
+        }
+    }
+
+    @Override
+    public void timKiem() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            hienThi();
+            System.out.print("Chọn mã tài khoản hoặc tên tài khoản bạn muốn tìm: ");
+            String timTaiKhoan = scanner.nextLine();
+            if (timTaiKhoan.trim().equals("")) {
+                System.out.println("Nhập sai!!! Hãy nhập lại!");
+            } else {
+                List<String> stringList = ReadAndWriteFileCSVC08.readFileCSVToStringList(TAI_KHOAN);
+                List<TaiKhoan> taiKhoanList = ReadAndWriteFileCSVC08.convertStringListToTaiKhoanList(stringList);
+                boolean flag = false;
+                for (TaiKhoan taiKhoan : taiKhoanList) {
+                    if (taiKhoan.getMaTaiKhoan().toLowerCase().contains(timTaiKhoan.toLowerCase())
+                            || taiKhoan.getTenChuTaiKhoan().toLowerCase().contains(timTaiKhoan.toLowerCase())) {
+                        System.out.println(taiKhoan);
+                        flag = true;
+                    }
+                }
+                if (!flag) {
+                    System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+}

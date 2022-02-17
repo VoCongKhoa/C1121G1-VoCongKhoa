@@ -1,48 +1,47 @@
-package bai_thi_code_C09.controllers;
+package bai_thi_code_C08.controllers;
 
-import bai_thi_code_C09.services.DienThoaiService;
-import bai_thi_code_C09.services.DienThoaiServiceImpl;
-import bai_thi_code_C09.utils.NotFoundProductException;
+import bai_thi_code_C08.services.TaiKhoanServiceImpl;
+import bai_thi_code_C08.utils.NotFoundBankAccountException;
 
 import java.util.Scanner;
 
-public class QuanLyDienThoai {
+public class QuanLyTaiKhoanNganHang {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        DienThoaiService dienThoaiService = new DienThoaiServiceImpl();
+        TaiKhoanServiceImpl taiKhoanService = new TaiKhoanServiceImpl();
 
         QLSPLoop:
         do {
             try {
-                System.out.println("--CHƯƠNG TRÌNH QUẢN LÝ ĐIỆN THOẠI –\n" +
+                System.out.println("--CHƯƠNG TRÌNH QUẢN LÝ TÀI KHOẢN\n" +
                         "Chọn chức năng theo số (để tiếp tục):\n" +
                         "1. Thêm mới\n" +
                         "2. Xóa\n" +
-                        "3. Xem danh sách các sản phẩm\n" +
+                        "3. Xem danh sách các tài khoản\n" +
                         "4. Tìm kiếm\n" +
                         "5. Thoát\n");
                 System.out.print("Chọn chức năng: ");
                 int chonChucNang = Integer.parseInt(scanner.nextLine());
                 switch (chonChucNang) {
                     case 1:
-                        chonDienThoaiLoop:
+                        chonTaiKhoanLoop:
                         do {
                             try {
-                                System.out.println("Chọn loại điện thoại cần thêm mới:");
-                                System.out.println("1. Điện thoại chính hãng");
-                                System.out.println("2. Điện thoại xách tay");
-                                System.out.println("3. Quay lại Quản lý điện thoại");
-                                System.out.print("Chọn loại điện thoại: ");
-                                int chonDienThoai = Integer.parseInt(scanner.nextLine());
-                                switch (chonDienThoai) {
+                                System.out.println("Chọn loại tài khoản cần thêm mới:");
+                                System.out.println("1. Tài khoản tiết kiệm");
+                                System.out.println("2. Tài khoản thanh toán");
+                                System.out.println("3. Quay lại Quản lý tài khoản");
+                                System.out.print("Chọn tài khoản: ");
+                                int chonTaiKhoan = Integer.parseInt(scanner.nextLine());
+                                switch (chonTaiKhoan) {
                                     case 1:
-                                        dienThoaiService.themMoi(1);
+                                        taiKhoanService.themMoi(1);
                                         break;
                                     case 2:
-                                        dienThoaiService.themMoi(2);
+                                        taiKhoanService.themMoi(2);
                                         break;
                                     case 3:
-                                        break chonDienThoaiLoop;
+                                        break chonTaiKhoanLoop;
                                     default:
                                         System.out.println("Nhập sai!!! Hãy nhập lại!");
                                 }
@@ -54,18 +53,18 @@ public class QuanLyDienThoai {
                     case 2:
                         while (true){
                             try {
-                                dienThoaiService.xoa();
+                                taiKhoanService.xoa();
                                 break;
-                            } catch (NotFoundProductException e) {
+                            } catch (NotFoundBankAccountException e) {
                                 System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
                             }
                         }
                         break;
                     case 3:
-                        dienThoaiService.hienThi();
+                        taiKhoanService.hienThi();
                         break;
                     case 4:
-                        dienThoaiService.timKiem();
+                        taiKhoanService.timKiem();
                         break;
                     case 5:
                         break QLSPLoop;
@@ -76,6 +75,5 @@ public class QuanLyDienThoai {
                 System.out.println("Nhập sai định dạng!!! Hãy nhập lại");
             }
         } while (true);
-
     }
 }

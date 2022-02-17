@@ -5,6 +5,7 @@ import bai_thi_code_C10.models.SanPham;
 import bai_thi_code_C10.models.SanPhamNhapKhau;
 import bai_thi_code_C10.models.SanPhamXuatKhau;
 import bai_thi_code_C10.utils.NotFoundProductException;
+import bai_thi_code_C10.utils.ValidationC10;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,118 +13,26 @@ import java.util.Scanner;
 
 public class SanPhamServiceImpl implements SanPhamService {
     static final String SAN_PHAM = "src/bai_thi_code_C10/data/sanPham.csv";
+    ValidationC10 validationC10 = new ValidationC10();
 
     @Override
     public void themMoi(int caseNumber) {
-        Scanner scanner = new Scanner(System.in);
-        String maSanPham;
-        while (true) {
-            System.out.print("Nhập mã sản phẩm: ");
-            maSanPham = scanner.nextLine();
-            if (maSanPham.trim().equals("")) {
-                System.out.println("Nhập sai!!! Hãy nhập lại!");
-            } else {
-                break;
-            }
-        }
+        String maSanPham = validationC10.resultStringAfterValidate("Nhập mã sản phẩm: ");
+        String tenSanPham = validationC10.resultStringAfterValidate("Nhập tên sản phẩm: ");
+        double giaBan = validationC10.resultDoubleAfterValidate("Nhập giá bán: ");
+        int soLuong = validationC10.resultIntAfterValidate("Nhập số lượng: ");
+        String nhaSanXuat = validationC10.resultStringAfterValidate("Nhập nhà sản xuất: ");
 
-        String tenSanPham;
-        while (true) {
-            System.out.print("Nhập tên sản phẩm: ");
-            tenSanPham = scanner.nextLine();
-            if (tenSanPham.trim().equals("")) {
-                System.out.println("Nhập sai!!! Hãy nhập lại!");
-            } else {
-                break;
-            }
-        }
-
-        double giaBan;
-        while (true) {
-            try {
-                System.out.print("Nhập giá bán: ");
-                giaBan = Double.parseDouble(scanner.nextLine());
-                if (giaBan <= 0) {
-                    System.out.println("Nhập sai!!! Hãy nhập lại!");
-                } else {
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-            }
-        }
-
-        int soLuong;
-        while (true) {
-            try {
-                System.out.print("Nhập số lượng: ");
-                soLuong = Integer.parseInt(scanner.nextLine());
-                if (soLuong <= 0) {
-                    System.out.println("Nhập sai!!! Hãy nhập lại!");
-                } else {
-                    break;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-            }
-        }
-
-        String nhaSanXuat;
-        while (true) {
-            System.out.print("Nhập nhà sản xuất: ");
-            nhaSanXuat = scanner.nextLine();
-            if (nhaSanXuat.trim().equals("")) {
-                System.out.println("Nhập sai!!! Hãy nhập lại!");
-            } else {
-                break;
-            }
-        }
         List<SanPham> sanPhamNhapKhauList = new ArrayList<>();
         List<SanPham> sanPhamXuatKhauList = new ArrayList<>();
         List<String> stringNhapKhauList;
         List<String> stringXuatKhauList;
         switch (caseNumber) {
             case 1:
-                double giaNhapKhau;
-                while (true) {
-                    try {
-                        System.out.print("Nhập giá nhập khẩu: ");
-                        giaNhapKhau = Double.parseDouble(scanner.nextLine());
-                        if (giaNhapKhau <= 0) {
-                            System.out.println("Nhập sai!!! Hãy nhập lại!");
-                        } else {
-                            break;
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-                    }
-                }
+                double giaNhapKhau = validationC10.resultDoubleAfterValidate("Nhập giá nhập khẩu: ");
+                String tinhThanhNhap = validationC10.resultStringAfterValidate("Nhập tỉnh thành nhập: ");
+                double thueNhapKhau = validationC10.resultDoubleAfterValidate("Nhập thuế nhập khẩu: ");
 
-                String tinhThanhNhap;
-                while (true) {
-                    System.out.print("Nhập tỉnh thành nhập: ");
-                    tinhThanhNhap = scanner.nextLine();
-                    if (tinhThanhNhap.trim().equals("")) {
-                        System.out.println("Nhập sai!!! Hãy nhập lại!");
-                    } else {
-                        break;
-                    }
-                }
-
-                double thueNhapKhau;
-                while (true) {
-                    try {
-                        System.out.print("Nhập thuế nhập khẩu: ");
-                        thueNhapKhau = Double.parseDouble(scanner.nextLine());
-                        if (thueNhapKhau <= 0) {
-                            System.out.println("Nhập sai!!! Hãy nhập lại!");
-                        } else {
-                            break;
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-                    }
-                }
                 sanPhamNhapKhauList.add(new SanPhamNhapKhau(maSanPham, tenSanPham, giaBan, soLuong, nhaSanXuat
                         , giaNhapKhau, tinhThanhNhap, thueNhapKhau));
                 stringNhapKhauList = ReadAndWriteFileCSVC10.convertSanPhamListToStringList(sanPhamNhapKhauList);
@@ -131,31 +40,9 @@ public class SanPhamServiceImpl implements SanPhamService {
                 System.out.println("Thêm mới sản phẩm nhập khẩu thành công!!!");
                 break;
             case 2:
-                double giaXuatKhau;
-                while (true) {
-                    try {
-                        System.out.print("Nhập giá xuất khẩu: ");
-                        giaXuatKhau = Double.parseDouble(scanner.nextLine());
-                        if (giaXuatKhau <= 0) {
-                            System.out.println("Nhập sai!!! Hãy nhập lại!");
-                        } else {
-                            break;
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Nhập sai định dạng!!! Hãy nhập lại!");
-                    }
-                }
+                double giaXuatKhau = validationC10.resultDoubleAfterValidate("Nhập giá xuất khẩu: ");
+                String quocGiaNhapSanPham = validationC10.resultStringAfterValidate("Nhập quốc gia nhập sản phẩm: ");
 
-                String quocGiaNhapSanPham;
-                while (true) {
-                    System.out.print("Nhập quốc gia nhập sản phẩm: ");
-                    quocGiaNhapSanPham = scanner.nextLine();
-                    if (quocGiaNhapSanPham.trim().equals("")) {
-                        System.out.println("Nhập sai!!! Hãy nhập lại!");
-                    } else {
-                        break;
-                    }
-                }
                 sanPhamXuatKhauList.add(new SanPhamXuatKhau(maSanPham, tenSanPham, giaBan, soLuong, nhaSanXuat
                         , giaXuatKhau, quocGiaNhapSanPham));
                 stringXuatKhauList = ReadAndWriteFileCSVC10.convertSanPhamListToStringList(sanPhamXuatKhauList);
@@ -163,7 +50,6 @@ public class SanPhamServiceImpl implements SanPhamService {
                 System.out.println("Thêm mới sản phẩm xuất khẩu thành công!!!");
                 break;
         }
-
     }
 
     @Override
