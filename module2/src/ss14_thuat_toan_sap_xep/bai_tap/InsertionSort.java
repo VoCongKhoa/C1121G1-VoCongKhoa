@@ -53,6 +53,7 @@ public class InsertionSort {
                 currentPosition--;
             }
             array.set(currentPosition,tempValue);
+            System.out.println(array);
         }
         return array;
     }

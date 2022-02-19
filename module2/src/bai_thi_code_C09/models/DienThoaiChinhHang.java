@@ -1,8 +1,8 @@
 package bai_thi_code_C09.models;
 
 public class DienThoaiChinhHang extends DienThoai{
-    int thoiGianBaoHanh;
-    String phamViBaoHanh;
+    private int thoiGianBaoHanh;
+    private String phamViBaoHanh;
 
     public DienThoaiChinhHang() {
     }
@@ -37,11 +37,11 @@ public class DienThoaiChinhHang extends DienThoai{
     @Override
     public String toString() {
         return "DienThoaiChinhHang{" +
-                "idDienThoai=" + idDienThoai +
-                ", tenDienThoai='" + tenDienThoai + '\'' +
-                ", giaBan=" + giaBan +
-                ", soLuong=" + soLuong +
-                ", nhaSanXuat='" + nhaSanXuat + '\'' +
+                "idDienThoai=" + getIdDienThoai() +
+                ", tenDienThoai='" + getTenDienThoai() + '\'' +
+                ", giaBan=" + getGiaBan() +
+                ", soLuong=" + getSoLuong() +
+                ", nhaSanXuat='" + getNhaSanXuat() + '\'' +
                 ", thoiGianBaoHanh=" + thoiGianBaoHanh +
                 ", phamViBaoHanh='" + phamViBaoHanh + '\'' +
                 '}';

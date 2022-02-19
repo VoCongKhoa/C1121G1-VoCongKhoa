@@ -1,8 +1,33 @@
 package bai_thi_code_C10.utils;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ValidationC10 {
+
+    private static final String MA_SAN_PHAM_REGEX = "^SP\\d{5}$";
+
+    public boolean validateMaSanPham(String maSanPham) {
+        return Pattern.matches(MA_SAN_PHAM_REGEX, maSanPham.trim());
+    }
+
+    public String resultMaSanPhamAfterValidate(String text){
+        Scanner scanner = new Scanner(System.in);
+        String result;
+        while (true) {
+            System.out.print(text);
+            result = scanner.nextLine();
+            if (result.trim().equals("")) {
+                System.out.println("Không được để trống!!! Hãy nhập vào thông tin!");
+            } else if (!validateMaSanPham(result)){
+                System.out.println("Nhập sai định dạng mã sản phẩm (EX: SP00001, SP0002,...)");
+            } else {
+                break;
+            }
+        }
+        return result;
+    }
+
     public String resultStringAfterValidate(String text){
         Scanner scanner = new Scanner(System.in);
         String result;

@@ -2,14 +2,14 @@ package bai_thi_code_C10.models;
 
 import java.util.Objects;
 
-public class SanPham {
-    static int soSanPham = 1;
-    int idSanPham;
-    String maSanPham;
-    String tenSanPham;
-    double giaBan;
-    int soLuong;
-    String nhaSanXuat;
+public abstract class SanPham {
+    private static int soSanPham = 1;
+    private int idSanPham;
+    private String maSanPham;
+    private String tenSanPham;
+    private double giaBan;
+    private int soLuong;
+    private String nhaSanXuat;
 
     public SanPham() {
         idSanPham = soSanPham++;

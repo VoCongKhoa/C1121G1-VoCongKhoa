@@ -48,12 +48,12 @@ public class SanPhamNhapKhau extends SanPham {
     @Override
     public String toString() {
         return "SanPhamNhapKhau{" +
-                "idSanPham=" + idSanPham +
-                ", maSanPham='" + maSanPham + '\'' +
-                ", tenSanPham='" + tenSanPham + '\'' +
-                ", giaBan=" + giaBan +
-                ", soLuong=" + soLuong +
-                ", nhaSanXuat='" + nhaSanXuat + '\'' +
+                "idSanPham=" + getIdSanPham() +
+                ", maSanPham='" + getMaSanPham() + '\'' +
+                ", tenSanPham='" + getTenSanPham() + '\'' +
+                ", giaBan=" + getGiaBan() +
+                ", soLuong=" + getSoLuong() +
+                ", nhaSanXuat='" + getNhaSanXuat() + '\'' +
                 ", giaNhapKhau=" + giaNhapKhau +
                 ", tinhThanhNhap='" + tinhThanhNhap + '\'' +
                 ", thueNhapKhau=" + thueNhapKhau +

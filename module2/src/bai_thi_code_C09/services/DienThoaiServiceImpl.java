@@ -6,7 +6,6 @@ import bai_thi_code_C09.models.DienThoaiChinhHang;
 import bai_thi_code_C09.models.DienThoaiXachTay;
 import bai_thi_code_C09.utils.NotFoundProductException;
 import bai_thi_code_C09.utils.ValidationC09;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +13,8 @@ import java.util.Scanner;
 public class DienThoaiServiceImpl implements DienThoaiService {
     static final String DIEN_THOAI = "src/bai_thi_code_C09/data/dienThoai.csv";
     ValidationC09 validationC09 = new ValidationC09();
+    List<DienThoai> dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(
+            ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI));
 
     @Override
     public void themMoi(int caseNumber) {
@@ -56,8 +57,15 @@ public class DienThoaiServiceImpl implements DienThoaiService {
                     }
                 }
 
-                dienThoaiChinhHangList.add(new DienThoaiChinhHang(tenDienThoai, giaBan, soLuong, nhaSanXuat
-                        , thoiGianBaoHanh, phamViBaoHanh));
+                DienThoaiChinhHang dienThoaiChinhHang = new DienThoaiChinhHang(tenDienThoai, giaBan, soLuong, nhaSanXuat
+                        , thoiGianBaoHanh, phamViBaoHanh);
+                if (dienThoaiList.isEmpty()) {
+                    dienThoaiChinhHang.setIdDienThoai(1);
+                } else {
+                    dienThoaiChinhHang.setIdDienThoai(dienThoaiList.get(dienThoaiList.size()-1).getIdDienThoai() + 1);
+                }
+                dienThoaiList.add(dienThoaiChinhHang);
+                dienThoaiChinhHangList.add(dienThoaiChinhHang);
                 stringDienThoaiChinhHangList = ReadAndWriteFileCSVC09.convertDienThoaiListToStringList(dienThoaiChinhHangList);
                 ReadAndWriteFileCSVC09.writeStringListIntoCSVFile(DIEN_THOAI, stringDienThoaiChinhHangList, true);
                 System.out.println("Thêm mới điện thoại chính hãng thành công!!!");
@@ -88,8 +96,16 @@ public class DienThoaiServiceImpl implements DienThoaiService {
                         break;
                     }
                 }
-                dienThoaiXachTayList.add(new DienThoaiXachTay(tenDienThoai, giaBan, soLuong, nhaSanXuat
-                        , quocGiaXachTay, trangThai));
+
+                DienThoaiXachTay dienThoaiXachTay = new DienThoaiXachTay(tenDienThoai, giaBan, soLuong, nhaSanXuat
+                        , quocGiaXachTay, trangThai);
+                if (dienThoaiList.isEmpty()) {
+                    dienThoaiXachTay.setIdDienThoai(1);
+                } else {
+                    dienThoaiXachTay.setIdDienThoai(dienThoaiList.get(dienThoaiList.size()-1).getIdDienThoai() + 1);
+                }
+                dienThoaiList.add(dienThoaiXachTay);
+                dienThoaiXachTayList.add(dienThoaiXachTay);
                 stringDienThoaiXachTayList = ReadAndWriteFileCSVC09.convertDienThoaiListToStringList(dienThoaiXachTayList);
                 ReadAndWriteFileCSVC09.writeStringListIntoCSVFile(DIEN_THOAI, stringDienThoaiXachTayList, true);
                 System.out.println("Thêm mới điện thoại xách tay thành công!!!");
@@ -99,90 +115,102 @@ public class DienThoaiServiceImpl implements DienThoaiService {
 
     @Override
     public void xoa() throws NotFoundProductException {
-        Scanner scanner = new Scanner(System.in);
-        chonMaDienThoaiLoop:
-        do {
-            try {
-                hienThi();
-                System.out.print("Chọn mã điện thoại muốn xoá: ");
-                int maDienThoai = Integer.parseInt(scanner.nextLine());
-                List<String> stringList = ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI);
-                List<DienThoai> dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(stringList);
-                boolean flag = false;
-                for (DienThoai dienThoai : dienThoaiList) {
-                    if (dienThoai.getIdDienThoai() == maDienThoai) {
-                        do {
-                            int xacNhan;
-                            try {
-                                System.out.println("Bạn có xác nhận xoá điện thoại với mã là: " + maDienThoai);
-                                System.out.println("1. Có");
-                                System.out.println("2. Không");
-                                System.out.print("Bạn chọn: ");
-                                xacNhan = Integer.parseInt(scanner.nextLine());
-                                switch (xacNhan) {
-                                    case 1:
-                                        dienThoaiList.remove(dienThoai);
-                                        stringList = ReadAndWriteFileCSVC09.convertDienThoaiListToStringList(dienThoaiList);
-                                        ReadAndWriteFileCSVC09.writeStringListIntoCSVFile(DIEN_THOAI, stringList, false);
-                                        System.out.println("Bạn đã xoá thành công!!!");
-                                        break chonMaDienThoaiLoop;
-                                    case 2:
-                                        System.out.println("Bạn đã huỷ xoá!");
-                                        break chonMaDienThoaiLoop;
-                                    default:
-                                        System.out.println("Bạn chọn sai!!! Hãy nhập lại!");
+        if (dienThoaiList.isEmpty()){
+            System.out.println("Empty file!");
+        }else {
+            Scanner scanner = new Scanner(System.in);
+            chonMaDienThoaiLoop:
+            do {
+                try {
+                    hienThi();
+                    System.out.print("Chọn mã điện thoại muốn xoá: ");
+                    int maDienThoai = Integer.parseInt(scanner.nextLine());
+                    List<String> stringList = ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI);
+                    dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(stringList);
+                    boolean flag = false;
+                    for (DienThoai dienThoai : dienThoaiList) {
+                        if (dienThoai.getIdDienThoai() == maDienThoai) {
+                            do {
+                                int xacNhan;
+                                try {
+                                    System.out.println("Bạn có xác nhận xoá điện thoại với mã là: " + maDienThoai);
+                                    System.out.println("1. Có");
+                                    System.out.println("2. Không");
+                                    System.out.print("Bạn chọn: ");
+                                    xacNhan = Integer.parseInt(scanner.nextLine());
+                                    switch (xacNhan) {
+                                        case 1:
+                                            dienThoaiList.remove(dienThoai);
+                                            stringList = ReadAndWriteFileCSVC09.convertDienThoaiListToStringList(dienThoaiList);
+                                            ReadAndWriteFileCSVC09.writeStringListIntoCSVFile(DIEN_THOAI, stringList, false);
+                                            System.out.println("Bạn đã xoá thành công!!!");
+                                            break chonMaDienThoaiLoop;
+                                        case 2:
+                                            System.out.println("Bạn đã huỷ xoá!");
+                                            break chonMaDienThoaiLoop;
+                                        default:
+                                            System.out.println("Bạn chọn sai!!! Hãy nhập lại!");
+                                    }
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Sai định dạng!!! Hãy nhập lại!");
                                 }
-                            } catch (NumberFormatException e) {
-                                System.out.println("Sai định dạng!!! Hãy nhập lại!");
-                            }
-                        } while (true);
-                    } else {
-                        flag = true;
+                            } while (true);
+                        } else {
+                            flag = true;
+                        }
                     }
+                    if (flag) {
+                        throw new NotFoundProductException();
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Sai định dạng!!! Hãy nhập lại!");
                 }
-                if (flag) {
-                    throw new NotFoundProductException();
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Sai định dạng!!! Hãy nhập lại!");
-            }
-        } while (true);
+            } while (true);
+        }
     }
 
     @Override
     public void hienThi() {
-        List<String> stringList = ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI);
-        List<DienThoai> dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(stringList);
-        System.out.println("Danh sách điện thoại: ");
-        for (DienThoai dienThoai : dienThoaiList) {
-            System.out.println(dienThoai);
+        if (dienThoaiList.isEmpty()){
+            System.out.println("Empty file!");
+        } else {
+            List<String> stringList = ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI);
+            List<DienThoai> dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(stringList);
+            System.out.println("Danh sách điện thoại: ");
+            for (DienThoai dienThoai : dienThoaiList) {
+                System.out.println(dienThoai);
+            }
         }
     }
 
     @Override
     public void timKiem() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            hienThi();
-            System.out.print("Chọn mã điện thoại hoặc tên điện thoại bạn muốn tìm: ");
-            String timDienThoai = scanner.nextLine();
-            if (timDienThoai.trim().equals("")) {
-                System.out.println("Không được để trống!!! Hãy nhập lại!");
-            } else {
-                List<String> stringList = ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI);
-                List<DienThoai> dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(stringList);
-                boolean flag = false;
-                for (DienThoai dienThoai : dienThoaiList) {
-                    if (timDienThoai.equals(String.valueOf(dienThoai.getIdDienThoai()))
-                            || dienThoai.getTenDienThoai().toLowerCase().contains(timDienThoai.toLowerCase())) {
-                        System.out.println(dienThoai);
-                        flag = true;
-                    }
-                }
-                if (!flag) {
-                    System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
+        if (dienThoaiList.isEmpty()){
+            System.out.println("Empty file!");
+        } else {
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                hienThi();
+                System.out.print("Chọn mã điện thoại hoặc tên điện thoại bạn muốn tìm: ");
+                String timDienThoai = scanner.nextLine();
+                if (timDienThoai.trim().equals("")) {
+                    System.out.println("Không được để trống!!! Hãy nhập lại!");
                 } else {
-                    break;
+                    List<String> stringList = ReadAndWriteFileCSVC09.readFileCSVToStringList(DIEN_THOAI);
+                    List<DienThoai> dienThoaiList = ReadAndWriteFileCSVC09.convertStringListToDienThoaiList(stringList);
+                    boolean flag = false;
+                    for (DienThoai dienThoai : dienThoaiList) {
+                        if (timDienThoai.equals(String.valueOf(dienThoai.getIdDienThoai()))
+                                || dienThoai.getTenDienThoai().toLowerCase().contains(timDienThoai.toLowerCase())) {
+                            System.out.println(dienThoai);
+                            flag = true;
+                        }
+                    }
+                    if (!flag) {
+                        System.out.println("Không tìm thấy!!! Hãy nhập lại!!!");
+                    } else {
+                        break;
+                    }
                 }
             }
         }

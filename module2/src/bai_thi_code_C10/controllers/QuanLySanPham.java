@@ -2,7 +2,6 @@ package bai_thi_code_C10.controllers;
 
 import bai_thi_code_C10.services.SanPhamServiceImpl;
 import bai_thi_code_C10.utils.NotFoundProductException;
-
 import java.util.Scanner;
 
 public class QuanLySanPham {

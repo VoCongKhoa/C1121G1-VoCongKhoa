@@ -1,13 +1,13 @@
 package bai_thi_code_C09.models;
 
-public class DienThoai {
+public abstract class DienThoai {
     //    ID, Tên điện thoại, Giá bán, Số lượng, Nhà sản xuất.
-    static int demDienThoai = 1;
-    int idDienThoai;
-    String tenDienThoai;
-    double giaBan;
-    int soLuong;
-    String nhaSanXuat;
+    private static int demDienThoai = 1;
+    private int idDienThoai;
+    private String tenDienThoai;
+    private double giaBan;
+    private int soLuong;
+    private String nhaSanXuat;
 
     public DienThoai() {
         this.idDienThoai = demDienThoai++;

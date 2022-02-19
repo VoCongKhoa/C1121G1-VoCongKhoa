@@ -1,6 +1,6 @@
 package bai_thi_code_C08.models;
 
-public class TaiKhoan {
+public abstract class TaiKhoan {
     private static int demTaiKhoan = 1;
     private int idTaiKhoan;
     private String maTaiKhoan;

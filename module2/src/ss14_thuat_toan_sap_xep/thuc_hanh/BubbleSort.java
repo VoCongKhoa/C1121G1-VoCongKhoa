@@ -17,7 +17,7 @@ public class BubbleSort {
         integerList.add(78);
         integerList.add(-78);
         System.out.println(integerList);
-        System.out.println(bubbleSortDemo(integerList));
+        System.out.println(bubbleSort(integerList));
     }
     public static ArrayList<Integer> bubbleSort(ArrayList<Integer> array) {
         for (int i = 1; i < array.size(); i++) {
@@ -28,6 +28,7 @@ public class BubbleSort {
                     array.set(j+1,temp);
                 }
             }
+            System.out.println(array);
         }
         return array;
     }
