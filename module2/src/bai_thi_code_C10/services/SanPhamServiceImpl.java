@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SanPhamServiceImpl implements SanPhamService {
-    static final String SAN_PHAM = "src/bai_thi_code_C10/data/sanPham.csv";
+    static final String SAN_PHAM = "src/bai_thi_code_C10/data/benhAn.csv";
     ValidationC10 validationC10 = new ValidationC10();
     public static List<SanPham> sanPhamList = ReadAndWriteFileCSVC10.convertStringListToSanPhamList(
             ReadAndWriteFileCSVC10.readFileCSVToStringList(SAN_PHAM));
