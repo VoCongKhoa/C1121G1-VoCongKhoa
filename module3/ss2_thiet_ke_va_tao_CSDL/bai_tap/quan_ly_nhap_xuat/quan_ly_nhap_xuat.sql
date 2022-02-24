@@ -57,4 +57,15 @@ foreign key(ma_vat_tu) references vat_tu(ma_vat_tu),
 primary key(ma_vat_tu,so_phieu_nhap)
 );
 
+alter table nha_cung_cap
+drop column so_dien_thoai;
+
+create table so_dien_thoai(
+ma_nha_cung_cap varchar(50) not null,
+ma_so_dien_thoai int not null auto_increment,
+so_dien_thoai varchar(50),
+primary key(ma_so_dien_thoai),
+foreign key(ma_nha_cung_cap) references nha_cung_cap(ma_nha_cung_cap)
+);
+
 -- drop database quan_ly_nhap_xuat;
