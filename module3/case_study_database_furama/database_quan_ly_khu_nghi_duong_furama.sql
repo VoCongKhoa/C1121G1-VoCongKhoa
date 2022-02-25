@@ -261,5 +261,87 @@ inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_
 inner join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
 order by khach_hang.ma_khach_hang;
 
+-- Câu 6:
+select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu 
+from loai_dich_vu
+inner join dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
+left join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+where hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-3-31 23:59:59'
+group by dich_vu.ma_dich_vu;
+
+-- Câu 7:
+select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich,dich_vu.so_nguoi_toi_da , dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu
+from loai_dich_vu
+inner join dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
+left join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+where (hop_dong.ngay_lam_hop_dong between '2020-1-1 00:00:00' and '2020-12-31 23:59:59')
+and (hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-12-31 23:59:59')
+group by dich_vu.ma_dich_vu;
+
+
+-- Câu 8:
+-- Cách 1:
+select * from khach_hang
+group by ho_ten;
+-- Cách 2:
+select distinct ho_ten from khach_hang;
+-- Cách 3:
+select *, count(*) as so_lan_trung_lap from khach_hang
+group by ho_ten
+having so_lan_trung_lap >=1;
+
+-- Câu 9:
+select month(hop_dong.ngay_lam_hop_dong) as thang_lam_hop_dong, count(hop_dong.ma_hop_dong) as so_luong_hop_dong
+from hop_dong
+inner join khach_hang on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+group by thang_lam_hop_dong
+order by thang_lam_hop_dong;
+
+-- Câu 10:
+select hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, hop_dong.tien_dat_coc, 
+dich_vu_di_kem.ten_dich_vu_di_kem, sum(hop_dong_chi_tiet.so_luong) as so_luong_dich_vu_di_kem, hop_dong_chi_tiet.ma_dich_vu_di_kem
+from hop_dong
+inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+inner join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by hop_dong_chi_tiet.ma_dich_vu_di_kem;
+
+-- Câu 11:
+select dich_vu_di_kem.ma_dich_vu_di_kem, dich_vu_di_kem.ten_dich_vu_di_kem
+from loai_khach
+inner join khach_hang on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+inner join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+inner join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+where loai_khach.ten_loai_khach = 'Diamond' and (khach_hang.dia_chi like '%Vinh%' or khach_hang.dia_chi like '%Quảng Ngãi%');
+
+-- Câu 12:
+select hop_dong.ma_hop_dong, nhan_vien.ho_ten, khach_hang.ho_ten, khach_hang.so_dien_thoai, dich_vu.ten_dich_vu, 
+sum(hop_dong_chi_tiet.so_luong) as so_luong_dich_vu_di_kem, hop_dong.tien_dat_coc
+from khach_hang
+inner join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+inner join nhan_vien on nhan_vien.ma_nhan_vien = hop_dong.ma_nhan_vien
+inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+where ((hop_dong.ngay_lam_hop_dong between '2020-10-1 00:00:00' and '2020-12-31 23:59:59') 
+or (hop_dong.ngay_ket_thuc between '2020-10-1 00:00:00' and '2020-12-31 23:59:59'))
+and ((hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-6-30 23:59:59')
+or (hop_dong.ngay_ket_thuc between '2020-10-1 00:00:00' and '2020-12-31 23:59:59'))
+group by hop_dong.ma_hop_dong;
+
+-- Câu 13:
+select sum(hop_dong_chi_tiet.so_luong) as so_luong
+from dich_vu_di_kem
+inner join hop_dong_chi_tiet on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by hop_dong_chi_tiet.ma_dich_vu_di_kem
+order by so_luong;
+
+
+select ten_dich_vu
+from dich_vu
+where exists(select * from hop_dong where hop_dong.ma_dich_vu = dich_vu.ma_dich_vu);
+
+
+
 -- drop database quan_ly_khu_nghi_duong_Furama;
 
