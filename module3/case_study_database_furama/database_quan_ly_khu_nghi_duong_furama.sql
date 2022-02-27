@@ -251,15 +251,27 @@ where loai_khach.ten_loai_khach = 'Diamond'
 group by ho_ten
 order by so_lan_dat_phong desc;
 
+-- Câu 5:
 select khach_hang.ma_khach_hang, loai_khach.ten_loai_khach, khach_hang.ho_ten, hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, 
 hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, (dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien) as tong_tien
-from loai_khach
-inner join khach_hang on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
-inner join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+from dich_vu_di_kem 
+inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+inner join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
 inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
-inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
-inner join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+right join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+right join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
 order by khach_hang.ma_khach_hang;
+
+-- select khach_hang.ma_khach_hang, loai_khach.ten_loai_khach, khach_hang.ho_ten, hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, 
+-- hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, (dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien) as tong_tien
+-- from loai_khach
+-- inner join khach_hang on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+-- inner join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+-- inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+-- inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+-- inner join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+-- order by khach_hang.ma_khach_hang;
+
 
 -- Câu 6:
 select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu 
@@ -329,19 +341,84 @@ and ((hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-6-30 
 or (hop_dong.ngay_ket_thuc between '2020-10-1 00:00:00' and '2020-12-31 23:59:59'))
 group by hop_dong.ma_hop_dong;
 
--- Câu 13:
-select sum(hop_dong_chi_tiet.so_luong) as so_luong
+-- Câu 13: chưa xong
+select *
+from (select dich_vu_di_kem.ma_dich_vu_di_kem ,dich_vu_di_kem.ten_dich_vu_di_kem ,sum(hop_dong_chi_tiet.so_luong) as so_luong
+from dich_vu_di_kem inner join hop_dong_chi_tiet on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by hop_dong_chi_tiet.ma_dich_vu_di_kem) as bang_tam_so_luong_dich_vu_di_kem
+where bang_tam_so_luong_dich_vu_di_kem.so_luong = (
+select max(bang_tam_so_luong_dich_vu_di_kem.so_luong) as max_so_luong 
+from bang_tam_so_luong_dich_vu_di_kem
+);
+
+select * from hop_dong_chi_tiet where hop_dong_chi_tiet.so_luong >= all(
+select dich_vu_di_kem.ten_dich_vu_di_kem ,sum(hop_dong_chi_tiet.so_luong) as so_luong
 from dich_vu_di_kem
 inner join hop_dong_chi_tiet on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
 group by hop_dong_chi_tiet.ma_dich_vu_di_kem
-order by so_luong;
+order by so_luong);
+
+-- Câu 14:
+select hop_dong.ma_hop_dong, loai_dich_vu.ten_loai_dich_vu, dich_vu_di_kem.ten_dich_vu_di_kem, 
+count(hop_dong_chi_tiet.ma_hop_dong_chi_tiet) as so_lan_su_dung
+from dich_vu_di_kem
+inner join hop_dong_chi_tiet on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+inner join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+inner join loai_dich_vu on dich_vu.ma_loai_dich_vu = loai_dich_vu.ma_loai_dich_vu
+group by dich_vu_di_kem.ma_dich_vu_di_kem
+having so_lan_su_dung = 1
+order by hop_dong.ma_hop_dong;
+
+-- Câu 15:
+select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten, trinh_do.ten_trinh_do, bo_phan.ten_bo_phan, nhan_vien.so_dien_thoai, nhan_vien.dia_chi,
+count(hop_dong.ma_hop_dong) as so_luong_hop_dong
+from hop_dong
+inner join nhan_vien on hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien
+inner join bo_phan on nhan_vien.ma_bo_phan = bo_phan.ma_bo_phan
+inner join trinh_do on nhan_vien.ma_trinh_do = trinh_do.ma_trinh_do
+where year(hop_dong.ngay_lam_hop_dong) between 2020 and 2021
+group by nhan_vien.ma_nhan_vien
+having so_luong_hop_dong <= 3;
+
+-- Câu 16:
+-- Lấy ra được thông tin nhân viên, nhưng không xoá như đề yêu cầu
+select *
+from nhan_vien
+where ma_nhan_vien not in(select hop_dong.ma_nhan_vien 
+from hop_dong inner join nhan_vien on hop_dong.ma_nhan_vien = nhan_vien.ma_nhan_vien);
+
+-- Câu 17: Bị lỗi
+update khach_hang
+set khach_hang.ma_loai_khach = 1
+where khach_hang.ma_khach_hang = (select khach_hang.ma_khach_hang
+from dich_vu_di_kem 
+inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+inner join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+inner join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+inner join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+where year(hop_dong.ngay_lam_hop_dong) = 2021 and dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien > 10000000
+order by khach_hang.ma_khach_hang);
+
+-- Làm sao lấy ra được 1 trường trong kết quả trả về của câu subquery???
+-- Trường hợp bên dưới, tong_tien không thể thay thế cho (dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien)
+-- trong mệnh đề WHERE???
+-- select khach_hang.ma_khach_hang 
+-- from khach_hang
+-- where ma_khach_hang in (
+-- select khach_hang.ma_khach_hang, loai_khach.ten_loai_khach, khach_hang.ho_ten, hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, 
+-- hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, (dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien) as tong_tien
+-- from dich_vu_di_kem 
+-- inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+-- inner join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+-- inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+-- inner join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+-- inner join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+-- where year(hop_dong.ngay_lam_hop_dong) = 2021 and dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien > 10000000
+-- order by khach_hang.ma_khach_hang);
 
 
-select ten_dich_vu
-from dich_vu
-where exists(select * from hop_dong where hop_dong.ma_dich_vu = dich_vu.ma_dich_vu);
-
-
-
+use quan_ly_khu_nghi_duong_Furama;
 -- drop database quan_ly_khu_nghi_duong_Furama;
 
