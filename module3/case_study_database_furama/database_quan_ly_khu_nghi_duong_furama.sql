@@ -242,7 +242,7 @@ select ma_khach_hang, ho_ten, ngay_sinh, (round(datediff(curdate(),ngay_sinh)/36
 from khach_hang 
 where (round(datediff(curdate(),ngay_sinh)/365,0) between 18 and 50) and (dia_chi like '%Đà Nẵng%' or dia_chi like '%Quảng Trị%');
 
--- Caau 4:
+-- Câu 4:
 select loai_khach.ma_loai_khach, loai_khach.ten_loai_khach, khach_hang.ho_ten, count(ho_ten) as so_lan_dat_phong  
 from loai_khach
 inner join khach_hang on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
@@ -251,26 +251,26 @@ where loai_khach.ten_loai_khach = 'Diamond'
 group by ho_ten
 order by so_lan_dat_phong desc;
 
--- Câu 5: Kết quả???
-select khach_hang.ma_khach_hang, loai_khach.ten_loai_khach, khach_hang.ho_ten, hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, 
-hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, (dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien) as tong_tien
-from dich_vu_di_kem 
-inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
-inner join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
-inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
-right join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
-right join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
-order by khach_hang.ma_khach_hang;
+-- Câu 5:
+create temporary table bang_tam_tinh_tong_tien_dvdk
+select hop_dong.ma_khach_hang, hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, hop_dong.ma_dich_vu,
+(sum(ifnull(hop_dong_chi_tiet.so_luong,0) * ifnull(dich_vu_di_kem.gia_tien,0)) + ifnull(dich_vu.chi_phi_thue,0)) as tong_tien
+from dich_vu 
+inner join hop_dong on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+left join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+group by hop_dong.ma_hop_dong
+order by hop_dong.ma_hop_dong;
 
--- select khach_hang.ma_khach_hang, loai_khach.ten_loai_khach, khach_hang.ho_ten, hop_dong.ma_hop_dong, dich_vu.ten_dich_vu, 
--- hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, (dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia_tien) as tong_tien
--- from loai_khach
--- inner join khach_hang on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
--- inner join hop_dong on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
--- inner join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
--- inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
--- inner join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
--- order by khach_hang.ma_khach_hang;
+select khach_hang.ma_khach_hang, loai_khach.ten_loai_khach, khach_hang.ho_ten, bang_tam_tinh_tong_tien_dvdk.ma_hop_dong, dich_vu.ten_dich_vu, 
+bang_tam_tinh_tong_tien_dvdk.ngay_lam_hop_dong, bang_tam_tinh_tong_tien_dvdk.ngay_ket_thuc,
+sum(ifnull(bang_tam_tinh_tong_tien_dvdk.tong_tien,0)) as tong_chi_phi
+from dich_vu
+inner join bang_tam_tinh_tong_tien_dvdk on bang_tam_tinh_tong_tien_dvdk.ma_dich_vu = dich_vu.ma_dich_vu
+right join khach_hang on khach_hang.ma_khach_hang = bang_tam_tinh_tong_tien_dvdk.ma_khach_hang
+right join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach
+group by khach_hang.ma_khach_hang
+order by khach_hang.ma_khach_hang;
 
 -- Câu 6:
 select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu 
@@ -497,6 +497,100 @@ from hop_dong_chi_tiet
 where hop_dong_chi_tiet.so_luong > 10
 );
 set sql_safe_updates =1;
+
+-- Câu 20:
+select nhan_vien.ma_nhan_vien, nhan_vien.ho_ten, nhan_vien.ngay_sinh, nhan_vien.so_dien_thoai, nhan_vien.email, nhan_vien.dia_chi,
+'nhan_vien' as 'role'
+from nhan_vien
+union all 
+select khach_hang.ma_khach_hang, khach_hang.ho_ten, khach_hang.ngay_sinh, khach_hang.so_dien_thoai, khach_hang.email, khach_hang.dia_chi,
+'khach_hang' as 'role'
+from khach_hang;
+
+-- Câu 21:
+insert into nhan_vien(ma_nhan_vien, ho_ten, ngay_sinh, so_cmnd, luong, so_dien_thoai, email, dia_chi, ma_vi_tri, ma_trinh_do, ma_bo_phan)
+values (11, 'Nguyễn Văn Võ','1992-01-01','534345231',8000000,'0941278553','nvv0101@gmail.com','Hải Châu, Đà Nẵng',2,3,2);
+insert into hop_dong (ma_hop_dong, ngay_lam_hop_dong,ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu) 
+values (13, '2019-12-12', '2019-12-15', 0, 11, 2, 6);
+create view v_nhan_vien as
+select nhan_vien.* from nhan_vien 
+where nhan_vien.dia_chi like concat('%','Hải Châu','%') 
+and nhan_vien.ma_nhan_vien = (
+select hop_dong.ma_nhan_vien 
+from hop_dong 
+where datediff(hop_dong.ngay_lam_hop_dong,STR_TO_DATE('12/12/2019', '%d/%m/%Y')) = 0
+);
+
+select * from v_nhan_vien;
+
+-- Câu 22:
+update v_nhan_vien
+set dia_chi = 'Liên Chiểu, Đà Nẵng';
+
+-- Câu 23:
+delimiter //
+create procedure sp_xoa_khach_hang(
+ma_khach_hang_xoa int
+)
+begin
+set sql_safe_updates = 0;
+delete from khach_hang
+where khach_hang.ma_khach_hang = ma_khach_hang_xoa;
+set sql_safe_updates = 1;
+end
+//delimiter ;
+
+-- Câu 24:
+delimiter //
+create procedure sp_them_moi_hop_dong(
+ma_hop_dong int,
+ngay_lam_hop_dong datetime,
+ngay_ket_thuc datetime,
+tien_dat_coc double,
+ma_nhan_vien int,
+ma_khach_hang int, 
+ma_dich_vu int
+)
+begin
+	 if ma_hop_dong in (select hop_dong.ma_hop_dong from hop_dong) then
+		signal sqlstate '45000' set message_text = 'Mã hợp đồng bị trùng';
+        elseif (ngay_lam_hop_dong is null) then
+			signal sqlstate '45000' set message_text = 'Ngày làm hợp đồng không được null';
+        elseif (ngay_ket_thuc is null) then
+			signal sqlstate '45000' set message_text = 'Ngày kết thúc hợp đồng không được null';
+        elseif (tien_dat_coc is null) then
+			signal sqlstate '45000' set message_text = 'Tiền đặt cọc không được null';
+        elseif (ma_nhan_vien is null) then
+			signal sqlstate '45000' set message_text = 'Mã nhân viên không được null';
+        elseif (ma_khach_hang is null) then
+			signal sqlstate '45000' set message_text = 'Mã khách hàng không được null';
+        elseif (ma_dich_vu is null) then
+			signal sqlstate '45000' set message_text = 'Mã dịch vụ không được null';
+        elseif ma_nhan_vien not in (select nhan_vien.ma_nhan_vien from nhan_vien) then
+			signal sqlstate '45000' set message_text = 'Mã nhân viên không tồn tại';
+        elseif ma_khach_hang not in (select khach_hang.ma_khach_hang from khach_hang) then
+			signal sqlstate '45000' set message_text = 'Mã khách hàng không tồn tại';
+        elseif ma_dich_vu not in (select dich_vu.ma_dich_vu from dich_vu) then
+			signal sqlstate '45000' set message_text = 'Mã dịch vụ không tồn tại';
+        else
+			insert into hop_dong(hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, 
+            hop_dong.tien_dat_coc, hop_dong.ma_nhan_vien, hop_dong.ma_khach_hang, hop_dong.ma_dich_vu) 
+            values (ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu);
+	 end if;
+end
+//delimiter ;
+call sp_them_moi_hop_dong(14,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi ma_hop_dong
+call sp_them_moi_hop_dong(16,null,'2021-12-12',12,11,10,6); -- Lỗi ngay_lam_hop_dong
+call sp_them_moi_hop_dong(17,'2021-12-12',null,12,11,10,6); -- Lỗi ngay_ket_thuc
+call sp_them_moi_hop_dong(18,'2021-12-12','2021-12-12',null,11,10,6); -- Lỗi tien_dat_coc
+call sp_them_moi_hop_dong(19,'2021-12-12','2021-12-12',12,null,10,6); -- Lỗi ma_nhan_vien
+call sp_them_moi_hop_dong(20,'2021-12-12','2021-12-12',12,11,null,6); -- Lỗi ma_khach_hang
+call sp_them_moi_hop_dong(21,'2021-12-12','2021-12-12',12,12,10,6); -- Lỗi ma_dich_vu
+call sp_them_moi_hop_dong(22,'2021-12-12','2021-12-12',12,11,11,6);
+call sp_them_moi_hop_dong(23,'2021-12-12','2021-12-12',12,11,10,7);
+call sp_them_moi_hop_dong(21,'2021-12-12','2021-12-12',12,11,10,null);
+
+
 
 
 use quan_ly_khu_nghi_duong_Furama;
