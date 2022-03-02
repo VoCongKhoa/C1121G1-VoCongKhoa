@@ -309,11 +309,11 @@ order by thang_lam_hop_dong;
 
 -- Câu 10:
 select hop_dong.ma_hop_dong, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc, hop_dong.tien_dat_coc, 
-dich_vu_di_kem.ten_dich_vu_di_kem, sum(hop_dong_chi_tiet.so_luong) as so_luong_dich_vu_di_kem, hop_dong_chi_tiet.ma_dich_vu_di_kem
+dich_vu_di_kem.ten_dich_vu_di_kem, sum(ifnull(hop_dong_chi_tiet.so_luong,0)) as so_luong_dich_vu_di_kem, hop_dong_chi_tiet.ma_dich_vu_di_kem
 from hop_dong
-inner join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
-inner join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
-group by hop_dong_chi_tiet.ma_dich_vu_di_kem;
+left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by hop_dong.ma_hop_dong;
 
 -- Câu 11:
 select dich_vu_di_kem.ma_dich_vu_di_kem, dich_vu_di_kem.ten_dich_vu_di_kem
@@ -585,7 +585,6 @@ end
 
 -- drop procedure sp_them_moi_hop_dong;
 call sp_them_moi_hop_dong(14,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi ma_hop_dong bị trùng
-call sp_them_moi_hop_dong(14,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi ma_hop_dong bị trùng
 call sp_them_moi_hop_dong(16,null,'2021-12-12',12,11,10,6); -- Lỗi ngay_lam_hop_dong bị null
 call sp_them_moi_hop_dong(17,'2021-12-12',null,12,11,10,6); -- Lỗi ngay_ket_thuc bị null
 call sp_them_moi_hop_dong(18,'2021-12-12','2021-12-12',null,11,10,6); -- Lỗi tien_dat_coc bị null
@@ -631,6 +630,72 @@ end
 update hop_dong
 set hop_dong.ngay_ket_thuc = '2021-12-14'
 where hop_dong.ma_hop_dong = 14;
+
+-- Câu 27:
+-- Câu a:	Tạo Function func_dem_dich_vu: Đếm các dịch vụ đã được sử dụng với tổng tiền là > 2.000.000 VNĐ.
+delimiter //
+create function func_dem_dich_vu(dieu_kien_tien double) returns int
+deterministic
+begin
+	create temporary table bang_tam_tong_tien_dich_vu as
+	select (ifnull(dich_vu.chi_phi_thue,0) + sum(ifnull(hop_dong_chi_tiet.so_luong,0)*ifnull(dich_vu_di_kem.gia_tien,0))) as tong_tien
+	from dich_vu
+	left join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+	left join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+	left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+	group by hop_dong.ma_hop_dong
+	having tong_tien > dieu_kien_tien;
+	return (select count(tong_tien) from  bang_tam_tong_tien_dich_vu);
+end
+//delimiter ;
+
+select func_dem_dich_vu(2000000);
+
+-- b.	Tạo Function func_tinh_thoi_gian_hop_dong
+delimiter //
+create function func_tinh_thoi_gian_hop_dong(ma_khach_hang int) returns int
+deterministic
+begin
+	return (select max(datediff(hop_dong.ngay_ket_thuc,hop_dong.ngay_lam_hop_dong)) from hop_dong
+	where hop_dong.ma_khach_hang = ma_khach_hang
+	group by hop_dong.ma_khach_hang);
+end
+//delimiter ;
+
+select func_tinh_thoi_gian_hop_dong(7);
+
+-- Câu 28:	Tạo Stored Procedure sp_xoa_dich_vu_va_hd_room
+create temporary table bang_tam_sp_xoa_dich_vu_va_hd_room as
+select hop_dong_chi_tiet.ma_hop_dong_chi_tiet as ma_hop_dong_chi_tiet_xoa,
+ifnull(hop_dong.ma_hop_dong,0) as ma_hop_dong_xoa, 
+ifnull(dich_vu.ma_dich_vu,0) as ma_dich_vu_xoa
+from hop_dong_chi_tiet
+right join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+right join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+where dich_vu.ten_dich_vu like '%room%' and year(hop_dong.ngay_lam_hop_dong) between 2015 and 2019;
+delete from hop_dong_chi_tiet
+where hop_dong_chi_tiet.ma_hop_dong_chi_tiet in (select ma_hop_dong_chi_tiet_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
+delete from hop_dong
+where hop_dong.ma_hop_dong in (select ma_hop_dong_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
+delete from dich_vu
+where dich_vu.ma_dich_vu = (select ma_dich_vu_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
+drop temporary table bang_tam_sp_xoa_dich_vu_va_hd_room;
+
+select * from bang_tam_sp_xoa_dich_vu_va_hd_room;
+
+set sql_safe_updates = 0;
+
+
+
+delimiter //
+create procedure sp_xoa_dich_vu_va_hd_room()
+begin
+ 
+ 
+end
+//delimiter ;
+
+
 
 use quan_ly_khu_nghi_duong_Furama;
 -- drop database quan_ly_khu_nghi_duong_Furama;
