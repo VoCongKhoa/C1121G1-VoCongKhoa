@@ -520,7 +520,6 @@ select hop_dong.ma_nhan_vien
 from hop_dong 
 where datediff(hop_dong.ngay_lam_hop_dong,STR_TO_DATE('12/12/2019', '%d/%m/%Y')) = 0
 );
-
 select * from v_nhan_vien;
 
 -- Câu 22:
@@ -552,8 +551,12 @@ ma_khach_hang int,
 ma_dich_vu int
 )
 begin
-	 if ma_hop_dong in (select hop_dong.ma_hop_dong from hop_dong) then
-		signal sqlstate '45000' set message_text = 'Mã hợp đồng bị trùng';
+	if (ma_hop_dong <= 0 or ma_nhan_vien <= 0 or ma_khach_hang <= 0 or ma_dich_vu <= 0) then
+		signal sqlstate '45000' set message_text = 'Mã phải nhập số lớn hơn 0';
+        elseif tien_dat_coc < 0 then
+			signal sqlstate '45000' set message_text = 'Tiền đặt cọc phải là số dương';
+		elseif ma_hop_dong in (select hop_dong.ma_hop_dong from hop_dong) then
+			signal sqlstate '45000' set message_text = 'Mã hợp đồng bị trùng';
         elseif (ngay_lam_hop_dong is null) then
 			signal sqlstate '45000' set message_text = 'Ngày làm hợp đồng không được null';
         elseif (ngay_ket_thuc is null) then
@@ -579,19 +582,55 @@ begin
 	 end if;
 end
 //delimiter ;
-call sp_them_moi_hop_dong(14,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi ma_hop_dong
-call sp_them_moi_hop_dong(16,null,'2021-12-12',12,11,10,6); -- Lỗi ngay_lam_hop_dong
-call sp_them_moi_hop_dong(17,'2021-12-12',null,12,11,10,6); -- Lỗi ngay_ket_thuc
-call sp_them_moi_hop_dong(18,'2021-12-12','2021-12-12',null,11,10,6); -- Lỗi tien_dat_coc
-call sp_them_moi_hop_dong(19,'2021-12-12','2021-12-12',12,null,10,6); -- Lỗi ma_nhan_vien
-call sp_them_moi_hop_dong(20,'2021-12-12','2021-12-12',12,11,null,6); -- Lỗi ma_khach_hang
-call sp_them_moi_hop_dong(21,'2021-12-12','2021-12-12',12,12,10,6); -- Lỗi ma_dich_vu
-call sp_them_moi_hop_dong(22,'2021-12-12','2021-12-12',12,11,11,6);
-call sp_them_moi_hop_dong(23,'2021-12-12','2021-12-12',12,11,10,7);
-call sp_them_moi_hop_dong(21,'2021-12-12','2021-12-12',12,11,10,null);
 
+-- drop procedure sp_them_moi_hop_dong;
+call sp_them_moi_hop_dong(14,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi ma_hop_dong bị trùng
+call sp_them_moi_hop_dong(14,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi ma_hop_dong bị trùng
+call sp_them_moi_hop_dong(16,null,'2021-12-12',12,11,10,6); -- Lỗi ngay_lam_hop_dong bị null
+call sp_them_moi_hop_dong(17,'2021-12-12',null,12,11,10,6); -- Lỗi ngay_ket_thuc bị null
+call sp_them_moi_hop_dong(18,'2021-12-12','2021-12-12',null,11,10,6); -- Lỗi tien_dat_coc bị null
+call sp_them_moi_hop_dong(19,'2021-12-12','2021-12-12',12,null,10,6); -- Lỗi ma_nhan_vien bị null
+call sp_them_moi_hop_dong(20,'2021-12-12','2021-12-12',12,11,null,6); -- Lỗi ma_khach_hang bị null
+call sp_them_moi_hop_dong(21,'2021-12-12','2021-12-12',12,11,10,null); -- Lỗi ma_dich_vu bị null
+call sp_them_moi_hop_dong(22,'2021-12-12','2021-12-12',12,12,10,6); -- Lỗi ma_nhan_vien không tồn tại
+call sp_them_moi_hop_dong(23,'2021-12-12','2021-12-12',12,11,11,6); -- Lỗi ma_khach_hang không tồn tại
+call sp_them_moi_hop_dong(21,'2021-12-12','2021-12-12',12,11,10,7); -- Lỗi ma_dich_vu không tồn tại
+call sp_them_moi_hop_dong(-22,'2021-12-12','2021-12-12',12,11,10,6); -- Lỗi mã phải nhập số lớn hơn 0
+call sp_them_moi_hop_dong(23,'2021-12-12','2021-12-12',-12,11,10,6); -- Lỗi tiền đặt cọc phải là số dương
 
+-- Câu 25: 
+-- create temporary table so_luong_hop_dong as
+-- select count(hop_dong.ma_hop_dong) as so_luong_hop_dong from hop_dong;
+set @so_luong_hop_dong = (select count(hop_dong.ma_hop_dong) from hop_dong);
+select @so_luong_hop_dong;
 
+delimiter //
+create trigger tr_xoa_hop_dong after delete on hop_dong for each row
+begin
+-- update so_luong_hop_dong
+set @so_luong_hop_dong = (select count(hop_dong.ma_hop_dong) from hop_dong);
+end
+//delimiter ;
+
+set sql_safe_updates = 0;
+delete from hop_dong
+where hop_dong.ma_hop_dong = 14;
+set sql_safe_updates = 1;
+select @so_luong_hop_dong;
+
+-- Câu 26:
+delimiter //
+create trigger tr_cap_nhat_hop_dong after update on hop_dong for each row
+begin
+	if datediff(new.ngay_ket_thuc,new.ngay_lam_hop_dong) < 2 then
+		signal sqlstate '45000' set message_text = 'Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày';
+      end if;  
+end
+//delimiter ;
+
+update hop_dong
+set hop_dong.ngay_ket_thuc = '2021-12-14'
+where hop_dong.ma_hop_dong = 14;
 
 use quan_ly_khu_nghi_duong_Furama;
 -- drop database quan_ly_khu_nghi_duong_Furama;

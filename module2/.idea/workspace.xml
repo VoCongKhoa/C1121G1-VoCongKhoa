@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/common/ReadAndWriteFileCSV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/controllers/QuanLyBenhAn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/data/benhAn.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/models/BenhAn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/models/BenhAnBenhNhanThuong.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/models/BenhAnBenhNhanVIP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/services/BenhAnService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/services/BenhAnServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/utils/NotFoundMedicalRecordException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bai_thi_thuc_hanh/utils/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_thi_code_C10/data/sanPham.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_thi_code_C10/data/sanPham.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module2/bai_thi_code_C10/services/SanPhamServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module2/bai_thi_code_C10/services/SanPhamServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bai_thi_code_C10/services/SanPhamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bai_thi_code_C10/services/SanPhamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module3/case_study_database_furama/database_quan_ly_khu_nghi_duong_furama.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../module3/case_study_database_furama/database_quan_ly_khu_nghi_duong_furama.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,6 +235,7 @@
       <workItem from="1645396015592" duration="298000" />
       <workItem from="1645406301642" duration="9687000" />
       <workItem from="1645429434524" duration="376000" />
+      <workItem from="1646129403422" duration="324000" />
     </task>
     <servers />
   </component>
