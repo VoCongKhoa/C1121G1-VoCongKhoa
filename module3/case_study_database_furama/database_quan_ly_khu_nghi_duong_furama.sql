@@ -277,7 +277,11 @@ select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.chi_p
 from loai_dich_vu
 inner join dich_vu on loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
 left join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
-where hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-3-31 23:59:59'
+where hop_dong.ma_dich_vu not in (
+select hop_dong.ma_dich_vu 
+from hop_dong 
+where hop_dong.ngay_lam_hop_dong 
+between '2021-1-1 00:00:00' and '2021-3-31 23:59:59')
 group by dich_vu.ma_dich_vu;
 
 -- Câu 7:
@@ -673,12 +677,14 @@ from hop_dong_chi_tiet
 right join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
 right join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
 where dich_vu.ten_dich_vu like '%room%' and year(hop_dong.ngay_lam_hop_dong) between 2015 and 2019;
+select * from bang_tam_sp_xoa_dich_vu_va_hd_room;
+select count(*) from bang_tam_sp_xoa_dich_vu_va_hd_room;
 delete from hop_dong_chi_tiet
 where hop_dong_chi_tiet.ma_hop_dong_chi_tiet in (select ma_hop_dong_chi_tiet_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
 delete from hop_dong
 where hop_dong.ma_hop_dong in (select ma_hop_dong_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
 delete from dich_vu
-where dich_vu.ma_dich_vu = (select ma_dich_vu_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
+where dich_vu.ma_dich_vu in (select ma_dich_vu_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
 drop temporary table bang_tam_sp_xoa_dich_vu_va_hd_room;
 
 select * from bang_tam_sp_xoa_dich_vu_va_hd_room;
@@ -690,8 +696,33 @@ set sql_safe_updates = 0;
 delimiter //
 create procedure sp_xoa_dich_vu_va_hd_room()
 begin
- 
- 
+	declare bien_dem int;
+	
+    repeat
+		drop temporary table if exists bang_tam_sp_xoa_dich_vu_va_hd_room;
+		create temporary table bang_tam_sp_xoa_dich_vu_va_hd_room as
+		select hop_dong_chi_tiet.ma_hop_dong_chi_tiet as ma_hop_dong_chi_tiet_xoa,
+		ifnull(hop_dong.ma_hop_dong,0) as ma_hop_dong_xoa, 
+		ifnull(dich_vu.ma_dich_vu,0) as ma_dich_vu_xoa
+		from hop_dong_chi_tiet
+		right join hop_dong on hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+		right join dich_vu on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+		where dich_vu.ten_dich_vu like '%room%' and year(hop_dong.ngay_lam_hop_dong) between 2015 and 2019;
+        
+		set bien_dem = (select count(*) from bang_tam_sp_xoa_dich_vu_va_hd_room);
+        
+		delete from hop_dong_chi_tiet
+		where hop_dong_chi_tiet.ma_hop_dong_chi_tiet in (select ma_hop_dong_chi_tiet_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room );
+		delete from hop_dong
+		where hop_dong.ma_hop_dong in (select ma_hop_dong_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
+		delete from dich_vu
+		where dich_vu.ma_dich_vu in (select ma_dich_vu_xoa from bang_tam_sp_xoa_dich_vu_va_hd_room);
+		set bien_dem = bien_dem - 1;
+    until bien_dem < 0
+    end repeat;
+	-- while bien_dem > 0 do
+-- 		
+-- 	end while;
 end
 //delimiter ;
 

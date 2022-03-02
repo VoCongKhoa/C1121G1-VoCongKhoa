@@ -11,3 +11,9 @@ p{
     text-align: justify;
     text-indent: 50px;
 }
+a{
+    text-decoration: none;
+}
+sup{
+    font-size: 10px;
+}
