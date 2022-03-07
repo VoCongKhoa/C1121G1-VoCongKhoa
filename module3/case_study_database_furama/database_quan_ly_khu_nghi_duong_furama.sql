@@ -294,8 +294,8 @@ left join hop_dong on hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
 where hop_dong.ma_dich_vu in (
 select hop_dong.ma_dich_vu 
 from hop_dong 
-where (hop_dong.ngay_lam_hop_dong between '2020-1-1 00:00:00' and '2020-12-31 23:59:59')
-and (hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-12-31 23:59:59'))
+where ((hop_dong.ngay_lam_hop_dong between '2020-1-1 00:00:00' and '2020-12-31 23:59:59')
+and (hop_dong.ngay_lam_hop_dong not between '2021-1-1 00:00:00' and '2021-12-31 23:59:59')))
 group by dich_vu.ma_dich_vu;
 
 -- Câu 8:
@@ -622,7 +622,7 @@ end
 
 set sql_safe_updates = 0;
 delete from hop_dong
-where hop_dong.ma_hop_dong = 14;
+where hop_dong.ma_hop_dong = 12;
 set sql_safe_updates = 1;
 select @so_luong_hop_dong;
 

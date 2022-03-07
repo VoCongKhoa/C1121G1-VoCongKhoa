@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1085224-cfe6-46b8-8c24-8e46184c602e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../module3/ss7_thiet_ke_bo_cuc_trang_web/bai_tap/tao_layout_voi_the_html5_css/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../module3/ss7_thiet_ke_bo_cuc_trang_web/bai_tap/tao_layout_voi_the_html5_css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../module3/case_study_database_furama/database_quan_ly_khu_nghi_duong_furama.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../module3/case_study_database_furama/database_quan_ly_khu_nghi_duong_furama.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +50,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last.edited.regexp" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/bai_thi_thuc_hanh" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../module3" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
@@ -236,6 +238,7 @@
       <workItem from="1645406301642" duration="9687000" />
       <workItem from="1645429434524" duration="376000" />
       <workItem from="1646129403422" duration="324000" />
+      <workItem from="1646405582983" duration="85000" />
     </task>
     <servers />
   </component>
