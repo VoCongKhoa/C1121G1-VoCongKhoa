@@ -44,6 +44,7 @@ header input{
 }
 
 .feature{
+    color: blue;
     height: 70%;
     font-size: 30px;
     display: flex;
@@ -75,17 +76,79 @@ img{
     
 }
 .ri-function-fill{
+    color: blue;
     width: 25%;
 }
 
 .ri-message-2-fill{
+    color: blue;
     width: 25%;
 }
 .ri-notification-3-fill{
+    color: blue;
     width: 25%;
 }
 
-.left-sidebar{
-    z-index: -1;
-    position: fixed;
+.container{
+    /*z-index: -1;*/
+    width: 100%;
+    height: 600px;
+    /* background-color: #fff2ac; */
+    padding-top: 60px;
+    display: flex;
+    /*position: relative;*/
 }
+.left-sidebar{
+    /*z-index: -1;*/
+    width: 20%;
+    position: fixed;
+
+}
+div.left-sidebar div.name-and-picture-container{
+    margin-top: 10px;
+    width: fit-content;
+}
+div.left-sidebar div.name-and-picture-container img{
+    width: 15%;
+}
+.ri-discuss-fill{
+    color: blue;
+    font-size: 40px;
+    margin-right: 10px;
+}
+.ri-vidicon-fill{
+    color: blue;
+    font-size: 40px;
+    margin-right: 10px;
+}
+.ri-stack-fill{
+    color: blue;
+    font-size: 40px;
+    margin-right: 10px;
+}
+.ri-settings-5-fill{
+    color: blue;
+    font-size: 40px;
+    margin-right: 10px;
+}
+.main-content{
+    z-index: -1;
+    width: 60%;
+    position: relative;
+    left: 20%;
+}
+
+.right-sidebar{
+    z-index: -1;
+    width: 20%;
+    text-align: center;
+    position: fixed;
+    left: 80%;
+}
+.ads{
+    color: white;
+    margin-top: 10px;
+    background-color: blue;
+    height: 100px;
+}
+
