@@ -35,36 +35,6 @@
             <td>${person.anh}</td>
         </tr>
     </c:forEach>
-    <%--    <tr>--%>
-    <%--        <td>Mai Văn Hoàn</td>--%>
-    <%--        <td>1983-08-20</td>--%>
-    <%--        <td>Hà Nội</td>--%>
-    <%--        <td><img style="width:15%" src="person-1.jpg"></td>--%>
-    <%--    </tr>--%>
-    <%--    <tr>--%>
-    <%--        <td>Nguyễn Văn Nam</td>--%>
-    <%--        <td>1983-08-21</td>--%>
-    <%--        <td>Bắc Giang</td>--%>
-    <%--        <td><img style="width:15%" src="person-2.jpg"></td>--%>
-    <%--    </tr>--%>
-    <%--    <tr>--%>
-    <%--        <td>Nguyễn Thái Hoà</td>--%>
-    <%--        <td>1983-08-22</td>--%>
-    <%--        <td>Nam Định</td>--%>
-    <%--        <td><img style="width:15%" src="person-3.jpg"></td>--%>
-    <%--    </tr>--%>
-    <%--    <tr>--%>
-    <%--        <td>Trần Đăng Khoa</td>--%>
-    <%--        <td>1983-08-23</td>--%>
-    <%--        <td>Hà Tây</td>--%>
-    <%--        <td><img style="width:15%" src="person-4.jpg"></td>--%>
-    <%--    </tr>--%>
-    <%--    <tr>--%>
-    <%--        <td>Nguyễn Đình Thi</td>--%>
-    <%--        <td>1983-08-24</td>--%>
-    <%--        <td>Hà Nội</td>--%>
-    <%--        <td><img style="width:15%" src="person-5.jpg"></td>--%>
-    <%--    </tr>--%>
     </tbody>
 </table>
 
