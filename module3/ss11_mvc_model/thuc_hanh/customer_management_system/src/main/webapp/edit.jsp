@@ -12,30 +12,25 @@
     <title>Edit customer</title>
 </head>
 <body>
-<h1>Edit customer</h1>
-<%--<p>--%>
-<%--    <c:if test='${requestScope["message"] != null}'>--%>
-<%--        <span class="message">${requestScope["message"]}</span>--%>
-<%--    </c:if>--%>
-<%--</p>--%>
-<%--<p>--%>
-<%--    <a href="/customers">Back to customer list</a>--%>
-<%--</p>--%>
-<form method="post">
+<h1 style="text-align: center">Edit customer</h1>
+<p>
+    <a href="/customer">Back to customer list</a>
+</p>
+<form method="post" action="/customer?action=edit&id=${customer.id}">
     <fieldset>
         <legend>Customer information</legend>
         <table>
             <tr>
                 <td>Name: </td>
-                <td><input type="text" name="name" id="name" value="${customer.getName()}"></td>
+                <td><input type="text" name="name" id="name" value="${customer.name}"></td>
             </tr>
             <tr>
                 <td>Email: </td>
-                <td><input type="text" name="email" id="email" value="${customer.getEmail()}"></td>
+                <td><input type="text" name="email" id="email" value="${customer.email}"></td>
             </tr>
             <tr>
                 <td>Address: </td>
-                <td><input type="text" name="address" id="address" value="${customer.getAddress()}"></td>
+                <td><input type="text" name="address" id="address" value="${customer.address}"></td>
             </tr>
             <tr>
                 <td></td>
@@ -44,5 +39,6 @@
         </table>
     </fieldset>
 </form>
+<c:out value="${message}"></c:out>
 </body>
 </html>

@@ -17,16 +17,11 @@
     </style>
 </head>
 <body>
-<h1>Create new customer</h1>
-<%--<p>--%>
-<%--    <c:if test='${requestScope["message"] != null}'>--%>
-<%--        <span class="message">${requestScope["message"]}</span>--%>
-<%--    </c:if>--%>
-<%--</p>--%>
+<h1 style="text-align: center;">Create new customer</h1>
 <p>
     <a href="/customer">Back to customer list</a>
 </p>
-<form method="post" action="customer?do=create">
+<form method="post" action="customer?action=create">
     <fieldset>
         <legend>Customer information</legend>
         <table>
