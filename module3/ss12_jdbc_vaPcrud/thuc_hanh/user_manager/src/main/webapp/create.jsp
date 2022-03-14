@@ -13,7 +13,7 @@
 </head>
 <body>
 <a href="/">Back to homepage</a>
-<form method="post" action="/UserList?action=create">
+<form method="post">
     <label for="name">Add new name:
         <input type="text" placeholder="Type new name" id="name" name="name">
     </label><br><br>
