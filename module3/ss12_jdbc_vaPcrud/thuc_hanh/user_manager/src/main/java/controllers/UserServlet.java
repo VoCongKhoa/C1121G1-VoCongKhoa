@@ -61,6 +61,6 @@ public class UserServlet extends HttpServlet {
     private void getAllUser(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         request.setAttribute("userList", userDAO.selectAllUsers());
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("list.jsp").forward(request, response);
     }
 }
