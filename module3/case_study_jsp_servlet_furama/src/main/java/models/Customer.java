@@ -2,7 +2,7 @@ package models;
 
 public class Customer {
     //customer_id,customer_name,customer_birthday,customer_gender,customer_id_card,customer_phone,customer_email,
-    // customer_address,customer_type_id
+    // customer_address,customer_type_id, customer_type_name
     private int customerId;
     private String customerName;
     private String customerBirthday;
@@ -12,6 +12,7 @@ public class Customer {
     private String customerEmail;
     private String customerAddress;
     private int customerTypeId;
+    private String customerTypeName;
 
     public Customer() {
     }
@@ -40,6 +41,21 @@ public class Customer {
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;
         this.customerTypeId = customerTypeId;
+    }
+
+    public Customer(int customerId, String customerName, String customerBirthday, int customerGender,
+                    String customerIdCard, String customerPhone, String customerEmail, String customerAddress,
+                    int customerTypeId, String customerTypeName) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.customerBirthday = customerBirthday;
+        this.customerGender = customerGender;
+        this.customerIdCard = customerIdCard;
+        this.customerPhone = customerPhone;
+        this.customerEmail = customerEmail;
+        this.customerAddress = customerAddress;
+        this.customerTypeId = customerTypeId;
+        this.customerTypeName = customerTypeName;
     }
 
     public int getCustomerId() {
@@ -112,5 +128,13 @@ public class Customer {
 
     public void setCustomerTypeId(int customerTypeId) {
         this.customerTypeId = customerTypeId;
+    }
+
+    public String getCustomerTypeName() {
+        return customerTypeName;
+    }
+
+    public void setCustomerTypeName(String customerTypeName) {
+        this.customerTypeName = customerTypeName;
     }
 }
