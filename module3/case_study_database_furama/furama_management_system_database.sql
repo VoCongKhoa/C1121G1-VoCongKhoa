@@ -144,7 +144,8 @@ foreign key(attach_service_id) references attach_service(attach_service_id) on u
 );
 
 
-
+INSERT INTO `furama_management_system_database`.`customer` (`customer_id`, `customer_name`, `customer_birthday`, `customer_gender`, `customer_id_card`, `customer_phone`, `customer_email`, `customer_address`, `customer_type_id`) 
+VALUES ('1', 'Nguyễn Thị Hào', '1970-11-07', 0, '643431213', '0945423362', 'thihao07@gmail.com', '23 Nguyễn Hoàng, Đà Nẵng', '5');
 
 
 
