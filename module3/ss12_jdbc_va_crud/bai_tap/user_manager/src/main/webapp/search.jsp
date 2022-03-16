@@ -22,7 +22,7 @@
     <title>List all users</title>
 </head>
 <body>
-<button><a href="/UserList?action=create">Create new user</a></button>
+<button><a href="/">Back to list</a></button>
 <table>
     <tr>
         <th>ID</th>

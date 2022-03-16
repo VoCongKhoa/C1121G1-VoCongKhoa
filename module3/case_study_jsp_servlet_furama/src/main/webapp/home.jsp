@@ -11,7 +11,9 @@
     <title>Homepage</title>
   </head>
   <body>
-  <a type="button" href="/customer?action=list">Customer</a>
-  $END$
+  <a type="button" href="/customer?action=list">Customer</a><br><br>
+  </body>
+  <body>
+  <a type="button" href="/employee?action=list">Employee</a>
   </body>
 </html>

@@ -18,6 +18,9 @@
 %>
 <%--<a href="home.jsp">Back to homepage</a>--%>
 <form method="post">
+    <label for="code">Add new customer code:
+        <input type="text" placeholder="Type new customer code" id="code" name="customerCodeCreate">
+    </label><br><br>
     <label for="name">Add new customer name:
         <input type="text" placeholder="Type new customer name" id="name" name="customerNameCreate">
     </label><br><br>
@@ -39,10 +42,19 @@
     <label for="address">Add new customer address:
         <input type="text" placeholder="Type new customer address" id="address" name="customerAddressCreate">
     </label><br><br>
-    <label for="typeId">Add new customer type id:
-        <input type="text" placeholder="Type new customer type id" id="typeId" name="customerTypeIdCreate">
+    <label for="typeId">Choose new customer type id:
+        <select name="customerTypeIdCreate" id="typeId">
+            <option value="default" selected>Pick customer type</option>
+            <c:forEach var="typeIdCreate" items="${typeIdListCreate}">
+                <option value="${typeIdCreate.customerTypeId}">${typeIdCreate.customerTypeName}</option>
+            </c:forEach>
+        </select>
     </label><br><br>
     <button type="submit">Submit</button>
 </form>
+<p>${messageCreate}</p>
 </body>
 </html>
+
+<%--        <input type="text" placeholder="Type new customer type id" id="typeId" name="customerTypeIdCreate">--%>
+

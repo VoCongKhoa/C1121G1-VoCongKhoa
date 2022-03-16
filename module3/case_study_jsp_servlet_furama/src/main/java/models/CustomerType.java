@@ -1,2 +1,31 @@
-package models;public class CustomerType {
+package models;
+
+public class CustomerType {
+    //customer_type_id,	customer_type_name
+    private int customerTypeId;
+    private String customerTypeName;
+
+    public CustomerType() {
+    }
+
+    public CustomerType(int customerTypeId, String customerTypeName) {
+        this.customerTypeId = customerTypeId;
+        this.customerTypeName = customerTypeName;
+    }
+
+    public int getCustomerTypeId() {
+        return customerTypeId;
+    }
+
+    public void setCustomerTypeId(int customerTypeId) {
+        this.customerTypeId = customerTypeId;
+    }
+
+    public String getCustomerTypeName() {
+        return customerTypeName;
+    }
+
+    public void setCustomerTypeName(String customerTypeName) {
+        this.customerTypeName = customerTypeName;
+    }
 }
