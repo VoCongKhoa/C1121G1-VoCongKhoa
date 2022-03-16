@@ -47,4 +47,34 @@ public class EmployeeService implements IEmployeeService {
     public void updateEmployee(Employee employeeUpdate) {
         iEmployeeRepository.updateEmployee(employeeUpdate);
     }
+
+    @Override
+    public void deleteEmployee(int idEmployeeDelete) {
+        iEmployeeRepository.deleteEmployee(idEmployeeDelete);
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByName(String employeeNameSearch) {
+        return iEmployeeRepository.searchEmployeeByName(employeeNameSearch);
+    }
+
+    @Override
+    public List<Employee> sortEmployeeById() {
+        return iEmployeeRepository.sortEmployeeById();
+    }
+
+    @Override
+    public List<Employee> sortEmployeeByName() {
+        return iEmployeeRepository.sortEmployeeByName();
+    }
+
+    @Override
+    public List<Employee> sortEmployeeByBirthday() {
+        return iEmployeeRepository.sortEmployeeByBirthday();
+    }
+
+    @Override
+    public List<Employee> sortEmployeeBySalary() {
+        return iEmployeeRepository.sortEmployeeBySalary();
+    }
 }

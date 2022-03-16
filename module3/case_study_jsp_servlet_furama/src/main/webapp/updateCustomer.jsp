@@ -16,7 +16,7 @@
 <body>
 <button><a href="/customer?action=list">Back to customer list</a></button>
 <div class="container">
-    <form method="post" action="/customer?action=update&id=${customer.customerId}">
+    <form method="post" action="/customer?action=update&idUpdate=${customer.customerId}">
         <div class="form-group">
             <label for="input1">Edit customer code</label>
             <input type="text" class="form-control" id="input1" aria-describedby="emailHelp"

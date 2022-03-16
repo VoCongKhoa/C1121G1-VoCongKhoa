@@ -16,7 +16,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Customer List</title>
+    <title>Employee List</title>
 </head>
 <body>
 <button><a href="/employee?action=create">Create new employee</a></button>
@@ -36,6 +36,7 @@
         <option value="idSort">Sort by Id</option>
         <option value="nameSort">Sort by Name</option>
         <option value="birthdaySort">Sort by Birthday</option>
+        <option value="salarySort">Sort by Salary</option>
     </select>
 </form>
 <table border="1px" style="border-collapse: collapse">
@@ -86,7 +87,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form method="post" action="/employee?action=delete">
-                <input type="hidden" name="idCustomerDelete" id="idGet">
+                <input type="hidden" name="idEmployeeDelete" id="idGet">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

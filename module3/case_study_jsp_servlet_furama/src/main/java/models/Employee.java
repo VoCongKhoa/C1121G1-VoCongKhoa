@@ -92,6 +92,22 @@ public class Employee {
         this.username = username;
     }
 
+    public Employee(int employeeId, String employeeName, String employeeBirthday, String employeeIdCard,
+                    double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress,
+                    int positionId, int educationDegreeId, int divisionId) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeBirthday = employeeBirthday;
+        this.employeeIdCard = employeeIdCard;
+        this.employeeSalary = employeeSalary;
+        this.employeePhone = employeePhone;
+        this.employeeEmail = employeeEmail;
+        this.employeeAddress = employeeAddress;
+        this.positionId = positionId;
+        this.educationDegreeId = educationDegreeId;
+        this.divisionId = divisionId;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }
@@ -218,5 +234,27 @@ public class Employee {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", employeeName='" + employeeName + '\'' +
+                ", employeeBirthday='" + employeeBirthday + '\'' +
+                ", employeeIdCard='" + employeeIdCard + '\'' +
+                ", employeeSalary=" + employeeSalary +
+                ", employeePhone='" + employeePhone + '\'' +
+                ", employeeEmail='" + employeeEmail + '\'' +
+                ", employeeAddress='" + employeeAddress + '\'' +
+                ", positionId=" + positionId +
+                ", positionName='" + positionName + '\'' +
+                ", educationDegreeId=" + educationDegreeId +
+                ", educationDegreeName='" + educationDegreeName + '\'' +
+                ", divisionId=" + divisionId +
+                ", divisionName='" + divisionName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

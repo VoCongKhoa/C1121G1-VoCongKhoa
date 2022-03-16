@@ -1,9 +1,7 @@
 package controllers;
 
 import models.*;
-import services.ICustomerService;
 import services.IEmployeeService;
-import services.impls.CustomerService;
 import services.impls.EmployeeService;
 
 import javax.servlet.*;
@@ -31,18 +29,21 @@ public class EmployeeServlet extends HttpServlet {
             case "update":
                 showUpdateEmployeeForm(request, response);
                 break;
-//            case "search":
-//                searchCustomerByName(request, response);
-//                break;
-//            case "idSort":
-//                sortById(request, response);
-//                break;
-//            case "nameSort":
-//                sortByName(request, response);
-//                break;
-//            case "birthdaySort":
-//                sortByBirthday(request, response);
-//                break;
+            case "search":
+                searchEmployeeByName(request, response);
+                break;
+            case "idSort":
+                sortById(request, response);
+                break;
+            case "nameSort":
+                sortByName(request, response);
+                break;
+            case "birthdaySort":
+                sortByBirthday(request, response);
+                break;
+            case "salarySort":
+                sortBySalary(request, response);
+                break;
         }
     }
 
@@ -59,9 +60,9 @@ public class EmployeeServlet extends HttpServlet {
             case "update":
                 updateEmployee(request, response);
                 break;
-//            case "delete":
-//                deleteCustomer(request, response);
-//                break;
+            case "delete":
+                deleteEmployee(request, response);
+                break;
         }
     }
 
@@ -125,8 +126,10 @@ public class EmployeeServlet extends HttpServlet {
 
     private void updateEmployee(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int employeeIdUpdate = Integer.parseInt(request.getParameter("id"));
+        int employeeIdUpdate = Integer.parseInt(request.getParameter("idUpdate"));
+        System.out.println(employeeIdUpdate);
         Employee employeeUpdate = iEmployeeService.getEmployee(employeeIdUpdate);
+        System.out.println(employeeUpdate);
         employeeUpdate.setEmployeeName(request.getParameter("employeeNameUpdate"));
         employeeUpdate.setEmployeeBirthday(request.getParameter("employeeBirthdayUpdate"));
         employeeUpdate.setEmployeeIdCard(request.getParameter("employeeIdCardUpdate"));
@@ -141,4 +144,44 @@ public class EmployeeServlet extends HttpServlet {
         request.setAttribute("messageUpdate", "Update new employee successfully!!!");
         request.getRequestDispatcher("updateEmployee.jsp").forward(request, response);
     }
+
+    private void deleteEmployee(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int idEmployeeDelete = Integer.parseInt(request.getParameter("idEmployeeDelete"));
+        iEmployeeService.deleteEmployee(idEmployeeDelete);
+        listAllEmployee(request, response);
+    }
+
+    private void searchEmployeeByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String employeeNameSearch = request.getParameter("employeeNameSearch");
+        List<Employee> employeeListSearch = iEmployeeService.searchEmployeeByName(employeeNameSearch);
+        request.setAttribute("employeeListSearch", employeeListSearch);
+        request.getRequestDispatcher("searchEmployee.jsp").forward(request, response);
+    }
+
+    private void sortById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Employee> employeeListSortById = iEmployeeService.sortEmployeeById();
+        request.setAttribute("employeeList", employeeListSortById);
+        request.getRequestDispatcher("listEmployee.jsp").forward(request, response);
+    }
+
+    private void sortByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Employee> employeeListSortByName = iEmployeeService.sortEmployeeByName();
+        request.setAttribute("employeeList", employeeListSortByName);
+        request.getRequestDispatcher("listEmployee.jsp").forward(request, response);
+    }
+
+    private void sortByBirthday(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Employee> employeeListSortByBirthday = iEmployeeService.sortEmployeeByBirthday();
+        request.setAttribute("employeeList", employeeListSortByBirthday);
+        request.getRequestDispatcher("listEmployee.jsp").forward(request, response);
+    }
+
+    private void sortBySalary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Employee> employeeListSortBySalary = iEmployeeService.sortEmployeeBySalary();
+        request.setAttribute("employeeList", employeeListSortBySalary);
+        request.getRequestDispatcher("listEmployee.jsp").forward(request, response);
+    }
+
+
 }

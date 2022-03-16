@@ -235,7 +235,7 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public List<Customer> sortCustomerById() {
-        List<Customer> userSortedList = new ArrayList<>();
+        List<Customer> customerSortedList = new ArrayList<>();
         Connection connection = null;
         try {
             connection = baseRepository.getConnection();
@@ -254,7 +254,7 @@ public class CustomerRepository implements ICustomerRepository {
                 String customerEmail = resultSet.getString("customer_email");
                 String customerAddress = resultSet.getString("customer_address");
                 int customerTypeId = resultSet.getInt("customer_type_id");
-                userSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
+                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
                         customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
             }
         } catch (SQLException e) {
@@ -266,12 +266,12 @@ public class CustomerRepository implements ICustomerRepository {
                 e.printStackTrace();
             }
         }
-        return userSortedList;
+        return customerSortedList;
     }
 
     @Override
     public List<Customer> sortCustomerByName() {
-        List<Customer> userSortedList = new ArrayList<>();
+        List<Customer> customerSortedList = new ArrayList<>();
         Connection connection = null;
         try {
             connection = baseRepository.getConnection();
@@ -290,7 +290,7 @@ public class CustomerRepository implements ICustomerRepository {
                 String customerEmail = resultSet.getString("customer_email");
                 String customerAddress = resultSet.getString("customer_address");
                 int customerTypeId = resultSet.getInt("customer_type_id");
-                userSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
+                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
                         customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
             }
         } catch (SQLException e) {
@@ -302,12 +302,12 @@ public class CustomerRepository implements ICustomerRepository {
                 e.printStackTrace();
             }
         }
-        return userSortedList;
+        return customerSortedList;
     }
 
     @Override
     public List<Customer> sortCustomerByBirthday() {
-        List<Customer> userSortedList = new ArrayList<>();
+        List<Customer> customerSortedList = new ArrayList<>();
         Connection connection = null;
         try {
             connection = baseRepository.getConnection();
@@ -326,7 +326,7 @@ public class CustomerRepository implements ICustomerRepository {
                 String customerEmail = resultSet.getString("customer_email");
                 String customerAddress = resultSet.getString("customer_address");
                 int customerTypeId = resultSet.getInt("customer_type_id");
-                userSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
+                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
                         customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
             }
         } catch (SQLException e) {
@@ -338,6 +338,6 @@ public class CustomerRepository implements ICustomerRepository {
                 e.printStackTrace();
             }
         }
-        return userSortedList;
+        return customerSortedList;
     }
 }

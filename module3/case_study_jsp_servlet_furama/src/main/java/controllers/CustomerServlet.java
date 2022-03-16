@@ -67,20 +67,20 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void sortByBirthday(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Customer> customerListSearchByBirthday = iCustomerService.sortCustomerByBirthday();
-        request.setAttribute("customerList", customerListSearchByBirthday);
+        List<Customer> customerListSortByBirthday = iCustomerService.sortCustomerByBirthday();
+        request.setAttribute("customerList", customerListSortByBirthday);
         request.getRequestDispatcher("listCustomer.jsp").forward(request, response);
     }
 
     private void sortByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Customer> customerListSearchByName = iCustomerService.sortCustomerByName();
-        request.setAttribute("customerList", customerListSearchByName);
+        List<Customer> customerListSortByName = iCustomerService.sortCustomerByName();
+        request.setAttribute("customerList", customerListSortByName);
         request.getRequestDispatcher("listCustomer.jsp").forward(request, response);
     }
 
     private void sortById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Customer> customerListSearchById = iCustomerService.sortCustomerById();
-        request.setAttribute("customerList", customerListSearchById);
+        List<Customer> customerListSortById = iCustomerService.sortCustomerById();
+        request.setAttribute("customerList", customerListSortById);
         request.getRequestDispatcher("listCustomer.jsp").forward(request, response);
     }
 
@@ -126,12 +126,11 @@ public class CustomerServlet extends HttpServlet {
         int idCustomerDelete = Integer.parseInt(request.getParameter("idCustomerDelete"));
         iCustomerService.deleteCustomer(idCustomerDelete);
         listAllCustomer(request, response);
-//        request.getRequestDispatcher("listCustomer.jsp").forward(request,response);
     }
 
     private void updateCustomer(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int customerIdUpdate = Integer.parseInt(request.getParameter("id"));
+        int customerIdUpdate = Integer.parseInt(request.getParameter("idUpdate"));
         Customer customerUpdate = iCustomerService.getCustomer(customerIdUpdate);
         customerUpdate.setCustomerCode(request.getParameter("customerCode"));
         customerUpdate.setCustomerName(request.getParameter("customerName"));

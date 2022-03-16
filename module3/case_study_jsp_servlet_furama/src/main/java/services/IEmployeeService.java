@@ -18,4 +18,16 @@ public interface IEmployeeService {
     Employee getEmployee(int employeeIdUpdate);
 
     void updateEmployee(Employee employeeUpdate);
+
+    void deleteEmployee(int idEmployeeDelete);
+
+    List<Employee> searchEmployeeByName(String employeeNameSearch);
+
+    List<Employee> sortEmployeeById();
+
+    List<Employee> sortEmployeeByName();
+
+    List<Employee> sortEmployeeByBirthday();
+
+    List<Employee> sortEmployeeBySalary();
 }

@@ -16,7 +16,7 @@
 <body>
 <button><a href="/employee?action=list">Back to employee list</a></button>
 <div class="container">
-    <form method="post" action="/employee?action=update&id=${employee.employeeId}">
+    <form method="post" action="/employee?action=update&idUpdate=${employee.employeeId}">
         <div class="form-group">
             <label for="input1">Edit employee name</label>
             <input type="text" class="form-control" id="input1" aria-describedby="emailHelp"

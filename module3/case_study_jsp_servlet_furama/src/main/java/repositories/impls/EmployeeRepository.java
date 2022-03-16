@@ -144,17 +144,18 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public Employee getEmployee(int employeeIdUpdate) {
+    public Employee getEmployee(int employeeIdUpdate) { //Chu y: getEmployee phai lay truong employee_id, de truyen ve servlet, de truyen sang trang employeeUpdate.jsp
         Employee employee = null;
         Connection connection;
         try {
             connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_name, " +
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_id, employee_name, " +
                     "employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, " +
                     "employee_address, position_id, education_degree_id, division_id FROM employee WHERE employee_id = ?;");
             preparedStatement.setInt(1,employeeIdUpdate);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                int employeeId = resultSet.getInt("employee_id");
                 String employeeName = resultSet.getString("employee_name");
                 String employeeBirthday = resultSet.getString("employee_birthday");
                 String employeeIdCard = resultSet.getString("employee_id_card");
@@ -165,7 +166,7 @@ public class EmployeeRepository implements IEmployeeRepository {
                 int positionId = resultSet.getInt("position_id");
                 int educationDegreeId = resultSet.getInt("education_degree_id");
                 int divisionId = resultSet.getInt("division_id");
-                employee = new Employee(employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+                employee = new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
                         employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId);
             }
         } catch (SQLException e) {
@@ -193,6 +194,7 @@ public class EmployeeRepository implements IEmployeeRepository {
             preparedStatement.setInt(8, employeeUpdate.getPositionId());
             preparedStatement.setInt(9, employeeUpdate.getEducationDegreeId());
             preparedStatement.setInt(10, employeeUpdate.getDivisionId());
+            preparedStatement.setInt(11, employeeUpdate.getEmployeeId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -203,5 +205,243 @@ public class EmployeeRepository implements IEmployeeRepository {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void deleteEmployee(int idEmployeeDelete) {
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM employee WHERE employee_id = ?;");
+            preparedStatement.setInt(1, idEmployeeDelete);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByName(String employeeNameSearch) {
+        List<Employee> employeeList = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_id, employee_name, " +
+                    "employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address," +
+                    "employee.position_id, employee.education_degree_id, employee.division_id, employee.username \n" +
+                    "FROM employee INNER JOIN position ON employee.position_id = position.position_id \n" +
+                    "INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id\n" +
+                    "INNER JOIN division ON employee.division_id = division.division_id\n" +
+                    "LEFT JOIN user ON employee.username = user.username\n" +
+                    "WHERE employee_name LIKE CONCAT(\"%\",?,\"%\")\n" +
+                    "ORDER BY employee_id;");
+            preparedStatement.setString(1, employeeNameSearch);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeId = resultSet.getInt("employee_id");
+                String employeeName = resultSet.getString("employee_name");
+                String employeeBirthday = resultSet.getString("employee_birthday");
+                String employeeIdCard = resultSet.getString("employee_id_card");
+                double employeeSalary = resultSet.getDouble("employee_salary");
+                String employeePhone = resultSet.getString("employee_phone");
+                String employeeEmail = resultSet.getString("employee_email");
+                String employeeAddress = resultSet.getString("employee_address");
+                int positionId = resultSet.getInt("position_id");
+                int educationDegreeId = resultSet.getInt("education_degree_id");
+                int divisionId = resultSet.getInt("division_id");
+                String username = resultSet.getString("username");
+                employeeList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, username));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return employeeList;
+    }
+
+    @Override
+    public List<Employee> sortEmployeeById() {
+        List<Employee> employeeSortedList = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_id, employee_name," +
+                    "employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, " +
+                    "employee_address,employee.position_id, employee.education_degree_id, employee.division_id, " +
+                    "employee.username\n" +
+                    "FROM employee INNER JOIN position ON employee.position_id = position.position_id \n" +
+                    "INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id\n" +
+                    "INNER JOIN division ON employee.division_id = division.division_id\n" +
+                    "LEFT JOIN user ON employee.username = user.username\n" +
+                    "ORDER BY employee_id;");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeId = resultSet.getInt("employee_id");
+                String employeeName = resultSet.getString("employee_name");
+                String employeeBirthday = resultSet.getString("employee_birthday");
+                String employeeIdCard = resultSet.getString("employee_id_card");
+                double employeeSalary = resultSet.getDouble("employee_salary");
+                String employeePhone = resultSet.getString("employee_phone");
+                String employeeEmail = resultSet.getString("employee_email");
+                String employeeAddress = resultSet.getString("employee_address");
+                int positionId = resultSet.getInt("position_id");
+                int educationDegreeId = resultSet.getInt("education_degree_id");
+                int divisionId = resultSet.getInt("division_id");
+                String username = resultSet.getString("username");
+                employeeSortedList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, username));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return employeeSortedList;
+    }
+
+    @Override
+    public List<Employee> sortEmployeeByName() {
+        List<Employee> employeeSortedList = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_id, employee_name," +
+                    "employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, " +
+                    "employee_address,employee.position_id, employee.education_degree_id, employee.division_id, " +
+                    "employee.username\n" +
+                    "FROM employee INNER JOIN position ON employee.position_id = position.position_id \n" +
+                    "INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id\n" +
+                    "INNER JOIN division ON employee.division_id = division.division_id\n" +
+                    "LEFT JOIN user ON employee.username = user.username\n" +
+                    "ORDER BY employee_name;");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeId = resultSet.getInt("employee_id");
+                String employeeName = resultSet.getString("employee_name");
+                String employeeBirthday = resultSet.getString("employee_birthday");
+                String employeeIdCard = resultSet.getString("employee_id_card");
+                double employeeSalary = resultSet.getDouble("employee_salary");
+                String employeePhone = resultSet.getString("employee_phone");
+                String employeeEmail = resultSet.getString("employee_email");
+                String employeeAddress = resultSet.getString("employee_address");
+                int positionId = resultSet.getInt("position_id");
+                int educationDegreeId = resultSet.getInt("education_degree_id");
+                int divisionId = resultSet.getInt("division_id");
+                String username = resultSet.getString("username");
+                employeeSortedList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, username));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return employeeSortedList;
+    }
+
+    @Override
+    public List<Employee> sortEmployeeByBirthday() {
+        List<Employee> employeeSortedList = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_id, employee_name," +
+                    "employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address," +
+                    "employee.position_id, employee.education_degree_id, employee.division_id, employee.username\n" +
+                    "FROM employee INNER JOIN position ON employee.position_id = position.position_id \n" +
+                    "INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id\n" +
+                    "INNER JOIN division ON employee.division_id = division.division_id\n" +
+                    "LEFT JOIN user ON employee.username = user.username\n" +
+                    "ORDER BY employee_birthday DESC;");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeId = resultSet.getInt("employee_id");
+                String employeeName = resultSet.getString("employee_name");
+                String employeeBirthday = resultSet.getString("employee_birthday");
+                String employeeIdCard = resultSet.getString("employee_id_card");
+                double employeeSalary = resultSet.getDouble("employee_salary");
+                String employeePhone = resultSet.getString("employee_phone");
+                String employeeEmail = resultSet.getString("employee_email");
+                String employeeAddress = resultSet.getString("employee_address");
+                int positionId = resultSet.getInt("position_id");
+                int educationDegreeId = resultSet.getInt("education_degree_id");
+                int divisionId = resultSet.getInt("division_id");
+                String username = resultSet.getString("username");
+                employeeSortedList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, username));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return employeeSortedList;
+    }
+
+    @Override
+    public List<Employee> sortEmployeeBySalary() {
+        List<Employee> employeeSortedList = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT employee_id, employee_name," +
+                    "employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address," +
+                    "employee.position_id, employee.education_degree_id, employee.division_id, employee.username\n" +
+                    "FROM employee INNER JOIN position ON employee.position_id = position.position_id \n" +
+                    "INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id\n" +
+                    "INNER JOIN division ON employee.division_id = division.division_id\n" +
+                    "LEFT JOIN user ON employee.username = user.username\n" +
+                    "ORDER BY employee_salary;");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int employeeId = resultSet.getInt("employee_id");
+                String employeeName = resultSet.getString("employee_name");
+                String employeeBirthday = resultSet.getString("employee_birthday");
+                String employeeIdCard = resultSet.getString("employee_id_card");
+                double employeeSalary = resultSet.getDouble("employee_salary");
+                String employeePhone = resultSet.getString("employee_phone");
+                String employeeEmail = resultSet.getString("employee_email");
+                String employeeAddress = resultSet.getString("employee_address");
+                int positionId = resultSet.getInt("position_id");
+                int educationDegreeId = resultSet.getInt("education_degree_id");
+                int divisionId = resultSet.getInt("division_id");
+                String username = resultSet.getString("username");
+                employeeSortedList.add(new Employee(employeeId, employeeName, employeeBirthday, employeeIdCard, employeeSalary,
+                        employeePhone, employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId, username));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return employeeSortedList;
     }
 }
