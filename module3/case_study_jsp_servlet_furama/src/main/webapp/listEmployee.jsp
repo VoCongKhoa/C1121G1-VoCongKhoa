@@ -49,9 +49,9 @@
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
-        <th>Employee Position Id</th>
-        <th>Employee Education Degree Id</th>
-        <th>Employee Division Id</th>
+        <th>Employee Position Name</th>
+        <th>Employee Education Degree Name</th>
+        <th>Employee Division Name</th>
         <th>Employee Username</th>
         <th colspan="2">Feature</th>
     </tr>
@@ -65,9 +65,9 @@
             <td>${employee.employeePhone}</td>
             <td>${employee.employeeEmail}</td>
             <td>${employee.employeeAddress}</td>
-            <td>${employee.positionId}</td>
-            <td>${employee.educationDegreeId}</td>
-            <td>${employee.divisionId}</td>
+            <td>${employee.positionName}</td>
+            <td>${employee.educationDegreeName}</td>
+            <td>${employee.divisionName}</td>
             <td>${employee.username}</td>
             <td>
                 <button><a href="/employee?action=update&id=${employee.employeeId}">Edit</a ></button>

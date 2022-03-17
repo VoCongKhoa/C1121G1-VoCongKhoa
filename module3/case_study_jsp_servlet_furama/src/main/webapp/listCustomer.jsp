@@ -49,7 +49,6 @@
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
-        <th>Customer Type Id</th>
         <th>Customer Type Name</th>
         <th colspan="2">Feature</th>
     </tr>
@@ -59,12 +58,18 @@
             <td>${customer.customerCode}</td>
             <td>${customer.customerName}</td>
             <td>${customer.customerBirthday}</td>
-            <td>${customer.customerGender}</td>
+            <c:choose>
+                <c:when test = "${customer.customerGender == 0}">
+                    <td>Female</td>
+                </c:when>
+                <c:otherwise>
+                    <td>Male</td>
+                </c:otherwise>
+            </c:choose>
             <td>${customer.customerIdCard}</td>
             <td>${customer.customerPhone}</td>
             <td>${customer.customerEmail}</td>
             <td>${customer.customerAddress}</td>
-            <td>${customer.customerTypeId}</td>
             <td>${customer.customerTypeName}</td>
             <td>
                 <button><a href="/customer?action=update&id=${customer.customerId}">Edit</a ></button>

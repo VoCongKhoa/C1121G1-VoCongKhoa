@@ -301,7 +301,7 @@ public class UserRepository implements IUserRepository {
         Connection connection = null;
         try {
             connection = baseRepository.getConnection();
-            CallableStatement callableStatement = connection.prepareCall("{CALL update_user_list_procedure(?,?,?,?);}");
+            CallableStatement callableStatement = connection.prepareCall("CALL update_user_list_procedure(?,?,?,?);");
             callableStatement.setString(1, user.getName());
             callableStatement.setString(2, user.getEmail());
             callableStatement.setString(3, user.getCountry());
@@ -317,6 +317,27 @@ public class UserRepository implements IUserRepository {
             }
         }
         return rowUpdated;
+    }
+
+    @Override
+    public boolean deleteUserProcedure(int id) throws SQLException {
+        boolean rowDeleted = false;
+        Connection connection = null;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("CALL delete_user(?);");
+            preparedStatement.setInt(1, id);
+            rowDeleted = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return rowDeleted;
     }
 }
 

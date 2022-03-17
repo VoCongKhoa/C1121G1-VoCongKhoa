@@ -13,6 +13,7 @@ import java.util.List;
 @WebServlet(name = "EmployeeServlet", value = "/employee")
 public class EmployeeServlet extends HttpServlet {
     IEmployeeService iEmployeeService = new EmployeeService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -103,8 +104,8 @@ public class EmployeeServlet extends HttpServlet {
         int positionId = Integer.parseInt(request.getParameter("positionIdCreate"));
         int educationDegreeId = Integer.parseInt(request.getParameter("educationDegreeIdCreate"));
         int divisionId = Integer.parseInt(request.getParameter("divisionIdCreate"));
-        Employee employeeCreate = new Employee(employeeName,employeeBirthday,employeeIdCard,employeeSalary,employeePhone,
-                employeeEmail,employeeAddress,positionId,educationDegreeId,divisionId);
+        Employee employeeCreate = new Employee(employeeName, employeeBirthday, employeeIdCard, employeeSalary, employeePhone,
+                employeeEmail, employeeAddress, positionId, educationDegreeId, divisionId);
         iEmployeeService.createEmployee(employeeCreate);
         request.setAttribute("messageCreate", "Add new employee successfully!!!");
         request.getRequestDispatcher("createEmployee.jsp").forward(request, response);

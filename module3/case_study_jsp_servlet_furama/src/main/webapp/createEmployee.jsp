@@ -22,7 +22,7 @@
         <input type="text" placeholder="Type new employee name" id="name" name="employeeNameCreate">
     </label><br><br>
     <label for="birthday">Add new employee birthday:
-        <input type="text" placeholder="Type new employee birthday" id="birthday" name="employeeBirthdayCreate">
+        <input type="date" placeholder="Type new employee birthday" id="birthday" name="employeeBirthdayCreate">
     </label><br><br>
     <label for="idCard">Add new employee id card:
         <input type="text" placeholder="Type new employee id card" id="idCard" name="employeeIdCardCreate">

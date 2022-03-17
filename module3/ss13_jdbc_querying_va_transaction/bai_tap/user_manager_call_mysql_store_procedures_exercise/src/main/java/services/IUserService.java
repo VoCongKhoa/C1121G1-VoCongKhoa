@@ -28,4 +28,6 @@ public interface IUserService {
 
     public boolean updateUserProcedure(User user) throws SQLException;
 
+    public boolean deleteUserProcedure(int id) throws SQLException;
+
 }

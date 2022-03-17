@@ -108,6 +108,27 @@ public class Employee {
         this.divisionId = divisionId;
     }
 
+    public Employee(int employeeId, String employeeName, String employeeBirthday, String employeeIdCard,
+                    double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress,
+                    int positionId, String positionName, int educationDegreeId, String educationDegreeName,
+                    int divisionId, String divisionName, String username) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeBirthday = employeeBirthday;
+        this.employeeIdCard = employeeIdCard;
+        this.employeeSalary = employeeSalary;
+        this.employeePhone = employeePhone;
+        this.employeeEmail = employeeEmail;
+        this.employeeAddress = employeeAddress;
+        this.positionId = positionId;
+        this.positionName = positionName;
+        this.educationDegreeId = educationDegreeId;
+        this.educationDegreeName = educationDegreeName;
+        this.divisionId = divisionId;
+        this.divisionName = divisionName;
+        this.username = username;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }

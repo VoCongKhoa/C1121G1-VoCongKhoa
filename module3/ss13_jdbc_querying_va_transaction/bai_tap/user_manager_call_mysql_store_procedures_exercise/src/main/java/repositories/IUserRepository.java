@@ -29,4 +29,6 @@ public interface IUserRepository {
     public void insertUserStore(User user) throws SQLException;
 
     public boolean updateUserProcedure(User user) throws SQLException;
+
+    public boolean deleteUserProcedure(int id) throws SQLException;
 }

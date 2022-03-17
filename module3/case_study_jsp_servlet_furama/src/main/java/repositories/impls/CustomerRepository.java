@@ -10,7 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository implements ICustomerRepository {
-    BaseRepository baseRepository = new BaseRepository();
+    private BaseRepository baseRepository = new BaseRepository();
+    private final String SORT_CUSTOMER_BY_ID_SQL = "SELECT customer_id, customer_code, " +
+            "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
+            "customer_email, customer_address, customer_type_id FROM customer ORDER BY customer_id;";
+    private final String SORT_CUSTOMER_BY_NAME_SQL = "SELECT customer_id, customer_code, " +
+            "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
+            "customer_email, customer_address, customer_type_id FROM customer ORDER BY customer_name;";
+    private final String SORT_CUSTOMER_BY_BIRTHDAY_SQL = "SELECT customer_id, customer_code, " +
+            "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
+            "customer_email, customer_address, customer_type_id FROM customer ORDER BY customer_birthday DESC;";
 
     @Override
     public List<Customer> getAllCustomer() {
@@ -108,7 +117,6 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
 
-
     @Override
     public void updateCustomer(Customer updateCustomer) {
         Connection connection = null;
@@ -149,7 +157,7 @@ public class CustomerRepository implements ICustomerRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT customer_id, customer_code, " +
                     "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
                     "customer_email, customer_address, customer_type_id FROM customer WHERE customer_id = ?;");
-            preparedStatement.setInt(1,customerIdUpdate);
+            preparedStatement.setInt(1, customerIdUpdate);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
@@ -233,15 +241,12 @@ public class CustomerRepository implements ICustomerRepository {
         return customerList;
     }
 
-    @Override
-    public List<Customer> sortCustomerById() {
+    private List<Customer> sortCustomer(String sortSqlQuery) {
         List<Customer> customerSortedList = new ArrayList<>();
         Connection connection = null;
         try {
             connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT customer_id, customer_code, " +
-                    "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
-                    "customer_email, customer_address, customer_type_id FROM customer ORDER BY customer_id;");
+            PreparedStatement preparedStatement = connection.prepareStatement(sortSqlQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int customerId = resultSet.getInt("customer_id");
@@ -267,77 +272,110 @@ public class CustomerRepository implements ICustomerRepository {
             }
         }
         return customerSortedList;
+    }
+
+    @Override
+    public List<Customer> sortCustomerById() {
+        return sortCustomer(SORT_CUSTOMER_BY_ID_SQL);
+//        List<Customer> customerSortedList = new ArrayList<>();
+//        Connection connection = null;
+//        try {
+//            connection = baseRepository.getConnection();
+//            PreparedStatement preparedStatement = connection.prepareStatement(SORT_CUSTOMER_BY_ID_SQL);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                int customerId = resultSet.getInt("customer_id");
+//                String customerCode = resultSet.getString("customer_code");
+//                String customerName = resultSet.getString("customer_name");
+//                String customerBirthday = resultSet.getString("customer_birthday");
+//                int customerGender = resultSet.getInt("customer_gender");
+//                String customerIdCard = resultSet.getString("customer_id_card");
+//                String customerPhone = resultSet.getString("customer_phone");
+//                String customerEmail = resultSet.getString("customer_email");
+//                String customerAddress = resultSet.getString("customer_address");
+//                int customerTypeId = resultSet.getInt("customer_type_id");
+//                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
+//                        customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                connection.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return customerSortedList;
     }
 
     @Override
     public List<Customer> sortCustomerByName() {
-        List<Customer> customerSortedList = new ArrayList<>();
-        Connection connection = null;
-        try {
-            connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT customer_id, customer_code, " +
-                    "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
-                    "customer_email, customer_address, customer_type_id FROM customer ORDER BY customer_name;");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int customerId = resultSet.getInt("customer_id");
-                String customerCode = resultSet.getString("customer_code");
-                String customerName = resultSet.getString("customer_name");
-                String customerBirthday = resultSet.getString("customer_birthday");
-                int customerGender = resultSet.getInt("customer_gender");
-                String customerIdCard = resultSet.getString("customer_id_card");
-                String customerPhone = resultSet.getString("customer_phone");
-                String customerEmail = resultSet.getString("customer_email");
-                String customerAddress = resultSet.getString("customer_address");
-                int customerTypeId = resultSet.getInt("customer_type_id");
-                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
-                        customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return customerSortedList;
+        return sortCustomer(SORT_CUSTOMER_BY_NAME_SQL);
+//        List<Customer> customerSortedList = new ArrayList<>();
+//        Connection connection = null;
+//        try {
+//            connection = baseRepository.getConnection();
+//            PreparedStatement preparedStatement = connection.prepareStatement(SORT_CUSTOMER_BY_NAME_SQL);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                int customerId = resultSet.getInt("customer_id");
+//                String customerCode = resultSet.getString("customer_code");
+//                String customerName = resultSet.getString("customer_name");
+//                String customerBirthday = resultSet.getString("customer_birthday");
+//                int customerGender = resultSet.getInt("customer_gender");
+//                String customerIdCard = resultSet.getString("customer_id_card");
+//                String customerPhone = resultSet.getString("customer_phone");
+//                String customerEmail = resultSet.getString("customer_email");
+//                String customerAddress = resultSet.getString("customer_address");
+//                int customerTypeId = resultSet.getInt("customer_type_id");
+//                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
+//                        customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                connection.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return customerSortedList;
     }
 
     @Override
     public List<Customer> sortCustomerByBirthday() {
-        List<Customer> customerSortedList = new ArrayList<>();
-        Connection connection = null;
-        try {
-            connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT customer_id, customer_code, " +
-                    "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, " +
-                    "customer_email, customer_address, customer_type_id FROM customer ORDER BY customer_birthday DESC;");
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int customerId = resultSet.getInt("customer_id");
-                String customerCode = resultSet.getString("customer_code");
-                String customerName = resultSet.getString("customer_name");
-                String customerBirthday = resultSet.getString("customer_birthday");
-                int customerGender = resultSet.getInt("customer_gender");
-                String customerIdCard = resultSet.getString("customer_id_card");
-                String customerPhone = resultSet.getString("customer_phone");
-                String customerEmail = resultSet.getString("customer_email");
-                String customerAddress = resultSet.getString("customer_address");
-                int customerTypeId = resultSet.getInt("customer_type_id");
-                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
-                        customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return customerSortedList;
+        return sortCustomer(SORT_CUSTOMER_BY_BIRTHDAY_SQL);
+//        List<Customer> customerSortedList = new ArrayList<>();
+//        Connection connection = null;
+//        try {
+//            connection = baseRepository.getConnection();
+//            PreparedStatement preparedStatement = connection.prepareStatement(SORT_CUSTOMER_BY_BIRTHDAY_SQL);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                int customerId = resultSet.getInt("customer_id");
+//                String customerCode = resultSet.getString("customer_code");
+//                String customerName = resultSet.getString("customer_name");
+//                String customerBirthday = resultSet.getString("customer_birthday");
+//                int customerGender = resultSet.getInt("customer_gender");
+//                String customerIdCard = resultSet.getString("customer_id_card");
+//                String customerPhone = resultSet.getString("customer_phone");
+//                String customerEmail = resultSet.getString("customer_email");
+//                String customerAddress = resultSet.getString("customer_address");
+//                int customerTypeId = resultSet.getInt("customer_type_id");
+//                customerSortedList.add(new Customer(customerId, customerCode, customerName, customerBirthday, customerGender,
+//                        customerIdCard, customerPhone, customerEmail, customerAddress, customerTypeId));
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                connection.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return customerSortedList;
     }
 }

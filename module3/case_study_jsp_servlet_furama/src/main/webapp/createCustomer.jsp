@@ -24,12 +24,16 @@
     <label for="name">Add new customer name:
         <input type="text" placeholder="Type new customer name" id="name" name="customerNameCreate">
     </label><br><br>
-    <label for="birthday">Add new customer birthday:
-        <input type="text" placeholder="Type new customer birthday" id="birthday" name="customerBirthdayCreate">
+    <label for="birthday">Select new customer birthday:
+        <input type="date" id="birthday" name="customerBirthdayCreate">
     </label><br><br>
-    <label for="gender">Add new customer gender:
-        <input type="text" placeholder="Type new customer gender" id="gender" name="customerGenderCreate">
-    </label><br><br>
+
+    <p>Choose customer gender:</p>
+    <input type="radio" id="female" name="customerGenderCreate" value="0">
+    <label for="female">Female</label><br>
+    <input type="radio" id="male" name="customerGenderCreate" value="1">
+    <label for="male">Male</label><br>
+
     <label for="idCard">Add new customer ID Card number:
         <input type="text" placeholder="Type new customer ID Card number" id="idCard" name="customerIdCardCreate">
     </label><br><br>

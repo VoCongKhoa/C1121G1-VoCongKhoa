@@ -64,4 +64,9 @@ public class UserService implements IUserService {
     public boolean updateUserProcedure(User user) throws SQLException {
         return iUserRepository.updateUserProcedure(user);
     }
+
+    @Override
+    public boolean deleteUserProcedure(int id) throws SQLException {
+        return iUserRepository.deleteUserProcedure(id);
+    }
 }

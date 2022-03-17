@@ -16,4 +16,10 @@
   <body>
   <a type="button" href="/employee?action=list">Employee</a>
   </body>
+  <body>
+  <a type="button" href="/service?action=list">Service</a>
+  </body>
+  <body>
+  <a type="button" href="/contract?action=list">Contract</a>
+  </body>
 </html>

@@ -80,12 +80,12 @@ public class UserServlet extends HttpServlet {
                     userUpdate.setName(request.getParameter("name"));
                     userUpdate.setEmail(request.getParameter("email"));
                     userUpdate.setCountry(request.getParameter("country"));
-                    iUserService.updateUser(userUpdate);
+                    iUserService.updateUserProcedure(userUpdate);
                     request.getRequestDispatcher("update.jsp").forward(request,response);
                     break;
                 case "delete":
                     Integer idDelete = Integer.valueOf(request.getParameter("idDelete"));
-                    iUserService.deleteUser(idDelete);
+                    iUserService.deleteUserProcedure(idDelete);
                     getAllUser(request,response);
                     break;
                 default:

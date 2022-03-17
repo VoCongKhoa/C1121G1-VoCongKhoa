@@ -195,6 +195,40 @@ INSERT INTO `furama_management_system_database`.`employee` (`employee_id`, `empl
 INSERT INTO `furama_management_system_database`.`employee` (`employee_id`, `employee_name`, `employee_birthday`, `employee_id_card`, `employee_salary`, `employee_phone`, `employee_email`, `employee_address`, `position_id`, `education_degree_id`, `division_id`) VALUES ('9', 'Tòng Hoang', '1982-09-03', '256781231', '6000000', '0245144444', 'hoangtong@gmail.com', '213 Hàm Nghi, Đà Nẵng', '2', '4', '4');
 INSERT INTO `furama_management_system_database`.`employee` (`employee_id`, `employee_name`, `employee_birthday`, `employee_id_card`, `employee_salary`, `employee_phone`, `employee_email`, `employee_address`, `position_id`, `education_degree_id`, `division_id`) VALUES ('10', 'Nguyễn Công Đạo', '1994-01-08', '755434343', '8000000', '0988767111', 'nguyencongdao12@gmail.com', '6 Hoà Khánh, Đồng Nai', '2', '3', '2');
 
+-- INSERT INTO table rent_type
+INSERT INTO `furama_management_system_database`.`rent_type` (`rent_type_id`, `rent_type_name`, `rent_type_cost`) VALUES ('1', 'year', '10000000');
+INSERT INTO `furama_management_system_database`.`rent_type` (`rent_type_id`, `rent_type_name`, `rent_type_cost`) VALUES ('2', 'month', '2000000');
+INSERT INTO `furama_management_system_database`.`rent_type` (`rent_type_id`, `rent_type_name`, `rent_type_cost`) VALUES ('3', 'day', '1000000');
+INSERT INTO `furama_management_system_database`.`rent_type` (`rent_type_id`, `rent_type_name`, `rent_type_cost`) VALUES ('4', 'hour', '500000');
+
+-- INSERT INTO table service_type
+INSERT INTO `furama_management_system_database`.`service_type` (`service_type_id`, `service_type_name`) VALUES ('1', 'Villa');
+INSERT INTO `furama_management_system_database`.`service_type` (`service_type_id`, `service_type_name`) VALUES ('2', 'House');
+INSERT INTO `furama_management_system_database`.`service_type` (`service_type_id`, `service_type_name`) VALUES ('3', 'Room');
+
+-- INSERT INTO table service
+INSERT INTO `furama_management_system_database`.`service` (`service_id`, `service_code`, `service_name`, `service_area`, `service_cost`, `service_max_people`, `standard_room`, `description_other_convenience`, `pool_area`, `number_of_floors`, `rent_type_id`, `service_type_id`) VALUES ('1', 'DV-0001', 'Villa Beach Front', '25000', '10000000', '10', 'vip', 'Có hồ bơi', '500', '4', '3', '1');
+INSERT INTO `furama_management_system_database`.`service` (`service_id`, `service_code`, `service_name`, `service_area`, `service_cost`, `service_max_people`, `standard_room`, `description_other_convenience`, `pool_area`, `number_of_floors`, `rent_type_id`, `service_type_id`) VALUES ('2', 'DV-0002', 'House Princess 01', '14000', '5000000', '7', 'vip', 'Có thêm bếp nướng', null, '3', '2', '2');
+INSERT INTO `furama_management_system_database`.`service` (`service_id`, `service_code`, `service_name`, `service_area`, `service_cost`, `service_max_people`, `standard_room`, `description_other_convenience`, `pool_area`, `number_of_floors`, `rent_type_id`, `service_type_id`) VALUES ('3', 'DV-0003', 'Room Twin 01', '5000', '1000000', '2', 'normal', 'Có tivi', null, null, '4', '3');
+INSERT INTO `furama_management_system_database`.`service` (`service_id`, `service_code`, `service_name`, `service_area`, `service_cost`, `service_max_people`, `standard_room`, `description_other_convenience`, `pool_area`, `number_of_floors`, `rent_type_id`, `service_type_id`) VALUES ('4', 'DV-0004', 'Villa No Beach Front', '22000', '9000000', '8', 'normal', 'Có hồ bơi', '300', '3', '3', '1');
+INSERT INTO `furama_management_system_database`.`service` (`service_id`, `service_code`, `service_name`, `service_area`, `service_cost`, `service_max_people`, `standard_room`, `description_other_convenience`, `pool_area`, `number_of_floors`, `rent_type_id`, `service_type_id`) VALUES ('5', 'DV-0005', 'House Princess 02', '10000', '4000000', '5', 'normal', 'Có thêm bếp nướng', null, '2', '3', '2');
+INSERT INTO `furama_management_system_database`.`service` (`service_id`, `service_code`, `service_name`, `service_area`, `service_cost`, `service_max_people`, `standard_room`, `description_other_convenience`, `pool_area`, `number_of_floors`, `rent_type_id`, `service_type_id`) VALUES ('6', 'DV-0006', 'Room Twin 02', '3000', '900000', '2', 'normal', 'Có tivi', null, null, '4', '3');
+
+-- INSERT INTO table contract
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('1', '2020-12-08', '2020-12-08', '0', '1000000', '3', '1', '3');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('2', '2020-07-14', '2020-07-21', '200000', '2000000', '7', '3', '1');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('3', '2021-03-15', '2021-03-17', '50000', '1500000', '3', '4', '2');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('4', '2021-01-14', '2021-01-18', '100000', '1400000', '7', '5', '5');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('5', '2021-07-14', '2021-07-15', '0', '100000', '7', '2', '6');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('6', '2021-06-01', '2021-06-03', '0', '100000', '7', '7', '6');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('7', '2021-09-02', '2021-09-05', '100000', '1000000', '7', '4', '4');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('8', '2021-06-17', '2021-06-18', '150000', '1600000', '3', '4', '1');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('9', '2020-11-19', '2020-11-19', '0', '500000', '3', '4', '3');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('10', '2021-04-12', '2021-04-14', '0', '600000', '10', '3', '5');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('11', '2021-04-25', '2021-04-25', '0', '300000', '2', '2', '1');
+INSERT INTO `furama_management_system_database`.`contract` (`contract_id`, `contract_start_date`, `contract_end_date`, `contract_deposit`, `contract_total_money`, `employee_id`, `customer_id`, `service_id`) VALUES ('12', '2021-05-25', '2021-05-27', '0', '100000', '7', '10', '1');
+
+
 
 
 SELECT customer_type_id, customer_type_name FROM customer_type;
@@ -229,3 +263,65 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
 SELECT employee_id, employee_name, employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address, position_id, education_degree_id, division_id FROM employee WHERE employee_id = 1;
 
 UPDATE employee SET employee_name = ?, employee_birthday = ?, employee_id_card = ?, employee_salary = ?, employee_phone = ?, employee_email = ?, employee_address = ?, position_id = ?, education_degree_id = ?, division_id = ? WHERE employee_id = ?;
+
+-- DELETE FROM employee WHERE employee_id = ?;
+
+-- Search Employee
+SELECT employee_id, employee_name, employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address,employee.position_id, employee.education_degree_id, employee.division_id, employee.username 
+FROM employee INNER JOIN position ON employee.position_id = position.position_id 
+INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id
+INNER JOIN division ON employee.division_id = division.division_id
+LEFT JOIN user ON employee.username = user.username
+WHERE employee_name LIKE CONCAT("%","k","%")
+ORDER BY employee_id;
+
+-- Sort employee by id
+SELECT employee_id, employee_name,employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address,employee.position_id, employee.education_degree_id, employee.division_id, employee.username
+FROM employee INNER JOIN position ON employee.position_id = position.position_id 
+INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id
+INNER JOIN division ON employee.division_id = division.division_id
+LEFT JOIN user ON employee.username = user.username
+ORDER BY employee_id;
+
+-- Sort employee by name
+SELECT employee_id, employee_name,employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address,employee.position_id, employee.education_degree_id, employee.division_id, employee.username
+FROM employee INNER JOIN position ON employee.position_id = position.position_id 
+INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id
+INNER JOIN division ON employee.division_id = division.division_id
+LEFT JOIN user ON employee.username = user.username
+ORDER BY employee_name;
+
+-- Sort employee by birthday
+SELECT employee_id, employee_name,employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address,employee.position_id, employee.education_degree_id, employee.division_id, employee.username
+FROM employee INNER JOIN position ON employee.position_id = position.position_id 
+INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id
+INNER JOIN division ON employee.division_id = division.division_id
+LEFT JOIN user ON employee.username = user.username
+ORDER BY employee_birthday DESC;
+
+-- Sort employee by salary
+SELECT employee_id, employee_name,employee_birthday, employee_id_card, employee_salary, employee_phone, employee_email, employee_address,employee.position_id, employee.education_degree_id, employee.division_id, employee.username
+FROM employee INNER JOIN position ON employee.position_id = position.position_id 
+INNER JOIN education_degree ON employee.education_degree_id = education_degree.education_degree_id
+INNER JOIN division ON employee.division_id = division.division_id
+LEFT JOIN user ON employee.username = user.username
+ORDER BY employee_salary;
+
+-- select all service
+SELECT service_id, service_code, service_name, service_area, service_cost, service_max_people, standard_room, description_other_convenience, pool_area, number_of_floors, service.rent_type_id, service.service_type_id FROM service
+INNER JOIN rent_type ON service.rent_type_id = rent_type.rent_type_id
+INNER JOIN service_type ON service.service_type_id = service_type.service_type_id
+ORDER BY service_id;
+
+-- select all rent_type
+SELECT rent_type_id, rent_type_name, rent_type_cost FROM rent_type;
+
+-- select all service_type
+SELECT service_type_id, service_type_name FROM service_type;
+
+-- INSERT INTO table customer
+INSERT INTO customer(customer_code, " +
+                    "customer_name, customer_birthday, customer_gender, customer_id_card, customer_phone, customer_email, " +
+                    "customer_address, customer_type_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+

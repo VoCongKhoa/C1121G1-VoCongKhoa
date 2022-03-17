@@ -18,6 +18,11 @@
 <div class="container">
     <form method="post" action="/employee?action=update&idUpdate=${employee.employeeId}">
         <div class="form-group">
+            <label for="input0">Employee id</label>
+            <input type="text" class="form-control" id="input0" aria-describedby="emailHelp"
+                   value="${employee.employeeId}" name="employeeIdUpdate" disabled>
+        </div>
+        <div class="form-group">
             <label for="input1">Edit employee name</label>
             <input type="text" class="form-control" id="input1" aria-describedby="emailHelp"
                    value="${employee.employeeName}" name="employeeNameUpdate">
