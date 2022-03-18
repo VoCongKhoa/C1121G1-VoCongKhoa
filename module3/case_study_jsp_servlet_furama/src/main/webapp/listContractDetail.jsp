@@ -19,7 +19,7 @@
     <title>Service List</title>
 </head>
 <body>
-<button><a href="/contractDetail?action=create">Create new contractDetail</a></button>
+<button><a href="/contract?action=createContractDetail">Create new contractDetail</a></button>
 
 <%--SEARCH--%>
 <form method="get">
@@ -53,7 +53,7 @@
             <td>${contractDetail.contract.contractId}</td>
             <td>${contractDetail.attachService.attachServiceName}</td>
             <td>
-                <button><a href="/contractDetail?action=update&id=${contractDetail.contractDetailId}">Edit</a ></button>
+                <button><a href="/contract?action=updateContractDetail&id=${contractDetail.contractDetailId}">Edit</a ></button>
             </td>
             <td><a href="#" type="button" class="btn btn-primary"
                    data-toggle="modal" data-target="#exampleModal" onclick="getId(${contractDetail.contractDetailId})">
@@ -69,7 +69,7 @@
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form method="post" action="/contractDetail?action=delete">
+            <form method="post" action="/contract?action=deleteContractDetail">
                 <input type="hidden" name="idcontractDetailDelete" id="idGet">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>

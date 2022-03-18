@@ -18,4 +18,6 @@ public interface IContractRepository {
     void createContract(Contract contractCreate);
 
     List<ContractDetail> getAllContractDetail();
+
+    Contract getContract(int contractId);
 }

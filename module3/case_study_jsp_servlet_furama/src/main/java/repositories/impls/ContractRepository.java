@@ -15,6 +15,8 @@ public class ContractRepository implements IContractRepository {
     IEmployeeRepository iEmployeeRepository = new EmployeeRepository();
     ICustomerRepository iCustomerRepository = new CustomerRepository();
     IServiceRepository iServiceRepository = new ServiceRepository();
+    IContractRepository iContractRepository = new ContractRepository();
+    IAttachServiceRepository iAttachServiceRepository  = new AttachServiceRepository();
     @Override
     public List<Contract> getAllContract() {
         List<Contract> contractList = new ArrayList<>();
@@ -110,27 +112,20 @@ public class ContractRepository implements IContractRepository {
         //Chu y: phai khoi tao new ArrayList<>() cho List<>, neu khong se sinh ra NullPointException;
         Connection connection = null;
         Contract contract;
-        ContractDetail contractDetail;
+        AttachService attachService;
         try {
             connection = baseRepository.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT contract_id, contract_start_date, " +
-                    "contract_end_date, contract_deposit, contract_total_money, employee_id, customer_id, service_id " +
-                    "FROM contract;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT contract_detail_id, quantity, " +
+                    "contract_id, attach_service_id FROM contract;");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                int contractDetailId = resultSet.getInt("contract_detail_id");
+                int quantity = resultSet.getInt("quantity");
                 int contractId = resultSet.getInt("contract_id");
-                String contractStartDate = resultSet.getString("contract_start_date");
-                String contractEndDate = resultSet.getString("contract_end_date");
-                double contractDeposit = resultSet.getDouble("contract_deposit");
-                double contractTotalMoney = resultSet.getDouble("contract_total_money");
-                int employeeId = resultSet.getInt("employee_id");
-                employee = iEmployeeRepository.getEmployee(employeeId);
-                int customerId = resultSet.getInt("customer_id");
-                customer = iCustomerRepository.getCustomer(customerId);
-                int serviceId = resultSet.getInt("service_id");
-                service = iServiceRepository.getService(serviceId);
-                contractDetailList.add(new ContractDetail(contractId, contractStartDate, contractEndDate, contractDeposit, contractTotalMoney,
-                        employee, customer, service));
+                contract = iContractRepository.getContract(contractId);
+                int attachServiceId = resultSet.getInt("attach_service_id");
+                attachService = iAttachServiceRepository.getAttachService(attachServiceId);
+                contractDetailList.add(new ContractDetail(contractDetailId, quantity, contract, attachService));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,5 +137,46 @@ public class ContractRepository implements IContractRepository {
             }
         }
         return contractDetailList;
+    }
+
+    @Override
+    public Contract getContract(int contractId) {
+        Contract contract = null;
+        Connection connection = null;
+        Employee employee;
+        Customer customer;
+        Service service;
+        try {
+            connection = baseRepository.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT contract_id, contract_start_date, " +
+                    "contract_end_date, contract_deposit, contract_total_money, employee_id, customer_id, service_id " +
+                    "FROM contract WHERE contract_id = ?;");
+            preparedStatement.setInt(1,contractId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int contractIdGetOne = resultSet.getInt("contract_id");
+                String contractStartDate = resultSet.getString("contract_start_date");
+                String contractEndDate = resultSet.getString("contract_end_date");
+                double contractDeposit = resultSet.getDouble("contract_deposit");
+                double contractTotalMoney = resultSet.getDouble("contract_total_money");
+                int employeeId = resultSet.getInt("employee_id");
+                employee = iEmployeeRepository.getEmployee(employeeId);
+                int customerId = resultSet.getInt("customer_id");
+                customer = iCustomerRepository.getCustomer(customerId);
+                int serviceId = resultSet.getInt("service_id");
+                service = iServiceRepository.getService(serviceId);
+                contract = new Contract(contractIdGetOne, contractStartDate, contractEndDate, contractDeposit, contractTotalMoney,
+                        employee, customer, service);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return contract;
     }
 }
